@@ -1,0 +1,20 @@
+{
+  "name": "ithit.webdav.server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tsc && ./node_modules/.bin/typedoc --out docs --mode file --excludePrivate --excludeProtected"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.5.4",
+    "typescript": "^3.0.1",
+    "typescript-dotnet-es6": "^4.11.1"
+  },
+  "devDependencies": {
+    "typedoc": "^0.11.1",
+    "typedoc-plugin-markdown": "^1.1.13"
+  }
+}
