@@ -1,94 +1,68 @@
-[ithit.webdav.server](../README.md) > [ITHit](../modules/ithit.md) > [WebDAV](../modules/ithit.webdav.md) > [Server](../modules/ithit.webdav.server.md) > [Content](../classes/ithit.webdav.server.content.md)
+[ithit.webdav.server](../README.md) > [ITHit](../modules/ithit.md) > [WebDAV](../modules/ithit.webdav.md) > [Server](../modules/ithit.webdav.server.md) > [IContent](../interfaces/ithit.webdav.server.icontent.md)
 
-# Class: Content
+# Interface: IContent
 
 Base interface for items that have content, like @see IFileAsync.
 
 ## Hierarchy
 
-**Content**
+**IContent**
 
-## Implements
+## Implemented by
 
-* [IContent](../interfaces/ithit.webdav.server.icontent.md)
+* [Content](../classes/ithit.webdav.server.content.md)
 
 ## Index
 
-### Constructors
+### Properties
 
-* [constructor](ithit.webdav.server.content.md#constructor)
-
-### Accessors
-
-* [ContentLength](ithit.webdav.server.content.md#contentlength)
-* [ContentType](ithit.webdav.server.content.md#contenttype)
-* [Etag](ithit.webdav.server.content.md#etag)
+* [ContentLength](ithit.webdav.server.icontent.md#contentlength)
+* [ContentType](ithit.webdav.server.icontent.md#contenttype)
+* [Etag](ithit.webdav.server.icontent.md#etag)
 
 ### Methods
 
-* [Read](ithit.webdav.server.content.md#read)
-* [Write](ithit.webdav.server.content.md#write)
+* [Read](ithit.webdav.server.icontent.md#read)
+* [Write](ithit.webdav.server.icontent.md#write)
 
 ---
 
-## Constructors
-
-<a id="constructor"></a>
-
-###  constructor
-
-⊕ **new Content**(): [Content](ithit.webdav.server.content.md)
-
-*Defined in [Content.ts:9](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L9)*
-
-Initializes new instance.
-
-**Returns:** [Content](ithit.webdav.server.content.md)
-
-___
-
-## Accessors
+## Properties
 
 <a id="contentlength"></a>
 
 ###  ContentLength
 
-getContentLength(): `number`
+**● ContentLength**: *`number`*
 
-*Defined in [Content.ts:41](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L41)*
+*Defined in IContent.ts:23*
 
 Gets the size of the file content in bytes.
-
-**Returns:** `number`
-Length of the file content in bytes.
+*__returns__*: Length of the file content in bytes.
 
 ___
 <a id="contenttype"></a>
 
 ###  ContentType
 
-getContentType(): `string`
+**● ContentType**: *`string`*
 
-*Defined in [Content.ts:31](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L31)*
+*Defined in IContent.ts:18*
 
 Gets the media type of the file. The mime-type provided by this property is returned in a Content-Type header with GET request. When deciding which action to perform when downloading a file some WebDAV clients and browsers (such as Internet Explorer) rely on file extension, while others (such as Firefox) rely on Content-Type header returned by server. For identical behavior in all browsers and WebDAV clients your server must return a correct mime-type with a requested file.
-
-**Returns:** `string`
-The MIME type of the file.
+*__returns__*: The MIME type of the file.
 
 ___
 <a id="etag"></a>
 
 ###  Etag
 
-getEtag(): `string`
+**● Etag**: *`string`*
 
-*Defined in [Content.ts:122](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L122)*
+*Defined in IContent.ts:93*
 
 Gets entity tag - string that identifies current state of resource's content. More information about etags is available here: [http://en.wikipedia.org/wiki/HTTP_ETag](http://en.wikipedia.org/wiki/HTTP_ETag) You can return here either cheksum or hash or counter which increases with every modification. This property shall return different value if content changes.
-
-**Returns:** `string`
-null to indicate that server doesn't support etags.
+*__returns__*: null to indicate that server doesn't support etags.
 
 ___
 
@@ -100,9 +74,7 @@ ___
 
 ▸ **Read**(output: *`ReadableStream`*, startIndex: *`number`*, count: *`number`*): `Promise`<`any`>
 
-*Implementation of [IContent](../interfaces/ithit.webdav.server.icontent.md).[Read](../interfaces/ithit.webdav.server.icontent.md#read)*
-
-*Defined in [Content.ts:59](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L59)*
+*Defined in IContent.ts:38*
 
 Reads the file content from the repository and writes it to the specified stream. By default ASP.NET buffers content on server side before sending output. You must turn off buffering to eliminate keeping entire file content in memory before sending: Client application can request only a part of a file specifying @b Range header. Download managers may use this header to download single file using several threads at a time.
 *__exception__*: NeedPrivilegesException The user doesn't have enough privileges.
@@ -128,9 +100,7 @@ ___
 
 ▸ **Write**(content: *`WriteStream`*, contentType: *`string`*, startIndex: *`number`*, totalFileSize: *`number`*): `Promise`<`boolean`>
 
-*Implementation of [IContent](../interfaces/ithit.webdav.server.icontent.md).[Write](../interfaces/ithit.webdav.server.icontent.md#write)*
-
-*Defined in [Content.ts:109](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/Content.ts#L109)*
+*Defined in IContent.ts:85*
 
 Saves the content of the file from the specified stream to the WebDAV repository.
 *__exception__*: {LockedException} The file was locked and client did not provide lock token.

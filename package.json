@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/tsc && ./node_modules/.bin/typedoc --out docs --mode file --excludePrivate --excludeProtected"
+    "docs": "./node_modules/.bin/typedoc --out docs --mode file --excludePrivate --excludeProtected",
+    "docs_md": "./node_modules/.bin/typedoc --out docs_md --mode file --theme markdown --mdEngine github --excludePrivate --excludeProtected"
   },
   "author": "",
   "license": "ISC",

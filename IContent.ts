@@ -1,52 +1,31 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
-
-namespace ITHit.WebDAV.Server {
+declare namespace ITHit.WebDAV.Server {
     /**
      * Base interface for items that have content, like @see IFileAsync.
      */
-    export class Content implements IContent {
-        /// 
-        /**
-         * Initializes new instance.
-         */
-        constructor () {
-            this._ContentType = '';
-            this._ContentLength = 0;
-            this._Etag = '';
-        }
-        
-        private _ContentType:string;
-        //
+    export interface IContent {
         /**
          * Gets the media type of the file.
          * The mime-type provided by this property is returned in a Content-Type header with GET request.
-         * When deciding which action to perform when downloading a file some WebDAV clients and browsers 
+         * When deciding which action to perform when downloading a file some WebDAV clients and browsers
          * (such as Internet Explorer) rely on file extension, while others (such as Firefox) rely on Content-Type
          * header returned by server. For identical behavior in all browsers and WebDAV clients your server must
          * return a correct mime-type with a requested file.
          * @returns {string} The MIME type of the file.
          */
-        get ContentType(): string {
-            return this._ContentType;
-        }
-         
-        private _ContentLength:number;
-        ///
+        readonly ContentType: string;
         /**
          * Gets the size of the file content in bytes.
          * @returns {number}  Length of the file content in bytes.
          */
-        get ContentLength(): number {
-            return this._ContentLength;
-        }
-        ///   
+        readonly ContentLength: number;
         /**
          * Reads the file content from the repository and writes it to the specified stream.
          * By default ASP.NET buffers content on server side before sending output. You must turn off buffering to
          * eliminate keeping entire file content in memory before sending:
-         * Client application can request only a part of a file specifying @b  Range header. Download managers 
+         * Client application can request only a part of a file specifying @b  Range header. Download managers
          * may use this header to download single file using several threads at a time.
          * @param output Output stream.
          * @param startIndex The zero-bazed byte offset in file content at which to begin copying bytes to
@@ -56,10 +35,7 @@ namespace ITHit.WebDAV.Server {
          * @exception DavException In other cases.
          * @example <caption>HttpContext.Current.Response.BufferOutput = false;</caption>
          */
-        Read(output: NodeJS.ReadableStream, startIndex: number, count: number): Promise<any>{
-            return new Promise((resolve, reject) => {resolve(output.read(count))});
-        }
-        ///    
+        Read(output: NodeJS.ReadableStream, startIndex: number, count: number): Promise<any>;
         /**
          * Saves the content of the file from the specified stream to the WebDAV repository.
          * @param content Stream to read the content of the file from.
@@ -73,10 +49,10 @@ namespace ITHit.WebDAV.Server {
          * @exception {DavException} In other cases.
          * @desc  IIS and ASP.NET does not support files upload larger than 2Gb. If you need to upload files larger
          * than 2Gb you must develop HttpListener-based WebDAV server or implement resumable upload interfaces.
-         * If you are creating HttpHandler-based WebDAV server you must specify the file 
-         * maximum upload size in web.config of your web application. By default maximum 
-         * upload size is set to 4096 KB (4 MB) by ASP.NET. This limit is used to 
-         * prevent denial of service attacks caused by users posting large files to the 
+         * If you are creating HttpHandler-based WebDAV server you must specify the file
+         * maximum upload size in web.config of your web application. By default maximum
+         * upload size is set to 4096 KB (4 MB) by ASP.NET. This limit is used to
+         * prevent denial of service attacks caused by users posting large files to the
          * server. To increase the upload limit add &lt;httpRuntime&gt; section to your web application web.config
          * file and specify the limit in kilobytes:
          * @example &lt;![CDATA[
@@ -102,16 +78,11 @@ namespace ITHit.WebDAV.Server {
          * @example &nbsp;&nbsp;&nbsp;&nbsp;&lt;/system.web&gt;
          * @example &nbsp;&nbsp;&lt;/configuration&gt;
          * @example ]]&gt;
-         * @desc To avoid temporary file creation and pass content directly to engine set the @see ITHit.WebDAV.Server.ResumableUpload.PutUploadProgressAndResumeModule 
+         * @desc To avoid temporary file creation and pass content directly to engine set the @see ITHit.WebDAV.Server.ResumableUpload.PutUploadProgressAndResumeModule
          * module in your web.config file. Unlike IIS/ASP.NET, HttpListener-based server does not create any
          * temporary files when handling uploads.
          */
-        Write(content: NodeJS.WriteStream, contentType: string, startIndex: number, totalFileSize: number): Promise<boolean>{
-            return new Promise((resolve, reject) => {resolve(content.write(''))});
-        }
-        
-        private _Etag : string;
-        ///
+        Write(content: NodeJS.WriteStream, contentType: string, startIndex: number, totalFileSize: number): Promise<boolean>;
         /**
          * Gets entity tag - string that identifies current state of resource's content.
          * More information about etags is available here: http://en.wikipedia.org/wiki/HTTP_ETag
@@ -119,8 +90,6 @@ namespace ITHit.WebDAV.Server {
          * This property shall return different value if content changes.
          * @returns {string} null to indicate that server doesn't support etags.
          */
-        get Etag(): string {
-            return this._Etag;
-        }
+        readonly Etag: string;
     }
 }

@@ -11,5 +11,9 @@
 * [Content](../classes/ithit.webdav.server.content.md)
 * [PropertyValue](../classes/ithit.webdav.server.propertyvalue.md)
 
+### Interfaces
+
+* [IContent](../interfaces/ithit.webdav.server.icontent.md)
+
 ---
 

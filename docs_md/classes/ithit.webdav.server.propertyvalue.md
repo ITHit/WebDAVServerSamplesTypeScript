@@ -29,7 +29,7 @@ Describes one property associated with hierarchy item object.
 
 ⊕ **new PropertyValue**(name?: *`PropertyName`*, value?: * `undefined` &#124; `string`*): [PropertyValue](ithit.webdav.server.propertyvalue.md)
 
-*Defined in PropertyValue.ts:17*
+*Defined in [PropertyValue.ts:17](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/PropertyValue.ts#L17)*
 
 Initializes new instance.
 
@@ -52,11 +52,11 @@ ___
 
 getQualifiedName(): `PropertyName`setQualifiedName(value: *`PropertyName`*): `void`
 
-*Defined in PropertyValue.ts:36*
+*Defined in [PropertyValue.ts:36](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/PropertyValue.ts#L36)*
 
 **Returns:** `PropertyName`
 
-*Defined in PropertyValue.ts:39*
+*Defined in [PropertyValue.ts:39](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/PropertyValue.ts#L39)*
 
 **Parameters:**
 
@@ -73,11 +73,11 @@ ___
 
 getValue(): `String`setValue(value: *`String`*): `void`
 
-*Defined in PropertyValue.ts:29*
+*Defined in [PropertyValue.ts:29](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/PropertyValue.ts#L29)*
 
 **Returns:** `String`
 
-*Defined in PropertyValue.ts:32*
+*Defined in [PropertyValue.ts:32](https://github.com/ITHit/WebDAVServerTypeScript/blob/2126822/PropertyValue.ts#L32)*
 
 **Parameters:**
 
