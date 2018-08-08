@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Server | ithit.webdav.server</title>
+	<title>DavEngine | ithit.webdav.server</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,16 +56,19 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ithit.html">ITHit</a>
+					<a href="../modules/ithit.html">ITHit</a>
 				</li>
 				<li>
-					<a href="ithit.webdav.html">WebDAV</a>
+					<a href="../modules/ithit.webdav.html">WebDAV</a>
 				</li>
 				<li>
-					<a href="ithit.webdav.server.html">Server</a>
+					<a href="../modules/ithit.webdav.server.html">Server</a>
+				</li>
+				<li>
+					<a href="ithit.webdav.server.davengine.html">DavEngine</a>
 				</li>
 			</ul>
-			<h1>Module Server</h1>
+			<h1>Class DavEngine</h1>
 		</div>
 	</div>
 </header>
@@ -74,33 +77,73 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The DavEngine class provides the core implementation for WebDAV engine.</p>
+					</div>
 					<dl class="tsd-comment-tags">
-						<dt>copyright</dt>
-						<dd><p>Copyright (c) 2017 IT Hit. All rights reserved.</p>
+						<dt>desc</dt>
+						<dd><p>Engine parses XML send by WebDAV client, processes requests making calls to your implementations of
+								WebDAV interfaces (@see IHierarchyItemAsync , @see IFolderAsync , @see IFileAsync  and other)
+							and finally generates XML response.</p>
+						</dd>
+						<dt>desc</dt>
+						<dd><p>In each HTTP request you will create separate instance of your class derived
+								from @see DavContextBaseAsync  class and pass it to the @see DavEngineAsync.RunAsync  method. Via the context, engine
+							receives all necessary information about hosting environment.</p>
+						</dd>
+						<dt>desc</dt>
+						<dd><p>You must set @see License  property before you can use the engine.</p>
+						</dd>
+						<dt>desc</dt>
+						<dd><p>All updates invoked within one request execution shall be inside one transactions.
+								Transaction can be committed or rollbacked in @see DavContextBaseAsync.BeforeResponseAsync  method, which
+								is called right before starting sending response to client.
+								After this method is called, no methods of interfaces which update state will be called. However methods
+							which read state can be called.</p>
+						</dd>
+						<dt>threadsafety</dt>
+						<dd><p>Method @see RunAsync  is threadsafe. All other members are not threadsafe.
+								You can create a single instance of DavEngine, initialize it onces and use to serve all requests
+							from different threads.</p>
+						</dd>
+						<dt>example</dt>
+						<dd><h5 id="httplistener-based-server-">HttpListener-based server:</h5>
+							<pre><code class="lang-csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)
+    </span>{
+        HttpListener listener = <span class="hljs-keyword">new</span> HttpListener();
+        listener.Prefixes.Add(<span class="hljs-string">"http://localhost:8080/"</span>);
+        listener.Start();
+        DavEngine engine = <span class="hljs-keyword">new</span> DavEngine();
+        engine.License = <span class="hljs-string">"..."</span>;
+        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+        {
+            HttpListenerContext context = listener.GetContext();
+            engine.Run(<span class="hljs-keyword">new</span> MyContext(context, listener.Prefixes));
+            <span class="hljs-keyword">try</span>
+            {
+                context.Response.Close();
+            }
+            <span class="hljs-keyword">catch</span>
+            {
+                <span class="hljs-comment">// client closed connection before the content was sent</span>
+            }
+        }
+    }
+}
+</code></pre>
 						</dd>
 					</dl>
 				</div>
 			</section>
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/ithit.webdav.server.content.html" class="tsd-kind-icon">Content</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/ithit.webdav.server.davengine.html" class="tsd-kind-icon">Dav<wbr>Engine</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/ithit.webdav.server.propertyvalue.html" class="tsd-kind-icon">Property<wbr>Value</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/ithit.webdav.server.icontent.html" class="tsd-kind-icon">IContent</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">DavEngine</span>
+					</li>
+				</ul>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -110,26 +153,30 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module tsd-is-not-exported">
-						<a href="ithit.html">ITHit</a>
+						<a href="../modules/ithit.html">ITHit</a>
 					</li>
 					<li class=" tsd-kind-module tsd-parent-kind-module">
-						<a href="ithit.webdav.html">ITHit.<wbr>WebDAV</a>
+						<a href="../modules/ithit.webdav.html">ITHit.<wbr>WebDAV</a>
 					</li>
 					<li class="current tsd-kind-module tsd-parent-kind-module">
-						<a href="ithit.webdav.server.html">ITHit.<wbr>WebDAV.<wbr>Server</a>
+						<a href="../modules/ithit.webdav.server.html">ITHit.<wbr>WebDAV.<wbr>Server</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/ithit.webdav.server.content.html" class="tsd-kind-icon">Content</a>
+						<a href="ithit.webdav.server.content.html" class="tsd-kind-icon">Content</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/ithit.webdav.server.davengine.html" class="tsd-kind-icon">Dav<wbr>Engine</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="ithit.webdav.server.davengine.html" class="tsd-kind-icon">Dav<wbr>Engine</a>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/ithit.webdav.server.propertyvalue.html" class="tsd-kind-icon">Property<wbr>Value</a>
+						<a href="ithit.webdav.server.propertyvalue.html" class="tsd-kind-icon">Property<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/ithit.webdav.server.icontent.html" class="tsd-kind-icon">IContent</a>

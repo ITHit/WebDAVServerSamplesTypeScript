@@ -63,7 +63,7 @@ export abstract class DavRequest {
      * Gets the character set of the entity-body.
      * @value An Encoding object representing the client's character set.
      */
-    public abstract get ContentEncoding(): string;
+    public abstract get ContentEncoding(): BufferEncoding;
 
     /**
      * Specifies the length, in bytes, of content sent by the client.
