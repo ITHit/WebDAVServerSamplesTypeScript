@@ -73,8 +73,8 @@
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
-						<dd><p>Base interface for all kinds of folders (@see IFolderAsync , @see IPrincipalFolderAsync  etc.).
-							In addition to methods and properties provided by @see IHierarchyItemAsync  interface this interface also provides @see IItemCollectionAsync.GetChildrenAsync  method to list all children of this folder.</p>
+						<dd><p>Base interface for all kinds of folders (<a href="ifolderasync.html">IFolderAsync</a> , {@link IPrincipalFolderAsync}  etc.).
+							In addition to methods and properties provided by <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>  interface this interface also provides {@link IItemCollectionAsync#GetChildrenAsync}  method to list all children of this folder.</p>
 						</dd>
 					</dl>
 				</div>
@@ -134,7 +134,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#created">Created</a></p>
 						<ul>
-							<li>Defined in IHierarchyItem.ts:27</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L27">IHierarchyItem.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,7 +150,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#modified">Modified</a></p>
 						<ul>
-							<li>Defined in IHierarchyItem.ts:34</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L34">IHierarchyItem.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,7 +172,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#name">Name</a></p>
 						<ul>
-							<li>Defined in IHierarchyItem.ts:22</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L22">IHierarchyItem.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -188,7 +188,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#path">Path</a></p>
 						<ul>
-							<li>Defined in IHierarchyItem.ts:172</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L166">IHierarchyItem.ts:166</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -201,20 +201,10 @@
 									If your server root is located at <a href="http://example.webdavsystem.com:8080/myserver/">http://example.webdavsystem.com:8080/myserver/</a> and the item URL is
 									<a href="http://example.webdavsystem.com:8080/myserver/myfolder/myitem.doc">http://example.webdavsystem.com:8080/myserver/myfolder/myitem.doc</a> this property implementation must
 									return myfolder/myitem.doc. To calculate the entire item URL the engine will
-								call @see DavRequest.ApplicationPath  property and attach it to url returned by @see Path  property.</p>
+								call {@link DavRequest#ApplicationPath}  property and attach it to url returned by <a href="iitemcollectionasync.html#path">Path</a>  property.</p>
 							</dd>
 							<dt>remarks</dt>
-							<dd><p>Every part of the path (between &#39;/&#39; characters) shall be encoded,
-								for example using @see EncodeUtil .</p>
-							</dd>
-							<dt>remarks</dt>
-							<dd><p>Examples:</p>
-								<ul>
-									<li>@description  File: myfolder/my%20doc.docx</li>
-									<li>@description  Folder: myfolder/folder/</li>
-									<li>@description  History item: myfolder/mydoc.docx?history</li>
-									<li>@description  Version: myfolder/mydoc.docx?version=5</li>
-								</ul>
+							<dd><p>Every part of the path (between &#39;/&#39; characters) shall be encoded,</p>
 							</dd>
 							<dt>property</dt>
 							<dd><p>String representing relative item path in the repository.</p>
@@ -236,7 +226,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#copytoasync">CopyToAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:59</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L59">IHierarchyItem.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -244,26 +234,23 @@
 									<p>Creates a copy of this item with a new name in the destination folder.</p>
 								</div>
 								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p>MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException) .</p>
-									</dd>
 									<dt>exception</dt>
-									<dd><p>{LockedException} Destination item was locked and client did not provide
+									<dd><p>LockedException Destination item was locked and client did not provide
 										lock token.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{InsufficientStorageException} Quota limit is reached.</p>
+									<dd><p>InsufficientStorageException Quota limit is reached.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{MultistatusException} Errors has occured during processing of item in the subtree and
+									<dd><p>MultistatusException Errors has occured during processing of item in the subtree and
 										whole operation shall be aborted.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.
-										Possible status value is @see DavStatus.CONFLICT  if destination folder doesn&#39;t exist.</p>
+									<dd><p>DavException In other cases.
+										Possible status value is {@link DavStatus#CONFLICT}  if destination folder doesn&#39;t exist.</p>
 									</dd>
 									<dt>remarks</dt>
 									<dd><p>If error occurred while copying file located in a subtree, the server
@@ -281,15 +268,29 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>destFolder: <a href="iitemcollectionasync.html" class="tsd-signature-type">IItemCollectionAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Destination folder.</p>
+									</div>
 								</li>
 								<li>
 									<h5>destName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the destination item.</p>
+									</div>
 								</li>
 								<li>
 									<h5>deep: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Indicates whether to copy entire subtree.</p>
+									</div>
 								</li>
 								<li>
 									<h5>multistatus: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If some items fail to copy but operation in whole shall be continued,
+											add information about the error into @paramref multistatus  using
+										{@link MultistatusException#AddInnerException(string, DavException)} .</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -307,7 +308,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#deleteasync">DeleteAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:95</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L95">IHierarchyItem.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,26 +316,23 @@
 									<p>Deletes this item.</p>
 								</div>
 								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p>MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException) .</p>
-									</dd>
 									<dt>exception</dt>
-									<dd><p>{LockedException} This item or its parent was locked and client did not provide lock
+									<dd><p>LockedException This item or its parent was locked and client did not provide lock
 										token.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{InsufficientStorageException} Quota limit is reached.</p>
+									<dd><p>InsufficientStorageException Quota limit is reached.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{MultistatusException} Errors has occured during processing of item in the subtree
+									<dd><p>MultistatusException Errors has occured during processing of item in the subtree
 										and whole operation shall be aborted.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.
-										Possible status value is @see DavStatus.CONFLICT  if destination folder doesn&#39;t exist.</p>
+									<dd><p>DavException In other cases.
+										Possible status value is {@link DavStatus#CONFLICT}  if destination folder doesn&#39;t exist.</p>
 									</dd>
 								</dl>
 							</div>
@@ -342,6 +340,11 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>multistatus: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If some items fail to delete but operation in whole shall be continued, add
+											information about the error into @paramref multistatus  using
+										{@link MultistatusException#AddInnerException(string,DavException)} .</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -358,7 +361,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IItemCollection.ts:19</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IItemCollection.ts#L19">IItemCollection.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -370,10 +373,13 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>propNames: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/propertyname.html" class="tsd-signature-type">PropertyName</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of properties requested by the client.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>@see IEnumerable{T}  with @see IHierarchyItemAsync  items. Each item is a file or folder item.</p>
+							<p>with <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>  items. Each item is a file or folder item.</p>
 						</li>
 					</ul>
 				</section>
@@ -388,7 +394,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#getpropertiesasync">GetPropertiesAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:107</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L107">IHierarchyItem.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -397,10 +403,10 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.</p>
+									<dd><p>DavException In other cases.</p>
 									</dd>
 								</dl>
 							</div>
@@ -408,9 +414,17 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/propertyname.html" class="tsd-signature-type">PropertyName</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>with property names which values are requested by WebDAV client.
+										If a property does not exist for this hierarchy item then the property value shall not be returned.</p>
+									</div>
 								</li>
 								<li>
 									<h5>allprop: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If it is true it means that besides properties listed in @paramref props  you need to
+										return all properties you think may be useful to client.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/propertyvalue.html" class="tsd-signature-type">PropertyValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -429,7 +443,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#getpropertynamesasync">GetPropertyNamesAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:115</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L115">IHierarchyItem.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -459,7 +473,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#movetoasync">MoveToAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:79</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L79">IHierarchyItem.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -467,26 +481,23 @@
 									<p>Moves this item to the destination folder under a new name.</p>
 								</div>
 								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p>MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException) .</p>
-									</dd>
 									<dt>exception</dt>
-									<dd><p>{LockedException} The source or the destination item was locked and client did not provide
+									<dd><p>LockedException The source or the destination item was locked and client did not provide
 										lock token.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{InsufficientStorageException} Quota limit is reached.</p>
+									<dd><p>InsufficientStorageException Quota limit is reached.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{MultistatusException} Errors has occured during processing of item in the subtree and
+									<dd><p>MultistatusException Errors has occured during processing of item in the subtree and
 										whole operation shall be aborted.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.
-										Possible status value is @see DavStatus.CONFLICT  if destination folder doesn&#39;t exist.</p>
+									<dd><p>DavException In other cases.
+										Possible status value is {@link DavStatus#CONFLICT}  if destination folder doesn&#39;t exist.</p>
 									</dd>
 									<dt>remarks</dt>
 									<dd><p>If the item is locked the server must not move any locks with the item. However, items must be added to an
@@ -498,12 +509,23 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>destFolder: <a href="iitemcollectionasync.html" class="tsd-signature-type">IItemCollectionAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Destination folder.</p>
+									</div>
 								</li>
 								<li>
 									<h5>destName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the destination item.</p>
+									</div>
 								</li>
 								<li>
 									<h5>multistatus: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If some items fail to copy but operation in whole shall be continued, add
+											information about the error into @paramref multistatus using
+										{@link MultistatusException#AddInnerException(string,DavException)} .</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -521,7 +543,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="ihierarchyitemasync.html">IHierarchyItemAsync</a>.<a href="ihierarchyitemasync.html#updatepropertiesasync">UpdatePropertiesAsync</a></p>
 								<ul>
-									<li>Defined in IHierarchyItem.ts:153</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IHierarchyItem.ts#L153">IHierarchyItem.ts:153</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -530,46 +552,46 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{InsufficientStorageException} Quota limit is reached.</p>
+									<dd><p>InsufficientStorageException Quota limit is reached.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{LockedException} This item was locked and client did not provide lock token.</p>
+									<dd><p>LockedException This item was locked and client did not provide lock token.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{MultistatusException} The exception shall contain statuses for all properties that failed to update.
+									<dd><p>MultistatusException The exception shall contain statuses for all properties that failed to update.
 										Typical property error statuses:</p>
 										<ul>
-											<li>@see DavStatus.CONFLICT  - the client has provided a value whose semantics are not appropriate for the property, this includes trying to set read-only properties.</li>
-											<li>@see DavStatus.FAILED_DEPENDENCY  - indicates this action would have succeeded if it were not for the conflict with updating/removing some other property.</li>
+											<li>{@link DavStatus#CONFLICT}  - the client has provided a value whose semantics are not appropriate for the property, this includes trying to set read-only properties.</li>
+											<li>{@link DavStatus#FAILED_DEPENDENCY}  - indicates this action would have succeeded if it were not for the conflict with updating/removing some other property.</li>
 										</ul>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.</p>
+									<dd><p>DavException In other cases.</p>
 									</dd>
 									<dt>remarks</dt>
-									<dd><p>In your @see UpdatePropertiesAsync  implementation you will create,
+									<dd><p>In your <a href="iitemcollectionasync.html#updatepropertiesasync">UpdatePropertiesAsync</a>  implementation you will create,
 											modify and delete item properties.
 										Single property update request may invoke following methods of single item which update properties:</p>
 										<ul>
-											<li>@see IAclHierarchyItemAsync.SetOwnerAsync(IPrincipalAsync)</li>
-											<li>@see IAclHierarchyItemAsync.SetGroupAsync(IPrincipalAsync)</li>
-											<li>@see IVersionableItemAsync.SetAutoVersionAsync(AutoVersion)</li>
-											<li>@see IDeltaVItemAsync.SetCommentAsync(string)</li>
-											<li>@see IDeltaVItemAsync.SetCreatorDisplayNameAsync(string)</li>
-											<li>@see IPrincipalAsync.SetGroupMembersAsync(IList{IPrincipalAsync})</li>
-											<li>@see IHierarchyItemAsync.UpdatePropertiesAsync(IList{PropertyValue}, IList{PropertyName}, MultistatusException)
-												Engine will update properties (call these methods) one by one unless exception is thrown.
-												If an exception is thrown during a property update engine will report all remaining properties
-											as failed with status @see DavStatus.FAILED_DEPENDENCY</li>
+											<li>{@link IAclHierarchyItemAsync#SetOwnerAsync(IPrincipalAsync)}</li>
+											<li>{@link IAclHierarchyItemAsync#SetGroupAsync(IPrincipalAsync)}</li>
+											<li>{@link IVersionableItemAsync#SetAutoVersionAsync(AutoVersion)}</li>
+											<li>{@link IDeltaVItemAsync#SetCommentAsync(string)}</li>
+											<li>{@link IDeltaVItemAsync#SetCreatorDisplayNameAsync(string)}</li>
+											<li>{@link IPrincipalAsync#SetGroupMembersAsync(IList{IPrincipalAsync})}</li>
+											<li>{@link IHierarchyItemAsync#UpdatePropertiesAsync(IList<PropertyValue>, IList<PropertyName>, MultistatusException)}
+														Engine will update properties (call these methods) one by one unless exception is thrown.
+														If an exception is thrown during a property update engine will report all remaining properties
+											as failed with status {@link DavStatus#FAILED_DEPENDENCY}</li>
 										</ul>
 									</dd>
 									<dt>remarks</dt>
 									<dd><p>The standard requires that request which updates properties is atomic (PROPPATCH).
 											If your storage supports transactions then atomicity requirement can be implemented
-										by committing or rollbacking the transaction in @see DavContextBaseAsync.BeforeResponseAsync .</p>
+										by committing or rollbacking the transaction in {@link DavContextBaseAsync#BeforeResponseAsync} .</p>
 									</dd>
 								</dl>
 							</div>
@@ -577,12 +599,27 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>setProps: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/propertyvalue.html" class="tsd-signature-type">PropertyValue</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of properties to be set.</p>
+									</div>
 								</li>
 								<li>
 									<h5>delProps: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/propertyname.html" class="tsd-signature-type">PropertyName</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of property names to be removed. Properties that don&#39;t exist shall be skipped.</p>
+									</div>
 								</li>
 								<li>
 									<h5>multistatus: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The standard requires this operation to be transactional.
+											If some properties fail to update but there is no possibility to rollback the transaction
+											in {@link DavContextBaseAsync#BeforeResponseAsync} , add
+											information about the error into @paramref multistatus
+											using {@link MultistatusException#AddInnerException(string,PropertyName,DavException)} .
+											In this case engine will report correct statuses for all properties at least
+										(although this is against standard).</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>

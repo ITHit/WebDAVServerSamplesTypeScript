@@ -74,56 +74,28 @@
 					<dl class="tsd-comment-tags">
 						<dt>desc</dt>
 						<dd><p>Engine parses XML send by WebDAV client, processes requests making calls to your implementations of
-								WebDAV interfaces (@see IHierarchyItemAsync , @see IFolderAsync , @see IFileAsync  and other)
+								WebDAV interfaces (<a href="../interfaces/ihierarchyitemasync.html">IHierarchyItemAsync</a> , <a href="../interfaces/ifolderasync.html">IFolderAsync</a>, <a href="../interfaces/ifileasync.html">IFileAsync</a>  and other)
 							and finally generates XML response.</p>
 						</dd>
 						<dt>desc</dt>
 						<dd><p>In each HTTP request you will create separate instance of your class derived
-								from @see DavContextBaseAsync  class and pass it to the @see DavEngineAsync.RunAsync  method. Via the context, engine
+								from {@link DavContextBaseAsync}  class and pass it to the {@link DavEngineAsync.RunAsync}  method. Via the context, engine
 							receives all necessary information about hosting environment.</p>
 						</dd>
 						<dt>desc</dt>
-						<dd><p>You must set @see License  property before you can use the engine.</p>
+						<dd><p>You must set <a href="davengine.html#license">License</a>  property before you can use the engine.</p>
 						</dd>
 						<dt>desc</dt>
 						<dd><p>All updates invoked within one request execution shall be inside one transactions.
-								Transaction can be committed or rollbacked in @see DavContextBaseAsync.BeforeResponseAsync  method, which
+								Transaction can be committed or rollbacked in {@link DavContextBaseAsync.BeforeResponseAsync}  method, which
 								is called right before starting sending response to client.
 								After this method is called, no methods of interfaces which update state will be called. However methods
 							which read state can be called.</p>
 						</dd>
 						<dt>threadsafety</dt>
-						<dd><p>Method @see RunAsync  is threadsafe. All other members are not threadsafe.
+						<dd><p>Method <a href="davengine.html#runasync">RunAsync</a>  is threadsafe. All other members are not threadsafe.
 								You can create a single instance of DavEngine, initialize it onces and use to serve all requests
 							from different threads.</p>
-						</dd>
-						<dt>example</dt>
-						<dd><p>HttpListener-based server:</p>
-							<pre><code class="lang-csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)
-    </span>{
-        HttpListener listener = <span class="hljs-keyword">new</span> HttpListener();
-        listener.Prefixes.Add(<span class="hljs-string">"http://localhost:8080/"</span>);
-        listener.Start();
-        DavEngine engine = <span class="hljs-keyword">new</span> DavEngine();
-        engine.License = <span class="hljs-string">"..."</span>;
-        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
-        {
-            HttpListenerContext context = listener.GetContext();
-            engine.Run(<span class="hljs-keyword">new</span> MyContext(context, listener.Prefixes));
-            <span class="hljs-keyword">try</span>
-            {
-                context.Response.Close();
-            }
-            <span class="hljs-keyword">catch</span>
-            {
-                <span class="hljs-comment">// client closed connection before the content was sent</span>
-            }
-        }
-    }
-}
-</code></pre>
 						</dd>
 					</dl>
 				</div>
@@ -185,7 +157,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:138</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L105">DavEngine.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -206,7 +178,7 @@
 					<div class="tsd-signature tsd-kind-icon">Allow<wbr>Office12<wbr>Versioning<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:138</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L105">DavEngine.ts:105</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -216,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">Auto<wbr>Put<wbr>Under<wbr>Version<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:112</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L79">DavEngine.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -233,7 +205,7 @@
 								or explicit request from client shall be made to put an item under version control.</p>
 							</dd>
 							<dt>remarks</dt>
-							<dd><p>If this property is true the @see IVersionableItemAsync.PutUnderVersionControlAsync will be called
+							<dd><p>If this property is true the {@link IVersionableItemAsync.PutUnderVersionControlAsync} will be called
 								after item is created and prior item content or properties update.</p>
 							</dd>
 						</dl>
@@ -245,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">Calculate<wbr>Content<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:90</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L57">DavEngine.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -254,10 +226,10 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>value</dt>
-							<dd><p>Boolean value indicating if content length will be calculated in @see RunAsync method. Default is true.</p>
+							<dd><p>Boolean value indicating if content length will be calculated in <a href="davengine.html#runasync">RunAsync</a> method. Default is true.</p>
 							</dd>
 							<dt>remarks</dt>
-							<dd><p>If this property is set to true engine will calculate output content length and set @see DavResponse.ContentLength  property before returning from @see RunAsync method.
+							<dd><p>If this property is set to true engine will calculate output content length and set <a href="davresponse.html#contentlength">DavResponse.ContentLength</a>  property before returning from <a href="davengine.html#runasync">RunAsync</a> method.
 								If you would like to send chunked responses you must set this property to false.</p>
 							</dd>
 							<dt>remarks</dt>
@@ -283,7 +255,7 @@
 					<div class="tsd-signature tsd-kind-icon">Content<wbr>Encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BufferEncoding</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:119</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L86">DavEngine.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -304,7 +276,7 @@
 					<div class="tsd-signature tsd-kind-icon">Cors<wbr>Allowed<wbr>For<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:101</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L68">DavEngine.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -335,7 +307,7 @@
 					<div class="tsd-signature tsd-kind-icon">License<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:74</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L41">DavEngine.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -346,11 +318,6 @@
 							<dt>value</dt>
 							<dd><p>License string.</p>
 							</dd>
-							<dt>example</dt>
-							<dd><p>Make sure you do not make any changes in Data and Signature tags as license validation will fail in this case.</p>
-								<pre><code class="lang-csharp">engine.License = File.ReadAllText(HttpContext.Current.Request.PhysicalApplicationPath + <span class="hljs-string">"License.lic"</span>);
-</code></pre>
-							</dd>
 						</dl>
 					</div>
 				</section>
@@ -360,7 +327,7 @@
 					<div class="tsd-signature tsd-kind-icon">Logger<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ilogger.html" class="tsd-signature-type">ILogger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:131</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L98">DavEngine.ts:98</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,7 +336,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>remarks</dt>
-							<dd><p>By default this is @see DefaultLoggerImpl .</p>
+							<dd><p>By default this is <a href="defaultloggerimpl.html">DefaultLoggerImpl</a> .</p>
 							</dd>
 						</dl>
 					</div>
@@ -380,7 +347,7 @@
 					<div class="tsd-signature tsd-kind-icon">Output<wbr>Xml<wbr>Formatting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:136</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L103">DavEngine.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -395,7 +362,7 @@
 					<div class="tsd-signature tsd-kind-icon">Use<wbr>Full<wbr>Uris<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavEngine.ts:125</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L92">DavEngine.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -422,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:173</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L129">DavEngine.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -434,25 +401,21 @@
 									<dd><p>Using this method you can register custom method handler to be called by the engine.
 										If the handler for the specified method was already defined it is returned from this method.</p>
 									</dd>
-									<dt>example</dt>
-									<dd><p>The original handler can be saved and called later from your custom handler.</p>
-										<pre><code>&lt;![CDATA[
-DavEngine engine = new DavEngine();
-MyCustomGetHandler handler = new MyCustomGetHandler();
-handler.OriginalHandler = engine.RegisterMethodHandler("GET", handler);
-///    MyDavContext context = new MyDavContext(...);
-engine.Run(context);
-]]&gt;
-</code></pre></dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>HTTP verb.</p>
+									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/imethodhandler.html" class="tsd-signature-type">IMethodHandler</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Custom handled implementing {@link IMethodHandlerAsync}  interface.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/imethodhandler.html" class="tsd-signature-type">IMethodHandler</a></h4>
@@ -470,7 +433,7 @@ engine.Run(context);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:204</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L160">DavEngine.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -489,9 +452,15 @@ engine.Run(context);
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Token that will be added to &#39;DAV&#39; header for OPTIONS response.</p>
+									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/ioptionshandler.html" class="tsd-signature-type">IOptionsHandler</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Custom handled implementing <a href="../interfaces/ioptionshandler.html">IOptionsHandler</a>  interface.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ioptionshandler.html" class="tsd-signature-type">IOptionsHandler</a></h4>
@@ -509,7 +478,7 @@ engine.Run(context);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:190</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L146">DavEngine.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,9 +498,15 @@ engine.Run(context);
 							<ul class="tsd-parameters">
 								<li>
 									<h5>propName: <a href="propertyname.html" class="tsd-signature-type">PropertyName</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Property name.</p>
+									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/ipropertyhandler.html" class="tsd-signature-type">IPropertyHandler</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Custom handled implementing {@link IPropertyHandlerAsync}  interface.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ipropertyhandler.html" class="tsd-signature-type">IPropertyHandler</a></h4>
@@ -549,7 +524,7 @@ engine.Run(context);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:220</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L176">DavEngine.ts:176</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -568,12 +543,21 @@ engine.Run(context);
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Report element name.</p>
+									</div>
 								</li>
 								<li>
 									<h5>namespace: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Report namespace.</p>
+									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/ireporthandler.html" class="tsd-signature-type">IReportHandler</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Custom handled implementing <a href="../interfaces/ireporthandler.html">IReportHandler</a>  interface.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ireporthandler.html" class="tsd-signature-type">IReportHandler</a></h4>
@@ -591,7 +575,7 @@ engine.Run(context);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavEngine.ts:241</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavEngine.ts#L190">DavEngine.ts:190</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -600,19 +584,17 @@ engine.Run(context);
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><p>You must call Run method in each request to your WebDAV server passing your context class derived from @see DavContextBaseAsync  as input parameter.</p>
-										<pre><code>DavEngine engine = new DavEngine()<span class="hljs-comment">;</span>
-engine.License = <span class="hljs-string">"..."</span><span class="hljs-comment">;</span>
-...
-MyContext <span class="hljs-built_in">context</span> = new MyContext(HttpContext.Current)<span class="hljs-comment">;</span>
-engine.Run(<span class="hljs-built_in">context</span>)<span class="hljs-comment">;</span>
-</code></pre></dd>
+									<dd><p>You must call Run method in each request to your WebDAV server passing your context class derived from {@link DavContextBaseAsync}  as input parameter.</p>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>context: <a href="davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Instance of your context class derived from {@link DavContextBaseAsync}  class.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>

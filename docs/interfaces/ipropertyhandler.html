@@ -74,7 +74,7 @@
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
 						<dd><p>If you need to implement your own live property,
-								implement this interface and register it with @see DavEngineAsync.RegisterPropertyHandler  method.
+								implement this interface and register it with {@link DavEngineAsync#RegisterPropertyHandler}  method.
 							Engine will call this handler when it needs to read/write the property.</p>
 						</dd>
 					</dl>
@@ -118,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">Include<wbr>InAll<wbr>Prop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Extensibility/IPropertyHandler.ts:50</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IPropertyHandler.ts#L50">Extensibility/IPropertyHandler.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">Is<wbr>Readonly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Extensibility/IPropertyHandler.ts:45</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IPropertyHandler.ts#L45">Extensibility/IPropertyHandler.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,7 +155,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IPropertyHandler.ts:40</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IPropertyHandler.ts#L40">Extensibility/IPropertyHandler.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,6 +167,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item to determine whether property applies to it.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -184,7 +187,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IPropertyHandler.ts:33</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IPropertyHandler.ts#L33">Extensibility/IPropertyHandler.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -196,12 +199,21 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>context: <a href="../classes/davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Context.</p>
+									</div>
 								</li>
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item in which to update property.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Xml with property value.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -218,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IPropertyHandler.ts:25</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IPropertyHandler.ts#L25">Extensibility/IPropertyHandler.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,12 +248,21 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>writer: <span class="tsd-signature-type">WriteStream</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>to which to write property value.</p>
+									</div>
 								</li>
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item for which to retrieve property.</p>
+									</div>
 								</li>
 								<li>
 									<h5>context: <a href="../classes/davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Context.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>

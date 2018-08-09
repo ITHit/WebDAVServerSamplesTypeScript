@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Base interface for items that have content, like @see IFileAsync.</p>
+						<p>Base interface for items that have content, like <a href="ifileasync.html">IFileAsync</a>.</p>
 					</div>
 				</div>
 			</section>
@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Content<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IContent.ts:23</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IContent.ts#L23">IContent.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -142,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">Content<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IContent.ts:18</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IContent.ts#L18">IContent.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -167,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">Etag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IContent.ts:93</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IContent.ts#L74">IContent.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IContent.ts:38</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IContent.ts#L37">IContent.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -214,9 +214,6 @@
 									</dd>
 									<dt>exception</dt>
 									<dd><p>DavException In other cases.</p>
-									</dd>
-									<dt>example</dt>
-									<dd><caption>HttpContext.Current.Response.BufferOutput = false;</caption>
 									</dd>
 								</dl>
 							</div>
@@ -256,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IContent.ts:85</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/IContent.ts#L66">IContent.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,16 +262,16 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>exception</dt>
-									<dd><p>{LockedException} The file was locked and client did not provide lock token.</p>
+									<dd><p>LockedException The file was locked and client did not provide lock token.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{NeedPrivilegesException} The user doesn&#39;t have enough privileges.</p>
+									<dd><p>NeedPrivilegesException The user doesn&#39;t have enough privileges.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{InsufficientStorageException} Quota limit is reached.</p>
+									<dd><p>InsufficientStorageException Quota limit is reached.</p>
 									</dd>
 									<dt>exception</dt>
-									<dd><p>{DavException} In other cases.</p>
+									<dd><p>DavException In other cases.</p>
 									</dd>
 									<dt>desc</dt>
 									<dd><p>IIS and ASP.NET does not support files upload larger than 2Gb. If you need to upload files larger
@@ -284,71 +281,17 @@
 											upload size is set to 4096 KB (4 MB) by ASP.NET. This limit is used to
 											prevent denial of service attacks caused by users posting large files to the
 											server. To increase the upload limit add &lt;httpRuntime&gt; section to your web application web.config
-										file and specify the limit in kilobytes:</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&lt;![CDATA[</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&lt;configuration&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system.web&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;httpRuntime maxRequestLength=&quot;2097151&quot; /&gt; //2Gb</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/system.web&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&lt;/configuration&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>]]&gt;</p>
+										file and specify the limit in kilobytes</p>
 									</dd>
 									<dt>desc</dt>
 									<dd><p>When client uploads file to IIS, ASP.NET first creates the file in a the temporary upload directory.
 											Only when the entire file is uploaded to server you can read its content from stream. By default ASP.NET
 											uploads files to @b  %FrameworkInstallLocation%\Temporary ASP.NET Files folder.
 											You must make sure you have enough disk space to keep temporary files uploaded to your server.
-										To change this folder location add the following section to your web.config file:.</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&lt;![CDATA[</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&lt;configuration&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system.web&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;compilation tempDirectory=&quot;temporary files directory&quot; /&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/system.web&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>&nbsp;&nbsp;&lt;/configuration&gt;</p>
-									</dd>
-									<dt>example</dt>
-									<dd><p>]]&gt;</p>
+										To change this folder location add the following section to your web.config file</p>
 									</dd>
 									<dt>desc</dt>
-									<dd><p>To avoid temporary file creation and pass content directly to engine set the @see ITHit.WebDAV.Server.ResumableUpload.PutUploadProgressAndResumeModule
+									<dd><p>To avoid temporary file creation and pass content directly to engine set the {@link ResumableUpload#PutUploadProgressAndResumeModule}
 											module in your web.config file. Unlike IIS/ASP.NET, HttpListener-based server does not create any
 										temporary files when handling uploads.</p>
 									</dd>

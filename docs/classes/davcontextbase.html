@@ -73,63 +73,23 @@
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
-						<dd><p>Context holds request, response and provides item factory method @see GetHierarchyItemAsync .</p>
+						<dd><p>Context holds request, response and provides item factory method <a href="davcontextbase.html#gethierarchyitemasync">GetHierarchyItemAsync</a> .</p>
 						</dd>
 						<dt>remarks</dt>
-						<dd><p>When you inherit from WebDAV Context class, you must override @see GetHierarchyItemAsync  method.
+						<dd><p>When you inherit from WebDAV Context class, you must override <a href="davcontextbase.html#gethierarchyitemasync">GetHierarchyItemAsync</a>  method.
 								In this method you will search for file, folder, version or history item in your storage by path provided
 							and return it to WebDAV engine.</p>
 						</dd>
 						<dt>remarks</dt>
 						<dd><p>In each HTTP request you will create separate instance of your class derived
-							from WebDAV Context with one of its overloaded constructors and pass it to @see DavEngineAsync.RunAsync</p>
+							from WebDAV Context with one of its overloaded constructors and pass it to {@link DavEngineAsync.RunAsync}</p>
 						</dd>
 						<dt>remarks</dt>
 						<dd><p>You can implement your own request and response classes to run the Engine in virtually any hosting environment.</p>
 						</dd>
 						<dt>threadsafety</dt>
 						<dd><p>Instance members of this class are not thread safe.
-							You must create a separate instance of @see DavContextBaseAsync  class for each request.</p>
-						</dd>
-						<dt>example</dt>
-						<dd><h5 id="httplistener-based-server-">HttpListener-based server:</h5>
-							<pre><code class="lang-csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)
-    </span>{
-        HttpListener listener = <span class="hljs-keyword">new</span> HttpListener();
-        listener.Prefixes.Add(<span class="hljs-string">"http://localhost:8080/"</span>);
-        listener.Start();
-        DavEngine engine = <span class="hljs-keyword">new</span> DavEngine();
-
-        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
-        {
-            HttpListenerContext context = listener.GetContext();
-            MacOsXPreprocessor.Process(context.Request); <span class="hljs-comment">// fixes headers for Mac OS X v10.5.3 or later</span>
-
-            <span class="hljs-keyword">if</span> (!userAutorized(context))
-            {
-                context.Response.StatusCode = <span class="hljs-number">401</span>;
-                showLoginDialog(context, context.Response);
-                closeResponse(context);
-                <span class="hljs-keyword">continue</span>;
-            }
-
-            context.Response.SendChunked = <span class="hljs-literal">false</span>;
-
-            <span class="hljs-keyword">var</span> davContext = <span class="hljs-keyword">new</span> MyDavContext(context, listener.Prefixes);
-            engine.Run(ntfsDavContext);
-
-            <span class="hljs-keyword">if</span> (context.Response.StatusCode == <span class="hljs-number">401</span>)
-            {
-               showLoginDialog(context, context.Response);
-            }
-
-            closeResponse(context);
-        }
-    }
-}
-</code></pre>
+							You must create a separate instance of {@link DavContextBaseAsync}  class for each request.</p>
 						</dd>
 					</dl>
 				</div>
@@ -185,21 +145,31 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavContextBase.ts:88</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L48">DavContextBase.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Initializes a new instance of the WebDAV context. Initializes @see Request  and @see Response  properties.</p>
+									<p>Initializes a new instance of the WebDAV context. Initializes <a href="davcontextbase.html#request">Request</a>  and <a href="davcontextbase.html#response">Response</a>  properties.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>request: <a href="davrequest.html" class="tsd-signature-type">DavRequest</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>implementation.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5>response: <a href="davresponse.html" class="tsd-signature-type">DavResponse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>implementation.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h4>
@@ -215,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">Engine<span class="tsd-signature-symbol">:</span> <a href="davengine.html" class="tsd-signature-type">DavEngine</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavContextBase.ts:103</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L63">DavContextBase.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -230,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">Exception<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exception</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavContextBase.ts:72</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L32">DavContextBase.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -240,7 +210,7 @@
 						<dl class="tsd-comment-tags">
 							<dt>remarks</dt>
 							<dd><p>This can be either exception raised by your implementation or exception
-									raised be engine internally. In your @see BeforeResponse  implementation you will use it to see
+									raised be engine internally. In your {@link BeforeResponse}  implementation you will use it to see
 								if processing was successful or not and to commit or rollback a transaction.</p>
 							</dd>
 							<dt>remarks</dt>
@@ -255,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<span class="tsd-signature-symbol">:</span> <a href="davrequest.html" class="tsd-signature-type">DavRequest</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavContextBase.ts:80</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L40">DavContextBase.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -276,7 +246,7 @@
 					<div class="tsd-signature tsd-kind-icon">Response<span class="tsd-signature-symbol">:</span> <a href="davresponse.html" class="tsd-signature-type">DavResponse</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in DavContextBase.ts:88</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L48">DavContextBase.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -304,7 +274,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavContextBase.ts:115</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L75">DavContextBase.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -324,7 +294,7 @@
 									<dd><p>This method can be overriden to either commit or rollback transaction.</p>
 									</dd>
 									<dt>remarks</dt>
-									<dd><p>In your implementation of @see IMethodHandlerAsync  you need to call @see EnsureBeforeResponseWasCalledAsync
+									<dd><p>In your implementation of {@link IMethodHandlerAsync}  you need to call <a href="davcontextbase.html#ensurebeforeresponsewascalledasync">EnsureBeforeResponseWasCalledAsync</a>
 										instead of this method to avoid double execution.</p>
 									</dd>
 								</dl>
@@ -343,12 +313,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavContextBase.ts:123</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L83">DavContextBase.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Calls @see BeforeResponseAsync only first time this method is invoked.</p>
+									<p>Calls <a href="davcontextbase.html#beforeresponseasync">BeforeResponseAsync</a> only first time this method is invoked.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -365,7 +335,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavContextBase.ts:152</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L112">DavContextBase.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,6 +355,10 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Path of the hierarchy item object.
+										It is always the full path from the root of the WebDAV repository.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -402,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in DavContextBase.ts:138</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/DavContextBase.ts#L98">DavContextBase.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,6 +388,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>status: <a href="davstatus.html" class="tsd-signature-type">DavStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Status to be localized.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="davstatus.html" class="tsd-signature-type">DavStatus</a></h4>

@@ -74,8 +74,8 @@
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
 						<dd><p>By default the log file is not created if you did not specify log file name.
-								You can specify the folder and file name setting @see LogFile  property.
-							Amount of output and maximum file size are controlled via @see Level  and @see FileSize  properties.</p>
+								You can specify the folder and file name setting <a href="filelogger.html#logfile">LogFile</a>  property.
+							Amount of output and maximum file size are controlled via <a href="filelogger.html#level">Level</a>  and <a href="filelogger.html#filesize">FileSize</a>  properties.</p>
 						</dd>
 						<dt>remarks</dt>
 						<dd><p>Important! If you host your server in IIS/ASP.NET make sure your log file is created outside of the \bin folder. If your logfile will be created in a \bin folder, your server will restart each time the logfile is updated, recycling application and session state.</p>
@@ -126,7 +126,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:72</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L61">Logger/FileLogger.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -147,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:75</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L64">Logger/FileLogger.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,7 +176,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:60</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L49">Logger/FileLogger.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,8 +189,8 @@
 									</dd>
 									<dt>remarks</dt>
 									<dd><p>Provides the method of limiting amount of logging output. During the
-											development you will usually set @c  LogLevel to @see LogLevel.All  or @see LogLevel.Debug  level, while
-										deploying you can set it to @see LogLevel.Error  or @see LogLevel.Fatal .</p>
+											development you will usually set @c  LogLevel to {@link LogLevel#All}  or {@link LogLevel#Debug}  level, while
+										deploying you can set it to {@link LogLevel#Error}  or {@link LogLevel#Fatal} .</p>
 									</dd>
 								</dl>
 							</div>
@@ -199,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:63</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L52">Logger/FileLogger.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:46</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L35">Logger/FileLogger.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -250,16 +250,7 @@
 									<dd><p>If you are requesting your server with a WebDAV client and log file is not
 											created, most likely there is no permissions for creating file or the web
 										requests simply does not reach your application.</p>
-										<pre><code><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WebDAVHandler</span> :</span> IHttpHandler
-{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ProcessRequest</span><span class="hljs-params">(HttpContext context)</span>
-  </span>{
-    FileLogger.LogFile = context.Request.PhysicalApplicationPath + <span class="hljs-string">"WebDAVlog.txt"</span>;
-    ...
-  }
-  ...
-}
-</code></pre></dd>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -267,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:49</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L38">Logger/FileLogger.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,7 +287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:84</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L73">Logger/FileLogger.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -317,7 +308,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:87</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L76">Logger/FileLogger.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -348,30 +339,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Logger/FileLogger.ts:104</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Logger/FileLogger.ts#L85">Logger/FileLogger.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Wrights a message to a log file with a specified log level.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>example</dt>
-									<dd><pre><code>FileLogger.LogFile = <span class="hljs-string">"C:\WebDAV\WebDAVServerLog.txt"</span>; <span class="hljs-comment">// C:\WebDAV\ must exist and the application must have enough permission to write and create files in this folder</span>
-FileLogger.Level = LogLevel.Warn;
-FileLogger.WriteMessage(<span class="hljs-string">"My error message"</span>, LogLevel.<span class="hljs-built_in">Error</span>); <span class="hljs-comment">// this message will be written to the log file</span>
-FileLogger.WriteMessage(<span class="hljs-string">"My debug message"</span>, LogLevel.<span class="hljs-keyword">Debug</span>); <span class="hljs-comment">// this message will not be written to the log file</span>
-FileLogger.WriteMessage(<span class="hljs-string">"My info message"</span>); <span class="hljs-comment">// this message will not be written to the log file</span>
-</code></pre></dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Message to be logged.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> level: <a href="../enums/loglevel.html" class="tsd-signature-type">LogLevel</a><span class="tsd-signature-symbol"> =&nbsp;LogLevel.Info</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Logging level.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

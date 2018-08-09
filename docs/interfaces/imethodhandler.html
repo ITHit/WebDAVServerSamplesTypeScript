@@ -79,12 +79,12 @@
 							is returned from {@link DavEngine#RegisterMethodHandler} method.</p>
 						</dd>
 						<dt>desc</dt>
-						<dd><p>The @see ProcessRequestAsync  method of this interface is called by the engine during {@link DavEngine#Run} call.
-								The hierarchy item returned from @see DavContextBaseAsync.GetHierarchyItemAsync  is passed to ProcessRequest
+						<dd><p>The <a href="imethodhandler.html#processrequestasync">ProcessRequestAsync</a>  method of this interface is called by the engine during {@link DavEngine#Run} call.
+								The hierarchy item returned from {@link DavContextBaseAsync.GetHierarchyItemAsync}  is passed to ProcessRequest
 							method as a parameter.</p>
 						</dd>
 						<dt>remarks</dt>
-						<dd><p>The handler must call @see DavContextBaseAsync.BeforeResponseAsync  when all update methods have been called and
+						<dd><p>The handler must call {@link DavContextBaseAsync.BeforeResponseAsync}  when all update methods have been called and
 								the handler is about
 							to start writing response.</p>
 						</dd>
@@ -129,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enable<wbr>Input<wbr>Debug<wbr>Logging<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Extensibility/IMethodHandler.ts:60</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IMethodHandler.ts#L60">Extensibility/IMethodHandler.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -149,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enable<wbr>Output<wbr>Buffering<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Extensibility/IMethodHandler.ts:48</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IMethodHandler.ts#L48">Extensibility/IMethodHandler.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -159,7 +159,7 @@
 						<dl class="tsd-comment-tags">
 							<dt>returns</dt>
 							<dd><p>Boolean indicating whether content shall be buffered to calculated content length.
-								Engine will look at this property only if @see DavEngineAsync.CalculateContentLength  is true.</p>
+								Engine will look at this property only if {@link DavEngineAsync.CalculateContentLength}  is true.</p>
 							</dd>
 						</dl>
 					</div>
@@ -170,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enable<wbr>Output<wbr>Debug<wbr>Logging<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Extensibility/IMethodHandler.ts:54</li>
+							<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IMethodHandler.ts#L54">Extensibility/IMethodHandler.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IMethodHandler.ts:41</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IMethodHandler.ts#L41">Extensibility/IMethodHandler.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -210,7 +210,7 @@
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Hierarchy item returned from @see DavContextBaseAsync.GetHierarchyItemAsync or null.</p>
+										<p>Hierarchy item returned from {@link DavContextBaseAsync.GetHierarchyItemAsync} or null.</p>
 									</div>
 								</li>
 							</ul>
@@ -229,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IMethodHandler.ts:34</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IMethodHandler.ts#L34">Extensibility/IMethodHandler.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,9 +238,9 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>remarks</dt>
-									<dd><p>The @see ProcessRequestAsync  method is called by the engine during {@link DavEngine#Run}
-											call. The hierarchy item returned from @see DavContextBaseAsync.GetHierarchyItemAsync  is
-										passed to this method.  If @see DavContextBaseAsync.GetHierarchyItemAsync  returns null the null is passed.</p>
+									<dd><p>The <a href="imethodhandler.html#processrequestasync">ProcessRequestAsync</a>  method is called by the engine during {@link DavEngine#Run}
+											call. The hierarchy item returned from {@link DavContextBaseAsync.GetHierarchyItemAsync}  is
+										passed to this method.  If {@link DavContextBaseAsync.GetHierarchyItemAsync}  returns null the null is passed.</p>
 									</dd>
 								</dl>
 							</div>
@@ -249,13 +249,13 @@
 								<li>
 									<h5>context: <a href="../classes/davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Instance of your context class derived from @see DavContextBaseAsync class.</p>
+										<p>Instance of your context class derived from {@link DavContextBaseAsync} class.</p>
 									</div>
 								</li>
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Hierarchy item returned from @see DavContextBaseAsync.GetHierarchyItemAsync or null.</p>
+										<p>Hierarchy item returned from {@link DavContextBaseAsync.GetHierarchyItemAsync} or null.</p>
 									</div>
 								</li>
 							</ul>

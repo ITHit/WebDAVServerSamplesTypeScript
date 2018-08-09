@@ -74,7 +74,7 @@
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
 						<dd><p>If you need to implement your own extension to WebDAV and add token to DAV header in OPTIONS response,
-								implement this interface and register it with @see DavEngineAsync.RegisterOptionsHandler  method
+								implement this interface and register it with {@link DavEngineAsync#RegisterOptionsHandler}  method
 								passing token as first argument to it.
 								When building DAV header engine will call all registered options handlers to determine if this particular
 							options is available for the item.</p>
@@ -115,7 +115,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IOptionsHandler.ts:23</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IOptionsHandler.ts#L23">Extensibility/IOptionsHandler.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -128,6 +128,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item for which request is made.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>

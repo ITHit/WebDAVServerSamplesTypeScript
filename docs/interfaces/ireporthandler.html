@@ -74,7 +74,7 @@
 					<dl class="tsd-comment-tags">
 						<dt>remarks</dt>
 						<dd><p>If you need to implement your own report,
-								implement this interface and register it with @see DavEngineAsync.RegisterReportHandler  method.
+								implement this interface and register it with {@link DavEngineAsync#RegisterReportHandler}  method.
 							Engine will call this handler when it needs to execute a report.</p>
 						</dd>
 					</dl>
@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IReportHandler.ts:21</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IReportHandler.ts#L21">Extensibility/IReportHandler.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -126,6 +126,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item to determine whether the report applies to it.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -143,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Extensibility/IReportHandler.ts:29</li>
+									<li>Defined in <a href="https://github.com/ITHit/WebDAVServerTypeScript/blob/b83168d/Extensibility/IReportHandler.ts#L29">Extensibility/IReportHandler.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -155,12 +158,21 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>context: <a href="../classes/davcontextbase.html" class="tsd-signature-type">DavContextBase</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Context.</p>
+									</div>
 								</li>
 								<li>
 									<h5>item: <a href="ihierarchyitemasync.html" class="tsd-signature-type">IHierarchyItemAsync</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Item for which request is sent.</p>
+									</div>
 								</li>
 								<li>
 									<h5>reportElement: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Root request XML element.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
