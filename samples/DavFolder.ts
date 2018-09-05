@@ -71,9 +71,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
             let children: IList<IHierarchyItem> = new List<IHierarchyItem>();
             const listOfFiles = await promisify(readdir)(this.directory);
             for(let i = 0; i < listOfFiles.length; i++) {
-                let file = listOfFiles[i];
-                let child: IHierarchyItem | null = await this.context.GetHierarchyItem(file);
-                
+                const file = this.Path + listOfFiles[i];
+                const child: IHierarchyItem | null = await this.context.GetHierarchyItem(file);
                 if(child != null) {
                     children.add(child);
                 }

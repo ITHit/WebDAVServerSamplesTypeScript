@@ -55,8 +55,8 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         let children = new List_1.List();
         const listOfFiles = await util_1.promisify(fs_1.readdir)(this.directory);
         for (let i = 0; i < listOfFiles.length; i++) {
-            let file = listOfFiles[i];
-            let child = await this.context.GetHierarchyItem(file);
+            const file = this.Path + listOfFiles[i];
+            const child = await this.context.GetHierarchyItem(file);
             if (child != null) {
                 children.add(child);
             }
