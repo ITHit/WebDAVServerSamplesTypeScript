@@ -16,19 +16,13 @@ class Program {
 
     private static engine: DavEngine;
 
-    private static readonly repositoryPath: string = __dirname + `${sep}App_Data${sep}WebDav${sep}Storage`;//ConfigurationManager.AppSettings["RepositoryPath"].TrimEnd(Path.DirectorySeparatorChar);
+    private static readonly repositoryPath: string = __dirname + `${sep}App_Data${sep}WebDav${sep}Storage`;
 
     /**Whether requests/responses shall be logged. */
-    private static readonly debugLoggingEnabled: boolean = true;// ConfigurationManager.AppSettings["DebugLoggingEnabled"].Equals("true", StringComparison.InvariantCultureIgnoreCase);
+    private static readonly debugLoggingEnabled: boolean = true;
 
     /**Logger instance. */
     private static readonly logger: DefaultLoggerImpl = new DefaultLoggerImpl();
-
-    /**Gets a value indicating whether the program is runing as a Windows service or standalone application. */
-   /*private static get IsServiceMode(): boolean {
-        //return !Environment.UserInteractive;
-        return false;
-    }*/
 
     /**
      * Entry point.
@@ -82,6 +76,8 @@ class Program {
     }
 
     private static ProcessRequest(request: Http.IncomingMessage, response: Http.ServerResponse): void {
+        const maxAllowwedRequestSize = 1e6;
+        const payloadTooLargeStatusCode = 413;
         const req = new DavRequest(request.socket);
         Object.assign(req, request);
         req.protocol = protocol;
@@ -89,9 +85,9 @@ class Program {
         let queryData: Buffer = new Buffer('');
         req.on('data', (data) => {
             queryData += data;
-            if(queryData.length > 1e6) {
+            if(queryData.length > maxAllowwedRequestSize) {
                 queryData = new Buffer('');
-                res.writeHead(413, '', {'Content-Type': 'text/plain'});
+                res.writeHead(payloadTooLargeStatusCode, 'text/plain');
                 res.end();
                 req.connection.destroy();
             }
@@ -111,7 +107,7 @@ class Program {
             throw new Exception("Invalid RepositoryPath configuration parameter value.");
         }
         
-        let uriPrefix: string = '/'; //http://+:3456/
+        let uriPrefix: string = '/'; 
         if (!uriPrefix) {
             throw new Exception("ListenerPrefix section is missing or invalid!");
         }

@@ -9,6 +9,7 @@ import { contentType, lookup } from "mime-types";
 import { DavException } from "../../Server/DavException";
 import { DavStatus } from "../../Server/DavStatus";
 import { promisify } from "util";
+import { sep } from "path";
 
 /**This handler processes GET and HEAD requests to folders returning custom HTML page. */
 export class MyCustomGetHandler implements IMethodHandler {
@@ -69,8 +70,9 @@ export class MyCustomGetHandler implements IMethodHandler {
             //  Any request to the files in this folder will just serve them to the client. 
             //context.EnsureBeforeResponseWasCalled();
             const Url = parse(context.Request.url);
-            const pathname = (Url.pathname || '/');
-            let filePath: string = this.htmlPath + '/' + pathname;
+            let pathname = (Url.pathname || `${sep}`);
+            pathname = pathname.substring(1).split('/').join(`${sep}`);
+            let filePath: string = this.htmlPath + `${sep}` + pathname;
             const existsFilePath = await promisify(exists)(filePath);
             if (!existsFilePath) {
                 throw new DavException(("File not found: " + filePath), undefined, DavStatus.NOT_FOUND);
@@ -100,10 +102,11 @@ export class MyCustomGetHandler implements IMethodHandler {
             //  Remember to call EnsureBeforeResponseWasCalledAsync here if your context implementation
             //  makes some useful things in BeforeResponseAsync.
             //context.EnsureBeforeResponseWasCalledAsync();
-            let htmlName: string = "/MyCustomHandlerPage.html";
+            let htmlName: string = `${sep}MyCustomHandlerPage.html`;
             let html: string = (await promisify(readFile)(this.htmlPath + htmlName)).toString();
             const Url = parse(context.Request.url);
             const appPath: string = (Url.path || '').replace(/\/$/, "");
+            
             html = html.replace(/_webDavServerRoot_/g, appPath);
             html = html.replace(/_webDavServerVersion_/g, '1.0');
             this.WriteFileContent(context, html, this.htmlPath + htmlName);   

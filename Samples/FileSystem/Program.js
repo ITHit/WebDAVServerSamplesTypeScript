@@ -13,11 +13,6 @@ const DavResponse_1 = require("../../Server/Extensibility/DavResponse");
 const protocol = 'http';
 /**WebDAV engine host. */
 class Program {
-    /**Gets a value indicating whether the program is runing as a Windows service or standalone application. */
-    /*private static get IsServiceMode(): boolean {
-         //return !Environment.UserInteractive;
-         return false;
-     }*/
     /**
      * Entry point.
      * @param args Command line arguments.
@@ -65,6 +60,8 @@ class Program {
         });
     }
     static ProcessRequest(request, response) {
+        const maxAllowwedRequestSize = 1e6;
+        const payloadTooLargeStatusCode = 413;
         const req = new DavRequest_1.DavRequest(request.socket);
         Object.assign(req, request);
         req.protocol = protocol;
@@ -72,9 +69,9 @@ class Program {
         let queryData = new Buffer('');
         req.on('data', (data) => {
             queryData += data;
-            if (queryData.length > 1e6) {
+            if (queryData.length > maxAllowwedRequestSize) {
                 queryData = new Buffer('');
-                res.writeHead(413, '', { 'Content-Type': 'text/plain' });
+                res.writeHead(payloadTooLargeStatusCode, 'text/plain');
                 res.end();
                 req.connection.destroy();
             }
@@ -91,15 +88,15 @@ class Program {
         if (repPath == null || !fs_1.existsSync(repPath)) {
             throw new Exception_1.Exception("Invalid RepositoryPath configuration parameter value.");
         }
-        let uriPrefix = '/'; //http://+:3456/
+        let uriPrefix = '/';
         if (!uriPrefix) {
             throw new Exception_1.Exception("ListenerPrefix section is missing or invalid!");
         }
     }
 }
-Program.repositoryPath = __dirname + `${path_1.sep}App_Data${path_1.sep}WebDav${path_1.sep}Storage`; //ConfigurationManager.AppSettings["RepositoryPath"].TrimEnd(Path.DirectorySeparatorChar);
+Program.repositoryPath = __dirname + `${path_1.sep}App_Data${path_1.sep}WebDav${path_1.sep}Storage`;
 /**Whether requests/responses shall be logged. */
-Program.debugLoggingEnabled = true; // ConfigurationManager.AppSettings["DebugLoggingEnabled"].Equals("true", StringComparison.InvariantCultureIgnoreCase);
+Program.debugLoggingEnabled = true;
 /**Logger instance. */
 Program.logger = new DefaultLoggerImpl_1.DefaultLoggerImpl();
 Program.Main([]);
