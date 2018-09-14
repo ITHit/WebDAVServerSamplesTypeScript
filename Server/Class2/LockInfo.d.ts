@@ -1,4 +1,10 @@
-///<reference path="LockLevel.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as LockLevel from './LockLevel';
 
 declare module ITHit.WebDAV.Server.Class2 {
 	/**
@@ -7,7 +13,7 @@ declare module ITHit.WebDAV.Server.Class2 {
 	*/
 	export class LockInfo
 	{
-		constructor (level: ITHit.WebDAV.Server.Class2.LockLevel, isDeep: boolean, token: string, timeOut: any, owner: string, lockRoot: string); 
+		constructor (level: LockLevel.ITHit.WebDAV.Server.Class2.LockLevel, isDeep: boolean, token: string, timeOut: Date, owner: string, lockRoot: string); 
 		/**
 		* The lock token associated with a lock.
 		* #####
@@ -17,7 +23,7 @@ declare module ITHit.WebDAV.Server.Class2 {
 		* Indicates whether a lock is shared or exclusive.
 		* #####
 		*/
-		public level: ITHit.WebDAV.Server.Class2.LockLevel;
+		public level: LockLevel.ITHit.WebDAV.Server.Class2.LockLevel;
 		/**
 		* Indicates whether a lock is enforceable on the subtree.
 		* #####
@@ -26,10 +32,10 @@ declare module ITHit.WebDAV.Server.Class2 {
 		/**
 		* Lock expiration time.
 		* #####
-		*
-		* @description <br>Lock timeout which was requested by client. [TimeSpan.maxValue](System.TimeSpan#maxvalue)  means infinity lock that never expires. The <b>null</b> value means that timeout was not provided by a client.
+		* @remarks <br>Lock timeout which was requested by client. [TimeSpan.maxValue](System.TimeSpan#maxvalue) means infinity
+		*  lock that never expires. The <b>null</b> value means that timeout was not provided by a client.
 		*/
-		public timeOut?: any;
+		public timeOut?: Date;
 		/**
 		* Provides information about the principal taking out a lock.
 		* #####

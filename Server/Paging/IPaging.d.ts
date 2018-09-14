@@ -1,12 +1,18 @@
-///<reference path="../IItemCollection.d.ts"/>
-///<reference path="../IHierarchyItem.d.ts"/>
-///<reference path="PageResults.d.ts"/>
-///<reference path="../PropertyName.d.ts"/>
-///<reference path="OrderProperty.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as IItemCollection from '../IItemCollection';
+import * as IHierarchyItem from '../IHierarchyItem';
+import * as PageResults from './PageResults';
+import * as PropertyName from '../PropertyName';
+import * as OrderProperty from './OrderProperty';
 
 declare module ITHit.WebDAV.Server.Paging {
 	/** Result of DocsGenerator activity */
-	export interface IPaging extends ITHit.WebDAV.Server.IItemCollection, ITHit.WebDAV.Server.IHierarchyItem
+	export interface IPaging extends IItemCollection.ITHit.WebDAV.Server.IItemCollection, IHierarchyItem.ITHit.WebDAV.Server.IHierarchyItem
 	{
 		/**
 		* Gets specified number of children of this folder starting from a specified item in a specified order.
@@ -18,6 +24,6 @@ declare module ITHit.WebDAV.Server.Paging {
 		* @param orderProps List of order properties requested by the client.
 		* @returns Instance of [PageResults](ITHit.WebDAV.Server.Paging.PageResults)  class that contains items on a requested page and total number of items in a folder.
 		*/
-		getPage(propNames: ITHit.WebDAV.Server.PropertyName[], offset: number, nResults: number, orderProps: ITHit.WebDAV.Server.Paging.OrderProperty[]) : Promise<ITHit.WebDAV.Server.Paging.PageResults>;
+		getPage(propNames: IList<PropertyName.ITHit.WebDAV.Server.PropertyName>, offset: number, nResults: number, orderProps: IList<OrderProperty.ITHit.WebDAV.Server.Paging.OrderProperty>) : Promise<PageResults.ITHit.WebDAV.Server.Paging.PageResults>;
 	}
 }

@@ -1,4 +1,10 @@
-///<reference path="../PropertyName.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as PropertyName from '../PropertyName';
 
 declare module ITHit.WebDAV.Server.Paging {
 	/**
@@ -11,7 +17,7 @@ declare module ITHit.WebDAV.Server.Paging {
 		* Property name.
 		* #####
 		*/
-		public property: ITHit.WebDAV.Server.PropertyName;
+		public property: PropertyName.ITHit.WebDAV.Server.PropertyName;
 		/**
 		* Order direction.
 		* #####

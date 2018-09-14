@@ -1,3 +1,10 @@
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+
 declare module ITHit.WebDAV.Server {
 	/**
 	* Represents HTTP status code with description.
@@ -110,8 +117,7 @@ declare module ITHit.WebDAV.Server {
 		/**
 		* The requested resource resides permanently under a different URI.
 		* #####
-		*
-		* @description <br>The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs. Clients with link editing capabilities ought to automatically re-link references to the Request-URI to one or more of the new references returned by the server, where possible. This response is cacheable unless indicated otherwise.
+		* @remarks <br>The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs. Clients with link editing capabilities ought to automatically re-link references to the Request-URI to one or more of the new references returned by the server, where possible. This response is cacheable unless indicated otherwise.
 		*/
 		public static MOVED_PERMANENTLY: ITHit.WebDAV.Server.DavStatus;
 		/**

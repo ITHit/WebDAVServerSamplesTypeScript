@@ -1,3 +1,10 @@
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+
 declare module ITHit.WebDAV.Server.MicrosoftExtensions {
 	/**
 	* Implement this interface if your repository will be viewed by Windows Explorer,
@@ -24,6 +31,6 @@ declare module ITHit.WebDAV.Server.MicrosoftExtensions {
 		* @throws [DavException]{@link ITHit.WebDAV.Server.DavException} In other cases.
 		* @returns .
 		*/
-		setFileAttributes(value: number) : any;
+		setFileAttributes(value: number) : Promise<void>;
 	}
 }

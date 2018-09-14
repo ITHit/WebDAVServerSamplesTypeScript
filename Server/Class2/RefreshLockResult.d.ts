@@ -1,4 +1,10 @@
-///<reference path="LockLevel.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as LockLevel from './LockLevel';
 
 declare module ITHit.WebDAV.Server.Class2 {
 	/**
@@ -7,12 +13,12 @@ declare module ITHit.WebDAV.Server.Class2 {
 	*/
 	export class RefreshLockResult
 	{
-		constructor (level: ITHit.WebDAV.Server.Class2.LockLevel, isDeep: boolean, timeOut: any, owner: string); 
+		constructor (level: LockLevel.ITHit.WebDAV.Server.Class2.LockLevel, isDeep: boolean, timeOut: Date, owner: string); 
 		/**
 		* Determines whether lock is isShared.
 		* #####
 		*/
-		public level: ITHit.WebDAV.Server.Class2.LockLevel;
+		public level: LockLevel.ITHit.WebDAV.Server.Class2.LockLevel;
 		/**
 		* Indicates whether a lock is enforceable on the subtree.
 		* #####
@@ -22,7 +28,7 @@ declare module ITHit.WebDAV.Server.Class2 {
 		* Gets/sets timeout.
 		* #####
 		*/
-		public timeOut: any;
+		public timeOut: Date;
 		/**
 		* Gets/sets information about the principal taking out a lock.
 		* #####

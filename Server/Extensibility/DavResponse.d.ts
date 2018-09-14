@@ -1,9 +1,21 @@
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+
 declare module ITHit.WebDAV.Server.Extensibility {
 	/**
 	* Represents HTTP response.
 	* #####
-	*
-	* @description <br><p>  Usually you do not have to implement this class if you host your server in ASP.NET Core, ASP.NET, OWIN or HttpListener. The library provides ready to use WebDAV context, request and response implementrations for each of the ablove environments. </p><p>  You will derive your class from this class only if you need to host your server in any other environment from listed above and than pass instance of your class into the [DavContextBase](ITHit.WebDAV.Server.DavContextBase)  constructor. </p>
+	* @remarks <br><p> 
+	*  Usually you do not have to implement this class if you host your server in ASP.NET Core, ASP.NET, OWIN or HttpListener.
+	*  The library provides ready to use WebDAV context, request and response implementrations for each of the ablove environments.
+	*  </p><p> 
+	*  You will derive your class from this class only if you need to host your server in any other environment
+	*  from listed above and than pass instance of your class into the [DavContextBase](ITHit.WebDAV.Server.DavContextBase) constructor.
+	*  </p>
 	*/
 	export class DavResponse
 	{
@@ -26,7 +38,7 @@ declare module ITHit.WebDAV.Server.Extensibility {
 		* Sets the HTTP character set of the output stream.
 		* #####
 		*/
-		public contentEncoding: any;
+		public contentEncoding: BufferEncoding;
 		/**
 		* Sets the content length of the output stream.
 		* #####
@@ -40,8 +52,7 @@ declare module ITHit.WebDAV.Server.Extensibility {
 		/**
 		* Gets a valus indicating whether client is still connected.
 		* #####
-		*
-		* @description <br>Most probably this property will be refreshed only when some data fails to send to client.
+		* @remarks <br>Most probably this property will be refreshed only when some data fails to send to client.
 		*/
 		public isClientConnected: boolean;
 		/**

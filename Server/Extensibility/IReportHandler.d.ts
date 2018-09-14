@@ -1,12 +1,19 @@
-///<reference path="../IHierarchyItem.d.ts"/>
-///<reference path="../DavContextBase.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as IHierarchyItem from '../IHierarchyItem';
+import * as DavContextBase from '../DavContextBase';
 
 declare module ITHit.WebDAV.Server.Extensibility {
 	/**
 	* Provides point of extension to REPORT requests.
 	* #####
-	*
-	* @description <br>If you need to implement your own report, implement this interface and register it with [DavEngine.registerReportHandler](ITHit.WebDAV.Server.DavEngine#registerreporthandler)  method. Engine will call this handler when it needs to execute a report.
+	* @remarks <br>If you need to implement your own report,
+	*  implement this interface and register it with [DavEngine.registerReportHandler](ITHit.WebDAV.Server.DavEngine#registerreporthandler) method.
+	*  Engine will call this handler when it needs to execute a report.
 	*/
 	export interface IReportHandler
 	{
@@ -17,7 +24,7 @@ declare module ITHit.WebDAV.Server.Extensibility {
 		* @param item Item to determine whether the report applies to it.
 		* @returns <c>true</c> if the report applies to the item.
 		*/
-		appliesTo(item: ITHit.WebDAV.Server.IHierarchyItem) : boolean;
+		appliesTo(item: IHierarchyItem.ITHit.WebDAV.Server.IHierarchyItem) : boolean;
 		/**
 		* Generates report response.
 		* #####
@@ -27,6 +34,6 @@ declare module ITHit.WebDAV.Server.Extensibility {
 		* @param reportElement Root request XML element.
 		* @returns .
 		*/
-		handleReport(context: ITHit.WebDAV.Server.DavContextBase, item: ITHit.WebDAV.Server.IHierarchyItem, reportElement: any) : any;
+		handleReport(context: DavContextBase.ITHit.WebDAV.Server.DavContextBase, item: IHierarchyItem.ITHit.WebDAV.Server.IHierarchyItem, reportElement: Element) : Promise<void>;
 	}
 }

@@ -1,4 +1,10 @@
-///<reference path="LogFlagsEnum.d.ts"/>
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as LogFlagsEnum from './LogFlagsEnum';
 
 declare module ITHit.WebDAV.Server {
 	/**
@@ -15,10 +21,9 @@ declare module ITHit.WebDAV.Server {
 		/**
 		* Logging flags.
 		* #####
-		*
-		* @description <br>By default Engine does not log GET response body and PUT request body.
+		* @remarks <br>By default Engine does not log GET response body and PUT request body.
 		*/
-		logFlags: ITHit.WebDAV.Server.LogFlagsEnum;
+		logFlags: LogFlagsEnum.ITHit.WebDAV.Server.LogFlagsEnum;
 		/**
 		* Logs message in debug mode.
 		* #####
@@ -33,6 +38,6 @@ declare module ITHit.WebDAV.Server {
 		* @param message Message to be logged.
 		* @param exception Exception to be logged.
 		*/
-		logError(message: string, exception: any) : void;
+		logError(message: string, exception: Exception) : void;
 	}
 }
