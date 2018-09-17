@@ -48,7 +48,7 @@ declare module ITHit.WebDAV.Server.Class2 {
 		* Locks this item.
 		* #####
 		* @remarks <br>This method is called when item is being locked by WebDAV client. In your implementation you must do the following:
-		*  1. 2. <description>Generate the new lock-token, usually GUID.</description>3. <description>Save information about the lock in a storage.</description>4. <description>Associate the lock with the item in the repository.</description>5. <description>Return the lock-token to the Engine.</description>
+		*  <br> 1.<description>Generate the new lock-token, usually GUID.</description><br> <br> 2.<description>Save information about the lock in a storage.</description><br> <br> 3.<description>Associate the lock with the item in the repository.</description><br> <br> 4.<description>Return the lock-token to the Engine.</description><br> 
 		*  Optionally in in this method you can modify the lock timeout requested by client. For example instead of infinity 
 		*  lock you can set lock for some limited time. You must return both lock-token and lock timeout via [LockResult](ITHit.WebDAV.Server.Class2.LockResult) 
 		*  return value, the engine than sends the lock-token and timeout values back to WebDAV client.

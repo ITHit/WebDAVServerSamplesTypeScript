@@ -4,6 +4,7 @@ import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionar
 /// <reference types="node" />
 
 import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import { ServerResponse, IncomingMessage } from 'http';
 
 declare module ITHit.WebDAV.Server {
 	/**
@@ -64,8 +65,8 @@ declare module ITHit.WebDAV.Server {
 		* @throws [DavException]{@link ITHit.WebDAV.Server.DavException} In other cases.
 		* @returns .
 		*/
-		read(output: any, startIndex: number, count: number) : Promise<void>;
+		read(output: ServerResponse, startIndex: number, count: number) : Promise<void>;
 		/** Result of DocsGenerator activity */
-		write(content: any, contentType: string, startIndex: number, totalFileSize: number) : Promise<boolean>;
+		write(content: IncomingMessage, contentType: string, startIndex: number, totalFileSize: number) : Promise<boolean>;
 	}
 }
