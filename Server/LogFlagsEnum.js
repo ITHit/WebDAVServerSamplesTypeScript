@@ -1,3 +1,23 @@
-var a62_0x3a82=['Z2dlcg==','Y2FsbA==','YWN0aW9u','c3RhdGVPYmplY3Q=','X19lc01vZHVsZQ==','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','Y2hhaW4=','dGVzdA==','aW5wdXQ=','TG9nR2V0UmVzcG9uc2VCb2R5','TG9nUHV0UmVxdWVzdEJvZHk=','TG9nRmxhZ3NFbnVt','c3RyaW5n','d2hpbGUgKHRydWUpIHt9','YXBwbHk=','Y291bnRlcg==','bGVuZ3Ro','Y29uc3RydWN0b3I=','ZGVidQ=='];(function(_0x1099fa,_0x3d7e8b){var _0x9b1cb7=function(_0x391396){while(--_0x391396){_0x1099fa['push'](_0x1099fa['shift']());}};_0x9b1cb7(++_0x3d7e8b);}(a62_0x3a82,0x108));var a62_0x1a6a=function(_0xbd4f1f,_0x5b4944){_0xbd4f1f=_0xbd4f1f-0x0;var _0x555a87=a62_0x3a82[_0xbd4f1f];if(a62_0x1a6a['ykMAZF']===undefined){(function(){var _0xfa879c;try{var _0x39e911=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0xfa879c=_0x39e911();}catch(_0x3bb0e1){_0xfa879c=window;}var _0x353172='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0xfa879c['atob']||(_0xfa879c['atob']=function(_0x2d8f6a){var _0x4cada7=String(_0x2d8f6a)['replace'](/=+$/,'');for(var _0xd9765f=0x0,_0x4c3c83,_0x4ba190,_0x36302c=0x0,_0x3cf2b1='';_0x4ba190=_0x4cada7['charAt'](_0x36302c++);~_0x4ba190&&(_0x4c3c83=_0xd9765f%0x4?_0x4c3c83*0x40+_0x4ba190:_0x4ba190,_0xd9765f++%0x4)?_0x3cf2b1+=String['fromCharCode'](0xff&_0x4c3c83>>(-0x2*_0xd9765f&0x6)):0x0){_0x4ba190=_0x353172['indexOf'](_0x4ba190);}return _0x3cf2b1;});}());a62_0x1a6a['gicVnH']=function(_0x2d7e42){var _0xc29d21=atob(_0x2d7e42);var _0x2ef18d=[];for(var _0x9dd860=0x0,_0x46c27f=_0xc29d21['length'];_0x9dd860<_0x46c27f;_0x9dd860++){_0x2ef18d+='%'+('00'+_0xc29d21['charCodeAt'](_0x9dd860)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x2ef18d);};a62_0x1a6a['WTZiqg']={};a62_0x1a6a['ykMAZF']=!![];}var _0x552153=a62_0x1a6a['WTZiqg'][_0xbd4f1f];if(_0x552153===undefined){_0x555a87=a62_0x1a6a['gicVnH'](_0x555a87);a62_0x1a6a['WTZiqg'][_0xbd4f1f]=_0x555a87;}else{_0x555a87=_0x552153;}return _0x555a87;};'use strict';/**
+"use strict";
+/**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */Object['defineProperty'](exports,a62_0x1a6a('0x0'),{'value':!![]});var LogFlagsEnum;(function(_0x1b6979){var _0x2d1372=function(){var _0x381f6f=!![];return function(_0x358de1,_0x4903f8){var _0x1cbfb3=_0x381f6f?function(){if(_0x4903f8){var _0x3239b3=_0x4903f8['apply'](_0x358de1,arguments);_0x4903f8=null;return _0x3239b3;}}:function(){};_0x381f6f=![];return _0x1cbfb3;};}();(function(){_0x2d1372(this,function(){var _0x3b200d=new RegExp(a62_0x1a6a('0x1'));var _0x28da5c=new RegExp(a62_0x1a6a('0x2'),'i');var _0x3195ac=_0x3743f7('init');if(!_0x3b200d['test'](_0x3195ac+a62_0x1a6a('0x3'))||!_0x28da5c[a62_0x1a6a('0x4')](_0x3195ac+a62_0x1a6a('0x5'))){_0x3195ac('0');}else{_0x3743f7();}})();}());_0x1b6979[_0x1b6979[a62_0x1a6a('0x6')]=0x1]=a62_0x1a6a('0x6');_0x1b6979[_0x1b6979['LogPutRequestBody']=0x2]=a62_0x1a6a('0x7');}(LogFlagsEnum=exports[a62_0x1a6a('0x8')]||(exports[a62_0x1a6a('0x8')]={})));function _0x3743f7(_0x3a0388){function _0x5bbea0(_0x36d791){if(typeof _0x36d791===a62_0x1a6a('0x9')){return function(_0x237dfa){}['constructor'](a62_0x1a6a('0xa'))[a62_0x1a6a('0xb')](a62_0x1a6a('0xc'));}else{if((''+_0x36d791/_0x36d791)[a62_0x1a6a('0xd')]!==0x1||_0x36d791%0x14===0x0){(function(){return!![];}[a62_0x1a6a('0xe')](a62_0x1a6a('0xf')+a62_0x1a6a('0x10'))[a62_0x1a6a('0x11')](a62_0x1a6a('0x12')));}else{(function(){return![];}[a62_0x1a6a('0xe')](a62_0x1a6a('0xf')+a62_0x1a6a('0x10'))['apply'](a62_0x1a6a('0x13')));}}_0x5bbea0(++_0x36d791);}try{if(_0x3a0388){return _0x5bbea0;}else{_0x5bbea0(0x0);}}catch(_0x1ae2f0){}}
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Logging options.
+ */
+var LogFlagsEnum;
+(function (LogFlagsEnum) {
+    /**
+     * If this flag is set the GET response body will be logged.
+     * @remarks The body of the GET response may be very large and often not human readable.
+     * @remarks It make sense to enable GET body logging for CalDAV and CardDAV servers and disable in other cases.
+     */
+    LogFlagsEnum[LogFlagsEnum["LogGetResponseBody"] = 1] = "LogGetResponseBody";
+    /**
+     * If this flag is set the PUT request body will be logged.
+     * @remarks The body of the PUT request may be very large and often not human readable.
+     * @remarks It make sense to enable PUT body logging for CalDAV and CardDAV servers and disable in other cases.
+     */
+    LogFlagsEnum[LogFlagsEnum["LogPutRequestBody"] = 2] = "LogPutRequestBody";
+})(LogFlagsEnum = exports.LogFlagsEnum || (exports.LogFlagsEnum = {}));

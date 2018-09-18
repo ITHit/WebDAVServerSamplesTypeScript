@@ -1,1 +1,94 @@
-var a11_0x2ad6=['Y291bnRlcg==','bGVuZ3Ro','Y29uc3RydWN0b3I=','Z2dlcg==','Y2FsbA==','ZGVidQ==','c3RhdGVPYmplY3Q=','ZGVmaW5lUHJvcGVydHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','dGVzdA==','aW5wdXQ=','Tm9BdXRvVmVyc2lvbmluZw==','Q2hlY2tPdXRDaGVja0lu','Q2hlY2tPdXRVbmxvY2tlZENoZWNrSW4=','Q2hlY2tPdXQ=','QXV0b1ZlcnNpb24=','c3RyaW5n','d2hpbGUgKHRydWUpIHt9'];(function(_0x30d61e,_0x44be73){var _0x257dd6=function(_0x5f3a49){while(--_0x5f3a49){_0x30d61e['push'](_0x30d61e['shift']());}};_0x257dd6(++_0x44be73);}(a11_0x2ad6,0xb2));var a11_0x5147=function(_0x5c1f7e,_0x532d22){_0x5c1f7e=_0x5c1f7e-0x0;var _0x53dc31=a11_0x2ad6[_0x5c1f7e];if(a11_0x5147['IAcQOh']===undefined){(function(){var _0x31ea38=function(){var _0x52ceb1;try{_0x52ceb1=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x1a6f5b){_0x52ceb1=window;}return _0x52ceb1;};var _0x21f867=_0x31ea38();var _0x121d24='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x21f867['atob']||(_0x21f867['atob']=function(_0x1be5bf){var _0x1c71b2=String(_0x1be5bf)['replace'](/=+$/,'');for(var _0x219e63=0x0,_0x41955a,_0x272545,_0x498c15=0x0,_0x3b0bba='';_0x272545=_0x1c71b2['charAt'](_0x498c15++);~_0x272545&&(_0x41955a=_0x219e63%0x4?_0x41955a*0x40+_0x272545:_0x272545,_0x219e63++%0x4)?_0x3b0bba+=String['fromCharCode'](0xff&_0x41955a>>(-0x2*_0x219e63&0x6)):0x0){_0x272545=_0x121d24['indexOf'](_0x272545);}return _0x3b0bba;});}());a11_0x5147['vZzQpy']=function(_0x572250){var _0x5da662=atob(_0x572250);var _0x4184cd=[];for(var _0x5a5303=0x0,_0x18c4b0=_0x5da662['length'];_0x5a5303<_0x18c4b0;_0x5a5303++){_0x4184cd+='%'+('00'+_0x5da662['charCodeAt'](_0x5a5303)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x4184cd);};a11_0x5147['rCQnKI']={};a11_0x5147['IAcQOh']=!![];}var _0x496651=a11_0x5147['rCQnKI'][_0x5c1f7e];if(_0x496651===undefined){_0x53dc31=a11_0x5147['vZzQpy'](_0x53dc31);a11_0x5147['rCQnKI'][_0x5c1f7e]=_0x53dc31;}else{_0x53dc31=_0x496651;}return _0x53dc31;};'use strict';Object[a11_0x5147('0x0')](exports,'__esModule',{'value':!![]});var AutoVersion;(function(_0x1181f3){var _0xe0a019=function(){var _0x2c6266=!![];return function(_0x5a0c3f,_0x1d0d41){var _0x906cd3=_0x2c6266?function(){if(_0x1d0d41){var _0x53e58c=_0x1d0d41['apply'](_0x5a0c3f,arguments);_0x1d0d41=null;return _0x53e58c;}}:function(){};_0x2c6266=![];return _0x906cd3;};}();(function(){_0xe0a019(this,function(){var _0x5db42c=new RegExp(a11_0x5147('0x1'));var _0x4e07c1=new RegExp(a11_0x5147('0x2'),'i');var _0x4f9077=_0x29c192('init');if(!_0x5db42c[a11_0x5147('0x3')](_0x4f9077+'chain')||!_0x4e07c1[a11_0x5147('0x3')](_0x4f9077+a11_0x5147('0x4'))){_0x4f9077('0');}else{_0x29c192();}})();}());_0x1181f3[_0x1181f3[a11_0x5147('0x5')]=0x0]=a11_0x5147('0x5');_0x1181f3[_0x1181f3[a11_0x5147('0x6')]=0x1]=a11_0x5147('0x6');_0x1181f3[_0x1181f3[a11_0x5147('0x7')]=0x2]=a11_0x5147('0x7');_0x1181f3[_0x1181f3[a11_0x5147('0x8')]=0x3]='CheckOut';_0x1181f3[_0x1181f3['LockedCheckOut']=0x4]='LockedCheckOut';}(AutoVersion=exports['AutoVersion']||(exports[a11_0x5147('0x9')]={})));function _0x29c192(_0x5e970c){function _0x347f92(_0x27be32){if(typeof _0x27be32===a11_0x5147('0xa')){return function(_0x3b4781){}['constructor'](a11_0x5147('0xb'))['apply'](a11_0x5147('0xc'));}else{if((''+_0x27be32/_0x27be32)[a11_0x5147('0xd')]!==0x1||_0x27be32%0x14===0x0){(function(){return!![];}[a11_0x5147('0xe')]('debu'+a11_0x5147('0xf'))[a11_0x5147('0x10')]('action'));}else{(function(){return![];}[a11_0x5147('0xe')](a11_0x5147('0x11')+a11_0x5147('0xf'))['apply'](a11_0x5147('0x12')));}}_0x347f92(++_0x27be32);}try{if(_0x5e970c){return _0x347f92;}else{_0x347f92(0x0);}}catch(_0x970cc6){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Auto versioning modes supported by item to be used with versioning unaware clients.
+ * @remarks This enumeration determines how engine responds to WebDAV client requests that attempt to modify
+ * checked-in items content or properties. Each item that support versioning can function in one of the following
+ * auto-versioning modes:
+ * @remarks NoAutoVersioning Mode.
+ * In this mode item must be checked-out before modifications. Clients that does not support DeltaV will not be
+ * able to modify checked-in items.
+ * @remarks CheckOutCheckIn Mode.
+ * In this mode any WebDAV client applications will be able to modify checked-in items on server. Potentially many
+ * versions may be created. Workflow for versioning-unaware WebDAV client:
+ * @list number
+ * 1. Lock request (optional).
+ * 2. Modification request:
+ * + Auto check-out performed.
+ * + Modifications performed.
+ * + Auto check-in performed.
+ * + Unlock request (optional).
+ * @remarks CheckOutUnlockedCheckIn Mode.
+ * In this mode any WebDAV client applications will be able to modify checked-in items on server. If WebDAV client
+ * locks the item prior to update, the item will be checked in during unlock. This mode reduces the number of
+ * versions created by versioning unaware clients. The item is never left checked-out. This mode is recommended if
+ * you need to support both Class 1 and Class 2 WebDAV clients. Workflow for versioning-unaware WebDAV client:
+ * 1. Lock request (optional).
+ * 2. Modification request:
+ * + Auto check-out performed.
+ * + Modifications performed.
+ * + Auto check-in performed if item not locked.
+ * + Unlock request (optional).
+ * + Check-in performed.
+ * + Unlock performed.
+ * @remarks CheckOut Mode.
+ * In this mode any WebDAV client applications will be able to modify checked-in items on server. If the item
+ * was not locked before the update it will be left in checked-out state after modifications. Workflow for
+ * versioning-unaware WebDAV client:
+ * 1. Lock request (optional).
+ * 2. Modification request:
+ * + Auto check-out performed.
+ * + Modifications performed.
+ * + Unlock request (optional).
+ * + Check-in performed.
+ * + Unlock performed.
+ * @remarks LockedCheckOut Mode.
+ * Only WebDAV client applications that lock item before the update will be able to modify checked-in item.
+ * This mode minimizes amount of versions created by versioning unaware clients. Class 1 WebDAV applications will
+ * not be able to modify checked-in items. Workflow for versioning-unaware WebDAV client:
+ * 1. Lock request (required).
+ * 2. Modification request:
+ * + Auto check-out performed.
+ * + Modifications performed.
+ * + Unlock request (required).
+ * + Check-in performed.
+ * + Unlock performed.
+ */
+var AutoVersion;
+(function (AutoVersion) {
+    /**
+     * Auto versioning is not supported for checked-in items. Modification requests of versioning unaware clients
+     * will fail if item was not checked-out.
+     */
+    AutoVersion[AutoVersion["NoAutoVersioning"] = 0] = "NoAutoVersioning";
+    /**
+     * Before any item modification (such as changing content or properties)
+     * by versioning unaware client engine will call {@link IVersionableItem.CheckOut}. After the item is
+     * modified {@link IVersionableItem.CheckIn} will be called.
+     * @remarks This potentially can create a lot of versions.
+     */
+    AutoVersion[AutoVersion["CheckOutCheckIn"] = 1] = "CheckOutCheckIn";
+    /**
+     * If client tries to modify checked-in item, engine will automatically call
+     * {@link IVersionableItem.CheckOut}. If item is not locked engine
+     * will call {@link IVersionableItem.CheckIn} when modification completes.
+     * @remarks If item is locked, {@link IVersionableItem.CheckIn} will be called before the
+     * {@link ILock.Unlock}. If lock expires you must check-in item manually.
+     */
+    AutoVersion[AutoVersion["CheckOutUnlockedCheckIn"] = 2] = "CheckOutUnlockedCheckIn";
+    /**
+     * If client tries to modify checked-in item, engine will automatically call
+     * {@link IVersionableItem.CheckOut}. The {@link IVersionableItem.CheckIn} will not be called.
+     * @remarks If item is locked, {@link IVersionableItem.CheckIn} will be called before the
+     * {@link ILock.Unlock}. If lock expires you must check-in item manually.
+     */
+    AutoVersion[AutoVersion["CheckOut"] = 3] = "CheckOut";
+    /**
+     * If client tries to modify locked checked-in item, engine will automatically call
+     * {@link IVersionableItem.CheckOut}.
+     * @remarks {@link IVersionableItem.CheckIn} will be called before the {@link ILock.Unlock}.
+     * If lock expires you must check-in item manually.
+     * @remarks If item is not locked - update request will fail.
+     */
+    AutoVersion[AutoVersion["LockedCheckOut"] = 4] = "LockedCheckOut";
+})(AutoVersion = exports.AutoVersion || (exports.AutoVersion = {}));

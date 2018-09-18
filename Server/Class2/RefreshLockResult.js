@@ -1,1 +1,21 @@
-var a6_0x3c82=['ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','dGVzdA==','Y2hhaW4=','ZGVmaW5lUHJvcGVydHk=','X19lc01vZHVsZQ==','SXNEZWVw','VGltZU91dA==','UmVmcmVzaExvY2tSZXN1bHQ=','c3RyaW5n','Y29uc3RydWN0b3I=','d2hpbGUgKHRydWUpIHt9','bGVuZ3Ro','ZGVidQ==','Y2FsbA==','Z2dlcg==','c3RhdGVPYmplY3Q=','YXBwbHk='];(function(_0x383605,_0x11d924){var _0x452ed7=function(_0x26ba1c){while(--_0x26ba1c){_0x383605['push'](_0x383605['shift']());}};_0x452ed7(++_0x11d924);}(a6_0x3c82,0x7d));var a6_0xa087=function(_0x2d8f05,_0x4b81bb){_0x2d8f05=_0x2d8f05-0x0;var _0x4d74cb=a6_0x3c82[_0x2d8f05];if(a6_0xa087['MnHztD']===undefined){(function(){var _0x36c6a6;try{var _0x33748d=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x36c6a6=_0x33748d();}catch(_0x3e4c21){_0x36c6a6=window;}var _0x5c685e='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x36c6a6['atob']||(_0x36c6a6['atob']=function(_0x3e3156){var _0x1e9e81=String(_0x3e3156)['replace'](/=+$/,'');for(var _0x292610=0x0,_0x151bd2,_0x558098,_0xd7aec1=0x0,_0x230f38='';_0x558098=_0x1e9e81['charAt'](_0xd7aec1++);~_0x558098&&(_0x151bd2=_0x292610%0x4?_0x151bd2*0x40+_0x558098:_0x558098,_0x292610++%0x4)?_0x230f38+=String['fromCharCode'](0xff&_0x151bd2>>(-0x2*_0x292610&0x6)):0x0){_0x558098=_0x5c685e['indexOf'](_0x558098);}return _0x230f38;});}());a6_0xa087['xOzakK']=function(_0x948b6c){var _0x29929c=atob(_0x948b6c);var _0x5dd881=[];for(var _0x550fbc=0x0,_0x18d5c9=_0x29929c['length'];_0x550fbc<_0x18d5c9;_0x550fbc++){_0x5dd881+='%'+('00'+_0x29929c['charCodeAt'](_0x550fbc)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5dd881);};a6_0xa087['mcAghN']={};a6_0xa087['MnHztD']=!![];}var _0x4ce2f1=a6_0xa087['mcAghN'][_0x2d8f05];if(_0x4ce2f1===undefined){_0x4d74cb=a6_0xa087['xOzakK'](_0x4d74cb);a6_0xa087['mcAghN'][_0x2d8f05]=_0x4d74cb;}else{_0x4d74cb=_0x4ce2f1;}return _0x4d74cb;};var _0x2776ea=function(){var _0x1fa352=!![];return function(_0x24649a,_0x4670ad){var _0x5369f8=_0x1fa352?function(){if(_0x4670ad){var _0x377616=_0x4670ad[a6_0xa087('0x0')](_0x24649a,arguments);_0x4670ad=null;return _0x377616;}}:function(){};_0x1fa352=![];return _0x5369f8;};}();(function(){_0x2776ea(this,function(){var _0x16d43f=new RegExp(a6_0xa087('0x1'));var _0x296519=new RegExp(a6_0xa087('0x2'),'i');var _0x306cc8=_0x2f63a3('init');if(!_0x16d43f[a6_0xa087('0x3')](_0x306cc8+a6_0xa087('0x4'))||!_0x296519[a6_0xa087('0x3')](_0x306cc8+'input')){_0x306cc8('0');}else{_0x2f63a3();}})();}());'use strict';Object[a6_0xa087('0x5')](exports,a6_0xa087('0x6'),{'value':!![]});class RefreshLockResult{constructor(_0x460981,_0x22320e,_0x49baf4,_0x312b72){this['Level']=_0x460981;this[a6_0xa087('0x7')]=_0x22320e;this[a6_0xa087('0x8')]=_0x49baf4;this['Owner']=_0x312b72;}}exports[a6_0xa087('0x9')]=RefreshLockResult;function _0x2f63a3(_0x3fb675){function _0x21370f(_0x1c3ee5){if(typeof _0x1c3ee5===a6_0xa087('0xa')){return function(_0x1ce33e){}[a6_0xa087('0xb')](a6_0xa087('0xc'))['apply']('counter');}else{if((''+_0x1c3ee5/_0x1c3ee5)[a6_0xa087('0xd')]!==0x1||_0x1c3ee5%0x14===0x0){(function(){return!![];}[a6_0xa087('0xb')](a6_0xa087('0xe')+'gger')[a6_0xa087('0xf')]('action'));}else{(function(){return![];}[a6_0xa087('0xb')](a6_0xa087('0xe')+a6_0xa087('0x10'))[a6_0xa087('0x0')](a6_0xa087('0x11')));}}_0x21370f(++_0x1c3ee5);}try{if(_0x3fb675){return _0x21370f;}else{_0x21370f(0x0);}}catch(_0x147230){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Result of @see ILockAsync.RefreshLockAsync  operation.
+ */
+class RefreshLockResult {
+    /**
+     * Initializes a new instance of the RefreshLockResult class.
+     * @param isDeep Indicates whether a lock is enforceable on the subtree.
+     * @param level Determines whether lock is shared.
+     * @param owner Principal taking out a lock.
+     * @param timeOut Timeout value. TimeSpan.MaxValue means 'never'.
+     */
+    constructor(level, isDeep, timeOut, owner) {
+        this.Level = level;
+        this.IsDeep = isDeep;
+        this.TimeOut = timeOut;
+        this.Owner = owner;
+    }
+}
+exports.RefreshLockResult = RefreshLockResult;

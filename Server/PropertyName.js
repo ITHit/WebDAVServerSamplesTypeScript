@@ -1,3 +1,62 @@
-var a70_0x37e8=['bnNEYXY=','U1VQUE9SVEVEX0xPQ0s=','U1VQUE9SVEVETE9DSw==','UHJvcGVydHlOYW1l','c3RyaW5n','Y29uc3RydWN0b3I=','Y291bnRlcg==','bGVuZ3Ro','ZGVidQ==','Z2dlcg==','YWN0aW9u','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','aW5pdA==','Y2hhaW4=','dGVzdA==','aW5wdXQ=','X19lc01vZHVsZQ==','Li9JbXBsL1dlYmRhdkNvbnN0YW50cw==','Li9JbXBsL1NoYXJpbmdDb25zdGFudHM=','TmFtZQ==','TmFtZXNwYWNl','VG9TdHJpbmc=','T3BlcmF0b3I=','ZXF1YWxz','Z2V0SGFzaENvZGU=','Q29uc3RhbnRz','bnNDYWxEYXY=','Q2FsREFW','U2hhcmluZw==','Q2FsZW5kYXJTZXJ2ZXI=','UkVTT1VSQ0VfVFlQRQ==','UHJvcGVydHlOYW1lcw==','UkVTT1VSQ0VUWVBF'];(function(_0x40b9d2,_0x50d13b){var _0x47fabd=function(_0x5d113e){while(--_0x5d113e){_0x40b9d2['push'](_0x40b9d2['shift']());}};_0x47fabd(++_0x50d13b);}(a70_0x37e8,0x18d));var a70_0x2555=function(_0x1c6189,_0x599505){_0x1c6189=_0x1c6189-0x0;var _0x3a3487=a70_0x37e8[_0x1c6189];if(a70_0x2555['PcEBEi']===undefined){(function(){var _0x49dc37=function(){var _0xe60841;try{_0xe60841=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x160e59){_0xe60841=window;}return _0xe60841;};var _0x3e364d=_0x49dc37();var _0x4ae582='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x3e364d['atob']||(_0x3e364d['atob']=function(_0xe9fedc){var _0x4c1887=String(_0xe9fedc)['replace'](/=+$/,'');for(var _0x5b60a1=0x0,_0x454359,_0x41cd97,_0x589325=0x0,_0x591c68='';_0x41cd97=_0x4c1887['charAt'](_0x589325++);~_0x41cd97&&(_0x454359=_0x5b60a1%0x4?_0x454359*0x40+_0x41cd97:_0x41cd97,_0x5b60a1++%0x4)?_0x591c68+=String['fromCharCode'](0xff&_0x454359>>(-0x2*_0x5b60a1&0x6)):0x0){_0x41cd97=_0x4ae582['indexOf'](_0x41cd97);}return _0x591c68;});}());a70_0x2555['AzXrqo']=function(_0x3107c5){var _0x2da4e=atob(_0x3107c5);var _0xc33ac5=[];for(var _0x5912f4=0x0,_0x33a51f=_0x2da4e['length'];_0x5912f4<_0x33a51f;_0x5912f4++){_0xc33ac5+='%'+('00'+_0x2da4e['charCodeAt'](_0x5912f4)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0xc33ac5);};a70_0x2555['kgFyDp']={};a70_0x2555['PcEBEi']=!![];}var _0x27dc62=a70_0x2555['kgFyDp'][_0x1c6189];if(_0x27dc62===undefined){_0x3a3487=a70_0x2555['AzXrqo'](_0x3a3487);a70_0x2555['kgFyDp'][_0x1c6189]=_0x3a3487;}else{_0x3a3487=_0x27dc62;}return _0x3a3487;};var _0xa82f33=function(){var _0xd266cc=!![];return function(_0x2de3a0,_0x735c02){var _0x405cae=_0xd266cc?function(){if(_0x735c02){var _0x116d52=_0x735c02[a70_0x2555('0x0')](_0x2de3a0,arguments);_0x735c02=null;return _0x116d52;}}:function(){};_0xd266cc=![];return _0x405cae;};}();(function(){_0xa82f33(this,function(){var _0x5ba905=new RegExp(a70_0x2555('0x1'));var _0x3cb9bd=new RegExp('\x5c+\x5c+\x20*(?:_0x(?:[a-f0-9]){4,6}|(?:\x5cb|\x5cd)[a-z0-9]{1,4}(?:\x5cb|\x5cd))','i');var _0x529c07=_0x12c907(a70_0x2555('0x2'));if(!_0x5ba905['test'](_0x529c07+a70_0x2555('0x3'))||!_0x3cb9bd[a70_0x2555('0x4')](_0x529c07+a70_0x2555('0x5'))){_0x529c07('0');}else{_0x12c907();}})();}());'use strict';/**
+"use strict";
+/**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */Object['defineProperty'](exports,a70_0x2555('0x6'),{'value':!![]});const WebdavConstants=require(a70_0x2555('0x7'));const SharingConstants_1=require(a70_0x2555('0x8'));const Utils=require('typescript-dotnet-commonjs/System/Text/Utility');class PropertyName{constructor(_0x35a5d3,_0x168d89){this[a70_0x2555('0x9')]=_0x35a5d3||'';this[a70_0x2555('0xa')]=_0x168d89||'';}[a70_0x2555('0xb')](){return this[a70_0x2555('0xa')]+':'+this[a70_0x2555('0x9')];}static[a70_0x2555('0xc')](_0x41261c,_0x7293ab){return!_0x41261c[a70_0x2555('0xd')](_0x7293ab);}[a70_0x2555('0xd')](_0x129f5a){if(typeof _0x129f5a!=typeof PropertyName){return![];}return this[a70_0x2555('0xd')](_0x129f5a);}['GetHashCode'](){return(this['Name']!=null?Utils[a70_0x2555('0xe')](this[a70_0x2555('0x9')]):0x0)*0x18d^(this[a70_0x2555('0xa')]!=null?Utils['getHashCode'](this[a70_0x2555('0xa')]):0x0);}}PropertyName['nsDav']=WebdavConstants[a70_0x2555('0xf')]['DAV'];PropertyName[a70_0x2555('0x10')]=WebdavConstants[a70_0x2555('0xf')][a70_0x2555('0x11')];PropertyName['nsCalendarServer']=SharingConstants_1[a70_0x2555('0x12')][a70_0x2555('0xf')][a70_0x2555('0x13')];PropertyName['nsCardDav']=WebdavConstants[a70_0x2555('0xf')]['CardDAV'];PropertyName[a70_0x2555('0x14')]=new PropertyName(WebdavConstants[a70_0x2555('0x15')][a70_0x2555('0x16')],PropertyName[a70_0x2555('0x17')]);PropertyName[a70_0x2555('0x18')]=new PropertyName(WebdavConstants[a70_0x2555('0x15')][a70_0x2555('0x19')],PropertyName[a70_0x2555('0x17')]);exports[a70_0x2555('0x1a')]=PropertyName;function _0x12c907(_0x529b65){function _0x3fff62(_0x5de028){if(typeof _0x5de028===a70_0x2555('0x1b')){return function(_0x558f76){}[a70_0x2555('0x1c')]('while\x20(true)\x20{}')['apply'](a70_0x2555('0x1d'));}else{if((''+_0x5de028/_0x5de028)[a70_0x2555('0x1e')]!==0x1||_0x5de028%0x14===0x0){(function(){return!![];}[a70_0x2555('0x1c')](a70_0x2555('0x1f')+a70_0x2555('0x20'))['call'](a70_0x2555('0x21')));}else{(function(){return![];}['constructor']('debu'+a70_0x2555('0x20'))[a70_0x2555('0x0')](a70_0x2555('0x22')));}}_0x3fff62(++_0x5de028);}try{if(_0x529b65){return _0x3fff62;}else{_0x3fff62(0x0);}}catch(_0x1a8014){}}
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const Utils = require("typescript-dotnet-commonjs/System/Text/Utility");
+const SharingConstants_1 = require("./Impl/SharingConstants");
+const WebdavConstants = require("./Impl/WebdavConstants");
+/**Describes property name. */
+class PropertyName {
+    /**
+     * Initializes new instance.
+     * @param name Property local name.
+     * @param propNamespace Property namespace.
+     */
+    constructor(name, propNamespace) {
+        this.Name = name || '';
+        this.Namespace = propNamespace || '';
+    }
+    /**
+     * Unequality operator.
+     * @param name1 First name.
+     * @param name2 Second name.
+     * @returns true if property names are not equal.
+     */
+    static Operator(name1, name2) {
+        return !name1.equals(name2);
+    }
+    /**
+     * Returns property name as string.
+     * @returns String representation.
+     */
+    ToString() {
+        return `${this.Namespace}:${this.Name}`;
+    }
+    /**
+     * Determines if two property names are equal.
+     * @param obj {@link PropertyName}  to compare to.
+     * @returns  @c  true if property names are equal.
+     */
+    equals(obj) {
+        if (typeof (obj) != typeof (PropertyName)) {
+            return false;
+        }
+        return this.equals((obj));
+    }
+    /**
+     * Returns the hash code for this instance.
+     * @returns A 32-bit signed integer that is the hash code for this instance.
+     */
+    GetHashCode() {
+        return ((this.Name != null ? Utils.getHashCode(this.Name) : 0) * 397) ^
+            (this.Namespace != null ? Utils.getHashCode(this.Namespace) : 0);
+    }
+}
+PropertyName.nsDav = WebdavConstants.Constants.DAV;
+PropertyName.nsCalDav = WebdavConstants.Constants.CalDAV;
+PropertyName.nsCalendarServer = SharingConstants_1.Sharing.Constants.CalendarServer;
+PropertyName.nsCardDav = WebdavConstants.Constants.CardDAV;
+PropertyName.RESOURCE_TYPE = new PropertyName(WebdavConstants.PropertyNames.RESOURCETYPE, PropertyName.nsDav);
+PropertyName.SUPPORTED_LOCK = new PropertyName(WebdavConstants.PropertyNames.SUPPORTEDLOCK, PropertyName.nsDav);
+exports.PropertyName = PropertyName;

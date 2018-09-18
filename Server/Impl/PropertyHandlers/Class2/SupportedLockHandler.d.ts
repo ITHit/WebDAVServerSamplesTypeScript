@@ -1,6 +1,6 @@
-import { PropertyHandlerBase } from "../PropertyHandlerBase";
-import { IHierarchyItem } from "../../../IHierarchyItem";
 import { DavContextBase } from "../../../DavContextBase";
+import { IHierarchyItem } from "../../../IHierarchyItem";
+import { PropertyHandlerBase } from "../PropertyHandlerBase";
 export declare class SupportedLockHandler extends PropertyHandlerBase {
     AppliesTo(item: IHierarchyItem): boolean;
     Write(writer: any, item: IHierarchyItem, context: DavContextBase): void;

@@ -147,21 +147,10 @@ export declare class PropertyName implements IEquatable<PropertyName> {
      * Refers to {@link IQuotaAsync.GetAvailableBytesAsync()} .
      */
     static readonly QUOTA_AVAILABLE_BYTES: PropertyName;
-    /**
-     * Initializes new instance.
-     * @param name Property local name.
-     * @param propNamespace Property namespace.
-     */
-    constructor(name?: string, propNamespace?: string | null);
     /**Property namespace. */
     Namespace: string;
     /**Property local name. */
     Name: string;
-    /**
-     * Returns property name as string.
-     * @returns String representation.
-     */
-    ToString(): string;
     /**
      * Unequality operator.
      * @param name1 First name.
@@ -169,6 +158,17 @@ export declare class PropertyName implements IEquatable<PropertyName> {
      * @returns true if property names are not equal.
      */
     static Operator(name1: PropertyName, name2: PropertyName): boolean;
+    /**
+     * Initializes new instance.
+     * @param name Property local name.
+     * @param propNamespace Property namespace.
+     */
+    constructor(name?: string, propNamespace?: string | null);
+    /**
+     * Returns property name as string.
+     * @returns String representation.
+     */
+    ToString(): string;
     /**
      * Determines if two property names are equal.
      * @param obj {@link PropertyName}  to compare to.

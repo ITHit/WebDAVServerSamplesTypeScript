@@ -1,7 +1,7 @@
 import { DavContextBase } from "../../DavContextBase";
-import { IItemCollection } from "../../IItemCollection";
-import { IHierarchyItem } from "../../IHierarchyItem";
 import { DavRequest } from "../../Extensibility/DavRequest";
+import { IHierarchyItem } from "../../IHierarchyItem";
+import { IItemCollection } from "../../IItemCollection";
 export declare class UrlUtil {
     static GetParentItemByUrl(context: DavContextBase, url: string): Promise<IItemCollection>;
     static GetItemNameByUrl(context: DavContextBase, url: string): string;

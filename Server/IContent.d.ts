@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { ServerResponse } from "http";
+import { IncomingMessage, ServerResponse } from "http";
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
@@ -22,6 +22,14 @@ export interface IContent {
      * @returns {number}  Length of the file content in bytes.
      */
     readonly ContentLength: number;
+    /**
+     * Gets entity tag - string that identifies current state of resource's content.
+     * More information about etags is available here: http://en.wikipedia.org/wiki/HTTP_ETag
+     * You can return here either cheksum or hash or counter which increases with every modification.
+     * This property shall return different value if content changes.
+     * @returns {string} null to indicate that server doesn't support etags.
+     */
+    readonly Etag: string;
     /**
      * Reads the file content from the repository and writes it to the specified stream.
      * By default ASP.NET buffers content on server side before sending output. You must turn off buffering to
@@ -64,13 +72,5 @@ export interface IContent {
      * module in your web.config file. Unlike IIS/ASP.NET, HttpListener-based server does not create any
      * temporary files when handling uploads.
      */
-    Write(content: NodeJS.WriteStream, contentType: string, startIndex: number, totalFileSize: number): boolean;
-    /**
-     * Gets entity tag - string that identifies current state of resource's content.
-     * More information about etags is available here: http://en.wikipedia.org/wiki/HTTP_ETag
-     * You can return here either cheksum or hash or counter which increases with every modification.
-     * This property shall return different value if content changes.
-     * @returns {string} null to indicate that server doesn't support etags.
-     */
-    readonly Etag: string;
+    write(content: IncomingMessage, contentType: string, startIndex: number, totalFileSize: number): Promise<boolean>;
 }

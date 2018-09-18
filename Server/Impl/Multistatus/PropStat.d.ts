@@ -1,7 +1,7 @@
-import { PropertyValue } from "../../PropertyValue";
-import { DavException } from "../../DavException";
 import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
 import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
+import { DavException } from "../../DavException";
+import { PropertyValue } from "../../PropertyValue";
 /**
  * Status for a number of properties to be included into multistatus response.
  */

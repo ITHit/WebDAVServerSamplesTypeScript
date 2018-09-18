@@ -1,3 +1,94 @@
-var a19_0x9c6a=['d2hpbGUgKHRydWUpIHt9','bGVuZ3Ro','Z2dlcg==','YWN0aW9u','ZGVidQ==','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','Y2hhaW4=','dGVzdA==','X19lc01vZHVsZQ==','Q29udGVudFR5cGU=','c2V0SGVhZGVy','Q29udGVudC1UeXBl','c3RhdHVzQ29kZQ==','bmF0aXZlUmVzcG9uY2U=','d3JpdGFibGU=','c3RhdHVzTWVzc2FnZQ==','d3JpdGVIZWFk','ZW5k','d3JpdGU=','Q29udGVudExlbmd0aA==','QWRkSGVhZGVy','Q2xlYXI=','SXNDbGllbnRDb25uZWN0ZWQ=','RGF2UmVzcG9uc2U=','c3RyaW5n','Y29uc3RydWN0b3I='];(function(_0x2abcc2,_0x29d0dc){var _0x1b50c5=function(_0x3440df){while(--_0x3440df){_0x2abcc2['push'](_0x2abcc2['shift']());}};_0x1b50c5(++_0x29d0dc);}(a19_0x9c6a,0x172));var a19_0x201d=function(_0xb48313,_0x2072c0){_0xb48313=_0xb48313-0x0;var _0x3bb448=a19_0x9c6a[_0xb48313];if(a19_0x201d['lbYoCb']===undefined){(function(){var _0x1b985b=function(){var _0x502c17;try{_0x502c17=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x22f123){_0x502c17=window;}return _0x502c17;};var _0x196921=_0x1b985b();var _0x451d91='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x196921['atob']||(_0x196921['atob']=function(_0x3b2404){var _0x69d88f=String(_0x3b2404)['replace'](/=+$/,'');for(var _0x582f96=0x0,_0x540848,_0x3248fb,_0x2ece66=0x0,_0x131b9f='';_0x3248fb=_0x69d88f['charAt'](_0x2ece66++);~_0x3248fb&&(_0x540848=_0x582f96%0x4?_0x540848*0x40+_0x3248fb:_0x3248fb,_0x582f96++%0x4)?_0x131b9f+=String['fromCharCode'](0xff&_0x540848>>(-0x2*_0x582f96&0x6)):0x0){_0x3248fb=_0x451d91['indexOf'](_0x3248fb);}return _0x131b9f;});}());a19_0x201d['pQfBfW']=function(_0xf53271){var _0x4f372b=atob(_0xf53271);var _0x3d5dec=[];for(var _0x31cc27=0x0,_0x7576fd=_0x4f372b['length'];_0x31cc27<_0x7576fd;_0x31cc27++){_0x3d5dec+='%'+('00'+_0x4f372b['charCodeAt'](_0x31cc27)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x3d5dec);};a19_0x201d['YQoTot']={};a19_0x201d['lbYoCb']=!![];}var _0x2b3580=a19_0x201d['YQoTot'][_0xb48313];if(_0x2b3580===undefined){_0x3bb448=a19_0x201d['pQfBfW'](_0x3bb448);a19_0x201d['YQoTot'][_0xb48313]=_0x3bb448;}else{_0x3bb448=_0x2b3580;}return _0x3bb448;};var _0x7ebfd7=function(){var _0x269da1=!![];return function(_0x1d9cf3,_0x14f4c0){var _0x5ebbe5=_0x269da1?function(){if(_0x14f4c0){var _0x2b5ef6=_0x14f4c0[a19_0x201d('0x0')](_0x1d9cf3,arguments);_0x14f4c0=null;return _0x2b5ef6;}}:function(){};_0x269da1=![];return _0x5ebbe5;};}();(function(){_0x7ebfd7(this,function(){var _0x4851b1=new RegExp(a19_0x201d('0x1'));var _0xd45dff=new RegExp('\x5c+\x5c+\x20*(?:_0x(?:[a-f0-9]){4,6}|(?:\x5cb|\x5cd)[a-z0-9]{1,4}(?:\x5cb|\x5cd))','i');var _0x3268e8=_0x52a2d9('init');if(!_0x4851b1['test'](_0x3268e8+a19_0x201d('0x2'))||!_0xd45dff[a19_0x201d('0x3')](_0x3268e8+'input')){_0x3268e8('0');}else{_0x52a2d9();}})();}());'use strict';/**
+"use strict";
+/**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */Object['defineProperty'](exports,a19_0x201d('0x4'),{'value':!![]});class DavResponse{set[a19_0x201d('0x5')](_0x2e0e51){this[a19_0x201d('0x6')](a19_0x201d('0x7'),_0x2e0e51);}get[a19_0x201d('0x8')](){return this[a19_0x201d('0x9')][a19_0x201d('0x8')];}set[a19_0x201d('0x8')](_0x351036){this[a19_0x201d('0x9')][a19_0x201d('0x8')]=_0x351036;}get[a19_0x201d('0xa')](){return this['nativeResponce'][a19_0x201d('0xa')];}set[a19_0x201d('0xa')](_0x479208){this[a19_0x201d('0x9')][a19_0x201d('0xa')]=_0x479208;}get[a19_0x201d('0xb')](){return this[a19_0x201d('0x9')][a19_0x201d('0xb')];}set['statusMessage'](_0x2b67b6){this['nativeResponce']['statusMessage']=_0x2b67b6;}[a19_0x201d('0xc')](_0x2e8dd9,_0x3c55e1,_0x41a050){this['nativeResponce'][a19_0x201d('0xc')](_0x2e8dd9,_0x3c55e1,_0x41a050);}[a19_0x201d('0xd')](_0x407cee){this[a19_0x201d('0x9')][a19_0x201d('0xd')](_0x407cee);}[a19_0x201d('0xe')](_0x40ecb0,_0x2437cc,_0x260667){return this[a19_0x201d('0x9')][a19_0x201d('0xe')](_0x40ecb0,_0x2437cc,_0x260667);}constructor(_0x1e7afc){this['nativeResponce']=_0x1e7afc;}[a19_0x201d('0x6')](_0x496322,_0x5b5ee3){this[a19_0x201d('0x9')][a19_0x201d('0x6')](_0x496322,_0x5b5ee3);}set['ContentEncoding'](_0x2b34c9){}set[a19_0x201d('0xf')](_0x13a0f5){this[a19_0x201d('0x6')]('Content-Length',_0x13a0f5);}[a19_0x201d('0x10')](_0x5adacb,_0x41cf36){this[a19_0x201d('0x6')](_0x5adacb,_0x41cf36);}[a19_0x201d('0x11')](){}get[a19_0x201d('0x12')](){return![];}}exports[a19_0x201d('0x13')]=DavResponse;function _0x52a2d9(_0x203a92){function _0xc5dcfa(_0x1f545e){if(typeof _0x1f545e===a19_0x201d('0x14')){return function(_0x5508bd){}[a19_0x201d('0x15')](a19_0x201d('0x16'))[a19_0x201d('0x0')]('counter');}else{if((''+_0x1f545e/_0x1f545e)[a19_0x201d('0x17')]!==0x1||_0x1f545e%0x14===0x0){(function(){return!![];}[a19_0x201d('0x15')]('debu'+a19_0x201d('0x18'))['call'](a19_0x201d('0x19')));}else{(function(){return![];}[a19_0x201d('0x15')](a19_0x201d('0x1a')+a19_0x201d('0x18'))[a19_0x201d('0x0')](a19_0x201d('0x1b')));}}_0xc5dcfa(++_0x1f545e);}try{if(_0x203a92){return _0xc5dcfa;}else{_0xc5dcfa(0x0);}}catch(_0x181e13){}}
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Represents HTTP response.
+ * @remarks Usually you do not have to implement this interfaces if you host your server in ASP.NET/IIS or
+ * in HttpListener as {@link DavContextBase} provides overloaded constructors optimized
+ * for OWIN, for ASP.NET/IIS and for HttpListener.
+ * You can implement this interface if you host your server  in any other environment
+ * and pass it to {@link DavContextBase} constructor.
+ */
+class DavResponse {
+    /**
+     * Sets the HTTP MIME type of the output stream.
+     * @value The HTTP MIME type of the output stream.
+     */
+    set ContentType(value) {
+        this.setHeader('Content-Type', value);
+    }
+    get statusCode() {
+        return this.nativeResponce.statusCode;
+    }
+    set statusCode(value) {
+        this.nativeResponce.statusCode = value;
+    }
+    get writable() {
+        return this.nativeResponce.writable;
+    }
+    set writable(value) {
+        this.nativeResponce.writable = value;
+    }
+    get statusMessage() {
+        return this.nativeResponce.statusMessage;
+    }
+    set statusMessage(value) {
+        this.nativeResponce.statusMessage = value;
+    }
+    ;
+    /**
+     * Sets the HTTP character set of the output stream.
+     * @value A Encoding object containing information about the character set of the current response.
+     */
+    set ContentEncoding(value) { }
+    ;
+    /**
+     * Sets the content length of the output stream.
+     * @value The value of the response's Content-Length header.
+     */
+    set ContentLength(value) {
+        this.setHeader('Content-Length', value);
+    }
+    ;
+    ;
+    ;
+    /**
+     * Gets a valus indicating whether client is still connected.
+     * @remarks Most probably this property will be refreshed only when some data fails to send to client.
+     */
+    get IsClientConnected() {
+        return false;
+    }
+    ;
+    writeHead(statusCode, reasonPhrase, headers) {
+        this.nativeResponce.writeHead(statusCode, reasonPhrase, headers);
+    }
+    end(cb) {
+        this.nativeResponce.end(cb);
+    }
+    write(chunk, encoding, cb) {
+        return this.nativeResponce.write(chunk, encoding, cb);
+    }
+    constructor(res) {
+        this.nativeResponce = res;
+    }
+    setHeader(name, value) {
+        this.nativeResponce.setHeader(name, value);
+    }
+    /**
+     * Adds the specified header and value to the HTTP headers for this response.
+     * @param name The name of the HTTP header to set.
+     * @param value The value for the name header.
+     */
+    AddHeader(name, value) {
+        this.setHeader(name, value);
+    }
+    /**
+     * Clears all content output from the buffer stream.
+     */
+    Clear() {
+    }
+}
+exports.DavResponse = DavResponse;

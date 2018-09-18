@@ -1,9 +1,12 @@
 /// <reference types="node" />
+/**
+ * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
+ */
+import { IncomingMessage } from "http";
 import { IDictionary } from "typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary";
 import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
-import DavEngine from "../DavEngine";
+import { DavEngine } from "../DavEngine";
 import { Depth } from "../Impl/Util/Depth";
-import { IncomingMessage } from "http";
 import { Range } from "../Impl/Util/Range";
 /**
  * Represents an incoming HTTP request.
@@ -19,10 +22,6 @@ import { Range } from "../Impl/Util/Range";
  * and pass it to {@link DavContextBase} constructor.
  */
 export declare class DavRequest extends IncomingMessage {
-    private lockTokens?;
-    url: string;
-    body: Buffer;
-    protocol?: string;
     /**
      * Gets information about the URL of the current request.
      * @value  Url, like /somefolder/?query
@@ -77,9 +76,21 @@ export declare class DavRequest extends IncomingMessage {
      * client provided necessary lock token.
      */
     readonly ClientLockTokens: IList<string>;
-    private TrimToken;
+    url: string;
+    body: Buffer;
+    protocol?: string;
+    private lockTokens?;
+    GetOverwrite(): boolean;
     GetXmlContent(engine: DavEngine): Document | null;
     GetDepth(defaultDepth?: Depth): Depth;
+    GetRange(): Range | null;
+    getContentRange(): {
+        unit: string;
+        first: number | null;
+        last: number | null;
+        length: number | null;
+    } | null;
+    private TrimToken;
     /**
      * Parse the content-range header.
      *
@@ -87,5 +98,4 @@ export declare class DavRequest extends IncomingMessage {
      * @returns {Object} { unit: 'items', first: 10, last: 29, length: 100 }
      */
     private parseRange;
-    GetRange(): Range | null;
 }

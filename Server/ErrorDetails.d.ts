@@ -103,16 +103,16 @@ export declare class ErrorDetails implements IEquatable<ErrorDetails> {
      * would cause the return of an extremely large number of responses.
      */
     static NUMBER_OF_MATCHES_WITHIN_LIMITS: ErrorDetails;
+    /**Gets element namespace. */
+    Namespace: string;
+    /**Gets element name. */
+    Name: string;
     /**
      * Initializes a new instance of the ErrorDetails struct.
      * @param namespace Element namespace.
      * @param name Element name.
      */
     constructor(namespace: string, name: string);
-    /**Gets element namespace. */
-    Namespace: string;
-    /**Gets element name. */
-    Name: string;
     /**
      * Indicates whether the current object is equal to another object of the same type.
      * @returns true if the current object is equal to the @paramref other  parameter; otherwise, false.

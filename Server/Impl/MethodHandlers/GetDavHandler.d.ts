@@ -1,9 +1,9 @@
-import { BaseDavHandler } from "./BaseDAVHandler";
-import { IHierarchyItem } from "../../IHierarchyItem";
 import { DavContextBase } from "../../DavContextBase";
+import { IHierarchyItem } from "../../IHierarchyItem";
+import { BaseDavHandler } from "./BaseDAVHandler";
 export declare class GetDavHandler extends BaseDavHandler {
-    AppliesTo(item: IHierarchyItem): boolean;
+    appliesTo(item: IHierarchyItem): boolean;
     readonly EnableOutputBuffering: boolean;
     readonly EnableOutputDebugLogging: boolean;
-    ProcessRequest(context: DavContextBase, item: IHierarchyItem): Promise<void>;
+    processRequest(context: DavContextBase, item: IHierarchyItem): Promise<void>;
 }

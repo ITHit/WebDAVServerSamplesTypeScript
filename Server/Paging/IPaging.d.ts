@@ -1,5 +1,5 @@
-import { IItemCollection } from "../IItemCollection";
 import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
+import { IItemCollection } from "../IItemCollection";
 import { PropertyName } from "../PropertyName";
 import { OrderProperty } from "./OrderProperty";
 import { PageResult } from "./PageResult";

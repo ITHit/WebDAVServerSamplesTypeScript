@@ -43,7 +43,7 @@ class MyCustomGetHandler {
      * @param item Instance of {@link IHierarchyItem} which was returned by
      * {@link DavContextBase.GetHierarchyItem} for this request.
      */
-    async ProcessRequest(context, item) {
+    async processRequest(context, item) {
         if (context.Request.url.startsWith("/AjaxFileBrowser/") || context.Request.url.startsWith("/wwwroot/")) {
             //  The "/AjaxFileBrowser/" are not a WebDAV folders. They can be used to store client script files, 
             //  images, static HTML files or any other files that does not require access via WebDAV.
@@ -52,6 +52,9 @@ class MyCustomGetHandler {
             const Url = url_1.parse(context.Request.url);
             let pathname = (Url.pathname || `${path_1.sep}`);
             pathname = pathname.substring(1).split('/').join(`${path_1.sep}`);
+            if (context.Request.url.startsWith("/AjaxFileBrowser/")) {
+                pathname = `wwwroot${path_1.sep}${pathname}`;
+            }
             let filePath = this.htmlPath + `${path_1.sep}` + pathname;
             const existsFilePath = await util_1.promisify(fs_1.exists)(filePath);
             if (!existsFilePath) {
@@ -90,9 +93,9 @@ class MyCustomGetHandler {
             this.WriteFileContent(context, html, this.htmlPath + htmlName);
         }
         else {
-            //this.OriginalHandler.ProcessRequest(context, item);
-            context.Response.writeHead(404, 'File does\'t exist');
-            context.Response.end();
+            await this.OriginalHandler.processRequest(context, item);
+            //context.Response.writeHead(404, 'File does\'t exist');
+            //context.Response.end();   
         }
     }
     /**
@@ -124,8 +127,8 @@ class MyCustomGetHandler {
      * @see DavContextBaseAsync.GetHierarchyItemAsync  for this request.
      * @returns  Returns @c  true if this handler can handler this item.
      */
-    AppliesTo(item) {
-        return this.instanceOfIFolder(item) || this.OriginalHandler.AppliesTo(item);
+    appliesTo(item) {
+        return this.instanceOfIFolder(item) || this.OriginalHandler.appliesTo(item);
     }
 }
 exports.MyCustomGetHandler = MyCustomGetHandler;

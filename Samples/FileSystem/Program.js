@@ -29,26 +29,26 @@ class Program {
         }
     }
     static Init() {
-        let contentRootPath = __dirname;
-        let logPath = contentRootPath + `${path_1.sep}App_Data${path_1.sep}WebDav${path_1.sep}Logs`;
+        const contentRootPath = __dirname;
+        const logPath = contentRootPath + `${path_1.sep}App_Data${path_1.sep}WebDav${path_1.sep}Logs`;
         Program.logger.LogFile = logPath + "WebDAVlog.txt";
         Program.logger.IsDebugEnabled = Program.debugLoggingEnabled;
-        Program.engine = new DavEngine_1.default();
+        Program.engine = new DavEngine_1.DavEngine();
         Program.engine.Logger = Program.logger;
         Program.engine.OutputXmlFormatting = true;
         ///  This license lile is used to activate:
         ///   - IT Hit WebDAV Server Engine for .NET
         ///   - IT Hit iCalendar and vCard Library if used in a project
-        let license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
+        const license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
         Program.engine.License = license;
         //  Set custom handler to process GET and HEAD requests to folders and display 
         //  info about how to connect to server. We are using the same custom handler 
         //  class (but different instances) here to process both GET and HEAD because 
         //  these requests are very similar. Some WebDAV clients may fail to connect if HEAD 
         //  request is not processed.
-        //let handlerGet: MyCustomGetHandler = new MyCustomGetHandler(contentRootPath);
-        let handlerHead = new MyCustomGetHandler_1.MyCustomGetHandler(contentRootPath);
-        //handlerGet.OriginalHandler = Program.engine.RegisterMethodHandler("GET", handlerGet);
+        const handlerGet = new MyCustomGetHandler_1.MyCustomGetHandler(contentRootPath);
+        const handlerHead = new MyCustomGetHandler_1.MyCustomGetHandler(contentRootPath);
+        handlerGet.OriginalHandler = Program.engine.RegisterMethodHandler("GET", handlerGet);
         handlerHead.OriginalHandler = Program.engine.RegisterMethodHandler("HEAD", handlerHead);
     }
     static ThreadProc() {
@@ -60,27 +60,12 @@ class Program {
         });
     }
     static ProcessRequest(request, response) {
-        const maxAllowwedRequestSize = 1e6;
-        const payloadTooLargeStatusCode = 413;
         const req = new DavRequest_1.DavRequest(request.socket);
         Object.assign(req, request);
         req.protocol = protocol;
         const res = new DavResponse_1.DavResponse(response);
-        let queryData = new Buffer('');
-        req.on('data', (data) => {
-            queryData += data;
-            if (queryData.length > maxAllowwedRequestSize) {
-                queryData = new Buffer('');
-                res.writeHead(payloadTooLargeStatusCode, 'text/plain');
-                res.end();
-                req.connection.destroy();
-            }
-        });
-        req.on('end', function () {
-            req.body = queryData;
-            let ntfsDavContext = new DavContext_1.DavContext(req, res, null, Program.repositoryPath, Program.engine.Logger);
-            Program.engine.Run(ntfsDavContext);
-        });
+        let ntfsDavContext = new DavContext_1.DavContext(req, res, null, Program.repositoryPath, Program.engine.Logger);
+        Program.engine.Run(ntfsDavContext);
     }
     /**Checks configuration errors. */
     static CheckConfigErrors() {

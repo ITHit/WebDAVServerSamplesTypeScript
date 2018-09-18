@@ -1,6 +1,6 @@
-import { LockLevel } from "./LockLevel";
 import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
 import { LockInfo } from "./LockInfo";
+import { LockLevel } from "./LockLevel";
 /**
  * Defines the properties and methods that WebDAV Class 2 compliant server hierarchy items must implement.
  * @remarks This interface provides the means for locking the hierarchy item, updating lock timeout and accessing the

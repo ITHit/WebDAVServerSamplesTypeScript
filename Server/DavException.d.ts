@@ -1,7 +1,7 @@
 import { Exception } from "typescript-dotnet-commonjs/System/Exception";
+import { DavContextBase } from "./DavContextBase";
 import { DavStatus } from "./DavStatus";
 import { ErrorDetails } from "./ErrorDetails";
-import { DavContextBase } from "./DavContextBase";
 import { IHierarchyItem } from "./IHierarchyItem";
 /**
  * Exception which can be thrown by WebDAV interface implementations.

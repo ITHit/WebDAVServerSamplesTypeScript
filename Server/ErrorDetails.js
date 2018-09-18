@@ -1,1 +1,137 @@
-var a17_0x5ec0=['Q0FOTk9UX1JFTkFNRV9WRVJTSU9O','Y2Fubm90LXJlbmFtZS12ZXJzaW9u','Tk9fVkVSU0lPTl9ERUxFVEU=','bm8tdmVyc2lvbi1kZWxldGU=','U1VQUE9SVEVEX1JFUE9SVA==','Q0FOTk9UX01PRElGWV9QUk9URUNURURfUFJPUEVSVFk=','UFJPUEZJTkRfRklOSVRFX0RFUFRI','cHJvcGZpbmQtZmluaXRlLWRlcHRo','bm8tY29uZmxpY3RpbmctbG9jaw==','TE9DS19UT0tFTl9NQVRDSEVTX1JFUVVFU1RfVVJJ','bG9jay10b2tlbi1tYXRjaGVzLXJlcXVlc3QtdXJp','Tk9fRVhURVJOQUxfRU5USVRJRVM=','TlVNQkVSX09GX01BVENIRVNfV0lUSElOX0xJTUlUUw==','RXJyb3JEZXRhaWxz','c3RyaW5n','Y29uc3RydWN0b3I=','bGVuZ3Ro','ZGVidQ==','Z2dlcg==','Y2FsbA==','YWN0aW9u','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','aW5pdA==','dGVzdA==','Y2hhaW4=','aW5wdXQ=','X19lc01vZHVsZQ==','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL1RleHQvVXRpbGl0eQ==','REFWOg==','TmFtZXNwYWNl','ZXF1YWxz','TmFtZQ==','R2V0SGFzaENvZGU=','Z2V0SGFzaENvZGU=','TVVTVF9CRV9DSEVDS0VEX0lO','TVVTVF9CRV9DSEVDS0VEX09VVA==','Q0FOTk9UX1JFTkFNRV9ISVNUT1JZ','Y2Fubm90LXJlbmFtZS1oaXN0b3J5','Q0FOTk9UX0NPUFlfSElTVE9SWQ==','Y2Fubm90LWNvcHktaGlzdG9yeQ==','TVVTVF9CRV9DSEVDS0VEX09VVF9WRVJTSU9OX0NPTlRST0xMRURfUkVTT1VSQ0U=','bXVzdC1iZS1jaGVja2VkLW91dC12ZXJzaW9uLWNvbnRyb2xsZWQtcmVzb3VyY2U=','VkVSU0lPTl9ISVNUT1JZX0lTX1RSRUU=','dmVyc2lvbi1oaXN0b3J5LWlzLXRyZWU=','Q0FOTk9UX01PRElGWV9WRVJTSU9OX0NPTlRST0xMRURfQ09OVEVOVA==','Y2Fubm90LW1vZGlmeS12ZXJzaW9uLWNvbnRyb2xsZWQtY29udGVudA==','Q0FOTk9UX01PRElGWV9WRVJTSU9OX0NPTlRST0xMRURfUFJPUEVSVFk=','Y2Fubm90LW1vZGlmeS12ZXJzaW9uLWNvbnRyb2xsZWQtcHJvcGVydHk=','U1VQUE9SVEVEX0xJVkVfUFJPUEVSVFk=','c3VwcG9ydGVkLWxpdmUtcHJvcGVydHk=','Q0FOTk9UX01PRElGWV9WRVJTSU9O','Y2Fubm90LW1vZGlmeS12ZXJzaW9u'];(function(_0x1cdde7,_0x56d70f){var _0x1a52e4=function(_0x27f20b){while(--_0x27f20b){_0x1cdde7['push'](_0x1cdde7['shift']());}};_0x1a52e4(++_0x56d70f);}(a17_0x5ec0,0x84));var a17_0x551f=function(_0x4dc994,_0x5d52bc){_0x4dc994=_0x4dc994-0x0;var _0x5d4ae1=a17_0x5ec0[_0x4dc994];if(a17_0x551f['qXbBTe']===undefined){(function(){var _0x4870bc;try{var _0x575ed8=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x4870bc=_0x575ed8();}catch(_0x220262){_0x4870bc=window;}var _0x19b8b3='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4870bc['atob']||(_0x4870bc['atob']=function(_0x12dd4e){var _0x3e0570=String(_0x12dd4e)['replace'](/=+$/,'');for(var _0x27d9eb=0x0,_0x1b2816,_0x38cff2,_0x5351f8=0x0,_0x12acde='';_0x38cff2=_0x3e0570['charAt'](_0x5351f8++);~_0x38cff2&&(_0x1b2816=_0x27d9eb%0x4?_0x1b2816*0x40+_0x38cff2:_0x38cff2,_0x27d9eb++%0x4)?_0x12acde+=String['fromCharCode'](0xff&_0x1b2816>>(-0x2*_0x27d9eb&0x6)):0x0){_0x38cff2=_0x19b8b3['indexOf'](_0x38cff2);}return _0x12acde;});}());a17_0x551f['cOrbWC']=function(_0xff5fe6){var _0x557d59=atob(_0xff5fe6);var _0x110a9d=[];for(var _0x2370ac=0x0,_0x137487=_0x557d59['length'];_0x2370ac<_0x137487;_0x2370ac++){_0x110a9d+='%'+('00'+_0x557d59['charCodeAt'](_0x2370ac)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x110a9d);};a17_0x551f['dZPJOb']={};a17_0x551f['qXbBTe']=!![];}var _0x2daf48=a17_0x551f['dZPJOb'][_0x4dc994];if(_0x2daf48===undefined){_0x5d4ae1=a17_0x551f['cOrbWC'](_0x5d4ae1);a17_0x551f['dZPJOb'][_0x4dc994]=_0x5d4ae1;}else{_0x5d4ae1=_0x2daf48;}return _0x5d4ae1;};var _0x3fef91=function(){var _0x1d68f6=!![];return function(_0x3e105c,_0xc95be1){var _0xcc5f36=_0x1d68f6?function(){if(_0xc95be1){var _0x1a5687=_0xc95be1[a17_0x551f('0x0')](_0x3e105c,arguments);_0xc95be1=null;return _0x1a5687;}}:function(){};_0x1d68f6=![];return _0xcc5f36;};}();(function(){_0x3fef91(this,function(){var _0x5d93df=new RegExp(a17_0x551f('0x1'));var _0x45f4b0=new RegExp(a17_0x551f('0x2'),'i');var _0x39d3a7=_0x2da9ec(a17_0x551f('0x3'));if(!_0x5d93df[a17_0x551f('0x4')](_0x39d3a7+a17_0x551f('0x5'))||!_0x45f4b0[a17_0x551f('0x4')](_0x39d3a7+a17_0x551f('0x6'))){_0x39d3a7('0');}else{_0x2da9ec();}})();}());'use strict';Object['defineProperty'](exports,a17_0x551f('0x7'),{'value':!![]});const Utils=require(a17_0x551f('0x8'));const DAV=a17_0x551f('0x9');class ErrorDetails{constructor(_0x4237bc,_0x44931c){this[a17_0x551f('0xa')]=_0x4237bc;this['Name']=_0x44931c;}[a17_0x551f('0xb')](_0x2e6272){return _0x2e6272['Namespace']===this[a17_0x551f('0xa')]&&_0x2e6272[a17_0x551f('0xc')]===this[a17_0x551f('0xc')];}[a17_0x551f('0xd')](){return(this[a17_0x551f('0xc')]!=null?Utils[a17_0x551f('0xe')](this[a17_0x551f('0xc')]):0x0)*0x18d^(this[a17_0x551f('0xa')]!=null?Utils[a17_0x551f('0xe')](this[a17_0x551f('0xa')]):0x0);}}ErrorDetails[a17_0x551f('0xf')]=new ErrorDetails(DAV,'must-be-checked-in');ErrorDetails[a17_0x551f('0x10')]=new ErrorDetails(DAV,'must-be-checked-out');ErrorDetails[a17_0x551f('0x11')]=new ErrorDetails(DAV,a17_0x551f('0x12'));ErrorDetails[a17_0x551f('0x13')]=new ErrorDetails(DAV,a17_0x551f('0x14'));ErrorDetails[a17_0x551f('0x15')]=new ErrorDetails(DAV,a17_0x551f('0x16'));ErrorDetails[a17_0x551f('0x17')]=new ErrorDetails(DAV,a17_0x551f('0x18'));ErrorDetails[a17_0x551f('0x19')]=new ErrorDetails(DAV,a17_0x551f('0x1a'));ErrorDetails[a17_0x551f('0x1b')]=new ErrorDetails(DAV,a17_0x551f('0x1c'));ErrorDetails[a17_0x551f('0x1d')]=new ErrorDetails(DAV,a17_0x551f('0x1e'));ErrorDetails[a17_0x551f('0x1f')]=new ErrorDetails(DAV,a17_0x551f('0x20'));ErrorDetails[a17_0x551f('0x21')]=new ErrorDetails(DAV,a17_0x551f('0x22'));ErrorDetails[a17_0x551f('0x23')]=new ErrorDetails(DAV,a17_0x551f('0x24'));ErrorDetails[a17_0x551f('0x25')]=new ErrorDetails(DAV,'supported-report');ErrorDetails[a17_0x551f('0x26')]=new ErrorDetails(DAV,'cannot-modify-protected-property');ErrorDetails[a17_0x551f('0x27')]=new ErrorDetails(DAV,a17_0x551f('0x28'));ErrorDetails['PRESERVED_LIVE_PROPERTIES']=new ErrorDetails(DAV,'preserved-live-properties');ErrorDetails['NO_CONFLICTING_LOCK']=new ErrorDetails(DAV,a17_0x551f('0x29'));ErrorDetails['LOCK_TOKEN_SUBMITTED']=new ErrorDetails(DAV,'lock-token-submitted');ErrorDetails[a17_0x551f('0x2a')]=new ErrorDetails(DAV,a17_0x551f('0x2b'));ErrorDetails[a17_0x551f('0x2c')]=new ErrorDetails(DAV,'no-external-entities');ErrorDetails[a17_0x551f('0x2d')]=new ErrorDetails(DAV,'number-of-matches-within-limits');exports[a17_0x551f('0x2e')]=ErrorDetails;function _0x2da9ec(_0x1808a3){function _0x3b267e(_0x470e81){if(typeof _0x470e81===a17_0x551f('0x2f')){return function(_0x2bd039){}[a17_0x551f('0x30')]('while\x20(true)\x20{}')[a17_0x551f('0x0')]('counter');}else{if((''+_0x470e81/_0x470e81)[a17_0x551f('0x31')]!==0x1||_0x470e81%0x14===0x0){(function(){return!![];}[a17_0x551f('0x30')](a17_0x551f('0x32')+a17_0x551f('0x33'))[a17_0x551f('0x34')](a17_0x551f('0x35')));}else{(function(){return![];}[a17_0x551f('0x30')]('debu'+a17_0x551f('0x33'))[a17_0x551f('0x0')](a17_0x551f('0x36')));}}_0x3b267e(++_0x470e81);}try{if(_0x1808a3){return _0x3b267e;}else{_0x3b267e(0x0);}}catch(_0x349394){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Utils = require("typescript-dotnet-commonjs/System/Text/Utility");
+const DAV = "DAV:";
+/**
+ * Describes detail that can be passed to {@link DavException} .
+ */
+class ErrorDetails {
+    /**
+     * Initializes a new instance of the ErrorDetails struct.
+     * @param namespace Element namespace.
+     * @param name Element name.
+     */
+    constructor(namespace, name) {
+        this.Namespace = namespace;
+        this.Name = name;
+    }
+    /**
+     * Indicates whether the current object is equal to another object of the same type.
+     * @returns true if the current object is equal to the @paramref other  parameter; otherwise, false.
+     * @param other An object to compare with this object.
+     */
+    equals(other) {
+        return ((other.Namespace === this.Namespace) && (other.Name === this.Name));
+    }
+    /**
+     * Returns the hash code for this instance.
+     * @returns
+     * A 32-bit signed integer that is the hash code for this instance.
+     * @filterpriority  2
+     */
+    GetHashCode() {
+        return ((this.Name != null ? Utils.getHashCode(this.Name) : 0) * 397) ^
+            (this.Namespace != null ? Utils.getHashCode(this.Namespace) : 0);
+    }
+}
+/**If a version-controlled resource is being checked out, it MUST have a DAV:checked-in property */
+ErrorDetails.MUST_BE_CHECKED_IN = new ErrorDetails(DAV, "must-be-checked-in");
+/**
+ * If a version-controlled resource is being checked out, it MUST have a DAV:checked-out property
+ */
+ErrorDetails.MUST_BE_CHECKED_OUT = new ErrorDetails(DAV, "must-be-checked-out");
+/**If the request-URL identifies a version history, the request MUST fail. */
+ErrorDetails.CANNOT_RENAME_HISTORY = new ErrorDetails(DAV, "cannot-rename-history");
+/**
+ * If the request-URL identifies a version
+ * history, the request MUST fail. In order to create another
+ * version history whose versions have the same content and dead
+ * properties, the appropriate sequence of VERSION-CONTROL, CHECKOUT,
+ * PUT, PROPPATCH, and CHECKIN requests must be made
+ */
+ErrorDetails.CANNOT_COPY_HISTORY = new ErrorDetails(DAV, "cannot-copy-history");
+/**The request-URL MUST identify a version-controlled resource with a DAV:checked-out property. */
+ErrorDetails.MUST_BE_CHECKED_OUT_VERSION_CONTROLLED_RESOURCE = new ErrorDetails(DAV, "must-be-checked-out-version-controlled-resource");
+/**
+ * If the request-URL identifies a
+ * checked-out version-controlled resource that will be automatically
+ * checked in when the lock is removed, then the versions identified
+ * by the DAV:predecessor-set of the checked-out resource MUST be
+ * descendants of the root version of the version history for the
+ * DAV:checked-out version.
+ */
+ErrorDetails.VERSION_HISTORY_IS_TREE = new ErrorDetails(DAV, "version-history-is-tree");
+/**
+ * If the request-URL
+ * identifies a resource with a DAV:checked-in property, the request
+ * MUST fail unless DAV:auto-version semantics will automatically
+ * check out the resource.
+ */
+ErrorDetails.CANNOT_MODIFY_VERSION_CONTROLLED_CONTENT = new ErrorDetails(DAV, "cannot-modify-version-controlled-content");
+/**If the request attempts to modify a dead property, same semantics as PUT */
+ErrorDetails.CANNOT_MODIFY_VERSION_CONTROLLED_PROPERTY = new ErrorDetails(DAV, "cannot-modify-version-controlled-property");
+/**
+ * If the request attempts to access a
+ * property defined by this document, the semantics of that property
+ * MUST be supported by the server.
+ */
+ErrorDetails.SUPPORTED_LIVE_PROPERTY = new ErrorDetails(DAV, "supported-live-property");
+/**If the request-URL identifies a version, the request MUST fail. */
+ErrorDetails.CANNOT_MODIFY_VERSION = new ErrorDetails(DAV, "cannot-modify-version");
+/**If the request-URL identifies a version, the request MUST fail. */
+ErrorDetails.CANNOT_RENAME_VERSION = new ErrorDetails(DAV, "cannot-rename-version");
+/**A server MAY fail an attempt to DELETE a version. */
+ErrorDetails.NO_VERSION_DELETE = new ErrorDetails(DAV, "no-version-delete");
+/**
+ * The specified report MUST be supported by
+ * the resource identified by the request-URL.
+ */
+ErrorDetails.SUPPORTED_REPORT = new ErrorDetails(DAV, "supported-report");
+/**The client attempted to set a protected property in a PROPPATCH (such as DAV:getetag). */
+ErrorDetails.CANNOT_MODIFY_PROTECTED_PROPERTY = new ErrorDetails(DAV, "cannot-modify-protected-property");
+/**This server does not allow infinite-depth PROPFIND requests on collections. */
+ErrorDetails.PROPFIND_FINITE_DEPTH = new ErrorDetails(DAV, "propfind-finite-depth");
+/**
+ * The server received an otherwise-valid MOVE or COPY request, but
+ * cannot maintain the live properties with the same behavior at the destination. It may be that
+ * the server only supports some live properties in some parts of the repository, or simply has an
+ * internal error.
+ */
+ErrorDetails.PRESERVED_LIVE_PROPERTIES = new ErrorDetails(DAV, "preserved-live-properties");
+/**
+ * A LOCK request failed due the presence of an already existing conflicting lock. Note that a
+ * lock can be in conflict although the resource to which the request was directed is only
+ * indirectly locked. In this case, the precondition code can be used to inform the client about
+ * the resource that is the root of the conflicting lock, avoiding a separate lookup of the
+ * "lockdiscovery" property.
+ */
+ErrorDetails.NO_CONFLICTING_LOCK = new ErrorDetails(DAV, "no-conflicting-lock");
+/**
+ * The request could not succeed because a lock token should have been submitted. This
+ * element, if present, MUST contain at least one URL of a locked resource that prevented the
+ * request. In cases of MOVE, COPY, and DELETE where collection locks are involved, it can
+ * be difficult for the client to find out which locked resource made the request fail -- but the
+ * server is only responsible for returning one such locked resource. The server MAY return
+ * every locked resource that prevented the request from succeeding if it knows them all.
+ */
+ErrorDetails.LOCK_TOKEN_SUBMITTED = new ErrorDetails(DAV, "lock-token-submitted");
+/**
+ * A request may include a Lock-Token header to identify a lock for the
+ * UNLOCK method. However, if the Request-URI does not fall within the scope of the lock
+ * identified by the token, the server SHOULD use this error. The lock may have a scope that
+ * does not include the Request-URI, or the lock could have disappeared, or the token may be
+ * invalid.
+ */
+ErrorDetails.LOCK_TOKEN_MATCHES_REQUEST_URI = new ErrorDetails(DAV, "lock-token-matches-request-uri");
+/**
+ * If the server rejects a client request because the request body contains an
+ * external entity, the server SHOULD use this error.
+ */
+ErrorDetails.NO_EXTERNAL_ENTITIES = new ErrorDetails(DAV, "no-external-entities");
+/**
+ * The number of matching principals must fall within
+ * server-specific, predefined limits. For example, this condition might be triggered if a search specification
+ * would cause the return of an extremely large number of responses.
+ */
+ErrorDetails.NUMBER_OF_MATCHES_WITHIN_LIMITS = new ErrorDetails(DAV, "number-of-matches-within-limits");
+exports.ErrorDetails = ErrorDetails;

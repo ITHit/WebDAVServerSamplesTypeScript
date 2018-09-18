@@ -1,5 +1,5 @@
-import { IHierarchyItem } from "../IHierarchyItem";
 import { DavContextBase } from "../DavContextBase";
+import { IHierarchyItem } from "../IHierarchyItem";
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */

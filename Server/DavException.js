@@ -1,1 +1,109 @@
-var a9_0x1171=['UmVuZGVySW5saW5l','c3RhcnRFbGVtZW50TlM=','RVJST1I=','TmFtZQ==','Q2FuR3JvdXBXaXRo','ZXF1YWxz','c3RyaW5n','Y29uc3RydWN0b3I=','Y291bnRlcg==','bGVuZ3Ro','Y2FsbA==','YWN0aW9u','ZGVidQ==','Z2dlcg==','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','dGVzdA==','aW5wdXQ=','ZGVmaW5lUHJvcGVydHk=','X19lc01vZHVsZQ==','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0V4Y2VwdGlvbg==','eG1sLXdyaXRlcg==','RXhjZXB0aW9u','Q29kZQ==','Y29kZQ==','RGF2U3RhdHVz','SU5URVJOQUxfRVJST1I=','RXJyb3JEZXRhaWxz','UmVuZGVy','U2V0U3RhdHVz','UmVzcG9uc2U=','RW5naW5l','Q29udGVudEVuY29kaW5n','d3JpdGU=','Q29uc3RhbnRz','REFW','d3JpdGVFbGVtZW50TlM=','bWVzc2FnZQ==','WG1sRWxlbWVudHM=','UkVTUE9OU0VERVNDUklQVElPTg==','ZW5kRG9jdW1lbnQ=','Zmx1c2g='];(function(_0x353b06,_0x34c81b){var _0x447d23=function(_0x18126c){while(--_0x18126c){_0x353b06['push'](_0x353b06['shift']());}};_0x447d23(++_0x34c81b);}(a9_0x1171,0x167));var a9_0x37eb=function(_0x1a1681,_0x1a487c){_0x1a1681=_0x1a1681-0x0;var _0x570fe3=a9_0x1171[_0x1a1681];if(a9_0x37eb['aNmlhQ']===undefined){(function(){var _0xb45d25=function(){var _0x75cc05;try{_0x75cc05=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x9f7bd3){_0x75cc05=window;}return _0x75cc05;};var _0xbbdaa=_0xb45d25();var _0x63583='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0xbbdaa['atob']||(_0xbbdaa['atob']=function(_0x3c5925){var _0x164838=String(_0x3c5925)['replace'](/=+$/,'');for(var _0x4edfd0=0x0,_0x3d672a,_0x503a42,_0x491693=0x0,_0x249bf2='';_0x503a42=_0x164838['charAt'](_0x491693++);~_0x503a42&&(_0x3d672a=_0x4edfd0%0x4?_0x3d672a*0x40+_0x503a42:_0x503a42,_0x4edfd0++%0x4)?_0x249bf2+=String['fromCharCode'](0xff&_0x3d672a>>(-0x2*_0x4edfd0&0x6)):0x0){_0x503a42=_0x63583['indexOf'](_0x503a42);}return _0x249bf2;});}());a9_0x37eb['LENxRM']=function(_0x2cc94c){var _0x253fb5=atob(_0x2cc94c);var _0x438e8a=[];for(var _0x5a7f06=0x0,_0x411771=_0x253fb5['length'];_0x5a7f06<_0x411771;_0x5a7f06++){_0x438e8a+='%'+('00'+_0x253fb5['charCodeAt'](_0x5a7f06)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x438e8a);};a9_0x37eb['hIdbAL']={};a9_0x37eb['aNmlhQ']=!![];}var _0x53bf10=a9_0x37eb['hIdbAL'][_0x1a1681];if(_0x53bf10===undefined){_0x570fe3=a9_0x37eb['LENxRM'](_0x570fe3);a9_0x37eb['hIdbAL'][_0x1a1681]=_0x570fe3;}else{_0x570fe3=_0x53bf10;}return _0x570fe3;};var _0x5dfc3a=function(){var _0x48d8b5=!![];return function(_0x2e8db0,_0x26a176){var _0x1c92b6=_0x48d8b5?function(){if(_0x26a176){var _0x2fdfab=_0x26a176['apply'](_0x2e8db0,arguments);_0x26a176=null;return _0x2fdfab;}}:function(){};_0x48d8b5=![];return _0x1c92b6;};}();(function(){_0x5dfc3a(this,function(){var _0x29535e=new RegExp(a9_0x37eb('0x0'));var _0x33fd7f=new RegExp(a9_0x37eb('0x1'),'i');var _0x41c5b3=_0x1266b2('init');if(!_0x29535e[a9_0x37eb('0x2')](_0x41c5b3+'chain')||!_0x33fd7f[a9_0x37eb('0x2')](_0x41c5b3+a9_0x37eb('0x3'))){_0x41c5b3('0');}else{_0x1266b2();}})();}());'use strict';Object[a9_0x37eb('0x4')](exports,a9_0x37eb('0x5'),{'value':!![]});const Exception_1=require(a9_0x37eb('0x6'));const DavStatus_1=require('./DavStatus');const WebdavConstants=require('./Impl/WebdavConstants');const XmlWriter=require(a9_0x37eb('0x7'));class DavException extends Exception_1[a9_0x37eb('0x8')]{get[a9_0x37eb('0x9')](){return this['code'];}set[a9_0x37eb('0x9')](_0x22b8e0){this[a9_0x37eb('0xa')]=_0x22b8e0;}constructor(_0x24e1c2,_0xa960f5,_0x3bcf21,_0x17420b){super(_0x24e1c2,_0xa960f5,_0x35b2ec=>{if(_0x3bcf21){_0x35b2ec[a9_0x37eb('0xa')]=_0x3bcf21;}else{_0x35b2ec['code']=DavStatus_1[a9_0x37eb('0xb')][a9_0x37eb('0xc')];}if(_0x17420b){_0x35b2ec[a9_0x37eb('0xd')]=_0x17420b;}});}[a9_0x37eb('0xe')](_0x2d7202,_0x46e592,_0x49d369){_0x2d7202[a9_0x37eb('0xf')](this[a9_0x37eb('0x9')]);if(_0x49d369){_0x2d7202[a9_0x37eb('0x10')]['ContentType']='application/xml;\x20charset='+_0x2d7202[a9_0x37eb('0x11')][a9_0x37eb('0x12')];_0x2d7202['Response']['ContentEncoding']=_0x2d7202[a9_0x37eb('0x11')][a9_0x37eb('0x12')];const _0x54e334=new XmlWriter(_0x2d7202[a9_0x37eb('0x11')]['OutputXmlFormatting'],(_0x309606,_0x40bf8c)=>{_0x2d7202[a9_0x37eb('0x10')][a9_0x37eb('0x13')](_0x309606,_0x40bf8c);});_0x54e334['startDocument']();_0x54e334['startElementNS']('d',WebdavConstants['XmlElements']['ERROR'],WebdavConstants[a9_0x37eb('0x14')][a9_0x37eb('0x15')]);if(this[a9_0x37eb('0xd')]!=null){_0x54e334[a9_0x37eb('0x16')](null,this['ErrorDetails']['Name'],this[a9_0x37eb('0xd')]['Namespace'],'');}if(this[a9_0x37eb('0x17')]){_0x54e334[a9_0x37eb('0x16')]('d',WebdavConstants[a9_0x37eb('0x18')][a9_0x37eb('0x19')],WebdavConstants[a9_0x37eb('0x14')][a9_0x37eb('0x15')],this[a9_0x37eb('0x17')]);}_0x54e334['endElement']();_0x54e334[a9_0x37eb('0x1a')]();_0x54e334[a9_0x37eb('0x1b')]();}}[a9_0x37eb('0x1c')](_0x4585b7,_0x40e3c8){if(this[a9_0x37eb('0xd')]){_0x4585b7[a9_0x37eb('0x1d')]('d',WebdavConstants[a9_0x37eb('0x18')][a9_0x37eb('0x1e')],WebdavConstants[a9_0x37eb('0x14')][a9_0x37eb('0x15')]);_0x4585b7[a9_0x37eb('0x16')](null,this['ErrorDetails'][a9_0x37eb('0x1f')],this[a9_0x37eb('0xd')]['Namespace'],'');_0x4585b7['endElement']();}}[a9_0x37eb('0x20')](_0xce0839){if(_0xce0839==null){return![];}if(_0xce0839==this){return!![];}return _0xce0839[a9_0x37eb('0xa')][a9_0x37eb('0x21')](this['code'])&&(this[a9_0x37eb('0xd')]!=null&&_0xce0839[a9_0x37eb('0xd')]!=null&&_0xce0839[a9_0x37eb('0xd')][a9_0x37eb('0x21')](this[a9_0x37eb('0xd')]))&&_0xce0839[a9_0x37eb('0x17')]==this['message'];}}exports['DavException']=DavException;function _0x1266b2(_0x25437c){function _0x380ab1(_0x6b4947){if(typeof _0x6b4947===a9_0x37eb('0x22')){return function(_0x3ee8dd){}[a9_0x37eb('0x23')]('while\x20(true)\x20{}')['apply'](a9_0x37eb('0x24'));}else{if((''+_0x6b4947/_0x6b4947)[a9_0x37eb('0x25')]!==0x1||_0x6b4947%0x14===0x0){(function(){return!![];}[a9_0x37eb('0x23')]('debu'+'gger')[a9_0x37eb('0x26')](a9_0x37eb('0x27')));}else{(function(){return![];}[a9_0x37eb('0x23')](a9_0x37eb('0x28')+a9_0x37eb('0x29'))[a9_0x37eb('0x2a')]('stateObject'));}}_0x380ab1(++_0x6b4947);}try{if(_0x25437c){return _0x380ab1;}else{_0x380ab1(0x0);}}catch(_0x217274){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Exception_1 = require("typescript-dotnet-commonjs/System/Exception");
+const XmlWriter = require("xml-writer");
+const DavStatus_1 = require("./DavStatus");
+const WebdavConstants = require("./Impl/WebdavConstants");
+/**
+ * Exception which can be thrown by WebDAV interface implementations.
+ * @remarks
+ * There are some other exceptions derived from this one which contain specific
+ * fields, like {@link NeedPrivilegesException}.
+ */
+class DavException extends Exception_1.Exception {
+    /**HTTP status code and description that will be sent to client. */
+    get Code() {
+        return this.code;
+    }
+    set Code(value) {
+        this.code = value;
+    }
+    /**
+     * Initializes a new instance of the {@link DavException} class with a specified error message,
+     * description, status code and a reference to the inner exception that is the cause of this exception.
+     * @param message The message that describes the error.
+     * @param status {@link DavStatus} instance that descrives the error.
+     * @param innerException The exception that is the cause of the current exception,
+     * or a null reference (Nothing in Visual Basic) if no inner exception is specified.
+     * @param errorDetails XML element name and namespace which provides more specific information about
+     * error.
+     */
+    constructor(message, innerException, status, errorDetails) {
+        super(message, innerException, (ex) => {
+            if (status) {
+                ex.code = status;
+            }
+            else {
+                ex.code = DavStatus_1.DavStatus.INTERNAL_ERROR;
+            }
+            if (errorDetails) {
+                ex.ErrorDetails = errorDetails;
+            }
+        });
+    }
+    /**
+     * Writes exception to the output writer.
+     * @param context Instance of {@link DavContextBase}.
+     * @param item Instance of {@link IHierarchyItem}.
+     * @param renderContent Some methods, like "HEAD" forbid any content in response, this parameter will
+     * be false in this
+     * case and nothing shall be written in the response.
+     * @remarks Full response shall be formed, including HTTP status and headers.
+     */
+    Render(context, item, renderContent) {
+        context.SetStatus(this.Code);
+        if (renderContent) {
+            context.Response.ContentType = ("application/xml; charset=" + context.Engine.ContentEncoding);
+            context.Response.ContentEncoding = context.Engine.ContentEncoding;
+            const writer = new XmlWriter(context.Engine.OutputXmlFormatting, (string, encoding) => {
+                context.Response.write(string, encoding);
+            });
+            writer.startDocument();
+            writer.startElementNS("d", WebdavConstants.XmlElements.ERROR, WebdavConstants.Constants.DAV);
+            if (this.ErrorDetails != null) {
+                writer.writeElementNS(null, this.ErrorDetails.Name, this.ErrorDetails.Namespace, '');
+            }
+            if (this.message) {
+                writer.writeElementNS("d", WebdavConstants.XmlElements.RESPONSEDESCRIPTION, WebdavConstants.Constants.DAV, this.message);
+            }
+            writer.endElement();
+            //  error
+            writer.endDocument();
+            writer.flush();
+        }
+    }
+    /**
+     * Writes exception as part of MultistatusException.
+     * @param writer {@link XmlWriter} to which to write exception.
+     * @param context Instance of {@link DavContextBase} .
+     * @remarks Only body shall be written. Text in {@link Exception.message}
+     * shall be omitted because it will be written as part of {@link MultistatusException} exception.
+     */
+    RenderInline(writer, context) {
+        if (this.ErrorDetails) {
+            writer.startElementNS("d", WebdavConstants.XmlElements.ERROR, WebdavConstants.Constants.DAV);
+            writer.writeElementNS(null, this.ErrorDetails.Name, this.ErrorDetails.Namespace, '');
+            writer.endElement();
+        }
+    }
+    /**
+     * Determines whether two errors for different properties for the same item
+     * can be grouped into one as part of Multistatus response.
+     * @remarks This method shall return true if both exceptions would produce the same output in @see Render
+     * method not taking into account property name.
+     * @param other Exception to test.
+     * @returns true if exceptions can be reported as one.
+     */
+    CanGroupWith(other) {
+        if (other == null) {
+            return false;
+        }
+        if (other == this) {
+            return true;
+        }
+        return other.code.equals(this.code) &&
+            (this.ErrorDetails != null && other.ErrorDetails != null && other.ErrorDetails.equals(this.ErrorDetails)) &&
+            other.message == this.message;
+    }
+}
+exports.DavException = DavException;

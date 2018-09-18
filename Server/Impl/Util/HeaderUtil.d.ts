@@ -2,8 +2,8 @@
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
 import { DavContextBase } from "../../DavContextBase";
-import { IHierarchyItem } from "../../IHierarchyItem";
 import { DavStatus } from "../../DavStatus";
+import { IHierarchyItem } from "../../IHierarchyItem";
 export declare class HeaderUtil {
     static WriteEtag(context: DavContextBase, item: IHierarchyItem): void;
     static WriteLastModified(context: DavContextBase, item: IHierarchyItem): void;

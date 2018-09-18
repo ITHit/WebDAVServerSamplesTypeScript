@@ -4,6 +4,8 @@
 import { IEquatable } from "typescript-dotnet-commonjs/System/IEquatable";
 /**Represents HTTP status code with description. */
 export declare class DavStatus implements IEquatable<DavStatus> {
+    /**Formats status as HTTP string. */
+    readonly HttpString: string;
     /**
      * Successful result.
      */
@@ -87,14 +89,6 @@ export declare class DavStatus implements IEquatable<DavStatus> {
     Code: number;
     /**Status description. */
     Description: string;
-    /**Formats status as HTTP string. */
-    readonly HttpString: string;
-    /**
-     * Initializes a new instance of the DavStatus struct.
-     * @param code HTTP status code.
-     * @param description Status description.
-     */
-    constructor(code: number, description: string);
     /**
      * Equality operator.
      * @param left Left operand.
@@ -109,6 +103,12 @@ export declare class DavStatus implements IEquatable<DavStatus> {
      * @returns  @c  true if two objects are not equal.
      */
     static Unequality(left: DavStatus, right: DavStatus): boolean;
+    /**
+     * Initializes a new instance of the DavStatus struct.
+     * @param code HTTP status code.
+     * @param description Status description.
+     */
+    constructor(code: number, description: string);
     /**
      * Indicates whether this instance and a specified object are equal.
      * @returns true if obj and this instance are the same type and represent the same value; otherwise, false.

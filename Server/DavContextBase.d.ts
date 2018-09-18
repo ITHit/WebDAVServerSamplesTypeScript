@@ -2,10 +2,10 @@
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
 import { Exception } from "typescript-dotnet-commonjs/System/Exception";
+import { DavEngine } from "./DavEngine";
+import { DavStatus } from "./DavStatus";
 import { DavRequest } from "./Extensibility/DavRequest";
 import { DavResponse } from "./Extensibility/DavResponse";
-import DavEngine from "./DavEngine";
-import { DavStatus } from "./DavStatus";
 /**
  * Serves as the abstract base class for WebDAV context.
  * @remarks Context holds request, response and provides item factory method {@link DavContextBase.GetHierarchyItemAsync} .
@@ -19,7 +19,6 @@ import { DavStatus } from "./DavStatus";
  * You must create a separate instance of {@link DavContextBase}  class for each request.
  */
 export declare abstract class DavContextBase {
-    private beforeResponseWasCalled;
     /**
      * Exception which occurred during request execution.
      * @remarks This can be either exception raised by your implementation or exception
@@ -43,15 +42,16 @@ export declare abstract class DavContextBase {
      */
     Response: DavResponse;
     /**
+     * Instance of DavEngine which is currently executing the request.
+     */
+    Engine: DavEngine;
+    private beforeResponseWasCalled;
+    /**
      * Initializes a new instance of the WebDAV context. Initializes {@link DavRequest} and {@link DavResponse} properties.
      * @param request {@link DavRequest}  implementation.
      * @param response {@link DavResponse}  implementation.
      */
     constructor(request: DavRequest, response: DavResponse);
-    /**
-     * Instance of DavEngine which is currently executing the request.
-     */
-    Engine: DavEngine;
     /**
      * This method is called right before engine starts writing response.
      * @remarks Specifically this method is called when the request is parsed, engine has

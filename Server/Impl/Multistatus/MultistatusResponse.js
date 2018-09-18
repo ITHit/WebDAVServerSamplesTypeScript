@@ -1,1 +1,102 @@
-var a36_0x2caa=['Y29uc3RydWN0b3I=','bGVuZ3Ro','Z2dlcg==','Y2FsbA==','ZGVidQ==','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','aW5pdA==','Y2hhaW4=','dGVzdA==','aW5wdXQ=','ZGVmaW5lUHJvcGVydHk=','X19lc01vZHVsZQ==','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0xpc3Q=','Li4vQXJndW1lbnRVdGls','Li9Qcm9wU3RhdA==','cmVzcG9uc2Vz','TGlzdA==','Zm9yRWFjaA==','YWRk','QWRkUmVzcG9uc2U=','QXJndW1lbnRVdGls','Q2hlY2tBcmd1bWVudE5vdE51bGw=','cGF0aA==','Y29kZQ==','SXRlbVBhdGg=','c3RyaW5nRXF1YWxz','UmVzcG9uc2VEZXNjcmlwdGlvbg==','Q29kZQ==','SXRlbVJlc3BvbnNl','cmVzcG9uc2VEZXNjcmlwdGlvbg==','UHJvcFN0YXRz','bW92ZU5leHQ=','Y3VycmVudA==','UHJvcFN0YXQ=','RXhjZXB0aW9u','Q2FuR3JvdXBXaXRo','UHJvcFN0YXRSZXNwb25zZQ=='];(function(_0x3cf9a2,_0x25a64b){var _0x104572=function(_0x4f0442){while(--_0x4f0442){_0x3cf9a2['push'](_0x3cf9a2['shift']());}};_0x104572(++_0x25a64b);}(a36_0x2caa,0x10f));var a36_0x3052=function(_0x18addc,_0x343d06){_0x18addc=_0x18addc-0x0;var _0xf33417=a36_0x2caa[_0x18addc];if(a36_0x3052['WidBzB']===undefined){(function(){var _0x21f72f;try{var _0x406bec=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x21f72f=_0x406bec();}catch(_0x185254){_0x21f72f=window;}var _0x378b57='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x21f72f['atob']||(_0x21f72f['atob']=function(_0x5ad0bf){var _0x2fdca1=String(_0x5ad0bf)['replace'](/=+$/,'');for(var _0x281bb8=0x0,_0x4418f1,_0x26a069,_0x5e388e=0x0,_0x1aef1d='';_0x26a069=_0x2fdca1['charAt'](_0x5e388e++);~_0x26a069&&(_0x4418f1=_0x281bb8%0x4?_0x4418f1*0x40+_0x26a069:_0x26a069,_0x281bb8++%0x4)?_0x1aef1d+=String['fromCharCode'](0xff&_0x4418f1>>(-0x2*_0x281bb8&0x6)):0x0){_0x26a069=_0x378b57['indexOf'](_0x26a069);}return _0x1aef1d;});}());a36_0x3052['HZPNam']=function(_0x23baa4){var _0xc0776c=atob(_0x23baa4);var _0x20eff3=[];for(var _0x3059db=0x0,_0x566dc2=_0xc0776c['length'];_0x3059db<_0x566dc2;_0x3059db++){_0x20eff3+='%'+('00'+_0xc0776c['charCodeAt'](_0x3059db)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x20eff3);};a36_0x3052['aXwDce']={};a36_0x3052['WidBzB']=!![];}var _0x792070=a36_0x3052['aXwDce'][_0x18addc];if(_0x792070===undefined){_0xf33417=a36_0x3052['HZPNam'](_0xf33417);a36_0x3052['aXwDce'][_0x18addc]=_0xf33417;}else{_0xf33417=_0x792070;}return _0xf33417;};var _0x245dc6=function(){var _0x1e5e81=!![];return function(_0x13e19e,_0x79802e){var _0xea3895=_0x1e5e81?function(){if(_0x79802e){var _0x4fb5a5=_0x79802e[a36_0x3052('0x0')](_0x13e19e,arguments);_0x79802e=null;return _0x4fb5a5;}}:function(){};_0x1e5e81=![];return _0xea3895;};}();(function(){_0x245dc6(this,function(){var _0x585bfa=new RegExp(a36_0x3052('0x1'));var _0x1c401d=new RegExp('\x5c+\x5c+\x20*(?:_0x(?:[a-f0-9]){4,6}|(?:\x5cb|\x5cd)[a-z0-9]{1,4}(?:\x5cb|\x5cd))','i');var _0x4f0d16=_0x17a0d7(a36_0x3052('0x2'));if(!_0x585bfa['test'](_0x4f0d16+a36_0x3052('0x3'))||!_0x1c401d[a36_0x3052('0x4')](_0x4f0d16+a36_0x3052('0x5'))){_0x4f0d16('0');}else{_0x17a0d7();}})();}());'use strict';Object[a36_0x3052('0x6')](exports,a36_0x3052('0x7'),{'value':!![]});const List_1=require(a36_0x3052('0x8'));const ArgumentUtil_1=require(a36_0x3052('0x9'));const ItemResponse_1=require('./ItemResponse');const PropStatResponse_1=require('./PropStatResponse');const PropStat_1=require(a36_0x3052('0xa'));class MultistatusResponse{constructor(){this[a36_0x3052('0xb')]=new List_1[(a36_0x3052('0xc'))]();this['responseDescription']='';}['AddResponses'](_0x1af4dd){_0x1af4dd[a36_0x3052('0xd')](_0x329f33=>{this[a36_0x3052('0xb')][a36_0x3052('0xe')](_0x329f33);});}[a36_0x3052('0xf')](_0x428fb0,_0x1b9da0,_0x430617='',_0x1bc181='',_0x3e5e87,_0x42b1bf){if((_0x3e5e87==null||_0x42b1bf==null)&&_0x1b9da0!=null){ArgumentUtil_1[a36_0x3052('0x10')][a36_0x3052('0x11')](_0x428fb0,a36_0x3052('0x12'));ArgumentUtil_1['ArgumentUtil']['CheckArgumentNotNull'](_0x1b9da0,a36_0x3052('0x13'));let _0x58edf0=![];this['responses']['forEach'](_0x1d15d9=>{let _0x5e3ec4=_0x1d15d9;if(_0x1d15d9[a36_0x3052('0x14')]==_0x428fb0&&(this[a36_0x3052('0x15')](this['responseDescription'],_0x1d15d9[a36_0x3052('0x16')])&&_0x5e3ec4[a36_0x3052('0x17')]==_0x1b9da0)){if(_0x430617!=null){_0x5e3ec4['Hrefs']['add'](_0x430617);}_0x58edf0=!![];return;}});if(!_0x58edf0){let _0x4b8fb9=new ItemResponse_1[(a36_0x3052('0x18'))](_0x428fb0,_0x1b9da0,_0x430617,this[a36_0x3052('0x19')]);this['responses'][a36_0x3052('0xe')](_0x4b8fb9);}}else if(_0x3e5e87!=null&&_0x42b1bf!=null){ArgumentUtil_1['ArgumentUtil']['CheckArgumentNotNull'](_0x428fb0,a36_0x3052('0x12'));ArgumentUtil_1[a36_0x3052('0x10')][a36_0x3052('0x11')](_0x3e5e87,'property');let _0x3dd1c1=![];this[a36_0x3052('0xb')][a36_0x3052('0xd')](_0x4b8fb9=>{let _0x43c1a3=_0x4b8fb9;if(_0x43c1a3==null){return;}if(_0x4b8fb9[a36_0x3052('0x14')]==_0x428fb0&&this['stringEquals'](this[a36_0x3052('0x19')],_0x4b8fb9['ResponseDescription'])){let _0x45c718=![];const _0x46240=_0x43c1a3[a36_0x3052('0x1a')]['getEnumerator']();while(_0x46240[a36_0x3052('0x1b')]()){const _0x1ef72f=_0x46240[a36_0x3052('0x1c')]||new PropStat_1[(a36_0x3052('0x1d'))](new List_1[(a36_0x3052('0xc'))]());if(_0x1ef72f['Exception']==null&&_0x42b1bf==null||_0x1ef72f[a36_0x3052('0x1e')]!=null&&_0x1ef72f[a36_0x3052('0x1e')][a36_0x3052('0x1f')](_0x42b1bf)){_0x1ef72f['Properties'][a36_0x3052('0xe')](_0x3e5e87);_0x45c718=!![];_0x3dd1c1=!![];return;}}if(!_0x45c718){let _0x1ebf8a=new List_1[(a36_0x3052('0xc'))]();_0x1ebf8a[a36_0x3052('0xe')](_0x3e5e87);let _0x1ef72f=new PropStat_1['PropStat'](_0x1ebf8a,_0x42b1bf);_0x43c1a3['PropStats'][a36_0x3052('0xe')](_0x1ef72f);}_0x3dd1c1=!![];return;}});if(!_0x3dd1c1){let _0x6adc7c=new List_1['List']();_0x6adc7c[a36_0x3052('0xe')](_0x3e5e87);let _0x377286=new PropStat_1['PropStat'](_0x6adc7c,_0x42b1bf);let _0x53390f=new List_1[(a36_0x3052('0xc'))]();_0x53390f[a36_0x3052('0xe')](_0x377286);this[a36_0x3052('0xb')]['add'](new PropStatResponse_1[(a36_0x3052('0x20'))](_0x428fb0,_0x53390f,''));}}}get['Responses'](){return this[a36_0x3052('0xb')]['toArray']();}get[a36_0x3052('0x16')](){return this[a36_0x3052('0x19')];}set['ResponseDescription'](_0x4ffb62){this[a36_0x3052('0x19')]=_0x4ffb62;}[a36_0x3052('0x15')](_0x5eb54e,_0x1fd8e8){return _0x5eb54e==null&&_0x1fd8e8==null||_0x5eb54e!=null&&_0x5eb54e==_0x1fd8e8;}}exports['MultistatusResponse']=MultistatusResponse;function _0x17a0d7(_0x503d85){function _0x4395d3(_0x18b612){if(typeof _0x18b612==='string'){return function(_0x54a0ed){}[a36_0x3052('0x21')]('while\x20(true)\x20{}')[a36_0x3052('0x0')]('counter');}else{if((''+_0x18b612/_0x18b612)[a36_0x3052('0x22')]!==0x1||_0x18b612%0x14===0x0){(function(){return!![];}[a36_0x3052('0x21')]('debu'+a36_0x3052('0x23'))[a36_0x3052('0x24')]('action'));}else{(function(){return![];}[a36_0x3052('0x21')](a36_0x3052('0x25')+a36_0x3052('0x23'))[a36_0x3052('0x0')]('stateObject'));}}_0x4395d3(++_0x18b612);}try{if(_0x503d85){return _0x4395d3;}else{_0x4395d3(0x0);}}catch(_0x162ce7){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const List_1 = require("typescript-dotnet-commonjs/System/Collections/List");
+const ArgumentUtil_1 = require("../ArgumentUtil");
+const ItemResponse_1 = require("./ItemResponse");
+const PropStat_1 = require("./PropStat");
+const PropStatResponse_1 = require("./PropStatResponse");
+class MultistatusResponse {
+    constructor() {
+        this.responses = new List_1.List();
+        this.responseDescription = '';
+    }
+    AddResponses(responses) {
+        responses.forEach(item => {
+            this.responses.add(item);
+        });
+    }
+    /**
+     * Adds new responses to the private collection in this class.
+     */
+    AddResponse(path, code, href = '', responseDescription = '', property, exception) {
+        if ((property == null || exception == null) && code != null) {
+            ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(path, "path");
+            ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(code, "code");
+            let itemFound = false;
+            this.responses.forEach(resp => {
+                const itemResp = (resp);
+                if ((resp.ItemPath == path)
+                    && (this.stringEquals(this.responseDescription, resp.ResponseDescription)
+                        && (itemResp.Code == code))) {
+                    if (href != null) {
+                        itemResp.Hrefs.add(href);
+                    }
+                    itemFound = true;
+                    return;
+                }
+            });
+            if (!itemFound) {
+                const resp = new ItemResponse_1.ItemResponse(path, code, href, this.responseDescription);
+                this.responses.add(resp);
+            }
+        }
+        else if (property != null && exception != null) {
+            ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(path, "path");
+            ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(property, "property");
+            let itemFound = false;
+            this.responses.forEach(resp => {
+                const propStatResp = (resp);
+                if (propStatResp == null) {
+                    return;
+                }
+                if (resp.ItemPath == path && this.stringEquals(this.responseDescription, resp.ResponseDescription)) {
+                    let propStatFound = false;
+                    const propStatsEnumerator = propStatResp.PropStats.getEnumerator();
+                    while (propStatsEnumerator.moveNext()) {
+                        const propStat = propStatsEnumerator.current || new PropStat_1.PropStat(new List_1.List());
+                        if (propStat.Exception == null && exception == null
+                            || propStat.Exception != null
+                                && propStat.Exception.CanGroupWith(exception)) {
+                            propStat.Properties.add(property);
+                            propStatFound = true;
+                            itemFound = true;
+                            return;
+                        }
+                    }
+                    if (!propStatFound) {
+                        const listPropValue = new List_1.List();
+                        listPropValue.add(property);
+                        const propStat = new PropStat_1.PropStat(listPropValue, exception);
+                        propStatResp.PropStats.add(propStat);
+                    }
+                    itemFound = true;
+                    return;
+                }
+            });
+            if (!itemFound) {
+                const listPropValue = new List_1.List();
+                listPropValue.add(property);
+                const propStat = new PropStat_1.PropStat(listPropValue, exception);
+                const listPropStat = new List_1.List();
+                listPropStat.add(propStat);
+                this.responses.add(new PropStatResponse_1.PropStatResponse(path, listPropStat, ''));
+            }
+        }
+    }
+    get Responses() {
+        return this.responses.toArray();
+    }
+    get ResponseDescription() {
+        return this.responseDescription;
+    }
+    set ResponseDescription(value) {
+        this.responseDescription = value;
+    }
+    stringEquals(s1, s2) {
+        return (((s1 == null)
+            && (s2 == null))
+            || ((s1 != null)
+                && (s1 == s2)));
+    }
+}
+exports.MultistatusResponse = MultistatusResponse;

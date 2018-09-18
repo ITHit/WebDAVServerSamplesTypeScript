@@ -1,1 +1,259 @@
-var a18_0x11aa=['RGVwdGg=','SW5maW5pdHk=','ZGVwdGg=','dG9Mb3dlckNhc2U=','SU5GSU5JVFk=','WmVybw==','RGF2RXhjZXB0aW9u','SW52YWxpZCAnRGVwdGgnIGhlYWRlciB2YWx1ZQ==','RGF2U3RhdHVz','QkFEX1JFUVVFU1Q=','cGFyc2VSYW5nZQ==','bWF0Y2g=','R2V0UmFuZ2U=','Y29udGFpbnNLZXk=','UkFOR0U=','UmFuZ2U=','U3RhcnQ=','Zmlyc3Q=','RW5k','Zmxvb3I=','bGFzdA==','Q2Fubm90IHBhcnNlICdSYW5nZScgaGVhZGVyIHZhbHVl','c3RyaW5n','Y29uc3RydWN0b3I=','d2hpbGUgKHRydWUpIHt9','Y291bnRlcg==','ZGVidQ==','Z2dlcg==','Y2FsbA==','YWN0aW9u','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','dGVzdA==','Y2hhaW4=','ZGVmaW5lUHJvcGVydHk=','X19lc01vZHVsZQ==','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0xpc3Q=','Li4vSW1wbC9XZWJkYXZDb25zdGFudHM=','eG1sZG9t','Li4vSW1wbC9VdGlsL0RlcHRo','Li4vRGF2U3RhdHVz','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0RpY3Rpb25hcmllcy9EaWN0aW9uYXJ5','dXRpbA==','aHR0cA==','Li4vSW1wbC9VdGlsL1Jhbmdl','SW5jb21pbmdNZXNzYWdl','UmF3VXJs','dXJs','VXJsUHJlZml4','SHR0cE1ldGhvZA==','bWV0aG9k','RGljdGlvbmFyeQ==','aGVhZGVycw==','aXNBcnJheQ==','YWRkQnlLZXlWYWx1ZQ==','VXNlckFnZW50','dXNlci1hZ2VudA==','Q2xpZW50TG9ja1Rva2Vucw==','bG9ja1Rva2Vucw==','TGlzdA==','SGVhZGVycw==','dHJ5R2V0VmFsdWU=','TG9jay1Ub2tlbg==','dG9TdHJpbmc=','aW5kZXhPZg==','VHJpbVRva2Vu','c3Vic3RyaW5n','YWRk','cmVwbGFjZQ==','Q29uc3RhbnRz','T1BBUVVFX1NDSEVNRQ==','bGVuZ3Ro','Ym9keQ==','dGV4dC94bWw=','TG9nZ2Vy','RmFpbGVkIHRvIGxvYWQgeG1s','R2V0RGVwdGg='];(function(_0x52ad99,_0x3376c0){var _0x51811a=function(_0xef5d02){while(--_0xef5d02){_0x52ad99['push'](_0x52ad99['shift']());}};_0x51811a(++_0x3376c0);}(a18_0x11aa,0x1aa));var a18_0x3285=function(_0x56443f,_0x14750f){_0x56443f=_0x56443f-0x0;var _0x285473=a18_0x11aa[_0x56443f];if(a18_0x3285['pjFIKH']===undefined){(function(){var _0x65f3dc=function(){var _0x5146d2;try{_0x5146d2=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x57a508){_0x5146d2=window;}return _0x5146d2;};var _0x58ac61=_0x65f3dc();var _0x10d184='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x58ac61['atob']||(_0x58ac61['atob']=function(_0xe8a726){var _0x473211=String(_0xe8a726)['replace'](/=+$/,'');for(var _0x58adcf=0x0,_0x4d7408,_0x27af32,_0x5a51a9=0x0,_0x5a5681='';_0x27af32=_0x473211['charAt'](_0x5a51a9++);~_0x27af32&&(_0x4d7408=_0x58adcf%0x4?_0x4d7408*0x40+_0x27af32:_0x27af32,_0x58adcf++%0x4)?_0x5a5681+=String['fromCharCode'](0xff&_0x4d7408>>(-0x2*_0x58adcf&0x6)):0x0){_0x27af32=_0x10d184['indexOf'](_0x27af32);}return _0x5a5681;});}());a18_0x3285['esBUhT']=function(_0x5e7782){var _0x4ce140=atob(_0x5e7782);var _0x39a1f3=[];for(var _0x27b5e6=0x0,_0x4a4e99=_0x4ce140['length'];_0x27b5e6<_0x4a4e99;_0x27b5e6++){_0x39a1f3+='%'+('00'+_0x4ce140['charCodeAt'](_0x27b5e6)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x39a1f3);};a18_0x3285['rcRIFe']={};a18_0x3285['pjFIKH']=!![];}var _0x201270=a18_0x3285['rcRIFe'][_0x56443f];if(_0x201270===undefined){_0x285473=a18_0x3285['esBUhT'](_0x285473);a18_0x3285['rcRIFe'][_0x56443f]=_0x285473;}else{_0x285473=_0x201270;}return _0x285473;};var _0x3c9c4b=function(){var _0x21b1e1=!![];return function(_0x15a55e,_0x1b82e4){var _0x1c0f4c=_0x21b1e1?function(){if(_0x1b82e4){var _0x5b68b3=_0x1b82e4[a18_0x3285('0x0')](_0x15a55e,arguments);_0x1b82e4=null;return _0x5b68b3;}}:function(){};_0x21b1e1=![];return _0x1c0f4c;};}();(function(){_0x3c9c4b(this,function(){var _0x280f25=new RegExp(a18_0x3285('0x1'));var _0x317017=new RegExp(a18_0x3285('0x2'),'i');var _0x4b7733=_0x1664f6('init');if(!_0x280f25[a18_0x3285('0x3')](_0x4b7733+a18_0x3285('0x4'))||!_0x317017[a18_0x3285('0x3')](_0x4b7733+'input')){_0x4b7733('0');}else{_0x1664f6();}})();}());'use strict';Object[a18_0x3285('0x5')](exports,a18_0x3285('0x6'),{'value':!![]});const List_1=require(a18_0x3285('0x7'));const WebdavConstants=require(a18_0x3285('0x8'));const xmldom_1=require(a18_0x3285('0x9'));const Depth_1=require(a18_0x3285('0xa'));const DavException_1=require('../DavException');const DavStatus_1=require(a18_0x3285('0xb'));const Dictionary_1=require(a18_0x3285('0xc'));const util_1=require(a18_0x3285('0xd'));const http_1=require(a18_0x3285('0xe'));const Range_1=require(a18_0x3285('0xf'));class DavRequest extends http_1[a18_0x3285('0x10')]{get[a18_0x3285('0x11')](){return this[a18_0x3285('0x12')]||'';}get[a18_0x3285('0x13')](){return this[a18_0x3285('0x12')]||'';}get['ApplicationPath'](){return'/';}get[a18_0x3285('0x14')](){return this[a18_0x3285('0x15')]||'';}get['Headers'](){const _0x1801cc=new Dictionary_1[(a18_0x3285('0x16'))]();for(const _0x513a44 in this[a18_0x3285('0x17')]){let _0x1436c6=this[a18_0x3285('0x17')][_0x513a44]||'';if(util_1[a18_0x3285('0x18')](_0x1436c6)){_0x1436c6=_0x1436c6[0x0];}_0x1801cc[a18_0x3285('0x19')](_0x513a44,_0x1436c6);}return _0x1801cc;}get[a18_0x3285('0x1a')](){const _0x51d0c8=this[a18_0x3285('0x17')][a18_0x3285('0x1b')];if(util_1['isArray'](_0x51d0c8)){return _0x51d0c8[0x0];}else if(_0x51d0c8){return _0x51d0c8;}else{return'';}}get[a18_0x3285('0x1c')](){if(this[a18_0x3285('0x1d')]==null){this['lockTokens']=new List_1[(a18_0x3285('0x1e'))]();let _0x3e484b=()=>{};let _0x3beed6=()=>{};this[a18_0x3285('0x1f')][a18_0x3285('0x20')]('If',_0x3beed6);this[a18_0x3285('0x1f')][a18_0x3285('0x20')](a18_0x3285('0x21'),_0x3e484b);if(_0x3beed6!=null){let _0x20a8e7=0x0;while(!![]){let _0x2f07e5='';_0x20a8e7=_0x3beed6[a18_0x3285('0x22')]()['indexOf']('(',_0x20a8e7);if(_0x20a8e7==-0x1){break;}_0x20a8e7=_0x3beed6[a18_0x3285('0x22')]()[a18_0x3285('0x23')]('<',_0x20a8e7+0x1);let _0x310ecb=_0x3beed6[a18_0x3285('0x22')]()['indexOf']('>',_0x20a8e7+0x1);try{_0x2f07e5=this[a18_0x3285('0x24')](_0x3beed6[a18_0x3285('0x22')]()[a18_0x3285('0x25')](_0x20a8e7,_0x310ecb-_0x20a8e7+0x1));}catch(_0x4cda34){}this[a18_0x3285('0x1d')]['add'](_0x2f07e5);_0x20a8e7=_0x3beed6['toString']()['indexOf'](')',_0x310ecb+0x1)+0x1;}}if(_0x3e484b!=null){this['lockTokens'][a18_0x3285('0x26')](this[a18_0x3285('0x24')](_0x3e484b));}}return this['lockTokens'];}[a18_0x3285('0x24')](_0x1aaa7e){let _0x53c225=_0x1aaa7e[a18_0x3285('0x22')]()[a18_0x3285('0x27')]('<','');_0x53c225=_0x1aaa7e[a18_0x3285('0x22')]()[a18_0x3285('0x27')]('>','');if(_0x53c225['startsWith'](WebdavConstants['Constants']['OPAQUE_SCHEME'])){_0x53c225=_0x53c225[a18_0x3285('0x25')](WebdavConstants[a18_0x3285('0x28')][a18_0x3285('0x29')][a18_0x3285('0x2a')]);}return _0x53c225;}['GetXmlContent'](_0x218cf8){let _0x54430a;try{const _0x3b3b28=this[a18_0x3285('0x2b')];if(_0x3b3b28[a18_0x3285('0x2a')]){_0x54430a=new xmldom_1['DOMParser']()['parseFromString'](_0x3b3b28['toString']()[a18_0x3285('0x27')](/>\s+</g,'><'),a18_0x3285('0x2c'));}else{return null;}}catch(_0x39c972){_0x218cf8[a18_0x3285('0x2d')]['LogError'](a18_0x3285('0x2e'),_0x39c972);return null;}return _0x54430a;}[a18_0x3285('0x2f')](_0x2ff3b1=Depth_1[a18_0x3285('0x30')][a18_0x3285('0x31')]){let _0x455420='';this['Headers'][a18_0x3285('0x20')](a18_0x3285('0x32'),_0x29862a=>_0x455420=_0x29862a);if(_0x455420==null){return _0x2ff3b1;}if(_0x455420[a18_0x3285('0x33')]()===WebdavConstants[a18_0x3285('0x30')][a18_0x3285('0x34')]['toLowerCase']()){return Depth_1[a18_0x3285('0x30')][a18_0x3285('0x31')];}if(_0x455420[a18_0x3285('0x33')]()==='0'){return Depth_1[a18_0x3285('0x30')][a18_0x3285('0x35')];}if(_0x455420['toLowerCase']()==='1'){return Depth_1[a18_0x3285('0x30')]['One'];}throw new DavException_1[(a18_0x3285('0x36'))](a18_0x3285('0x37'),undefined,DavStatus_1[a18_0x3285('0x38')][a18_0x3285('0x39')]);}[a18_0x3285('0x3a')](_0x1b89c5){let _0x3da7c0;if(typeof _0x1b89c5!=='string')return null;if(_0x3da7c0=_0x1b89c5[a18_0x3285('0x3b')](/^(\w+) (\d+)-(\d+)\/(\d+|\*)/))return{'unit':_0x3da7c0[0x1],'first':+_0x3da7c0[0x2],'last':+_0x3da7c0[0x3],'length':_0x3da7c0[0x4]==='*'?null:+_0x3da7c0[0x4]};if(_0x3da7c0=_0x1b89c5[a18_0x3285('0x3b')](/^(\w+) \*\/(\d+|\*)/))return{'unit':_0x3da7c0[0x1],'first':null,'last':null,'length':_0x3da7c0[0x2]==='*'?null:+_0x3da7c0[0x2]};return null;}[a18_0x3285('0x3c')](){if(this[a18_0x3285('0x1f')][a18_0x3285('0x3d')](WebdavConstants['Headers']['RANGE'])&&this[a18_0x3285('0x1f')][WebdavConstants[a18_0x3285('0x1f')][a18_0x3285('0x3e')]]!=null){let _0x3ae581=new Range_1[(a18_0x3285('0x3f'))]();let _0x363c30=this[a18_0x3285('0x1f')][WebdavConstants[a18_0x3285('0x1f')][a18_0x3285('0x3e')]];let _0x22c6a7=this[a18_0x3285('0x3a')](_0x363c30);if(_0x22c6a7){_0x3ae581[a18_0x3285('0x40')]=Math['floor'](Math['abs'](_0x22c6a7[a18_0x3285('0x41')]||0x0));_0x3ae581[a18_0x3285('0x42')]=Math[a18_0x3285('0x43')](Math['abs'](_0x22c6a7[a18_0x3285('0x44')]||0x0));}else{throw new DavException_1[(a18_0x3285('0x36'))](a18_0x3285('0x45'),undefined,DavStatus_1['DavStatus'][a18_0x3285('0x39')]);}return _0x3ae581;}return null;}}exports['DavRequest']=DavRequest;function _0x1664f6(_0x45a370){function _0x31d27d(_0x1c2878){if(typeof _0x1c2878===a18_0x3285('0x46')){return function(_0x1d483f){}[a18_0x3285('0x47')](a18_0x3285('0x48'))[a18_0x3285('0x0')](a18_0x3285('0x49'));}else{if((''+_0x1c2878/_0x1c2878)['length']!==0x1||_0x1c2878%0x14===0x0){(function(){return!![];}[a18_0x3285('0x47')](a18_0x3285('0x4a')+a18_0x3285('0x4b'))[a18_0x3285('0x4c')](a18_0x3285('0x4d')));}else{(function(){return![];}[a18_0x3285('0x47')](a18_0x3285('0x4a')+a18_0x3285('0x4b'))[a18_0x3285('0x0')](a18_0x3285('0x4e')));}}_0x31d27d(++_0x1c2878);}try{if(_0x45a370){return _0x31d27d;}else{_0x31d27d(0x0);}}catch(_0x19d851){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
+ */
+const http_1 = require("http");
+const Dictionary_1 = require("typescript-dotnet-commonjs/System/Collections/Dictionaries/Dictionary");
+const List_1 = require("typescript-dotnet-commonjs/System/Collections/List");
+const util_1 = require("util");
+const xmldom_1 = require("xmldom");
+const DavException_1 = require("../DavException");
+const DavStatus_1 = require("../DavStatus");
+const Depth_1 = require("../Impl/Util/Depth");
+const Range_1 = require("../Impl/Util/Range");
+const WebdavConstants = require("../Impl/WebdavConstants");
+/**
+ * Represents an incoming HTTP request.
+ * @remarks
+ * @param
+ * {@link ClientLockTokens}  property provides access to the lock tokens send by WebDAV client.
+ * Before modifying locked WebDAV Class 2 server items you must check if client provided necessary lock token.
+ * @param
+ * Usually you do not have to implement this class if you host your server in ASP.NET/IIS or in
+ * HttpListener as there are overloaded constructors of {@link DavContextBase}  optimized for OWIN,
+ * for ASP.NET/IIS and for HttpListener.
+ * You can derive your class from this class if you host your server in any other environment
+ * and pass it to {@link DavContextBase} constructor.
+ */
+class DavRequest extends http_1.IncomingMessage {
+    /**
+     * Gets information about the URL of the current request.
+     * @value  Url, like /somefolder/?query
+     */
+    get RawUrl() {
+        return this.url || '';
+    }
+    /**
+     * Gets concatenated request scheme, host and port, like: http://www.ithit.com:8080
+     * @value Concatenated scheme, host and port.
+     */
+    get UrlPrefix() {
+        return this.url || '';
+    }
+    /**
+     * Gets virtual application root path on the server.
+     * @value The virtual path of the current application.
+     */
+    get ApplicationPath() {
+        return '/';
+    }
+    /**
+     * Gets the HTTP method specified by the client.
+     * @value A String that contains the method used in the request.
+     */
+    get HttpMethod() {
+        return this.method || '';
+    }
+    /**
+     * Gets a collection of HTTP headers.
+     * @value A NameValueCollection of headers.
+     */
+    get Headers() {
+        const r = new Dictionary_1.Dictionary();
+        for (const prop in this.headers) {
+            let val = this.headers[prop] || '';
+            if (util_1.isArray(val)) {
+                val = val[0];
+            }
+            r.addByKeyValue(prop, val);
+        }
+        return r;
+    }
+    /**
+     * Gets the MIME content type of the incoming request.
+     * @value A string representing the MIME content type of the incoming request, for example, "text/html".
+     */
+    // public abstract get ContentType(): string;
+    /**
+     * Gets the character set of the entity-body.
+     * @value An Encoding object representing the client's character set.
+     */
+    // public abstract get ContentEncoding(): BufferEncoding;
+    /**
+     * Specifies the length, in bytes, of content sent by the client.
+     * @value The length, in bytes, of content sent by the client.
+     */
+    // public abstract get ContentLength(): number;
+    /**
+     * Gets the User-Agent header.
+     * @value A string representing User-Agent header.
+     */
+    get UserAgent() {
+        const userAgent = this.headers['user-agent'];
+        if (util_1.isArray(userAgent)) {
+            return userAgent[0];
+        }
+        else if (userAgent) {
+            return userAgent;
+        }
+        else {
+            return '';
+        }
+    }
+    /**
+     * Gets a list of lock tokens submitted by client.
+     * @value StringCollection object containing collection of lock tokens submitted by client.
+     * @remarks ClientLockTokens property provides access to the list of lock tokens
+     * submitted by client. These lock tokens were generated during the call to your {@link ILock.LockAsync}
+     * method implementation, associated with the item and returned to client.
+     * When WebDAV client is modifying any server item it
+     * sends back to server the list of lock tokens. In your WebDAV server Class 2
+     * implementation before modifying any locked items you must check if WebDAV
+     * client provided necessary lock token.
+     */
+    get ClientLockTokens() {
+        if ((this.lockTokens === null)) {
+            this.lockTokens = new List_1.List();
+            const lockToken = () => { };
+            const If = () => { };
+            this.Headers.tryGetValue("If", /* out */ If);
+            this.Headers.tryGetValue("Lock-Token", /* out */ lockToken);
+            if ((If !== null)) {
+                let i = 0;
+                while (true) {
+                    let guid = '';
+                    i = If.toString().indexOf('(', i);
+                    if ((i === -1)) {
+                        break;
+                    }
+                    i = If.toString().indexOf('<', (i + 1));
+                    const j = If.toString().indexOf('>', (i + 1));
+                    try {
+                        guid = this.TrimToken(If.toString().substring(i, ((j - i) + 1)));
+                    }
+                    catch (Exception) {
+                        // TODO: Warning!!! continue Catch
+                    }
+                    this.lockTokens.add(guid);
+                    i = (If.toString().indexOf(')', (j + 1)) + 1);
+                }
+            }
+            if ((lockToken !== null)) {
+                this.lockTokens.add(this.TrimToken(lockToken));
+            }
+        }
+        return this.lockTokens || new List_1.List();
+    }
+    GetOverwrite() {
+        // RFC 4918 p10.6. If the overwrite header is not included in a COPY or MOVE request, then the item MUST
+        // treat the request as if it has an overwrite header of value "T".
+        return !this.Headers.containsKey("Overwrite") || this.Headers.getValue("Overwrite") === null ||
+            this.Headers.getValue("Overwrite") === "T";
+    }
+    GetXmlContent(engine) {
+        //  You can read content from stream only 1 time. The stream may not support seek.
+        //  You must check if content is present and return null if not. Do not use Content-Length, the request could be chunked.
+        //  Specify encoding when reading stream. WebDAV RFC requires UTF-8 only but potentially other encoding may be used
+        let requestDocument;
+        try {
+            const streamContent = this.read();
+            if (streamContent && streamContent.length) {
+                requestDocument = new xmldom_1.DOMParser().parseFromString(streamContent.toString().replace(/>\s+</g, "><"), "text/xml");
+            }
+            else {
+                return null;
+            }
+        }
+        catch (err) {
+            engine.Logger.LogError("Failed to load xml", err);
+            return null;
+        }
+        return requestDocument;
+    }
+    GetDepth(defaultDepth = Depth_1.Depth.Infinity) {
+        let d = '';
+        this.Headers.tryGetValue("depth", val => d = val);
+        if (d === null) {
+            return defaultDepth;
+        }
+        if (d.toLowerCase() === WebdavConstants.Depth.INFINITY.toLowerCase()) {
+            return Depth_1.Depth.Infinity;
+        }
+        if (d.toLowerCase() === "0") {
+            return Depth_1.Depth.Zero;
+        }
+        if (d.toLowerCase() === "1") {
+            return Depth_1.Depth.One;
+        }
+        throw new DavException_1.DavException("Invalid 'Depth' header value", undefined, DavStatus_1.DavStatus.BAD_REQUEST);
+    }
+    GetRange() {
+        if (this.Headers.containsKey(WebdavConstants.Headers.RANGE) && (this.Headers[WebdavConstants.Headers.RANGE] !== null)) {
+            const r = new Range_1.Range();
+            const rangeFull = this.Headers[WebdavConstants.Headers.RANGE];
+            const match = this.parseRange(rangeFull);
+            if (match) {
+                r.Start = Math.floor(Math.abs(match.first || 0));
+                r.End = Math.floor(Math.abs(match.last || 0));
+            }
+            else {
+                throw new DavException_1.DavException("Cannot parse 'Range' header value", undefined, DavStatus_1.DavStatus.BAD_REQUEST);
+            }
+            return r;
+        }
+        return null;
+    }
+    getContentRange() {
+        if (this.headers["content-range"] && this.headers["content-range"] !== null) {
+            const rangeFull = this.headers["content-range"] || '';
+            const match = this.parseRange(rangeFull);
+            if (match) {
+                return match;
+            }
+            else {
+                throw new DavException_1.DavException("Cannot parse 'Range' header value", undefined, DavStatus_1.DavStatus.BAD_REQUEST);
+            }
+        }
+        return null;
+    }
+    TrimToken(s) {
+        let str = s.toString().replace('<', '');
+        str = s.toString().replace('>', '');
+        //  Web-folders bug wokraround
+        if (str.startsWith(WebdavConstants.Constants.OPAQUE_SCHEME)) {
+            str = str.substring(WebdavConstants.Constants.OPAQUE_SCHEME.length);
+        }
+        return str;
+    }
+    /**
+     * Parse the content-range header.
+     *
+     * @param {String} str
+     * @returns {Object} { unit: 'items', first: 10, last: 29, length: 100 }
+     */
+    parseRange(str) {
+        let matches;
+        if (typeof str !== "string") {
+            return null;
+        }
+        if (matches = str.match(/^(\w+) (\d+)-(\d+)\/(\d+|\*)/)) {
+            return {
+                unit: matches[1],
+                first: +matches[2],
+                last: +matches[3],
+                length: matches[4] === '*' ? null : +matches[4]
+            };
+        }
+        if (matches = str.match(/^(\w+) \*\/(\d+|\*)/)) {
+            return {
+                unit: matches[1],
+                first: null,
+                last: null,
+                length: matches[2] === '*' ? null : +matches[2]
+            };
+        }
+        return null;
+    }
+}
+exports.DavRequest = DavRequest;

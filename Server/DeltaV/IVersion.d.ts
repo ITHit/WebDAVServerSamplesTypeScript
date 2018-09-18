@@ -23,6 +23,13 @@ import { IVersionableItem } from "./IVersionableItem";
  */
 export interface IVersion extends IDeltaVItem {
     /**
+     * Name of the version.
+     * @value Name of the version.
+     * @remarks Must be unique among version items for a given hierarchy item. This string is intended for display
+     * for a user.
+     */
+    VersionName: string;
+    /**
      * Next version or null if no next version exists.
      * @return Version item representing next version
      * in the list of versions or null if no next version exists.
@@ -43,11 +50,4 @@ export interface IVersion extends IDeltaVItem {
      * @value Hierarchy item for this version.
      */
     GetVersionableItem(): Promise<IVersionableItem>;
-    /**
-     * Name of the version.
-     * @value Name of the version.
-     * @remarks Must be unique among version items for a given hierarchy item. This string is intended for display
-     * for a user.
-     */
-    VersionName: string;
 }

@@ -1,1 +1,141 @@
-var a30_0x45fe=['RW5naW5l','Q2FsY3VsYXRlQ29udGVudExlbmd0aA==','UmVzcG9uc2U=','QUNDRVBUX1JBTkdFUw==','Ynl0ZXM=','QWRkSGVhZGVy','Q29udGVudC1SYW5nZQ==','Ynl0ZXMg','UEFSVElBTF9DT05URU5U','Q29udGVudFR5cGU=','V3JpdGVFdGFn','c3RyaW5n','Y291bnRlcg==','bGVuZ3Ro','Y29uc3RydWN0b3I=','ZGVidQ==','Z2dlcg==','Y2FsbA==','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','Y2hhaW4=','dGVzdA==','aW5wdXQ=','ZGVmaW5lUHJvcGVydHk=','Li9CYXNlREFWSGFuZGxlcg==','Li4vVXRpbC9IZWFkZXJVdGls','Li4vV2ViZGF2Q29uc3RhbnRz','QmFzZURhdkhhbmRsZXI=','QXBwbGllc1Rv','RW5hYmxlT3V0cHV0RGVidWdMb2dnaW5n','SGVhZGVyVXRpbA==','UHJvY2Vzc0lmSGVhZGVycw==','RGF2U3RhdHVz','UmVxdWlyZUV4aXN0cw==','V3JpdGVMYXN0TW9kaWZpZWQ=','Q29udGVudExlbmd0aA==','UmVxdWVzdA==','R2V0UmFuZ2U=','RW5k','SGVhZGVycw==','dHJ5R2V0VmFsdWU=','TW9kaWZpZWQ=','c2V0TWlsbGlzZWNvbmRz','U2V0U3RhdHVz'];(function(_0x4350f5,_0x27776c){var _0x484c12=function(_0x41b57e){while(--_0x41b57e){_0x4350f5['push'](_0x4350f5['shift']());}};_0x484c12(++_0x27776c);}(a30_0x45fe,0x183));var a30_0x2881=function(_0x118230,_0xff6c6e){_0x118230=_0x118230-0x0;var _0xb71509=a30_0x45fe[_0x118230];if(a30_0x2881['pRHTrT']===undefined){(function(){var _0x3a435b;try{var _0x12ab23=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x3a435b=_0x12ab23();}catch(_0x233149){_0x3a435b=window;}var _0x4802c7='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x3a435b['atob']||(_0x3a435b['atob']=function(_0x288888){var _0x434f54=String(_0x288888)['replace'](/=+$/,'');for(var _0x382aca=0x0,_0x3ea123,_0x53e227,_0x44c712=0x0,_0x2803ac='';_0x53e227=_0x434f54['charAt'](_0x44c712++);~_0x53e227&&(_0x3ea123=_0x382aca%0x4?_0x3ea123*0x40+_0x53e227:_0x53e227,_0x382aca++%0x4)?_0x2803ac+=String['fromCharCode'](0xff&_0x3ea123>>(-0x2*_0x382aca&0x6)):0x0){_0x53e227=_0x4802c7['indexOf'](_0x53e227);}return _0x2803ac;});}());a30_0x2881['KBlEhK']=function(_0x104a59){var _0x5800d4=atob(_0x104a59);var _0xe83b29=[];for(var _0x3c70c7=0x0,_0x45882c=_0x5800d4['length'];_0x3c70c7<_0x45882c;_0x3c70c7++){_0xe83b29+='%'+('00'+_0x5800d4['charCodeAt'](_0x3c70c7)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0xe83b29);};a30_0x2881['qiddEi']={};a30_0x2881['pRHTrT']=!![];}var _0x42cd34=a30_0x2881['qiddEi'][_0x118230];if(_0x42cd34===undefined){_0xb71509=a30_0x2881['KBlEhK'](_0xb71509);a30_0x2881['qiddEi'][_0x118230]=_0xb71509;}else{_0xb71509=_0x42cd34;}return _0xb71509;};var _0x5cbe4e=function(){var _0xd02f=!![];return function(_0x4050e2,_0x50c0de){var _0x253221=_0xd02f?function(){if(_0x50c0de){var _0x3ad58a=_0x50c0de[a30_0x2881('0x0')](_0x4050e2,arguments);_0x50c0de=null;return _0x3ad58a;}}:function(){};_0xd02f=![];return _0x253221;};}();(function(){_0x5cbe4e(this,function(){var _0x2b23ba=new RegExp(a30_0x2881('0x1'));var _0x427739=new RegExp(a30_0x2881('0x2'),'i');var _0x5eda07=_0x212cd4('init');if(!_0x2b23ba['test'](_0x5eda07+a30_0x2881('0x3'))||!_0x427739[a30_0x2881('0x4')](_0x5eda07+a30_0x2881('0x5'))){_0x5eda07('0');}else{_0x212cd4();}})();}());'use strict';Object[a30_0x2881('0x6')](exports,'__esModule',{'value':!![]});const BaseDAVHandler_1=require(a30_0x2881('0x7'));const HeaderUtil_1=require(a30_0x2881('0x8'));const DavStatus_1=require('../../DavStatus');const WebdavConstants=require(a30_0x2881('0x9'));class GetDavHandler extends BaseDAVHandler_1[a30_0x2881('0xa')]{[a30_0x2881('0xb')](_0x47e77a){return!![];}get['EnableOutputBuffering'](){return![];}get[a30_0x2881('0xc')](){return![];}async['ProcessRequest'](_0x3e20bb,_0x2f76bc){let _0x4f14d8=HeaderUtil_1[a30_0x2881('0xd')][a30_0x2881('0xe')](_0x3e20bb,_0x2f76bc,DavStatus_1[a30_0x2881('0xf')]['NOT_MODIFIED']);BaseDAVHandler_1['BaseDavHandler'][a30_0x2881('0x10')](_0x2f76bc);let _0x443f38=_0x2f76bc;if(_0x443f38==null){if(_0x4f14d8){_0x3e20bb['SetStatus'](DavStatus_1[a30_0x2881('0xf')]['OK']);}HeaderUtil_1[a30_0x2881('0xd')][a30_0x2881('0x11')](_0x3e20bb,_0x2f76bc);_0x3e20bb['Response'][a30_0x2881('0x12')]=0x0;return;}let _0x3a9303=_0x443f38['ContentLength'];let _0x1613ee=0x0;let _0x157058=null;if(_0x3a9303>0x0){_0x157058=_0x3a9303-0x1;}let _0x464591=_0x3e20bb[a30_0x2881('0x13')][a30_0x2881('0x14')]();let _0x3647d4=!![];if(_0x464591!=null){_0x1613ee=_0x464591['Start'];if(_0x464591[a30_0x2881('0x15')]!=null){_0x157058=_0x464591['End'];}let _0x2c7cb3='';_0x3e20bb['Request'][a30_0x2881('0x16')][a30_0x2881('0x17')](WebdavConstants[a30_0x2881('0x16')]['IF_RANGE'],_0x21fdd7=>_0x2c7cb3=_0x21fdd7);if(_0x2c7cb3!=null){const _0x27cf00=new Date(_0x2c7cb3);if(_0x27cf00){const _0x3f5a26=_0x2f76bc[a30_0x2881('0x18')];_0x3f5a26[a30_0x2881('0x19')](0x0);if(_0x3f5a26>_0x27cf00){_0x3647d4=![];}}else{_0x3647d4=HeaderUtil_1[a30_0x2881('0xd')]['IfMatches'](_0x2f76bc,_0x2c7cb3);}if(!_0x3647d4){_0x1613ee=0x0;if(_0x3a9303>0x0){_0x157058=_0x3a9303-0x1;}else{_0x157058=null;}}}if(_0x1613ee>=_0x3a9303&&_0x3a9303>0x0){_0x3e20bb[a30_0x2881('0x1a')](new DavStatus_1[(a30_0x2881('0xf'))](0x1a0,'Requested\x20Range\x20Not\x20Satisfiable'));_0x4f14d8=![];}}if(_0x3a9303>0x0&&(_0x157058||0x0>=_0x3a9303)){_0x157058=_0x3a9303-0x1;}if(_0x4f14d8&&_0x3e20bb[a30_0x2881('0x1b')][a30_0x2881('0x1c')]){let _0x159eaa=-0x1;if(_0x157058!=null){_0x159eaa=_0x157058+(0x1-_0x1613ee);}else if(_0x3a9303>=0x0){_0x159eaa=_0x3a9303-_0x1613ee;}if(_0x159eaa>=0x0){_0x3e20bb[a30_0x2881('0x1d')][a30_0x2881('0x12')]=_0x159eaa;}}_0x3e20bb[a30_0x2881('0x1d')]['AddHeader'](WebdavConstants[a30_0x2881('0x16')][a30_0x2881('0x1e')],a30_0x2881('0x1f'));if(!_0x4f14d8){}else if(_0x464591==null||!_0x3647d4){_0x3e20bb[a30_0x2881('0x1a')](DavStatus_1[a30_0x2881('0xf')]['OK']);}else{const _0x5d6052=_0x3a9303>=0x0?_0x3a9303['toString']():'*';const _0x49ed64=_0x157058!=null?_0x157058['toString']():'';_0x3e20bb[a30_0x2881('0x1d')][a30_0x2881('0x20')](a30_0x2881('0x21'),a30_0x2881('0x22')+_0x1613ee+'-'+_0x49ed64+'/'+_0x5d6052);_0x3e20bb[a30_0x2881('0x1a')](DavStatus_1[a30_0x2881('0xf')][a30_0x2881('0x23')]);}_0x3e20bb[a30_0x2881('0x1d')]['ContentType']=_0x443f38[a30_0x2881('0x24')];HeaderUtil_1['HeaderUtil'][a30_0x2881('0x11')](_0x3e20bb,_0x2f76bc);HeaderUtil_1[a30_0x2881('0xd')][a30_0x2881('0x25')](_0x3e20bb,_0x2f76bc);if(_0x4f14d8&&_0x3a9303!=0x0){let _0x49f27b=-0x1;if(_0x157058!=null){_0x49f27b=_0x157058-_0x1613ee+0x1;}await _0x443f38['Read'](_0x3e20bb[a30_0x2881('0x1d')]['nativeResponce'],_0x1613ee,_0x49f27b);}}}exports['GetDavHandler']=GetDavHandler;function _0x212cd4(_0x34fdf4){function _0x1475bb(_0x2b7eff){if(typeof _0x2b7eff===a30_0x2881('0x26')){return function(_0x9c9c16){}['constructor']('while\x20(true)\x20{}')[a30_0x2881('0x0')](a30_0x2881('0x27'));}else{if((''+_0x2b7eff/_0x2b7eff)[a30_0x2881('0x28')]!==0x1||_0x2b7eff%0x14===0x0){(function(){return!![];}[a30_0x2881('0x29')](a30_0x2881('0x2a')+a30_0x2881('0x2b'))[a30_0x2881('0x2c')]('action'));}else{(function(){return![];}['constructor'](a30_0x2881('0x2a')+a30_0x2881('0x2b'))[a30_0x2881('0x0')](a30_0x2881('0x2d')));}}_0x1475bb(++_0x2b7eff);}try{if(_0x34fdf4){return _0x1475bb;}else{_0x1475bb(0x0);}}catch(_0x334ad1){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const DavStatus_1 = require("../../DavStatus");
+const HeaderUtil_1 = require("../Util/HeaderUtil");
+const WebdavConstants = require("../WebdavConstants");
+const BaseDAVHandler_1 = require("./BaseDAVHandler");
+class GetDavHandler extends BaseDAVHandler_1.BaseDavHandler {
+    appliesTo(item) {
+        return true;
+    }
+    get EnableOutputBuffering() {
+        return false;
+    }
+    get EnableOutputDebugLogging() {
+        return false;
+    }
+    async processRequest(context, item) {
+        let returnBody = HeaderUtil_1.HeaderUtil.ProcessIfHeaders(context, item, DavStatus_1.DavStatus.NOT_MODIFIED);
+        /*if (OfficeUtil.IsOfficeRequest(context.Request)) {
+            this.handleOfficeRequestAsync(context, item);
+            return;
+        }*/
+        BaseDAVHandler_1.BaseDavHandler.RequireExists(item);
+        const res = item;
+        if (res === null) {
+            if (returnBody) {
+                context.SetStatus(DavStatus_1.DavStatus.OK);
+            }
+            HeaderUtil_1.HeaderUtil.WriteLastModified(context, item);
+            context.Response.ContentLength = 0;
+            return;
+        }
+        const resContentLength = res.ContentLength;
+        let byteStart = 0;
+        //  byteEnd is null if content length is unknown or end byte is not specified in Range header.
+        let byteEnd = null;
+        if (resContentLength > 0) {
+            byteEnd = (resContentLength - 1);
+        }
+        // TODO: we currently don't support end ranges, like "bytes=-500" - last 500 bytes.
+        //  also we don't support several ranges, like "bytes=0-0,-1" - first and last byte.
+        const range = context.Request.GetRange();
+        let isIfRangeMatches = true;
+        if (range !== null) {
+            byteStart = range.Start;
+            if ((range.End !== null)) {
+                byteEnd = range.End;
+            }
+            let ifRangeStr = '';
+            context.Request.Headers.tryGetValue(WebdavConstants.Headers.IF_RANGE, (v) => ifRangeStr = v);
+            if (ifRangeStr !== null) {
+                //  If-Range header value can be either Etag or Last-Modified.
+                //  If-Range = "If-Range" ":" ( entity-tag | HTTP-date )
+                const ifRangeDate = new Date(ifRangeStr);
+                if (ifRangeDate) {
+                    //  compare dates
+                    //  truncate milliseconds, client submits time with accuracy up to seconds
+                    const resModified = item.Modified;
+                    resModified.setMilliseconds(0);
+                    if ((resModified > ifRangeDate)) {
+                        isIfRangeMatches = false;
+                    }
+                }
+                else {
+                    //  compare ETags
+                    isIfRangeMatches = HeaderUtil_1.HeaderUtil.IfMatches(item, ifRangeStr);
+                }
+                if (!isIfRangeMatches) {
+                    byteStart = 0;
+                    if ((resContentLength > 0)) {
+                        byteEnd = (resContentLength - 1);
+                    }
+                    else {
+                        byteEnd = null;
+                    }
+                }
+            }
+            if ((byteStart >= resContentLength) && (resContentLength > 0)) {
+                context.SetStatus(new DavStatus_1.DavStatus(416, "Requested Range Not Satisfiable"));
+                returnBody = false;
+            }
+        }
+        if ((resContentLength > 0) && (byteEnd || 0 >= resContentLength)) {
+            byteEnd = (resContentLength - 1);
+        }
+        //  content length may be very large, memory overflow exception may occur.
+        //  Disadvantage: if exception in WriteToStream occures content length may change,
+        //  no way to calculate content length in this case. Important for HttpListener SendChaunked=false mode
+        if (returnBody && context.Engine.CalculateContentLength) {
+            let cl = -1;
+            if (byteEnd !== null) {
+                cl = (byteEnd + (1 - byteStart));
+            }
+            else if (resContentLength >= 0) {
+                cl = (resContentLength - byteStart);
+            }
+            if (cl >= 0) {
+                context.Response.ContentLength = cl;
+            }
+        }
+        context.Response.AddHeader(WebdavConstants.Headers.ACCEPT_RANGES, "bytes");
+        if (!returnBody) {
+        }
+        else if (range === null || !isIfRangeMatches) {
+            //  get entire content
+            context.SetStatus(DavStatus_1.DavStatus.OK);
+        }
+        else {
+            //  get range
+            //  RFC2616 (Hypertext Transfer Protocol -- HTTP/1.1)
+            //  If the server supports the Range header and the specified range or
+            //  ranges are appropriate for the entity:
+            //  The presence of a Range header in an unconditional GET modifies
+            //  what is returned if the GET is otherwise successful. In other
+            //  words, the response carries a status code of 206 (Partial
+            //  Content) instead of 200 (OK).
+            //  if content lenth is unknown return asterisk:
+            //  Content -Range: 500-600/*
+            const strContentLength = resContentLength >= 0 ? resContentLength.toString() : "*";
+            //  if end byte is unknown do not return it:
+            //  Content -Range: 500-/3000
+            const strByteEnd = byteEnd !== null ? byteEnd.toString() : "";
+            context.Response.AddHeader("Content-Range", `bytes ${byteStart}-${strByteEnd}/${strContentLength}`);
+            //  it is valid to send both Content-Range and Content-Length headers
+            context.SetStatus(DavStatus_1.DavStatus.PARTIAL_CONTENT);
+        }
+        context.Response.ContentType = res.ContentType;
+        HeaderUtil_1.HeaderUtil.WriteLastModified(context, item);
+        HeaderUtil_1.HeaderUtil.WriteEtag(context, item);
+        if (returnBody && resContentLength !== 0) {
+            //  -1 if unable to detect how much bytes must be read
+            let toRead = -1;
+            if (byteEnd !== null) {
+                toRead = (byteEnd - byteStart) + 1;
+            }
+            await res.Read(context.Response.nativeResponce, byteStart, toRead);
+        }
+        context.Response.end();
+    }
+}
+exports.GetDavHandler = GetDavHandler;

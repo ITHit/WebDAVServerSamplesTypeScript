@@ -1,7 +1,7 @@
+import { DavContextBase } from "../../DavContextBase";
+import { DavEngine } from "../../DavEngine";
 import { IPropertyHandler } from "../../Extensibility/IPropertyHandler";
 import { IHierarchyItem } from "../../IHierarchyItem";
-import { DavContextBase } from "../../DavContextBase";
-import DavEngine from "../../DavEngine";
 export declare abstract class PropertyHandlerBase implements IPropertyHandler {
     protected static nsDav: string;
     protected static nsCalDav: string;

@@ -8,6 +8,15 @@ import { LogFlagsEnum } from "./LogFlagsEnum";
  */
 export interface ILogger {
     /**
+     * Determines whether debug mode is enabled.
+     */
+    IsDebugEnabled: boolean;
+    /**
+     * Logging flags.
+     * @remarks By default Engine does not log GET response body and PUT request body.
+     */
+    LogFlags: LogFlagsEnum;
+    /**
      * Logs message in debug mode.
      * @param message Message to be logged.
      */
@@ -18,13 +27,4 @@ export interface ILogger {
      * @param exception Exception to be logged.
      */
     LogError(message: string, exception?: Exception): void;
-    /**
-     * Determines whether debug mode is enabled.
-     */
-    IsDebugEnabled: boolean;
-    /**
-     * Logging flags.
-     * @remarks By default Engine does not log GET response body and PUT request body.
-     */
-    LogFlags: LogFlagsEnum;
 }

@@ -2,7 +2,7 @@
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
 /// <reference types="node" />
-import { ServerResponse, OutgoingHttpHeaders } from "http";
+import { OutgoingHttpHeaders, ServerResponse } from "http";
 /**
  * Represents HTTP response.
  * @remarks Usually you do not have to implement this interfaces if you host your server in ASP.NET/IIS or
@@ -20,12 +20,6 @@ export declare class DavResponse {
     statusCode: number;
     writable: boolean;
     statusMessage: string;
-    writeHead(statusCode: number, reasonPhrase?: string, headers?: OutgoingHttpHeaders): void;
-    end(cb?: () => void): void;
-    write(chunk: any, encoding?: string, cb?: (error: Error | null | undefined) => void): boolean;
-    nativeResponce: ServerResponse;
-    constructor(res: ServerResponse);
-    setHeader(name: string, value: number | string | string[]): void;
     /**
      * Sets the HTTP character set of the output stream.
      * @value A Encoding object containing information about the character set of the current response.
@@ -37,6 +31,17 @@ export declare class DavResponse {
      */
     ContentLength: number;
     /**
+     * Gets a valus indicating whether client is still connected.
+     * @remarks Most probably this property will be refreshed only when some data fails to send to client.
+     */
+    readonly IsClientConnected: boolean;
+    nativeResponce: ServerResponse;
+    writeHead(statusCode: number, reasonPhrase?: string, headers?: OutgoingHttpHeaders): void;
+    end(cb?: () => void): void;
+    write(chunk: any, encoding?: string, cb?: (error: Error | null | undefined) => void): boolean;
+    constructor(res: ServerResponse);
+    setHeader(name: string, value: number | string | string[]): void;
+    /**
      * Adds the specified header and value to the HTTP headers for this response.
      * @param name The name of the HTTP header to set.
      * @param value The value for the name header.
@@ -46,9 +51,4 @@ export declare class DavResponse {
      * Clears all content output from the buffer stream.
      */
     Clear(): void;
-    /**
-     * Gets a valus indicating whether client is still connected.
-     * @remarks Most probably this property will be refreshed only when some data fails to send to client.
-     */
-    readonly IsClientConnected: boolean;
 }

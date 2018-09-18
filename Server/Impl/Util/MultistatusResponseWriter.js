@@ -1,3 +1,131 @@
-var a55_0x3296=['QWRkU3RhdHVzUmVzcG9uc2VJdGVtRXhjZXB0aW9uUmVzcG9uc2U=','Q29kZQ==','RW5kTXVsdGlTdGF0dXNSZXNwb25zZQ==','ZW5kRG9jdW1lbnQ=','Zmx1c2g=','ZW5k','V3JpdGVJdGVtSHJlZg==','VXJsVXRpbA==','UmVxdWVzdA==','UGF0aA==','VXNlRnVsbFVyaXM=','TXVsdGlzdGF0dXNSZXNwb25zZVdyaXRlcg==','c3RyaW5n','d2hpbGUgKHRydWUpIHt9','bGVuZ3Ro','Y29uc3RydWN0b3I=','ZGVidQ==','Z2dlcg==','YWN0aW9u','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','aW5pdA==','Y2hhaW4=','dGVzdA==','aW5wdXQ=','X19lc01vZHVsZQ==','Li4vLi4vSW1wbC9XZWJkYXZDb25zdGFudHM=','Li4vLi4vRGF2U3RhdHVz','Li4vTXVsdGlzdGF0dXMvSXRlbUV4Y2VwdGlvblJlc3BvbnNl','Li4vTXVsdGlzdGF0dXMvSXRlbVJlc3BvbnNl','Li4vTXVsdGlzdGF0dXMvUHJvcFN0YXRSZXNwb25zZQ==','Li4vTXVsdGlzdGF0dXMvUHJvcFN0YXQ=','Li9VcmxVdGls','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0xpc3Q=','Li4vLi4vUHJvcGVydHlWYWx1ZQ==','ZW5naW5l','Y29udGV4dA==','bXNXcml0ZXI=','V3JpdGVy','U3RhcnRNdWx0aVN0YXR1c1Jlc3BvbnNl','RGF2U3RhdHVz','TVVMVElTVEFUVVM=','UmVzcG9uc2U=','Q29udGVudFR5cGU=','Q29udGVudEVuY29kaW5n','T3V0cHV0WG1sRm9ybWF0dGluZw==','d3JpdGU=','c3RhcnREb2N1bWVudA==','WG1sRWxlbWVudHM=','d3JpdGVBdHRyaWJ1dGVOUw==','eG1sbnM=','Q29uc3RhbnRz','UEFHSU5HX05BTUVTUEFDRQ==','UEFHSU5HX05BTUVTUEFDRV9VUkw=','U3RhcnRSZXNwb25zZQ==','UkVTUE9OU0U=','V3JpdGVIcmVm','RW5kUmVzcG9uc2U=','ZW5kRWxlbWVudA==','SXRlbUV4Y2VwdGlvblJlc3BvbnNl','QWRkU3RhdHVzUmVzcG9uc2VJdGVtUmVzcG9uc2U=','UHJvcFN0YXRSZXNwb25zZQ==','QWRkU3RhdHVzUmVzcG9uc2VQcm9wU3RhdFJlc3BvbnNl','QWRkUHJvcFN0YXRz','Z2V0RW51bWVyYXRvcg==','bW92ZU5leHQ=','UHJvcFN0YXQ=','TGlzdA==','c3RhcnRFbGVtZW50TlM=','UFJPUFNUQVQ=','d3JpdGVFbGVtZW50TlM=','U1RBVFVT','RXhjZXB0aW9u','SHR0cFN0cmluZw==','UFJPUA==','UHJvcGVydGllcw==','Y3VycmVudA==','UHJvcGVydHlWYWx1ZQ==','UXVhbGlmaWVkTmFtZQ==','TmFtZQ==','UkVTUE9OU0VERVNDUklQVElPTg==','UmVuZGVySW5saW5l','bWVzc2FnZQ==','dGV4dA==','SXRlbVBhdGg=','UHJvcFN0YXRz','UmVzcG9uc2VEZXNjcmlwdGlvbg==','bnNEYXY='];(function(_0x34d7af,_0x5c892c){var _0x1e6dd1=function(_0x1450a1){while(--_0x1450a1){_0x34d7af['push'](_0x34d7af['shift']());}};_0x1e6dd1(++_0x5c892c);}(a55_0x3296,0x17c));var a55_0x228e=function(_0x22f077,_0x18aced){_0x22f077=_0x22f077-0x0;var _0x207c07=a55_0x3296[_0x22f077];if(a55_0x228e['uGdbRg']===undefined){(function(){var _0x42d00e;try{var _0x2dfdbc=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x42d00e=_0x2dfdbc();}catch(_0xdae78){_0x42d00e=window;}var _0x130775='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x42d00e['atob']||(_0x42d00e['atob']=function(_0x49ebc4){var _0x1cab9d=String(_0x49ebc4)['replace'](/=+$/,'');for(var _0x35fa9e=0x0,_0x5805e1,_0x3890b9,_0x4ae31a=0x0,_0xec3307='';_0x3890b9=_0x1cab9d['charAt'](_0x4ae31a++);~_0x3890b9&&(_0x5805e1=_0x35fa9e%0x4?_0x5805e1*0x40+_0x3890b9:_0x3890b9,_0x35fa9e++%0x4)?_0xec3307+=String['fromCharCode'](0xff&_0x5805e1>>(-0x2*_0x35fa9e&0x6)):0x0){_0x3890b9=_0x130775['indexOf'](_0x3890b9);}return _0xec3307;});}());a55_0x228e['nQcJkh']=function(_0x743e20){var _0x2b57ef=atob(_0x743e20);var _0x24047f=[];for(var _0x234a79=0x0,_0x125cd5=_0x2b57ef['length'];_0x234a79<_0x125cd5;_0x234a79++){_0x24047f+='%'+('00'+_0x2b57ef['charCodeAt'](_0x234a79)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x24047f);};a55_0x228e['clXeBB']={};a55_0x228e['uGdbRg']=!![];}var _0x13e544=a55_0x228e['clXeBB'][_0x22f077];if(_0x13e544===undefined){_0x207c07=a55_0x228e['nQcJkh'](_0x207c07);a55_0x228e['clXeBB'][_0x22f077]=_0x207c07;}else{_0x207c07=_0x13e544;}return _0x207c07;};var _0x55b22f=function(){var _0x4cef8d=!![];return function(_0x4149a0,_0x50ffdd){var _0x3e7a6b=_0x4cef8d?function(){if(_0x50ffdd){var _0x5ecf62=_0x50ffdd[a55_0x228e('0x0')](_0x4149a0,arguments);_0x50ffdd=null;return _0x5ecf62;}}:function(){};_0x4cef8d=![];return _0x3e7a6b;};}();(function(){_0x55b22f(this,function(){var _0x504145=new RegExp(a55_0x228e('0x1'));var _0xe1849c=new RegExp(a55_0x228e('0x2'),'i');var _0x48ee75=_0x50f29e(a55_0x228e('0x3'));if(!_0x504145['test'](_0x48ee75+a55_0x228e('0x4'))||!_0xe1849c[a55_0x228e('0x5')](_0x48ee75+a55_0x228e('0x6'))){_0x48ee75('0');}else{_0x50f29e();}})();}());'use strict';/**
+"use strict";
+/**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */Object['defineProperty'](exports,a55_0x228e('0x7'),{'value':!![]});const XmlWriter=require('xml-writer');const WebdavConstants=require(a55_0x228e('0x8'));const DavStatus_1=require(a55_0x228e('0x9'));const ItemExceptionResponse_1=require(a55_0x228e('0xa'));const ItemResponse_1=require(a55_0x228e('0xb'));const PropStatResponse_1=require(a55_0x228e('0xc'));const PropStat_1=require(a55_0x228e('0xd'));const UrlUtil_1=require(a55_0x228e('0xe'));const List_1=require(a55_0x228e('0xf'));const PropertyValue_1=require(a55_0x228e('0x10'));class MultistatusResponseWriter{constructor(_0x44f29c,_0x6d6e03,_0x465b1a){this[a55_0x228e('0x11')]=_0x44f29c;this[a55_0x228e('0x12')]=_0x6d6e03;if(_0x465b1a){this[a55_0x228e('0x13')]=_0x465b1a;}}get[a55_0x228e('0x14')](){return this[a55_0x228e('0x13')];}[a55_0x228e('0x15')](_0x5c1fea=![]){this[a55_0x228e('0x12')]['SetStatus'](DavStatus_1[a55_0x228e('0x16')][a55_0x228e('0x17')]);this['context'][a55_0x228e('0x18')][a55_0x228e('0x19')]='application/xml;\x20charset='+this[a55_0x228e('0x11')]['ContentEncoding'];this[a55_0x228e('0x12')]['Response'][a55_0x228e('0x1a')]=this[a55_0x228e('0x11')][a55_0x228e('0x1a')];this[a55_0x228e('0x13')]=new XmlWriter(this['engine'][a55_0x228e('0x1b')],(_0x5cc2a9,_0x433b51)=>{this['context'][a55_0x228e('0x18')][a55_0x228e('0x1c')](_0x5cc2a9,_0x433b51);});this[a55_0x228e('0x13')][a55_0x228e('0x1d')]();this[a55_0x228e('0x13')]['startElementNS']('d',WebdavConstants[a55_0x228e('0x1e')]['MULTISTATUS'],MultistatusResponseWriter['nsDav']);this[a55_0x228e('0x13')][a55_0x228e('0x1f')](a55_0x228e('0x20'),'d',WebdavConstants[a55_0x228e('0x21')]['DAV']);if(_0x5c1fea){this[a55_0x228e('0x13')][a55_0x228e('0x1f')](a55_0x228e('0x20'),WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x22')],null,WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x23')]);}}[a55_0x228e('0x24')](_0x4d5b61){this[a55_0x228e('0x13')]['startElementNS']('d',WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x25')]);this[a55_0x228e('0x26')](_0x4d5b61);}[a55_0x228e('0x27')](){this['msWriter'][a55_0x228e('0x28')]();}['AddStatusResponse'](_0x594031){if(_0x594031 instanceof ItemExceptionResponse_1[a55_0x228e('0x29')]){return this['AddStatusResponseItemExceptionResponse'](_0x594031);}else if(_0x594031 instanceof ItemResponse_1['ItemResponse']){return this[a55_0x228e('0x2a')](_0x594031);}else if(_0x594031 instanceof PropStatResponse_1[a55_0x228e('0x2b')]){return this[a55_0x228e('0x2c')](_0x594031);}return;}[a55_0x228e('0x2d')](_0x5a96f9){const _0x16d10b=_0x5a96f9[a55_0x228e('0x2e')]();while(_0x16d10b[a55_0x228e('0x2f')]()){const _0x3809c7=_0x16d10b['current']||new PropStat_1[(a55_0x228e('0x30'))](new List_1[(a55_0x228e('0x31'))]());this[a55_0x228e('0x13')][a55_0x228e('0x32')]('d',WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x33')]);this['msWriter'][a55_0x228e('0x34')]('d',WebdavConstants['XmlElements'][a55_0x228e('0x35')],_0x3809c7['Exception']!=null?_0x3809c7[a55_0x228e('0x36')]['Code'][a55_0x228e('0x37')]:DavStatus_1[a55_0x228e('0x16')]['OK'][a55_0x228e('0x37')]);this[a55_0x228e('0x13')][a55_0x228e('0x32')]('d',WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x38')]);const _0x581c46=_0x3809c7[a55_0x228e('0x39')][a55_0x228e('0x2e')]();while(_0x581c46['moveNext']()){const _0x23b915=_0x581c46[a55_0x228e('0x3a')]||new PropertyValue_1[(a55_0x228e('0x3b'))]();this[a55_0x228e('0x13')][a55_0x228e('0x34')]('d',_0x23b915[a55_0x228e('0x3c')][a55_0x228e('0x3d')],'');}this[a55_0x228e('0x13')][a55_0x228e('0x28')]();if(_0x3809c7[a55_0x228e('0x36')]!=null){this[a55_0x228e('0x13')]['startElementNS']('d',WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x3e')]);_0x3809c7['Exception'][a55_0x228e('0x3f')](this['msWriter'],this['context']);if(_0x3809c7[a55_0x228e('0x36')][a55_0x228e('0x40')]){this[a55_0x228e('0x13')][a55_0x228e('0x41')](_0x3809c7['Exception'][a55_0x228e('0x40')]);}this[a55_0x228e('0x13')][a55_0x228e('0x28')]();}this[a55_0x228e('0x13')]['endElement']();}}[a55_0x228e('0x2c')](_0x5242b6){this['StartResponse'](_0x5242b6[a55_0x228e('0x42')]);this['AddPropStats'](_0x5242b6[a55_0x228e('0x43')]);if(_0x5242b6[a55_0x228e('0x44')]){this[a55_0x228e('0x13')][a55_0x228e('0x34')](null,WebdavConstants[a55_0x228e('0x1e')]['RESPONSEDESCRIPTION'],MultistatusResponseWriter[a55_0x228e('0x45')],_0x5242b6[a55_0x228e('0x44')]);}this[a55_0x228e('0x27')]();}[a55_0x228e('0x2a')](_0x45907a){this[a55_0x228e('0x24')](_0x45907a[a55_0x228e('0x42')]);this['msWriter'][a55_0x228e('0x34')](null,WebdavConstants['XmlElements'][a55_0x228e('0x35')],MultistatusResponseWriter['nsDav'],_0x45907a['Code']['HttpString']);if(_0x45907a[a55_0x228e('0x44')]){this['msWriter'][a55_0x228e('0x34')](null,WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x3e')],MultistatusResponseWriter[a55_0x228e('0x45')],_0x45907a[a55_0x228e('0x44')]);}this[a55_0x228e('0x27')]();}[a55_0x228e('0x46')](_0x5b920b){this[a55_0x228e('0x24')](_0x5b920b[a55_0x228e('0x42')]);this['msWriter'][a55_0x228e('0x34')](null,WebdavConstants[a55_0x228e('0x1e')]['STATUS'],MultistatusResponseWriter['nsDav'],_0x5b920b[a55_0x228e('0x36')][a55_0x228e('0x47')]['HttpString']);this['msWriter'][a55_0x228e('0x32')](null,WebdavConstants[a55_0x228e('0x1e')][a55_0x228e('0x3e')],MultistatusResponseWriter['nsDav']);_0x5b920b[a55_0x228e('0x36')][a55_0x228e('0x3f')](this[a55_0x228e('0x13')],this[a55_0x228e('0x12')]);if(_0x5b920b[a55_0x228e('0x36')]['message']){this['msWriter'][a55_0x228e('0x41')](_0x5b920b['Exception']['message']);}this[a55_0x228e('0x13')][a55_0x228e('0x28')]();this[a55_0x228e('0x27')]();}[a55_0x228e('0x48')](){this['msWriter'][a55_0x228e('0x28')]();this[a55_0x228e('0x13')][a55_0x228e('0x49')]();this['msWriter'][a55_0x228e('0x4a')]();this[a55_0x228e('0x13')]=null;this['context'][a55_0x228e('0x18')][a55_0x228e('0x4b')]();}[a55_0x228e('0x4c')](_0xfa1f66){UrlUtil_1[a55_0x228e('0x4d')]['WriteHref'](this[a55_0x228e('0x13')],this[a55_0x228e('0x12')][a55_0x228e('0x4e')],_0xfa1f66[a55_0x228e('0x4f')],this[a55_0x228e('0x11')]['UseFullUris']);}[a55_0x228e('0x26')](_0xfec3b9){UrlUtil_1['UrlUtil'][a55_0x228e('0x26')](this['msWriter'],this[a55_0x228e('0x12')][a55_0x228e('0x4e')],_0xfec3b9,this['engine'][a55_0x228e('0x50')]);}}MultistatusResponseWriter['nsDav']=WebdavConstants[a55_0x228e('0x21')]['DAV'];exports[a55_0x228e('0x51')]=MultistatusResponseWriter;function _0x50f29e(_0x438844){function _0x140b90(_0x123349){if(typeof _0x123349===a55_0x228e('0x52')){return function(_0x5f08d1){}['constructor'](a55_0x228e('0x53'))[a55_0x228e('0x0')]('counter');}else{if((''+_0x123349/_0x123349)[a55_0x228e('0x54')]!==0x1||_0x123349%0x14===0x0){(function(){return!![];}[a55_0x228e('0x55')](a55_0x228e('0x56')+a55_0x228e('0x57'))['call'](a55_0x228e('0x58')));}else{(function(){return![];}[a55_0x228e('0x55')](a55_0x228e('0x56')+a55_0x228e('0x57'))['apply'](a55_0x228e('0x59')));}}_0x140b90(++_0x123349);}try{if(_0x438844){return _0x140b90;}else{_0x140b90(0x0);}}catch(_0x2cdeac){}}
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const List_1 = require("typescript-dotnet-commonjs/System/Collections/List");
+const XmlWriter = require("xml-writer");
+const DavStatus_1 = require("../../DavStatus");
+const WebdavConstants = require("../../Impl/WebdavConstants");
+const PropertyValue_1 = require("../../PropertyValue");
+const ItemExceptionResponse_1 = require("../Multistatus/ItemExceptionResponse");
+const ItemResponse_1 = require("../Multistatus/ItemResponse");
+const PropStat_1 = require("../Multistatus/PropStat");
+const PropStatResponse_1 = require("../Multistatus/PropStatResponse");
+const UrlUtil_1 = require("./UrlUtil");
+class MultistatusResponseWriter {
+    constructor(engine, context, writer) {
+        this.engine = engine;
+        this.context = context;
+        if (writer) {
+            this.msWriter = writer;
+        }
+    }
+    get Writer() {
+        return this.msWriter;
+    }
+    StartMultiStatusResponse(includePagingNamespace = false) {
+        this.context.SetStatus(DavStatus_1.DavStatus.MULTISTATUS);
+        this.context.Response.ContentType = ("application/xml; charset=" + this.engine.ContentEncoding);
+        this.context.Response.ContentEncoding = this.engine.ContentEncoding;
+        this.msWriter = new XmlWriter(this.engine.OutputXmlFormatting, (string, encoding) => {
+            this.context.Response.write(string, encoding);
+        });
+        this.msWriter.startDocument();
+        this.msWriter.startElementNS("d", WebdavConstants.XmlElements.MULTISTATUS, MultistatusResponseWriter.nsDav);
+        this.msWriter.writeAttributeNS('xmlns', 'd', WebdavConstants.Constants.DAV);
+        if (includePagingNamespace) {
+            this.msWriter.writeAttributeNS("xmlns", WebdavConstants.XmlElements.PAGING_NAMESPACE, null, WebdavConstants.XmlElements.PAGING_NAMESPACE_URL);
+        }
+    }
+    StartResponse(path) {
+        this.msWriter.startElementNS("d", WebdavConstants.XmlElements.RESPONSE);
+        this.WriteHref(path);
+    }
+    EndResponse() {
+        this.msWriter.endElement();
+    }
+    AddStatusResponse(item) {
+        if (item instanceof ItemExceptionResponse_1.ItemExceptionResponse) {
+            return this.AddStatusResponseItemExceptionResponse(item);
+        }
+        else if (item instanceof ItemResponse_1.ItemResponse) {
+            return this.AddStatusResponseItemResponse(item);
+        }
+        else if (item instanceof PropStatResponse_1.PropStatResponse) {
+            return this.AddStatusResponsePropStatResponse(item);
+        }
+        return;
+    }
+    AddPropStats(propStats) {
+        const propStatsEnumerator = propStats.getEnumerator();
+        while (propStatsEnumerator.moveNext()) {
+            const propStat = propStatsEnumerator.current || new PropStat_1.PropStat(new List_1.List());
+            this.msWriter.startElementNS("d", WebdavConstants.XmlElements.PROPSTAT);
+            this.msWriter.writeElementNS("d", WebdavConstants.XmlElements.STATUS, propStat.Exception != null
+                ? propStat.Exception.Code.HttpString
+                : DavStatus_1.DavStatus.OK.HttpString);
+            this.msWriter.startElementNS("d", WebdavConstants.XmlElements.PROP);
+            const propStatPropertiesEnumerator = propStat.Properties.getEnumerator();
+            while (propStatPropertiesEnumerator.moveNext()) {
+                const prop = propStatPropertiesEnumerator.current || new PropertyValue_1.PropertyValue;
+                this.msWriter.startElement(prop.QualifiedName.Name);
+                this.msWriter.writeAttribute("xmlns", prop.QualifiedName.Namespace);
+                this.msWriter.endElement();
+            }
+            this.msWriter.endElement();
+            if ((propStat.Exception != null)) {
+                this.msWriter.startElementNS("d", WebdavConstants.XmlElements.RESPONSEDESCRIPTION);
+                propStat.Exception.RenderInline(this.msWriter, this.context);
+                if (propStat.Exception.message) {
+                    this.msWriter.text(propStat.Exception.message);
+                }
+                this.msWriter.endElement();
+            }
+            this.msWriter.endElement();
+        }
+    }
+    EndMultiStatusResponse() {
+        this.msWriter.endElement();
+        this.msWriter.endDocument();
+        this.msWriter.flush();
+        this.msWriter = null;
+        this.context.Response.end();
+    }
+    WriteItemHref(uploadItem) {
+        UrlUtil_1.UrlUtil.WriteHref(this.msWriter, this.context.Request, uploadItem.Path, this.engine.UseFullUris);
+    }
+    WriteHref(path) {
+        UrlUtil_1.UrlUtil.WriteHref(this.msWriter, this.context.Request, path, this.engine.UseFullUris);
+    }
+    AddStatusResponsePropStatResponse(r) {
+        this.StartResponse(r.ItemPath);
+        this.AddPropStats(r.PropStats);
+        if (r.ResponseDescription) {
+            this.msWriter.writeElementNS(null, WebdavConstants.XmlElements.RESPONSEDESCRIPTION, MultistatusResponseWriter.nsDav, r.ResponseDescription);
+        }
+        this.EndResponse();
+    }
+    AddStatusResponseItemResponse(ir) {
+        this.StartResponse(ir.ItemPath);
+        this.msWriter.writeElementNS(null, WebdavConstants.XmlElements.STATUS, MultistatusResponseWriter.nsDav, ir.Code.HttpString);
+        if (ir.ResponseDescription) {
+            this.msWriter.writeElementNS(null, WebdavConstants.XmlElements.RESPONSEDESCRIPTION, MultistatusResponseWriter.nsDav, ir.ResponseDescription);
+        }
+        this.EndResponse();
+    }
+    AddStatusResponseItemExceptionResponse(r) {
+        this.StartResponse(r.ItemPath);
+        this.msWriter.writeElementNS(null, WebdavConstants.XmlElements.STATUS, MultistatusResponseWriter.nsDav, r.Exception.Code.HttpString);
+        this.msWriter.startElementNS(null, WebdavConstants.XmlElements.RESPONSEDESCRIPTION, MultistatusResponseWriter.nsDav);
+        r.Exception.RenderInline(this.msWriter, this.context);
+        if (r.Exception.message) {
+            this.msWriter.text(r.Exception.message);
+        }
+        this.msWriter.endElement();
+        this.EndResponse();
+    }
+}
+//  multi-status xml writer
+MultistatusResponseWriter.nsDav = WebdavConstants.Constants.DAV;
+exports.MultistatusResponseWriter = MultistatusResponseWriter;

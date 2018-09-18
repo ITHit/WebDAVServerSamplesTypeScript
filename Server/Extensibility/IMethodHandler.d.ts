@@ -1,8 +1,8 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
-import { IHierarchyItem } from "../IHierarchyItem";
 import { DavContextBase } from "../DavContextBase";
+import { IHierarchyItem } from "../IHierarchyItem";
 /**
  * Represents HTTP method handler.
  * @desc
@@ -21,21 +21,6 @@ import { DavContextBase } from "../DavContextBase";
  */
 export interface IMethodHandler {
     /**
-     * Enables processing of HTTP Web requests by a custom handler.
-     * @param context Instance of your context class derived from {@link DavContextBase} class.
-     * @param item Hierarchy item returned from {@link DavContextBase.GetHierarchyItem} or null.
-     * @remarks  The {@link IMethodHandler.ProcessRequest}  method is called by the engine during {@link DavEngine.Run}
-     * call. The hierarchy item returned from {@link DavContextBase.GetHierarchyItem}  is
-     * passed to this method.  If {@link DavContextBase.GetHierarchyItem}  returns null the null is passed.
-     */
-    ProcessRequest(context: DavContextBase, item: IHierarchyItem): void;
-    /**
-     * Determines whether this method shall be enlisted in 'supported-method-set' for item .
-     * @param item Hierarchy item returned from {@link DavContextBase.GetHierarchyItem} or null.
-     * @returns {boolean} indicating whether this handler implementation can handle request for the item.
-     */
-    AppliesTo(item: IHierarchyItem): boolean;
-    /**
      * Determines whether engine can buffer content to calculate content length.
      * @returns Boolean indicating whether content shall be buffered to calculated content length.
      * Engine will look at this property only if {@link DavEngine.CalculateContentLength}  is true.
@@ -51,4 +36,19 @@ export interface IMethodHandler {
      * @returns Boolean indicating whether input shall be logged in debug mode.
      */
     EnableInputDebugLogging: boolean;
+    /**
+     * Enables processing of HTTP Web requests by a custom handler.
+     * @param context Instance of your context class derived from {@link DavContextBase} class.
+     * @param item Hierarchy item returned from {@link DavContextBase.GetHierarchyItem} or null.
+     * @remarks  The {@link IMethodHandler.ProcessRequest}  method is called by the engine during {@link DavEngine.Run}
+     * call. The hierarchy item returned from {@link DavContextBase.GetHierarchyItem}  is
+     * passed to this method.  If {@link DavContextBase.GetHierarchyItem}  returns null the null is passed.
+     */
+    processRequest(context: DavContextBase, item: IHierarchyItem): void;
+    /**
+     * Determines whether this method shall be enlisted in 'supported-method-set' for item .
+     * @param item Hierarchy item returned from {@link DavContextBase.GetHierarchyItem} or null.
+     * @returns {boolean} indicating whether this handler implementation can handle request for the item.
+     */
+    appliesTo(item: IHierarchyItem): boolean;
 }

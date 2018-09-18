@@ -1,11 +1,11 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
+import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
+import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
 import { IItemCollection } from "./IItemCollection";
 import { PropertyName } from "./PropertyName";
 import { PropertyValue } from "./PropertyValue";
-import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
-import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
 /**
  * Represents one item (file, folder) in the WebDAV repository.
  * @remarks Defines the properties and methods common to all WebDAV folders and files. {@link IHierarchyItem.Created}  and {@link IHierarchyItem.Modified}  properties must return Universal Coordinated Time (UTC).
@@ -29,6 +29,18 @@ export interface IHierarchyItem {
      * unlocked or properties modified. In particular Mac OS relies on such behavior.
      */
     Modified: Date;
+    /**
+     * Unique item path in the repository relative to storage root.
+     * @remarks The URL returned by this property is relative to storage root.
+     * If your server root is located at http://example.webdavsystem.com:8080/myserver/ and the item URL is
+     * http://example.webdavsystem.com:8080/myserver/myfolder/myitem.doc this property implementation must
+     * return myfolder/myitem.doc. To calculate the entire item URL the engine will
+     * call {@link DavRequest.ApplicationPath}  property and attach it to url returned by {@link Path}  property.
+     * @remarks
+     * Every part of the path (between '/' characters) shall be encoded,
+     * @property String representing relative item path in the repository.
+     */
+    Path: string;
     /**
      * Creates a copy of this item with a new name in the destination folder.
      * @param destFolder Destination folder.
@@ -142,16 +154,4 @@ export interface IHierarchyItem {
      * by committing or rollbacking the transaction in {@link DavContextBase.BeforeResponse} .
      */
     UpdateProperties(setProps: IList<PropertyValue>, delProps: IList<PropertyName>, multistatus: Error): void;
-    /**
-     * Unique item path in the repository relative to storage root.
-     * @remarks The URL returned by this property is relative to storage root.
-     * If your server root is located at http://example.webdavsystem.com:8080/myserver/ and the item URL is
-     * http://example.webdavsystem.com:8080/myserver/myfolder/myitem.doc this property implementation must
-     * return myfolder/myitem.doc. To calculate the entire item URL the engine will
-     * call {@link DavRequest.ApplicationPath}  property and attach it to url returned by {@link Path}  property.
-     * @remarks
-     * Every part of the path (between '/' characters) shall be encoded,
-     * @property String representing relative item path in the repository.
-     */
-    Path: string;
 }

@@ -1,10 +1,10 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
+import { AutoVersion } from "./AutoVersion";
 import { IDeltaVItem } from "./IDeltaVItem";
 import { IHistory } from "./IHistory";
 import { IVersion } from "./IVersion";
-import { AutoVersion } from "./AutoVersion";
 /**
  * This interface must be implemented on items that support versioning.
  * @remarks By default items in the repository are not under version control. When item is being put under version control
@@ -52,6 +52,21 @@ export interface IVersionableItem extends IDeltaVItem {
      */
     VersionHistory: IHistory;
     /**
+     * Gets a value indicating whether the item is in checked-in or checked-out state.
+     * @value Boolean value indicating if item is in checked-out state.
+     * @remarks This property is used for precondition checking and shall not throw exceptions.
+     */
+    IsCheckedOut: boolean;
+    /**
+     * Gets a value indicating whether the item was check-out automatically by engine without
+     * explicit request from client.
+     * @remarks Before checking-out the engine sets this property.
+     * When item is being unlocked engine reads this property and calls
+     * {@link IVersionableItem.CheckIn} if necessary. This property is required for auto-versioning.
+     * This property shall not throw exceptions.
+     */
+    IsAutoCheckedOut: boolean;
+    /**
      * Creates new version. Copies all properties and content from this item.
      * @return Url of the newly created version.
      * @remarks
@@ -65,7 +80,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * @remarks After the call to this method method {@link IHistory.GetCurrentVersion} must return the
      * created version.
      */
-    CheckInAsync(): Promise<string>;
+    CheckIn(): Promise<string>;
     /**
      * Allow modifications to the content and properties of this version-controlled item.
      * @exception LockedException This item was locked. Client did not provide the lock token.
@@ -77,7 +92,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * modifications.
      * When item is in check-out state WebDAV client can issue commands updating item contents and properties.
      */
-    CheckOutAsync(isAutoCheckOut: boolean): Promise<void>;
+    CheckOut(isAutoCheckOut: boolean): Promise<void>;
     /**
      * Cancels the checkout and restores the pre-checkout state of the version-controlled item.
      * @remarks In your {@link UnCheckOut} implementation you will discard changes and restore pre-checkout state.
@@ -89,7 +104,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * @exception MultistatusException Errors has occurred during processing of the subtree.
      * @exception DavException In other cases.
      */
-    UnCheckOutAsync(): Promise<void>;
+    UnCheckOut(): Promise<void>;
     /**
      * Updates content and properties of the item to those identified by @paramref version  parameter.
      * @remarks In your {@link UpdateToVersion} implementation you will create a new version and copy content and
@@ -102,7 +117,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * @exception MultistatusException Errors has occurred during processing of the subtree.
      * @exception DavException In other cases.
      */
-    UpdateToVersionAsync(version: IVersion): Promise<void>;
+    UpdateToVersion(version: IVersion): Promise<void>;
     /**
      * Sets property which determines how checked-in item responds to
      * WebDAV client attempts to modify its content or properties.
@@ -112,7 +127,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * @exception DavException In other cases.
      * @param value One of {@link AutoVersion} enum values.
      */
-    SetAutoVersionAsync(value: AutoVersion): Promise<void>;
+    SetAutoVersion(value: AutoVersion): Promise<void>;
     /**
      * Retrieves property which determines how checked-in item responds to WebDAV
      * client attempts to modify its content or properties.
@@ -120,13 +135,7 @@ export interface IVersionableItem extends IDeltaVItem {
      * @exception NeedPrivilegesException The user doesn't have enough privileges.
      * @exception DavException In other cases.
      */
-    GetAutoVersionAsync(): Promise<AutoVersion>;
-    /**
-     * Gets a value indicating whether the item is in checked-in or checked-out state.
-     * @value Boolean value indicating if item is in checked-out state.
-     * @remarks This property is used for precondition checking and shall not throw exceptions.
-     */
-    IsCheckedOut: boolean;
+    GetAutoVersion(): Promise<AutoVersion>;
     /**
      * Puts or removes current item from version control.
      * @remarks By default items in the repository are not under version control. When item is being put under version
@@ -150,14 +159,5 @@ export interface IVersionableItem extends IDeltaVItem {
      * @exception MultistatusException Errors has occurred during processing of the subtree.
      * @exception DavException In other cases.
      */
-    PutUnderVersionControlAsync(enable: boolean): Promise<void>;
-    /**
-     * Gets a value indicating whether the item was check-out automatically by engine without
-     * explicit request from client.
-     * @remarks Before checking-out the engine sets this property.
-     * When item is being unlocked engine reads this property and calls
-     * {@link IVersionableItem.CheckIn} if necessary. This property is required for auto-versioning.
-     * This property shall not throw exceptions.
-     */
-    IsAutoCheckedOut: boolean;
+    PutUnderVersionControl(enable: boolean): Promise<void>;
 }

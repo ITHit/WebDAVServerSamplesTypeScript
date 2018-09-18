@@ -1,5 +1,5 @@
-import { IHierarchyItem } from "../IHierarchyItem";
 import { DavContextBase } from "../DavContextBase";
+import { IHierarchyItem } from "../IHierarchyItem";
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
@@ -10,6 +10,14 @@ import { DavContextBase } from "../DavContextBase";
  * Engine will call this handler when it needs to read/write the property.
  */
 export interface IPropertyHandler {
+    /**
+     * Gets a value indicating whether the property is readonly and cannot be updated.
+     */
+    IsReadonly: boolean;
+    /**
+     * Gets a value indicating whether the property shall be included in 'allprop' response.
+     */
+    IncludeInAllProp: boolean;
     /**
      * Writes property value to xml writer.
      * @param writer {@link XmlWriter} to which to write property value.
@@ -32,12 +40,4 @@ export interface IPropertyHandler {
      * @returns true if the property applies to the item.
      */
     AppliesTo(item: IHierarchyItem): boolean;
-    /**
-     * Gets a value indicating whether the property is readonly and cannot be updated.
-     */
-    IsReadonly: boolean;
-    /**
-     * Gets a value indicating whether the property shall be included in 'allprop' response.
-     */
-    IncludeInAllProp: boolean;
 }

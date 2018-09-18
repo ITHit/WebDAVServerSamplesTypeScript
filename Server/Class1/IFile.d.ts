@@ -1,8 +1,8 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
-import { IHierarchyItem } from "../IHierarchyItem";
 import { IContent } from "../IContent";
+import { IHierarchyItem } from "../IHierarchyItem";
 /**
  * Represents a file in the WebDAV repository.
  * @remarks

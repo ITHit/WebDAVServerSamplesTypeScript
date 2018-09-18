@@ -1,7 +1,7 @@
-import { ResponseBase } from "./ResponseBase";
 import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
 import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
 import { PropStat } from "./PropStat";
+import { ResponseBase } from "./ResponseBase";
 /**
  * Response that may be present in multistatus response.
  * Describes status of properties relating to the same item.

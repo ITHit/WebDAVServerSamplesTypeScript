@@ -2,16 +2,16 @@
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
 /// <reference types="node" />
-import { ILogger } from "./ILogger";
-import { IMethodHandler } from "./Extensibility/IMethodHandler";
-import { PropertyName } from "./PropertyName";
-import { IPropertyHandler } from "./Extensibility/IPropertyHandler";
-import { IOptionsHandler } from "./Extensibility/IOptionsHandler";
-import { IReportHandler } from "./Extensibility/IReportHandler";
-import { DavContextBase } from "./DavContextBase";
-import { IHierarchyItem } from "./IHierarchyItem";
-import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
 import { IDictionary } from "typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary";
+import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
+import { DavContextBase } from "./DavContextBase";
+import { IMethodHandler } from "./Extensibility/IMethodHandler";
+import { IOptionsHandler } from "./Extensibility/IOptionsHandler";
+import { IPropertyHandler } from "./Extensibility/IPropertyHandler";
+import { IReportHandler } from "./Extensibility/IReportHandler";
+import { IHierarchyItem } from "./IHierarchyItem";
+import { ILogger } from "./ILogger";
+import { PropertyName } from "./PropertyName";
 /**
  * The DavEngine class provides the core implementation for WebDAV engine.
  * @desc
@@ -34,9 +34,9 @@ import { IDictionary } from "typescript-dotnet-commonjs/System/Collections/Dicti
  * You can create a single instance of DavEngine, initialize it onces and use to serve all requests
  * from different threads.
  */
-export default class DavEngine {
+export declare class DavEngine {
     methodHandlers: IDictionary<string, IMethodHandler>;
-    propertyHandlers: Array<IPropertyHandler>;
+    propertyHandlers: IPropertyHandler[];
     /**
      * Gets or sets the license text.
      * @value License string.
@@ -99,12 +99,17 @@ export default class DavEngine {
     OutputXmlFormatting: boolean;
     AllowOffice12Versioning: boolean;
     /**
+     * If item is not null and item implements {@link IDisposable} calls
+     * {@link IDisposable.Dispose} wrapped in try-catch block.
+     * @param item Item that can optionally implement {@link IDisposable}.
+     */
+    static DisposeSafe(item: IHierarchyItem): void;
+    /**
      * Initializes a new instance of the DavEngine class.
      */
     constructor();
-    GetMethodsThatApplyTo(item: IHierarchyItem): Array<string>;
-    GetOptionsForItem(item: IHierarchyItem): Array<string>;
-    private initPropertyHandlers;
+    GetMethodsThatApplyTo(item: IHierarchyItem): string[];
+    GetOptionsForItem(item: IHierarchyItem): string[];
     /**
      * Registers custom method handler.
      * @param method HTTP verb.
@@ -153,14 +158,9 @@ export default class DavEngine {
      * You must call Run method in each request to your WebDAV server passing your context class derived from {@link DavContextBase} as input parameter.
      */
     Run(context: DavContextBase): Promise<void>;
-    GetAllProp(): Array<PropertyName>;
-    /**
-     * If item is not null and item implements {@link IDisposable} calls
-     * {@link IDisposable.Dispose} wrapped in try-catch block.
-     * @param item Item that can optionally implement {@link IDisposable}.
-     */
-    static DisposeSafe(item: IHierarchyItem): void;
+    GetAllProp(): PropertyName[];
     GetPropertiesForItem(item: IHierarchyItem): IEnumerable<PropertyName>;
+    private initPropertyHandlers;
     /**
      * Sets 301 Moved Permanently in case of requests to '/.well-known/caldav'
      * or '/.well-known/carddav' url.

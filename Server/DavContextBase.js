@@ -1,1 +1,61 @@
-var a7_0x1a3c=['aW5wdXQ=','ZGVmaW5lUHJvcGVydHk=','X19lc01vZHVsZQ==','UmVxdWVzdA==','QmVmb3JlUmVzcG9uc2U=','RW5zdXJlQmVmb3JlUmVzcG9uc2VXYXNDYWxsZWQ=','U2V0U3RhdHVz','UmVzcG9uc2U=','c3RhdHVzQ29kZQ==','Q29kZQ==','c3RhdHVzTWVzc2FnZQ==','TG9jYWxpemVTYXR1cw==','RGVzY3JpcHRpb24=','RGF2Q29udGV4dEJhc2U=','c3RyaW5n','Y29uc3RydWN0b3I=','d2hpbGUgKHRydWUpIHt9','Y291bnRlcg==','Z2dlcg==','Y2FsbA==','YWN0aW9u','ZGVidQ==','YXBwbHk=','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','aW5pdA==','dGVzdA==','Y2hhaW4='];(function(_0x364726,_0x26b445){var _0x34249c=function(_0x5c4015){while(--_0x5c4015){_0x364726['push'](_0x364726['shift']());}};_0x34249c(++_0x26b445);}(a7_0x1a3c,0x1e1));var a7_0x3fd7=function(_0x4f2559,_0x464fa9){_0x4f2559=_0x4f2559-0x0;var _0x404d2a=a7_0x1a3c[_0x4f2559];if(a7_0x3fd7['RucYsP']===undefined){(function(){var _0x38cb86;try{var _0x375bf0=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x38cb86=_0x375bf0();}catch(_0x4765a6){_0x38cb86=window;}var _0x4bde1f='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x38cb86['atob']||(_0x38cb86['atob']=function(_0x5a17bb){var _0x80af0=String(_0x5a17bb)['replace'](/=+$/,'');for(var _0x1129b7=0x0,_0xe26a66,_0x3013fe,_0x1d61b1=0x0,_0x15f3d4='';_0x3013fe=_0x80af0['charAt'](_0x1d61b1++);~_0x3013fe&&(_0xe26a66=_0x1129b7%0x4?_0xe26a66*0x40+_0x3013fe:_0x3013fe,_0x1129b7++%0x4)?_0x15f3d4+=String['fromCharCode'](0xff&_0xe26a66>>(-0x2*_0x1129b7&0x6)):0x0){_0x3013fe=_0x4bde1f['indexOf'](_0x3013fe);}return _0x15f3d4;});}());a7_0x3fd7['jvMPfI']=function(_0x5c5d7d){var _0x3b779f=atob(_0x5c5d7d);var _0x5a8cc2=[];for(var _0x26ff54=0x0,_0x53b441=_0x3b779f['length'];_0x26ff54<_0x53b441;_0x26ff54++){_0x5a8cc2+='%'+('00'+_0x3b779f['charCodeAt'](_0x26ff54)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5a8cc2);};a7_0x3fd7['pytjft']={};a7_0x3fd7['RucYsP']=!![];}var _0x2449b9=a7_0x3fd7['pytjft'][_0x4f2559];if(_0x2449b9===undefined){_0x404d2a=a7_0x3fd7['jvMPfI'](_0x404d2a);a7_0x3fd7['pytjft'][_0x4f2559]=_0x404d2a;}else{_0x404d2a=_0x2449b9;}return _0x404d2a;};var _0xcf8514=function(){var _0x1172b6=!![];return function(_0x10e062,_0x25fd92){var _0x141917=_0x1172b6?function(){if(_0x25fd92){var _0x55190d=_0x25fd92[a7_0x3fd7('0x0')](_0x10e062,arguments);_0x25fd92=null;return _0x55190d;}}:function(){};_0x1172b6=![];return _0x141917;};}();(function(){_0xcf8514(this,function(){var _0x49344a=new RegExp('function\x20*\x5c(\x20*\x5c)');var _0x9c842=new RegExp(a7_0x3fd7('0x1'),'i');var _0x3093d0=_0x22da24(a7_0x3fd7('0x2'));if(!_0x49344a[a7_0x3fd7('0x3')](_0x3093d0+a7_0x3fd7('0x4'))||!_0x9c842[a7_0x3fd7('0x3')](_0x3093d0+a7_0x3fd7('0x5'))){_0x3093d0('0');}else{_0x22da24();}})();}());'use strict';Object[a7_0x3fd7('0x6')](exports,a7_0x3fd7('0x7'),{'value':!![]});class DavContextBase{constructor(_0x51a5e1,_0x18cd2a){this[a7_0x3fd7('0x8')]=_0x51a5e1;this['Response']=_0x18cd2a;}[a7_0x3fd7('0x9')](){}[a7_0x3fd7('0xa')](){if(this['beforeResponseWasCalled']){return;}this['beforeResponseWasCalled']=!![];return this['BeforeResponse']();}['LocalizeSatus'](_0x246f3e){return _0x246f3e;}[a7_0x3fd7('0xb')](_0xf5083a){this[a7_0x3fd7('0xa')]();this[a7_0x3fd7('0xc')][a7_0x3fd7('0xd')]=_0xf5083a[a7_0x3fd7('0xe')];this[a7_0x3fd7('0xc')][a7_0x3fd7('0xf')]=this[a7_0x3fd7('0x10')](_0xf5083a)[a7_0x3fd7('0x11')];}}exports[a7_0x3fd7('0x12')]=DavContextBase;function _0x22da24(_0x222525){function _0x1c30dd(_0x21aef3){if(typeof _0x21aef3===a7_0x3fd7('0x13')){return function(_0x3f422e){}[a7_0x3fd7('0x14')](a7_0x3fd7('0x15'))['apply'](a7_0x3fd7('0x16'));}else{if((''+_0x21aef3/_0x21aef3)['length']!==0x1||_0x21aef3%0x14===0x0){(function(){return!![];}[a7_0x3fd7('0x14')]('debu'+a7_0x3fd7('0x17'))[a7_0x3fd7('0x18')](a7_0x3fd7('0x19')));}else{(function(){return![];}[a7_0x3fd7('0x14')](a7_0x3fd7('0x1a')+'gger')['apply']('stateObject'));}}_0x1c30dd(++_0x21aef3);}try{if(_0x222525){return _0x1c30dd;}else{_0x1c30dd(0x0);}}catch(_0x2a6ce0){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Serves as the abstract base class for WebDAV context.
+ * @remarks Context holds request, response and provides item factory method {@link DavContextBase.GetHierarchyItemAsync} .
+ * @remarks When you inherit from WebDAV Context class, you must override {@link DavContextBase.GetHierarchyItemAsync}  method.
+ * In this method you will search for file, folder, version or history item in your storage by path provided
+ * and return it to WebDAV engine.
+ * @remarks In each HTTP request you will create separate instance of your class derived
+ * from WebDAV Context with one of its overloaded constructors and pass it to {@link DavEngine.RunAsync}
+ * @remarks You can implement your own request and response classes to run the Engine in virtually any hosting environment.
+ * @threadsafety Instance members of this class are not thread safe.
+ * You must create a separate instance of {@link DavContextBase}  class for each request.
+ */
+class DavContextBase {
+    ;
+    /**
+     * Initializes a new instance of the WebDAV context. Initializes {@link DavRequest} and {@link DavResponse} properties.
+     * @param request {@link DavRequest}  implementation.
+     * @param response {@link DavResponse}  implementation.
+     */
+    constructor(request, response) {
+        this.Request = request;
+        this.Response = response;
+    }
+    /**
+     * This method is called right before engine starts writing response.
+     * @remarks Specifically this method is called when the request is parsed, engine has
+     * called all methods which shall change state of an item and is ready to
+     * start writing response.
+     * @remarks However methods of interfaces which read data may also be called after this method.
+     * @remarks This method can be overriden to either commit or rollback transaction.
+     * @remarks In your implementation of {@link IMethodHandler} you need to call {@link DavContextBase.EnsureBeforeResponseWasCalledAsync}
+     * instead of this method to avoid double execution.
+     */
+    BeforeResponse() { }
+    /**
+     * Calls {@link DavContextBase.BeforeResponseAsync} only first time this method is invoked.
+     */
+    EnsureBeforeResponseWasCalled() {
+        if (this.beforeResponseWasCalled) {
+            return;
+        }
+        this.beforeResponseWasCalled = true;
+        return this.BeforeResponse();
+    }
+    /**
+     * May be overriden to localize HTTP status message.
+     * @param status Status to be localized.
+     * @returns Localized status which will be written to the response.
+     */
+    LocalizeSatus(status) {
+        return status;
+    }
+    SetStatus(status) {
+        this.EnsureBeforeResponseWasCalled();
+        this.Response.statusCode = status.Code;
+        this.Response.statusMessage = this.LocalizeSatus(status).Description;
+    }
+}
+exports.DavContextBase = DavContextBase;

@@ -1,1 +1,33 @@
-var a71_0x3421=['X1ZhbHVl','VmFsdWU=','UXVhbGlmaWVkTmFtZQ==','UHJvcGVydHlWYWx1ZQ==','c3RyaW5n','Y29uc3RydWN0b3I=','d2hpbGUgKHRydWUpIHt9','YXBwbHk=','bGVuZ3Ro','Z2dlcg==','Y2FsbA==','YWN0aW9u','ZGVidQ==','c3RhdGVPYmplY3Q=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','aW5pdA==','Y2hhaW4=','aW5wdXQ=','X19lc01vZHVsZQ==','Li9Qcm9wZXJ0eU5hbWU=','X1F1YWxpZmllZE5hbWU=','UHJvcGVydHlOYW1l'];(function(_0x1bedd3,_0x119bb3){var _0x23f794=function(_0x4b44fb){while(--_0x4b44fb){_0x1bedd3['push'](_0x1bedd3['shift']());}};_0x23f794(++_0x119bb3);}(a71_0x3421,0x167));var a71_0x5f5d=function(_0x2e3fd9,_0x3180a5){_0x2e3fd9=_0x2e3fd9-0x0;var _0x34b08b=a71_0x3421[_0x2e3fd9];if(a71_0x5f5d['SZZHln']===undefined){(function(){var _0x595cf1=function(){var _0x47941e;try{_0x47941e=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x45bf9f){_0x47941e=window;}return _0x47941e;};var _0x8b913f=_0x595cf1();var _0x33d957='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x8b913f['atob']||(_0x8b913f['atob']=function(_0x4107bd){var _0x2467c0=String(_0x4107bd)['replace'](/=+$/,'');for(var _0x429277=0x0,_0xb9534e,_0x576d3e,_0xa0e482=0x0,_0x1dfac0='';_0x576d3e=_0x2467c0['charAt'](_0xa0e482++);~_0x576d3e&&(_0xb9534e=_0x429277%0x4?_0xb9534e*0x40+_0x576d3e:_0x576d3e,_0x429277++%0x4)?_0x1dfac0+=String['fromCharCode'](0xff&_0xb9534e>>(-0x2*_0x429277&0x6)):0x0){_0x576d3e=_0x33d957['indexOf'](_0x576d3e);}return _0x1dfac0;});}());a71_0x5f5d['cJigup']=function(_0x2c85a5){var _0x13db93=atob(_0x2c85a5);var _0x54e80c=[];for(var _0x43e271=0x0,_0x2138e0=_0x13db93['length'];_0x43e271<_0x2138e0;_0x43e271++){_0x54e80c+='%'+('00'+_0x13db93['charCodeAt'](_0x43e271)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x54e80c);};a71_0x5f5d['CTdDVO']={};a71_0x5f5d['SZZHln']=!![];}var _0x47a374=a71_0x5f5d['CTdDVO'][_0x2e3fd9];if(_0x47a374===undefined){_0x34b08b=a71_0x5f5d['cJigup'](_0x34b08b);a71_0x5f5d['CTdDVO'][_0x2e3fd9]=_0x34b08b;}else{_0x34b08b=_0x47a374;}return _0x34b08b;};var _0x613a77=function(){var _0x52a994=!![];return function(_0x53cc87,_0x6ee676){var _0x11b3cc=_0x52a994?function(){if(_0x6ee676){var _0x59d7d3=_0x6ee676['apply'](_0x53cc87,arguments);_0x6ee676=null;return _0x59d7d3;}}:function(){};_0x52a994=![];return _0x11b3cc;};}();(function(){_0x613a77(this,function(){var _0x3ec101=new RegExp(a71_0x5f5d('0x0'));var _0x534688=new RegExp(a71_0x5f5d('0x1'),'i');var _0x49c382=_0x29eeed(a71_0x5f5d('0x2'));if(!_0x3ec101['test'](_0x49c382+a71_0x5f5d('0x3'))||!_0x534688['test'](_0x49c382+a71_0x5f5d('0x4'))){_0x49c382('0');}else{_0x29eeed();}})();}());'use strict';Object['defineProperty'](exports,a71_0x5f5d('0x5'),{'value':!![]});const PropertyName_1=require(a71_0x5f5d('0x6'));class PropertyValue{constructor(_0x3c4a02,_0xca6bcc){this[a71_0x5f5d('0x7')]=_0x3c4a02||new PropertyName_1[(a71_0x5f5d('0x8'))]();this[a71_0x5f5d('0x9')]=_0xca6bcc||'';}get[a71_0x5f5d('0xa')](){return this[a71_0x5f5d('0x9')];}set['Value'](_0x18054a){this[a71_0x5f5d('0x9')]=_0x18054a;}get[a71_0x5f5d('0xb')](){return this[a71_0x5f5d('0x7')];}set['QualifiedName'](_0x4e0ad7){this['_QualifiedName']=_0x4e0ad7;}}exports[a71_0x5f5d('0xc')]=PropertyValue;function _0x29eeed(_0x1aec7b){function _0x4b4965(_0x4051c2){if(typeof _0x4051c2===a71_0x5f5d('0xd')){return function(_0x278102){}[a71_0x5f5d('0xe')](a71_0x5f5d('0xf'))[a71_0x5f5d('0x10')]('counter');}else{if((''+_0x4051c2/_0x4051c2)[a71_0x5f5d('0x11')]!==0x1||_0x4051c2%0x14===0x0){(function(){return!![];}[a71_0x5f5d('0xe')]('debu'+a71_0x5f5d('0x12'))[a71_0x5f5d('0x13')](a71_0x5f5d('0x14')));}else{(function(){return![];}[a71_0x5f5d('0xe')](a71_0x5f5d('0x15')+a71_0x5f5d('0x12'))['apply'](a71_0x5f5d('0x16')));}}_0x4b4965(++_0x4051c2);}try{if(_0x1aec7b){return _0x4b4965;}else{_0x4b4965(0x0);}}catch(_0x43e306){}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const PropertyName_1 = require("./PropertyName");
+/**
+ * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
+ */
+/**
+ * Describes one property associated with hierarchy item object.
+ */
+class PropertyValue {
+    /**
+     * Initializes new instance.
+     * @param name Property name.
+     * @param value Property value.
+     */
+    constructor(name, value) {
+        this._QualifiedName = name || new PropertyName_1.PropertyName();
+        this._Value = value || '';
+    }
+    get Value() {
+        return this._Value;
+    }
+    set Value(value) {
+        this._Value = value;
+    }
+    get QualifiedName() {
+        return this._QualifiedName;
+    }
+    set QualifiedName(value) {
+        this._QualifiedName = value;
+    }
+}
+exports.PropertyValue = PropertyValue;

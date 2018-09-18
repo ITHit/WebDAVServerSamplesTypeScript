@@ -45,7 +45,7 @@ export class MyCustomGetHandler implements IMethodHandler {
      * Creates instance of this class.
      * @param contentRootPathFolder Path to the folder where HTML files are located.
      */
-    constructor (contentRootPathFolder: string) {
+    constructor(contentRootPathFolder: string) {
         this.htmlPath = contentRootPathFolder;
     }
 
@@ -63,8 +63,8 @@ export class MyCustomGetHandler implements IMethodHandler {
      * @param item Instance of {@link IHierarchyItem} which was returned by
      * {@link DavContextBase.GetHierarchyItem} for this request.
      */
-    async ProcessRequest(context: DavContextBase, item: IHierarchyItem): Promise<void> {
-        if(context.Request.url.startsWith("/AjaxFileBrowser/") || context.Request.url.startsWith("/wwwroot/")) {
+    async processRequest(context: DavContextBase, item: IHierarchyItem): Promise<void> {
+        if (context.Request.url.startsWith("/AjaxFileBrowser/") || context.Request.url.startsWith("/wwwroot/")) {
             //  The "/AjaxFileBrowser/" are not a WebDAV folders. They can be used to store client script files, 
             //  images, static HTML files or any other files that does not require access via WebDAV.
             //  Any request to the files in this folder will just serve them to the client. 
@@ -72,20 +72,24 @@ export class MyCustomGetHandler implements IMethodHandler {
             const Url = parse(context.Request.url);
             let pathname = (Url.pathname || `${sep}`);
             pathname = pathname.substring(1).split('/').join(`${sep}`);
+            if (context.Request.url.startsWith("/AjaxFileBrowser/")) {
+                pathname = `wwwroot${sep}${pathname}`;
+            }
+
             let filePath: string = this.htmlPath + `${sep}` + pathname;
             const existsFilePath = await promisify(exists)(filePath);
             if (!existsFilePath) {
                 throw new DavException(("File not found: " + filePath), undefined, DavStatus.NOT_FOUND);
             }
-            
+
             let conType = String(lookup(filePath));
-            if(!conType) {
+            if (!conType) {
                 conType = `application/octet-stream`;
             }
 
             context.Response.setHeader('content-type', conType);
             //  Return file content in case of GET request, in case of HEAD just return headers.
-            if(context.Request.method == "GET") {
+            if (context.Request.method == "GET") {
                 const statFile: Stats = await promisify(stat)(filePath);
                 context.Response.setHeader('content-length', statFile.size);
                 const readStream = createReadStream(filePath);
@@ -96,7 +100,7 @@ export class MyCustomGetHandler implements IMethodHandler {
                     context.Response.end();
                 })
             }
-        } else if(item != null && this.instanceOfIItemCollection(item)) {
+        } else if (item != null && this.instanceOfIItemCollection(item)) {
             //  In case of GET requests to WebDAV folders we serve a web page to display 
             //  any information about this server and how to use it.
             //  Remember to call EnsureBeforeResponseWasCalledAsync here if your context implementation
@@ -106,17 +110,17 @@ export class MyCustomGetHandler implements IMethodHandler {
             let html: string = (await promisify(readFile)(this.htmlPath + htmlName)).toString();
             const Url = parse(context.Request.url);
             const appPath: string = (Url.path || '').replace(/\/$/, "");
-            
+
             html = html.replace(/_webDavServerRoot_/g, appPath);
             html = html.replace(/_webDavServerVersion_/g, '1.0');
-            this.WriteFileContent(context, html, this.htmlPath + htmlName);   
+            this.WriteFileContent(context, html, this.htmlPath + htmlName);
         }
         else {
-            //this.OriginalHandler.ProcessRequest(context, item);
-            context.Response.writeHead(404, 'File does\'t exist');
-            context.Response.end();   
+            await this.OriginalHandler.processRequest(context, item);
+            //context.Response.writeHead(404, 'File does\'t exist');
+            //context.Response.end();   
         }
-        
+
     }
 
     /**
@@ -132,17 +136,17 @@ export class MyCustomGetHandler implements IMethodHandler {
         context.Response.setHeader('Content-Length', content.length);
 
         let conType = String(contentType(String(lookup(filePath))));
-        if(!conType) {
+        if (!conType) {
             conType = `application/octet-stream; charset=${encoding}`;
         }
 
         context.Response.setHeader('Content-Type', conType);
         //  Return file content in case of GET request, in case of HEAD just return headers.
-        if(context.Request.method == "GET") {
+        if (context.Request.method == "GET") {
             context.Response.write(content, encoding);
             context.Response.end();
         }
-        
+
     }
 
     /**
@@ -152,7 +156,7 @@ export class MyCustomGetHandler implements IMethodHandler {
      * @see DavContextBaseAsync.GetHierarchyItemAsync  for this request.
      * @returns  Returns @c  true if this handler can handler this item.
      */
-    public AppliesTo(item: IHierarchyItem): boolean {
-        return this.instanceOfIFolder(item) || this.OriginalHandler.AppliesTo(item);
+    public appliesTo(item: IHierarchyItem): boolean {
+        return this.instanceOfIFolder(item) || this.OriginalHandler.appliesTo(item);
     }
 }

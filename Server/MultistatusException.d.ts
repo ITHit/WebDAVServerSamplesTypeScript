@@ -1,10 +1,11 @@
+import { DavContextBase } from "./DavContextBase";
 import { DavException } from "./DavException";
+import { IHierarchyItem } from "./IHierarchyItem";
 import { MultistatusResponse } from "./Impl/Multistatus/MultistatusResponse";
 import { PropertyName } from "./PropertyName";
-import { DavContextBase } from "./DavContextBase";
-import { IHierarchyItem } from "./IHierarchyItem";
 /**Exception which contains errors for multiple items or properties. */
 export declare class MultistatusException extends DavException {
+    readonly Response: MultistatusResponse;
     private readonly response;
     /**
      * Initializes new message.
@@ -19,8 +20,6 @@ export declare class MultistatusException extends DavException {
      * @param exception Exception for failed operation.
      */
     AddInnerException(itemPath?: string, propertyName?: PropertyName, exception?: DavException, mex?: MultistatusException): void;
-    readonly Response: MultistatusResponse;
-    private GetResponses;
     /**
      * Writes exception to the output writer.
      * @param context Instance of {@link DavContextBase}.
@@ -38,4 +37,5 @@ export declare class MultistatusException extends DavException {
      * shall be omitted because it will be written as part of {@link MultistatusException} exception.
      */
     RenderInline(writer: any, context: DavContextBase): void;
+    private GetResponses;
 }

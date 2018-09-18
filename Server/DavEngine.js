@@ -1,3 +1,327 @@
-var a8_0x43c4=['UmVnaXN0ZXJQcm9wZXJ0eUhhbmRsZXI=','aGFuZGxlcg==','cHJvcE5hbWU=','UmVnaXN0ZXJPcHRpb25zSGFuZGxlcg==','bmFtZQ==','UmVnaXN0ZXJSZXBvcnRIYW5kbGVy','bmFtZXNwYWNl','Y29udGV4dA==','UmVzcG9uc2U=','Y29udGV4dC5SZXNwb25zZQ==','RW5naW5l','bG9n','LS0tLS0tLS0tLS0tLS0tLS0gU3RhcnRlZDog','IC0tLS0tLS0tLS0tLS0tLS0t','UmVxdWVzdA==','dG9VcHBlckNhc2U=','dXJs','RGF2RXhjZXB0aW9u','Q291bGQgbm90IGZpbmQgaGFuZGxlciBmb3IgdGhpcyBtZXRob2Q=','Tk9UX0FMTE9XRUQ=','VXJsVXRpbA==','R2V0SXRlbUJ5VXJs','UHJvY2Vzc1dlbGxLbm93blJlcXVlc3Q=','UHJvY2Vzc1JlcXVlc3Q=','RXJyb3IgRGF2RW5naW5lIFJ1bjo=','ZW5k','dG9TdHJpbmc=','R2V0QWxsUHJvcA==','a2V5cw==','Zm9yRWFjaA==','SW5jbHVkZUluQWxsUHJvcA==','UHJvcGVydHlOYW1l','RGlzcG9zZVNhZmU=','R2V0UHJvcGVydGllc0Zvckl0ZW0=','QUNM','Q0hFQ0tJTg==','Q0hFQ0tPVVQ=','TGlzdA==','ZW5kc1dpdGg=','Ly53ZWxsLWtub3duL2NhbGRhdg==','Ly53ZWxsLWtub3duL2NhcmRkYXY=','Q3JlYXRlVXJs','QXBwbGljYXRpb25QYXRo','QWRkSGVhZGVy','SGVhZGVycw==','U2V0U3RhdHVz','RGF2U3RhdHVz','TW92ZWQgUGVybWFuZW50bHk=','c3RyaW5n','Y29uc3RydWN0b3I=','d2hpbGUgKHRydWUpIHt9','Y291bnRlcg==','ZGVidQ==','Y2FsbA==','YWN0aW9u','Z2dlcg==','c3RhdGVPYmplY3Q=','YXBwbHk=','ZnVuY3Rpb24gKlwoICpcKQ==','XCtcKyAqKD86XzB4KD86W2EtZjAtOV0pezQsNn18KD86XGJ8XGQpW2EtejAtOV17MSw0fSg/OlxifFxkKSk=','aW5pdA==','dGVzdA==','Y2hhaW4=','aW5wdXQ=','ZGVmaW5lUHJvcGVydHk=','Li9Mb2dnZXIvRGVmYXVsdExvZ2dlckltcGw=','Li9JbXBsL0FyZ3VtZW50VXRpbA==','Li9Qcm9wZXJ0eU5hbWU=','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0xpc3Q=','dHlwZXNjcmlwdC1kb3RuZXQtY29tbW9uanMvU3lzdGVtL0NvbGxlY3Rpb25zL0RpY3Rpb25hcmllcy9EaWN0aW9uYXJ5','Li9EYXZFeGNlcHRpb24=','Li9EYXZTdGF0dXM=','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MxL1Jlc291cmNlVHlwZUhhbmRsZXI=','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvRGVsdGFWL0NyZWF0aW9uRGF0ZUhhbmRsZXI=','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MxL0dldExhc3RNb2RpZmllZEhhbmRsZXI=','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MyL1N1cHBvcnRlZExvY2tIYW5kbGVy','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MyL0xvY2tEaXNjb3ZlcnlIYW5kbGVy','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvUXVvdGEvUXVvdGFBdmFpbGFibGVCeXRlc0hhbmRsZXI=','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvUXVvdGEvUXVvdGFVc2VkQnl0ZXNIYW5kbGVy','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MxL0dldENvbnRlbnRMZW5ndGhIYW5kbGVy','Li9JbXBsL1Byb3BlcnR5SGFuZGxlcnMvQ2xhc3MxL0dldENvbnRlbnRUeXBlSGFuZGxlcg==','Li9JbXBsL01ldGhvZEhhbmRsZXJzL09wdGlvbnNEQVZIYW5kbGVy','Q2FsY3VsYXRlQ29udGVudExlbmd0aA==','Q29udGVudEVuY29kaW5n','dXRmOA==','QWxsb3dPZmZpY2UxMlZlcnNpb25pbmc=','T3V0cHV0WG1sRm9ybWF0dGluZw==','Q29yc0FsbG93ZWRGb3I=','VXNlRnVsbFVyaXM=','TG9nZ2Vy','RGVmYXVsdExvZ2dlckltcGw=','cHJvcGVydHlIYW5kbGVycw==','bWV0aG9kSGFuZGxlcnM=','UFJPUEZJTkQ=','UHJvcGZpbmREYXZIYW5kbGVy','T3B0aW9uc0RhdkhhbmRsZXI=','R2V0TWV0aG9kc1RoYXRBcHBseVRv','Q09QWQ==','REVMRVRF','R0VU','SEVBRA==','T1BUSU9OUw==','UE9TVA==','UFJPUFBBVENI','UFVU','U0VBUkNI','VU5MT0NL','R2V0T3B0aW9uc0Zvckl0ZW0=','cmVzdW1hYmxlLXVwbG9hZA==','aW5pdFByb3BlcnR5SGFuZGxlcnM=','cmVzb3VyY2V0eXBl','ZGlzcGxheW5hbWU=','RGlzcGxheU5hbWVIYW5kbGVy','Y3JlYXRpb25kYXRl','Q3JlYXRpb25EYXRlSGFuZGxlcg==','R2V0TGFzdE1vZGlmaWVkSGFuZGxlcg==','U3VwcG9ydGVkTG9ja0hhbmRsZXI=','bG9ja2Rpc2NvdmVyeQ==','cXVvdGEtYXZhaWxhYmxlLWJ5dGVz','cXVvdGEtdXNlZC1ieXRlcw==','UXVvdGFVc2VkQnl0ZXNIYW5kbGVy','Z2V0Y29udGVudGxlbmd0aA==','R2V0Q29udGVudExlbmd0aEhhbmRsZXI=','Z2V0Y29udGVudHR5cGU=','R2V0Q29udGVudFR5cGVIYW5kbGVy','UmVnaXN0ZXJNZXRob2RIYW5kbGVy','QXJndW1lbnRVdGls','Q2hlY2tBcmd1bWVudE5vdE51bGw=','bWV0aG9k'];(function(_0x4f484f,_0x2bab64){var _0x2fdf0d=function(_0x2f8e68){while(--_0x2f8e68){_0x4f484f['push'](_0x4f484f['shift']());}};_0x2fdf0d(++_0x2bab64);}(a8_0x43c4,0xba));var a8_0x2919=function(_0x5464c7,_0x3237f8){_0x5464c7=_0x5464c7-0x0;var _0x296960=a8_0x43c4[_0x5464c7];if(a8_0x2919['URUvBS']===undefined){(function(){var _0x557d52=function(){var _0x101235;try{_0x101235=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x516816){_0x101235=window;}return _0x101235;};var _0x362109=_0x557d52();var _0x423495='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x362109['atob']||(_0x362109['atob']=function(_0x408eb4){var _0x1b5e2c=String(_0x408eb4)['replace'](/=+$/,'');for(var _0x4e898d=0x0,_0x479725,_0x15d507,_0x215a42=0x0,_0x176c2a='';_0x15d507=_0x1b5e2c['charAt'](_0x215a42++);~_0x15d507&&(_0x479725=_0x4e898d%0x4?_0x479725*0x40+_0x15d507:_0x15d507,_0x4e898d++%0x4)?_0x176c2a+=String['fromCharCode'](0xff&_0x479725>>(-0x2*_0x4e898d&0x6)):0x0){_0x15d507=_0x423495['indexOf'](_0x15d507);}return _0x176c2a;});}());a8_0x2919['suHulw']=function(_0x87fa00){var _0x5cbca7=atob(_0x87fa00);var _0x21c308=[];for(var _0x2c28de=0x0,_0x217208=_0x5cbca7['length'];_0x2c28de<_0x217208;_0x2c28de++){_0x21c308+='%'+('00'+_0x5cbca7['charCodeAt'](_0x2c28de)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x21c308);};a8_0x2919['bDxFJy']={};a8_0x2919['URUvBS']=!![];}var _0x4aae21=a8_0x2919['bDxFJy'][_0x5464c7];if(_0x4aae21===undefined){_0x296960=a8_0x2919['suHulw'](_0x296960);a8_0x2919['bDxFJy'][_0x5464c7]=_0x296960;}else{_0x296960=_0x4aae21;}return _0x296960;};var _0x246a36=function(){var _0x4dc481=!![];return function(_0x190868,_0x5a65ae){var _0x57d139=_0x4dc481?function(){if(_0x5a65ae){var _0x55be7c=_0x5a65ae[a8_0x2919('0x0')](_0x190868,arguments);_0x5a65ae=null;return _0x55be7c;}}:function(){};_0x4dc481=![];return _0x57d139;};}();(function(){_0x246a36(this,function(){var _0x7c891f=new RegExp(a8_0x2919('0x1'));var _0x1960de=new RegExp(a8_0x2919('0x2'),'i');var _0x3d5b6a=_0xbcec00(a8_0x2919('0x3'));if(!_0x7c891f[a8_0x2919('0x4')](_0x3d5b6a+a8_0x2919('0x5'))||!_0x1960de['test'](_0x3d5b6a+a8_0x2919('0x6'))){_0x3d5b6a('0');}else{_0xbcec00();}})();}());'use strict';/**
+"use strict";
+/**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */Object[a8_0x2919('0x7')](exports,'__esModule',{'value':!![]});const DefaultLoggerImpl_1=require(a8_0x2919('0x8'));const ArgumentUtil_1=require(a8_0x2919('0x9'));const PropertyName_1=require(a8_0x2919('0xa'));const List_1=require(a8_0x2919('0xb'));const Dictionary_1=require(a8_0x2919('0xc'));const DavException_1=require(a8_0x2919('0xd'));const DavStatus_1=require(a8_0x2919('0xe'));const UrlUtil_1=require('./Impl/Util/UrlUtil');const WebdavConstants_1=require('./Impl/WebdavConstants');const PropfindDAVHandler_1=require('./Impl/MethodHandlers/PropfindDAVHandler');const ResourceTypeHandler_1=require(a8_0x2919('0xf'));const DisplayNameHandler_1=require('./Impl/PropertyHandlers/Class1/DisplayNameHandler');const CreationDateHandler_1=require(a8_0x2919('0x10'));const GetLastModifiedHandler_1=require(a8_0x2919('0x11'));const SupportedLockHandler_1=require(a8_0x2919('0x12'));const LockDiscoveryHandler_1=require(a8_0x2919('0x13'));const QuotaAvailableBytesHandler_1=require(a8_0x2919('0x14'));const QuotaUsedBytesHandler_1=require(a8_0x2919('0x15'));const GetContentLengthHandler_1=require(a8_0x2919('0x16'));const GetContentTypeHandler_1=require(a8_0x2919('0x17'));const OptionsDAVHandler_1=require(a8_0x2919('0x18'));const GetDavHandler_1=require('./Impl/MethodHandlers/GetDavHandler');class DavEngine{constructor(){this[a8_0x2919('0x19')]=!![];this[a8_0x2919('0x1a')]=a8_0x2919('0x1b');this[a8_0x2919('0x1c')]=![];this['AutoPutUnderVersionControl']=!![];this[a8_0x2919('0x1d')]=![];this[a8_0x2919('0x1e')]='*';this[a8_0x2919('0x1f')]=!![];this[a8_0x2919('0x20')]=new DefaultLoggerImpl_1[(a8_0x2919('0x21'))]();this[a8_0x2919('0x22')]=this['initPropertyHandlers']();this[a8_0x2919('0x23')]=new Dictionary_1['Dictionary']();this[a8_0x2919('0x23')][a8_0x2919('0x24')]=new PropfindDAVHandler_1[(a8_0x2919('0x25'))]();this[a8_0x2919('0x23')]['GET']=new GetDavHandler_1['GetDavHandler']();this[a8_0x2919('0x23')]['OPTIONS']=new OptionsDAVHandler_1[(a8_0x2919('0x26'))]();}[a8_0x2919('0x27')](_0x8cf0fd){const _0xb72110=[a8_0x2919('0x28'),a8_0x2919('0x29'),a8_0x2919('0x2a'),a8_0x2919('0x2b'),'LOCK','MOVE',a8_0x2919('0x2c'),a8_0x2919('0x2d'),a8_0x2919('0x24'),a8_0x2919('0x2e'),a8_0x2919('0x2f'),'REPORT',a8_0x2919('0x30'),a8_0x2919('0x31')];return _0xb72110;}[a8_0x2919('0x32')](_0x24a65b){const _0xe3b0d8=['1','2','3',a8_0x2919('0x33')];return _0xe3b0d8;}[a8_0x2919('0x34')](){const _0x572177=[];_0x572177[a8_0x2919('0x35')]=new ResourceTypeHandler_1['ResourceTypeHandler']();_0x572177[a8_0x2919('0x36')]=new DisplayNameHandler_1[(a8_0x2919('0x37'))]();_0x572177[a8_0x2919('0x38')]=new CreationDateHandler_1[(a8_0x2919('0x39'))]();_0x572177['getlastmodified']=new GetLastModifiedHandler_1[(a8_0x2919('0x3a'))]();_0x572177['supportedlock']=new SupportedLockHandler_1[(a8_0x2919('0x3b'))]();_0x572177[a8_0x2919('0x3c')]=new LockDiscoveryHandler_1['LockDiscoveryHandler']();_0x572177[a8_0x2919('0x3d')]=new QuotaAvailableBytesHandler_1['QuotaAvailableBytesHandler']();_0x572177[a8_0x2919('0x3e')]=new QuotaUsedBytesHandler_1[(a8_0x2919('0x3f'))]();_0x572177[a8_0x2919('0x40')]=new GetContentLengthHandler_1[(a8_0x2919('0x41'))]();_0x572177[a8_0x2919('0x42')]=new GetContentTypeHandler_1[(a8_0x2919('0x43'))]();return _0x572177;}[a8_0x2919('0x44')](_0x5555a0,_0x1f120f){ArgumentUtil_1[a8_0x2919('0x45')][a8_0x2919('0x46')](_0x5555a0,a8_0x2919('0x47'));ArgumentUtil_1[a8_0x2919('0x45')][a8_0x2919('0x46')](_0x1f120f,'handler');let _0x39e48d=_0x1f120f;if(this['methodHandlers'][_0x5555a0]){_0x39e48d=this[a8_0x2919('0x23')][_0x5555a0];}this['methodHandlers'][_0x5555a0]=_0x1f120f;return _0x39e48d;}[a8_0x2919('0x48')](_0x370ae0,_0x22861d){ArgumentUtil_1[a8_0x2919('0x45')][a8_0x2919('0x46')](_0x22861d,a8_0x2919('0x49'));ArgumentUtil_1['ArgumentUtil']['CheckArgumentNotNull'](_0x370ae0,a8_0x2919('0x4a'));let _0xc094d1=_0x22861d;let _0x5ef4db=this['propertyHandlers'][_0x370ae0];if(_0x5ef4db){_0xc094d1=_0x5ef4db;}this[a8_0x2919('0x22')][_0x370ae0]=_0x22861d;return _0xc094d1;}[a8_0x2919('0x4b')](_0x55b962,_0x3182b3){ArgumentUtil_1['ArgumentUtil'][a8_0x2919('0x46')](_0x55b962,a8_0x2919('0x4c'));ArgumentUtil_1[a8_0x2919('0x45')][a8_0x2919('0x46')](_0x3182b3,'handler');return _0x3182b3;}[a8_0x2919('0x4d')](_0x42bd8b,_0x1f7a91,_0x17042a){ArgumentUtil_1['ArgumentUtil'][a8_0x2919('0x46')](_0x42bd8b,'name');ArgumentUtil_1['ArgumentUtil'][a8_0x2919('0x46')](_0x1f7a91,a8_0x2919('0x4e'));ArgumentUtil_1['ArgumentUtil']['CheckArgumentNotNull'](_0x17042a,a8_0x2919('0x49'));return _0x17042a;}async['Run'](_0xa7b2db){let _0x4b9061=null;ArgumentUtil_1[a8_0x2919('0x45')]['CheckArgumentNotNull'](_0xa7b2db,a8_0x2919('0x4f'));ArgumentUtil_1[a8_0x2919('0x45')]['CheckArgumentNotNull'](_0xa7b2db['Request'],'context.Request');ArgumentUtil_1[a8_0x2919('0x45')][a8_0x2919('0x46')](_0xa7b2db[a8_0x2919('0x50')],a8_0x2919('0x51'));_0xa7b2db[a8_0x2919('0x52')]=this;console[a8_0x2919('0x53')](a8_0x2919('0x54')+new Date()['toString']()+a8_0x2919('0x55'));try{let _0x295c32=(_0xa7b2db[a8_0x2919('0x56')][a8_0x2919('0x47')]||'')[a8_0x2919('0x57')]();console[a8_0x2919('0x53')](_0x295c32+'\x20'+_0xa7b2db['Request'][a8_0x2919('0x58')]);if(!this[a8_0x2919('0x23')][_0x295c32]){const _0x33c92f=new DavException_1[(a8_0x2919('0x59'))](a8_0x2919('0x5a'),undefined,DavStatus_1['DavStatus'][a8_0x2919('0x5b')]);throw _0x33c92f;}const _0x58e72a=this['methodHandlers'][_0x295c32];_0x4b9061=await UrlUtil_1[a8_0x2919('0x5c')][a8_0x2919('0x5d')](_0xa7b2db,_0xa7b2db['Request'][a8_0x2919('0x58')]);let _0x2f597d=this[a8_0x2919('0x5e')](_0x4b9061,_0xa7b2db);if(!_0x2f597d){await _0x58e72a[a8_0x2919('0x5f')](_0xa7b2db,_0x4b9061);}}catch(_0x2308fb){console[a8_0x2919('0x53')](a8_0x2919('0x60'),_0x2308fb);_0xa7b2db['Response']['writeHead'](0x1f4);_0xa7b2db[a8_0x2919('0x50')][a8_0x2919('0x61')](_0x2308fb[a8_0x2919('0x62')]());}}[a8_0x2919('0x63')](){let _0x526be1=new Array();const _0x3ae1ac=this[a8_0x2919('0x22')];Object[a8_0x2919('0x64')](_0x3ae1ac)[a8_0x2919('0x65')](_0x48f719=>{if(_0x3ae1ac[_0x48f719][a8_0x2919('0x66')]){_0x526be1['push'](new PropertyName_1[(a8_0x2919('0x67'))](_0x48f719));}});return _0x526be1;}static[a8_0x2919('0x68')](_0x36efe0){}[a8_0x2919('0x69')](_0x2f1e41){const _0x55f66a=[a8_0x2919('0x6a'),'CANCELUPLOAD',a8_0x2919('0x6b'),a8_0x2919('0x6c'),a8_0x2919('0x28'),a8_0x2919('0x29'),'GET',a8_0x2919('0x24')];let _0x4db913=new List_1[(a8_0x2919('0x6d'))]();_0x55f66a['forEach'](_0x2f1e41=>_0x4db913['add'](new PropertyName_1[(a8_0x2919('0x67'))](_0x2f1e41)));return _0x4db913;}[a8_0x2919('0x5e')](_0x21eaa8,_0x38c298){let _0x5130cf=_0x38c298[a8_0x2919('0x56')][a8_0x2919('0x58')];if(!_0x5130cf[a8_0x2919('0x6e')](a8_0x2919('0x6f'))&&!_0x5130cf['endsWith'](a8_0x2919('0x70'))){return![];}let _0x34b97d;if(_0x21eaa8!=null){_0x34b97d=UrlUtil_1['UrlUtil'][a8_0x2919('0x71')](_0x38c298['Request'],_0x21eaa8['Path'],this[a8_0x2919('0x1f')]);}else{_0x34b97d=_0x38c298[a8_0x2919('0x56')][a8_0x2919('0x72')];}_0x38c298[a8_0x2919('0x50')][a8_0x2919('0x73')](WebdavConstants_1[a8_0x2919('0x74')]['LOCATION'],_0x34b97d);_0x38c298[a8_0x2919('0x75')](new DavStatus_1[(a8_0x2919('0x76'))](0x12d,a8_0x2919('0x77')));return!![];}}exports['default']=DavEngine;function _0xbcec00(_0x14e63f){function _0x591d14(_0x3bd758){if(typeof _0x3bd758===a8_0x2919('0x78')){return function(_0x1e7c23){}[a8_0x2919('0x79')](a8_0x2919('0x7a'))[a8_0x2919('0x0')](a8_0x2919('0x7b'));}else{if((''+_0x3bd758/_0x3bd758)['length']!==0x1||_0x3bd758%0x14===0x0){(function(){return!![];}['constructor'](a8_0x2919('0x7c')+'gger')[a8_0x2919('0x7d')](a8_0x2919('0x7e')));}else{(function(){return![];}[a8_0x2919('0x79')](a8_0x2919('0x7c')+a8_0x2919('0x7f'))['apply'](a8_0x2919('0x80')));}}_0x591d14(++_0x3bd758);}try{if(_0x14e63f){return _0x591d14;}else{_0x591d14(0x0);}}catch(_0x141bd1){}}
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const Dictionary_1 = require("typescript-dotnet-commonjs/System/Collections/Dictionaries/Dictionary");
+const List_1 = require("typescript-dotnet-commonjs/System/Collections/List");
+const DavException_1 = require("./DavException");
+const DavStatus_1 = require("./DavStatus");
+const ArgumentUtil_1 = require("./Impl/ArgumentUtil");
+const GetDavHandler_1 = require("./Impl/MethodHandlers/GetDavHandler");
+const OptionsDAVHandler_1 = require("./Impl/MethodHandlers/OptionsDAVHandler");
+const PropfindDAVHandler_1 = require("./Impl/MethodHandlers/PropfindDAVHandler");
+const DisplayNameHandler_1 = require("./Impl/PropertyHandlers/Class1/DisplayNameHandler");
+const GetContentLengthHandler_1 = require("./Impl/PropertyHandlers/Class1/GetContentLengthHandler");
+const GetContentTypeHandler_1 = require("./Impl/PropertyHandlers/Class1/GetContentTypeHandler");
+const GetLastModifiedHandler_1 = require("./Impl/PropertyHandlers/Class1/GetLastModifiedHandler");
+const ResourceTypeHandler_1 = require("./Impl/PropertyHandlers/Class1/ResourceTypeHandler");
+const LockDiscoveryHandler_1 = require("./Impl/PropertyHandlers/Class2/LockDiscoveryHandler");
+const SupportedLockHandler_1 = require("./Impl/PropertyHandlers/Class2/SupportedLockHandler");
+const CreationDateHandler_1 = require("./Impl/PropertyHandlers/DeltaV/CreationDateHandler");
+const QuotaAvailableBytesHandler_1 = require("./Impl/PropertyHandlers/Quota/QuotaAvailableBytesHandler");
+const QuotaUsedBytesHandler_1 = require("./Impl/PropertyHandlers/Quota/QuotaUsedBytesHandler");
+const UrlUtil_1 = require("./Impl/Util/UrlUtil");
+const WebdavConstants_1 = require("./Impl/WebdavConstants");
+const DefaultLoggerImpl_1 = require("./Logger/DefaultLoggerImpl");
+const PropertyName_1 = require("./PropertyName");
+const PutDavHandler_1 = require("./Impl/MethodHandlers/PutDavHandler");
+const HeadDAVHandler_1 = require("./Impl/MethodHandlers/HeadDAVHandler");
+const LockDAVHandler_1 = require("./Impl/MethodHandlers/LockDAVHandler");
+const UnlockDAVHandler_1 = require("./Impl/MethodHandlers/UnlockDAVHandler");
+/**
+ * The DavEngine class provides the core implementation for WebDAV engine.
+ * @desc
+ * Engine parses XML send by WebDAV client, processes requests making calls to your implementations of
+ * WebDAV interfaces ({@link IHierarchyItem} , {@link IFolder}, {@link IFile}  and other)
+ * and finally generates XML response.
+ * @desc
+ * In each HTTP request you will create separate instance of your class derived
+ * from {@link DavContextBase}  class and pass it to the {@link DavEngine.RunAsync}  method. Via the context, engine
+ * receives all necessary information about hosting environment.
+ * @desc
+ * You must set {@link License}  property before you can use the engine.
+ * @desc
+ * All updates invoked within one request execution shall be inside one transactions.
+ * Transaction can be committed or rollbacked in {@link DavContextBase.BeforeResponseAsync}  method, which
+ * is called right before starting sending response to client.
+ * After this method is called, no methods of interfaces which update state will be called. However methods
+ * which read state can be called.
+ * @threadsafety  Method {@link DavEngine.RunAsync}  is threadsafe. All other members are not threadsafe.
+ * You can create a single instance of DavEngine, initialize it onces and use to serve all requests
+ * from different threads.
+ */
+class DavEngine {
+    /**
+     * If item is not null and item implements {@link IDisposable} calls
+     * {@link IDisposable.Dispose} wrapped in try-catch block.
+     * @param item Item that can optionally implement {@link IDisposable}.
+     */
+    static DisposeSafe(item) {
+    }
+    /**
+     * Initializes a new instance of the DavEngine class.
+     */
+    constructor() {
+        this.CalculateContentLength = true;
+        this.ContentEncoding = 'utf8';
+        this.AllowOffice12Versioning = false;
+        this.AutoPutUnderVersionControl = true;
+        this.OutputXmlFormatting = false;
+        this.CorsAllowedFor = "*";
+        this.UseFullUris = true;
+        this.Logger = new DefaultLoggerImpl_1.DefaultLoggerImpl();
+        this.propertyHandlers = this.initPropertyHandlers();
+        this.methodHandlers = new Dictionary_1.Dictionary();
+        this.methodHandlers["PROPFIND"] = new PropfindDAVHandler_1.PropfindDavHandler();
+        this.methodHandlers["GET"] = new GetDavHandler_1.GetDavHandler();
+        this.methodHandlers["OPTIONS"] = new OptionsDAVHandler_1.OptionsDavHandler();
+        this.methodHandlers["PUT"] = new PutDavHandler_1.PutDavHandler();
+        this.methodHandlers["HEAD"] = new HeadDAVHandler_1.HeadDavHandler();
+        this.methodHandlers["LOCK"] = new LockDAVHandler_1.LockDavHandler();
+        this.methodHandlers["UNLOCK"] = new UnlockDAVHandler_1.UnlockDAVHandler();
+    }
+    GetMethodsThatApplyTo(item) {
+        const e = ["COPY", "DELETE", "GET", "HEAD", "LOCK", "MOVE", "OPTIONS", "POST", "PROPFIND", "PROPPATCH", "PUT", "REPORT", "SEARCH", "UNLOCK"];
+        return e;
+    }
+    GetOptionsForItem(item) {
+        const arr = ["1", "2", "3", "resumable-upload"];
+        return arr;
+    }
+    /**
+     * Registers custom method handler.
+     * @param method HTTP verb.
+     * @param handler Custom handled implementing {@link IMethodHandler}  interface.
+     * @returns Original handler if any.
+     * @remarks Using this method you can register custom method handler to be called by the engine.
+     * If the handler for the specified method was already defined it is returned from this method.
+     */
+    RegisterMethodHandler(method, handler) {
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(method, "method");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(handler, "handler");
+        let oldHandler = handler;
+        if (this.methodHandlers[method]) {
+            oldHandler = this.methodHandlers[method];
+        }
+        this.methodHandlers[method] = handler;
+        return oldHandler;
+    }
+    /**
+     * Registers custom property handler.
+     * @param propName Property name.
+     * @param handler Custom handled implementing {@link IPropertyHandler}  interface.
+     * @returns Original handler if any.
+     * @remarks Property handler allows formatting of property values to XML and reading property values from XML.
+     * Using this method you can register custom property handler to be called by the engine.
+     * If the handler for the specified property was already defined it is returned from this method.
+     * The original handler can be saved and called later from your custom handler.
+     */
+    RegisterPropertyHandler(propName, handler) {
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(handler, "handler");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(propName, "propName");
+        let oldHandler = handler;
+        const f = this.propertyHandlers[propName];
+        if (f) {
+            oldHandler = f;
+        }
+        this.propertyHandlers[propName] = handler;
+        return oldHandler;
+    }
+    /**
+     * Registers custom options handler.
+     * @param name Token that will be added to 'DAV' header for OPTIONS response.
+     * @param handler Custom handled implementing {@link IOptionsHandler}  interface.
+     * @returns Original handler if any.
+     * @remarks Using this method you can register custom options handler to be called by the engine.
+     * If the handler for the specified token was already defined it is returned from this method.
+     * The original handler can be saved and called later from your custom handler.
+     */
+    RegisterOptionsHandler(name, handler) {
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(name, "name");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(handler, "handler");
+        return handler;
+    }
+    /**
+     * Registers custom report handler.
+     * @param name Report element name.
+     * @param namespace Report namespace.
+     * @param handler Custom handled implementing {@link IReportHandler}  interface.
+     * @returns Original handler if any.
+     * @remarks Using this method you can register custom report handler to be called by the engine.
+     * If the handler for the specified token was already defined it is returned from this method.
+     * The original handler can be saved and called later from your custom handler.
+     */
+    RegisterReportHandler(name, namespace, handler) {
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(name, "name");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(namespace, "namespace");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(handler, "handler");
+        return handler;
+    }
+    /**
+     * Processes WebDAV request and generates WebDAV response.
+     * @param context Instance of your context class derived from {@link DavContextBase}  class.
+     * @desc
+     * You must call Run method in each request to your WebDAV server passing your context class derived from {@link DavContextBase} as input parameter.
+     */
+    async Run(context) {
+        let item = null;
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(context, "context");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(context.Request, "context.Request");
+        ArgumentUtil_1.ArgumentUtil.CheckArgumentNotNull(context.Response, "context.Response");
+        context.Engine = this;
+        // let filtResponse: FilterResponse;
+        // let filtRequest: FilterRequest;
+        console.log(`----------------- Started: ${(new Date()).toString()} -----------------`);
+        context.Request.pause();
+        try {
+            //  create new handler or call custom handler
+            const method = (context.Request.method || '').toUpperCase();
+            console.log(`${method} ${context.Request.url}`);
+            if (!this.methodHandlers[method]) {
+                const ex = new DavException_1.DavException("Could not find handler for this method", undefined, DavStatus_1.DavStatus.NOT_ALLOWED);
+                throw ex;
+            }
+            const handler = this.methodHandlers[method];
+            item = await UrlUtil_1.UrlUtil.GetItemByUrl(context, context.Request.url);
+            //  process well-known request such as PROPFIND http://server/.well-known/caldav & http://server/.well-known/carddav
+            const isWellKnownRequest = this.ProcessWellKnownRequest(item, context);
+            if (!isWellKnownRequest) {
+                await handler.processRequest(context, item);
+            }
+        }
+        catch (err) {
+            if (err.code.Code !== 404) {
+                console.log('Error DavEngine Run:', err);
+            }
+            context.Response.writeHead(err.code.Code || 500);
+            context.Response.end(err.toString());
+        }
+        /*filtRequest = new FilterRequest(context.Request, isLogRequestBody(context, handler.EnableInputDebugLogging));
+        filtResponse = new FilterResponse(filtRequest, context.Response, (CalculateContentLength && handler.EnableOutputBuffering), isLogResponseBody(context, handler.EnableOutputDebugLogging), Logger);
+        context.Response = filtResponse;
+        context.Request = filtRequest;
+        addDebugHeaders(filtResponse);
+        filtRequest.LogHeaders(Logger);
+        addCrossDomainHeaders(context);
+        checkLicenseAsync(context);
+        try {
+            item = UrlUtil.GetItemByUrlAsync(context, context.Request.GetRequestPath());
+            //  process well-known request such as PROPFIND http://server/.well-known/caldav & http://server/.well-known/carddav
+            let isWellKnownRequest: boolean = ProcessWellKnownRequestAsync(item, context);
+            if (!isWellKnownRequest) {
+                handler.ProcessRequestAsync(context, item);
+            }
+            
+        }
+        finally {
+            DisposeSafe(item);
+        }
+        
+    }
+    catch (ex) {
+        context.Exception = ex;
+        ex.RenderAsync(context, item, isResponseBodyAllowed(context));
+        if (((filtResponse != null)
+                    && (filtRequest != null))) {
+            doPostProcessing(filtResponse, filtRequest, startTickCount);
+        }
+        
+        return;
+    }
+    catch (ex ) {
+        Logger.LogError("Execute failed.", ex);
+        try {
+            context.Exception = ex;
+            //  try to set status, if content already sent this call will fail
+            context.SetStatusAsync(DavStatus.INTERNAL_ERROR);
+            if ((isResponseBodyAllowed(context)
+                        && (filtResponse != null))) {
+                let erMessage: number[] = ContentEncoding.GetBytes(ex.ToString());
+                filtResponse.FilterOutputStream.Write(erMessage, 0, erMessage.Length);
+            }
+            
+        }
+        catch (exept) {
+            Logger.LogError("Exception during response finishing", exept);
+            // HttpListener: connection may be closed
+        }
+        
+        if (((filtResponse != null)
+                    && (filtRequest != null))) {
+            doPostProcessing(filtResponse, filtRequest, startTickCount);
+        }
+        
+        throw;
+    }
+    finally {
+
+        if ((item instanceof  ILockAsync)) {
+            LicenseValidator.CheckLicenseModule(LicenseModule.Class2);
+        }
+    }
+    
+    //  Do not close stream here. Additional content may be written, for instance when authentication failed.
+    doPostProcessing(filtResponse, filtRequest, startTickCount);*/
+    }
+    GetAllProp() {
+        const propNames = new Array();
+        const arr = this.propertyHandlers;
+        Object.keys(arr).forEach(key => {
+            if (arr[key].IncludeInAllProp) {
+                propNames.push(new PropertyName_1.PropertyName(key));
+            }
+        });
+        return propNames;
+    }
+    GetPropertiesForItem(item) {
+        const arr = ['ACL', 'CANCELUPLOAD', 'CHECKIN', 'CHECKOUT', 'COPY', 'DELETE', 'GET', 'PROPFIND'];
+        const propNames = new List_1.List();
+        arr.forEach(item => propNames.add(new PropertyName_1.PropertyName(item)));
+        return propNames;
+    }
+    initPropertyHandlers() {
+        const arr = [];
+        arr["resourcetype"] = new ResourceTypeHandler_1.ResourceTypeHandler();
+        arr["displayname"] = new DisplayNameHandler_1.DisplayNameHandler();
+        arr["creationdate"] = new CreationDateHandler_1.CreationDateHandler();
+        arr["getlastmodified"] = new GetLastModifiedHandler_1.GetLastModifiedHandler();
+        arr["supportedlock"] = new SupportedLockHandler_1.SupportedLockHandler();
+        arr["lockdiscovery"] = new LockDiscoveryHandler_1.LockDiscoveryHandler();
+        arr["quota-available-bytes"] = new QuotaAvailableBytesHandler_1.QuotaAvailableBytesHandler();
+        arr["quota-used-bytes"] = new QuotaUsedBytesHandler_1.QuotaUsedBytesHandler();
+        arr["getcontentlength"] = new GetContentLengthHandler_1.GetContentLengthHandler();
+        arr["getcontenttype"] = new GetContentTypeHandler_1.GetContentTypeHandler();
+        return arr;
+    }
+    /**
+     * Sets 301 Moved Permanently in case of requests to '/.well-known/caldav'
+     * or '/.well-known/carddav' url.
+     * @remarks
+     * Gives a chance for the user to return hierarchy item that coresponds to
+     * well-known requests to CalDAV and CardDAV servers.
+     * @returns  Boolean value indicating if this is a well known request.
+     * @remarks
+     * http://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml
+     * http://tools.ietf.org/html/rfc5785
+     * http://tools.ietf.org/html/rfc6764
+     */
+    ProcessWellKnownRequest(item, context) {
+        const url = context.Request.url;
+        if (!url.endsWith("/.well-known/caldav") && !url.endsWith("/.well-known/carddav")) {
+            return false;
+        }
+        let location;
+        if ((item != null)) {
+            location = UrlUtil_1.UrlUtil.CreateUrl(context.Request, item.Path, this.UseFullUris);
+        }
+        else {
+            location = context.Request.ApplicationPath;
+            //  assume CalDAV and CardDAV are on WebDAV root
+        }
+        context.Response.AddHeader(WebdavConstants_1.Headers.LOCATION, location);
+        context.SetStatus(new DavStatus_1.DavStatus(301, "Moved Permanently"));
+        return true;
+    }
+}
+exports.DavEngine = DavEngine;

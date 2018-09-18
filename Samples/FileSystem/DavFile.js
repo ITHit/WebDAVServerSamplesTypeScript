@@ -5,6 +5,8 @@ const fs_1 = require("fs");
 const path_1 = require("path");
 const util_1 = require("util");
 const mime_types_1 = require("mime-types");
+const DavException_1 = require("../../Server/DavException");
+const DavStatus_1 = require("../../Server/DavStatus");
 /**Represents file in WebDAV repository. */
 class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     /**
@@ -72,7 +74,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     async Read(output, startIndex, count) {
         const fd = await util_1.promisify(fs_1.open)(this.directory, 'r');
         const toRead = Math.min(count, this.bufSize);
-        const buffer = new Buffer(toRead);
+        const buffer = Buffer.alloc(toRead);
         if (toRead <= 0) {
             return;
         }
@@ -98,7 +100,13 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  Whether the whole stream has been written. This result is used by the engine to determine
      * if auto checkin shall be performed (if auto versioning is used).
      */
-    Write(content, contentType, startIndex, totalFileSize) {
+    async write(content, contentType, startIndex, totalFileSize) {
+        if (this.fileInfo.size < startIndex) {
+            throw new DavException_1.DavException("Previous piece of file was not uploaded.", undefined, DavStatus_1.DavStatus.PRECONDITION_FAILED);
+        }
+        const fileStream = fs_1.createWriteStream(this.directory);
+        content.pipe(fileStream);
+        content.resume();
         return true;
     }
     /**

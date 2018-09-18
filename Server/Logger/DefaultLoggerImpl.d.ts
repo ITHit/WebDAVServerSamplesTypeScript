@@ -1,9 +1,9 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
+import { Exception } from "typescript-dotnet-commonjs/System/Exception";
 import { ILogger } from "../ILogger";
 import { LogFlagsEnum } from "../LogFlagsEnum";
-import { Exception } from "typescript-dotnet-commonjs/System/Exception";
 /**
  * Default logger implementation.
  */

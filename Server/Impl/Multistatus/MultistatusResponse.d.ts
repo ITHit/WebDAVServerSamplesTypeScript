@@ -1,7 +1,7 @@
-import { ResponseBase } from "./ResponseBase";
+import { DavException } from "../../DavException";
 import { DavStatus } from "../../DavStatus";
 import { PropertyValue } from "../../PropertyValue";
-import { DavException } from "../../DavException";
+import { ResponseBase } from "./ResponseBase";
 export declare class MultistatusResponse {
     private readonly responses;
     private responseDescription;

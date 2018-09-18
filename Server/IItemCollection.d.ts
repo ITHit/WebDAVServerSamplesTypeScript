@@ -1,10 +1,10 @@
 /**
  * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
  */
-import { IHierarchyItem } from "./IHierarchyItem";
-import { PropertyName } from "./PropertyName";
 import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
 import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
+import { IHierarchyItem } from "./IHierarchyItem";
+import { PropertyName } from "./PropertyName";
 /**
  * Base interface for folders.
  * @remarks Base interface for all kinds of folders ({@link IFolder} , {@link IPrincipalFolderAsync}  etc.).
