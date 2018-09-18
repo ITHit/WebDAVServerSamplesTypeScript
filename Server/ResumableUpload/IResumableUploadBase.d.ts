@@ -5,13 +5,12 @@ import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionar
 
 import Exception from 'typescript-dotnet-commonjs/System/Exception';
 
-declare module ITHit.WebDAV.Server {
+declare module ITHit.WebDAV.Server.ResumableUpload {
 	/**
-	* Logging options.
+	* Implemented on files and folders that supports updating parts of its content.
 	* #####
 	*/
-	export enum LogFlagsEnum { 
-		LogGetResponseBody = 1, 
-		LogPutRequestBody = 2
+	export interface IResumableUploadBase
+	{
 	}
 }

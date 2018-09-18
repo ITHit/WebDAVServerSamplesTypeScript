@@ -7,11 +7,13 @@ import Exception from 'typescript-dotnet-commonjs/System/Exception';
 
 declare module ITHit.WebDAV.Server {
 	/**
-	* Logging options.
+	* Exception that indicates that the license is invalid.
 	* #####
+	* @remarks <br>The license is invalid.
 	*/
-	export enum LogFlagsEnum { 
-		LogGetResponseBody = 1, 
-		LogPutRequestBody = 2
+	export class InvalidLicenseException
+	{
+		constructor (message: string, innerException: Exception); 
+		constructor (message: string); 
 	}
 }

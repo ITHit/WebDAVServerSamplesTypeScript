@@ -5,13 +5,22 @@ import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionar
 
 import Exception from 'typescript-dotnet-commonjs/System/Exception';
 
-declare module ITHit.WebDAV.Server {
+declare module ITHit.WebDAV.Server.Search {
 	/**
-	* Logging options.
+	* Represents DASL search parameters.
 	* #####
 	*/
-	export enum LogFlagsEnum { 
-		LogGetResponseBody = 1, 
-		LogPutRequestBody = 2
+	export class SearchOptions
+	{
+		/**
+		* Gets the value indicating that the search is performed in a file content.
+		* #####
+		*/
+		public searchContent: boolean;
+		/**
+		* Gets the value indicating that the search is performed in a file name.
+		* #####
+		*/
+		public searchName: boolean;
 	}
 }

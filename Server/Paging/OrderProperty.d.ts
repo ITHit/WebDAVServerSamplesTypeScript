@@ -1,17 +1,27 @@
-/**
- * @copyright Copyright (c) 2017 IT Hit. All rights reserved.
- */
-import { PropertyName } from "../PropertyName";
-/**Represents property used for sorting in ascending or descending order. */
-export declare class OrderProperty {
-    /**Property name. */
-    Property: PropertyName;
-    /**Order direction. */
-    Ascending: boolean;
-    /**
-     * Initializes new instance.
-     * @param name Property name.
-     * @param ascending Order direction.
-     */
-    constructor(name: PropertyName, ascending: boolean);
+import IEnumerable from 'typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable';
+import IList from 'typescript-dotnet-commonjs/System/Collections/IList';
+import IDictionary from 'typescript-dotnet-commonjs/System/Collections/Dictionaries/IDictionary';
+/// <reference types="node" />
+
+import Exception from 'typescript-dotnet-commonjs/System/Exception';
+import * as PropertyName from '../PropertyName';
+
+declare module ITHit.WebDAV.Server.Paging {
+	/**
+	* Represents property used for sorting in ascending or descending order.
+	* #####
+	*/
+	export class OrderProperty
+	{
+		/**
+		* Property name.
+		* #####
+		*/
+		public property: PropertyName.ITHit.WebDAV.Server.PropertyName;
+		/**
+		* Order direction.
+		* #####
+		*/
+		public ascending: boolean;
+	}
 }
