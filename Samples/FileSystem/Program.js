@@ -5,6 +5,7 @@ const DefaultLoggerImpl_1 = require("../../Server/Logger/DefaultLoggerImpl");
 const fs_1 = require("fs");
 const MyCustomGetHandler_1 = require("./MyCustomGetHandler");
 const Http = require("http");
+const fs = require("fs");
 const DavContext_1 = require("./DavContext");
 const DavRequest_1 = require("../../Server/Extensibility/DavRequest");
 const Exception_1 = require("typescript-dotnet-commonjs/System/Exception");
@@ -39,8 +40,14 @@ class Program {
         ///  This license lile is used to activate:
         ///   - IT Hit WebDAV Server Engine for .NET
         ///   - IT Hit iCalendar and vCard Library if used in a project
-        const license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
-        Program.engine.License = license;
+        const licensePath = contentRootPath + `${path_1.sep}License.lic`;
+        fs.exists(licensePath, function (exists) {
+            let license = '';
+            if (exists) {
+                license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
+            }
+            Program.engine.License = license;
+        });
         //  Set custom handler to process GET and HEAD requests to folders and display 
         //  info about how to connect to server. We are using the same custom handler 
         //  class (but different instances) here to process both GET and HEAD because 
