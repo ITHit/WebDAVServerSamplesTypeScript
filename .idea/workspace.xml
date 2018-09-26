@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="18ae6b5a-398f-4d5c-96c6-a66bd3803b16" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Logs/WebDAVlog.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Document.pages" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/General.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Introduction.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Library/Content.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Library/General.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Library/Introduction.ppt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Library/Stat.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Library/Vision.mpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/My Directory/Notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Presentation.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Products/General.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Products/General.vsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Products/Product.mpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Project.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Australia/Plan.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Australia/Prices.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Canada/Introduction.ppt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Canada/Prices.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Canada/Product.mpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Canada/Stat.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/Europe/Stat.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Sales/USA/Vision.mpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Spreadsheet.numbers" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Stat.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Templates/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Templates/template2013.dotx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Templates/template2013.potx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/App_Data/WebDav/Storage/Templates/template2013.xltx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavContext.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavFile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavFolder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavFolder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavHierarchyItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/DavHierarchyItem.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/MyCustomGetHandler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/MyCustomGetHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/MyCustomHandlerPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/Program.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/Program.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/AjaxFileBrowser/AjaxFileBrowser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/AjaxFileBrowser/AjaxIntegrationTests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/css/webdav-layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/js/webdav-gridview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/js/webdav-uploader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/js/webdav-websocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Samples/FileSystem/wwwroot/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Samples/FileSystem/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/@types/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/@types/node/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/@types/xmldom/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/ithit.webdav.server/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/prettier/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/rsa-pem-from-mod-exp/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/tslint-config-prettier/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/typescript-dotnet-commonjs/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/typescript/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/xml-writer/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/node_modules/xmldom/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/package.json" />
+      <path value="$PROJECT_DIR$/Samples/FileSystem/wwwroot/js/node_modules/webdav.client/package.json" />
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="361" />
+    <option name="y" value="32" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WebDAVServerSamplesTypeScript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebDAVServerSamplesTypeScript" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18ae6b5a-398f-4d5c-96c6-a66bd3803b16" name="Default" comment="" />
+      <created>1537970655810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537970655810</updated>
+      <workItem from="1537970658996" duration="1818000" />
+    </task>
+    <task id="LOCAL-00001" summary="remove Server folder, use ithit.webdav.server package instead">
+      <created>1537971150021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1537971150021</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1818000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.37662336" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32900432" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Samples/FileSystem/DavFile.js" />
+        <option value="$PROJECT_DIR$/Samples/FileSystem/DavHierarchyItem.js" />
+        <option value="$PROJECT_DIR$/Samples/FileSystem/Program.js" />
+        <option value="$PROJECT_DIR$/Samples/FileSystem/DavFolder.js" />
+        <option value="$PROJECT_DIR$/Samples/FileSystem/MyCustomGetHandler.js" />
+        <option value="$PROJECT_DIR$/Samples/FileSystem/DavContext.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="remove Server folder, use ithit.webdav.server package instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove Server folder, use ithit.webdav.server package instead" />
+  </component>
+</project>

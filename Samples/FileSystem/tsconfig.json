@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": [ "es2017", "dom" ],
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "sourceMap": false,
+    "strict": true,
+    "allowJs": false,
+    "inlineSources": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": [ "node_modules", "build", "webpack" ],
+  "types": [ "node" ]
+}
