@@ -12,12 +12,14 @@ A sample HTML page included with the sample demonstrates how to use [IT Hit WebD
 
 ## Running the Sample
 
-Navigate to the sample root folder and execute the following command:
+1. Download your license file [here](https://www.webdavsystem.com/nodejsserver/download/). Place the license file to the sample root folder. The Engine is fully functional with a trial license and does not have any limitations. However, the trial period is limited to 1 month.
+
+2. Get dependencies. Navigate to the sample root folder and execute the following command:
 
 `npm i`
 
-To start the server run:
+3. Start the server. To start the server run:
 
 `node Program.js`
 
-Now open a web browser and go to http://localhost:3000.
+4. Your server is running now. To browse folders and edit documents open a web browser and go to http://localhost:3000. You can also connect to your server with a WebDAV client.
