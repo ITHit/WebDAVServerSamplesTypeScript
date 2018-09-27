@@ -7,7 +7,7 @@
     "docs_md": "./node_modules/.bin/typedoc --out docs_md --mode file --theme markdown --mdEngine github --excludePrivate --excludeProtected"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "dependencies": {
     "@types/node": "^10.7.0",
     "@types/xmldom": "^0.1.27",
