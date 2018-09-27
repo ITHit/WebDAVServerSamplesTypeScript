@@ -1,9 +1,9 @@
 {
-  "name": "ithit.webdav.server.sample",
+  "name": "ithit.webdav.server.filesystem",
   "version": "1.0.0",
   "description": "",
-  "author": "",
-  "license": "ISC",
+  "author": "IT Hit, Ltd",
+  "license": "IT Hit LTD.",
   "dependencies": {
     "@types/mime-types": "^2.1.0",
     "@types/node": "^10.7.0",

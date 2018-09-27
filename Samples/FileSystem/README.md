@@ -2,11 +2,17 @@ After clone project you should execute following commands:
 
 `npm i`
 
-`cd samples`
+`cd Samples/FileSystem`
+
+`npm i`
+
+`cd wwwroot/js`
 
 `npm i`
 
 For start server:
+
+`cd ../..`
 
 `node Program.js`
 

@@ -1,0 +1,10 @@
+{
+  "name": " ithit.webdav.server.filesystem.wwwroot.js",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webdav.client": "^5.8.4093"
+  }
+}
