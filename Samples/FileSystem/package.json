@@ -8,7 +8,7 @@
     "@types/mime-types": "^2.1.0",
     "@types/node": "^10.7.0",
     "@types/xmldom": "^0.1.27",
-    "ithit.webdav.server": "^1.0.2",
+    "ithit.webdav.server": "^1.0.3",
     "mime-types": "^2.1.20",
     "typescript": "^3.0.1",
     "typescript-dotnet-commonjs": "^4.11.1",
