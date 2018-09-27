@@ -12,7 +12,7 @@ A sample HTML page included the sample demonstrates how to use [IT Hit WebDAV Aj
 
 ## Running the Sample
 
-After cloning the project navigate to the sample root folder and execute the following command:
+Navigate to the sample root folder and execute the following command:
 
 `npm i`
 
@@ -20,4 +20,4 @@ To start the server run:
 
 `node Program.js`
 
-Now open a web browser and navigate to http://localhost:3000.
+Now open a web browser and go to http://localhost:3000.
