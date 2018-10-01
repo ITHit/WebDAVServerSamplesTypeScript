@@ -55,6 +55,7 @@ class MyCustomGetHandler {
             pathname = pathname.substring(1).split('/').join(`${path_1.sep}`);
             let filePath = this.htmlPath + `${path_1.sep}` + pathname;
             const existsFilePath = await util_1.promisify(fs_1.exists)(filePath);
+            console.log('filePath', filePath);
             if (!existsFilePath) {
                 throw new DavException_1.DavException(("File not found: " + filePath), undefined, DavStatus_1.DavStatus.NOT_FOUND);
             }
