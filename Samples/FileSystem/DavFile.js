@@ -7,6 +7,7 @@ const util_1 = require("util");
 const mime_types_1 = require("mime-types");
 const DavException_1 = require("ithit.webdav.server/DavException");
 const DavStatus_1 = require("ithit.webdav.server/DavStatus");
+const FileSystemInfoExtension_1 = require("./ExtendedAttributes/FileSystemInfoExtension");
 /**Represents file in WebDAV repository. */
 class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     /**
@@ -24,8 +25,6 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         this.bufSize = 1048576;
         this.fileInfo = stats;
     }
-    /**Value updated every time this file is updated. Used to form Etag. */
-    //private serialNumber: number;
     /**Gets content type. */
     get ContentType() {
         let conType = String(mime_types_1.lookup(this.directory));
@@ -43,7 +42,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @remarks  This property shall return different value if content changes.
      */
     get Etag() {
-        return "ds4a-34234242";
+        return `${this.Modified.getTime().toString()}-${this.serialNumber || 0}`;
     }
     /**
      * Returns file that corresponds to path.
@@ -63,6 +62,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             return null;
         }
         let davFile = new DavFile(filePath, context, path, file);
+        davFile.serialNumber = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.directory, "SerialNumber"));
+        davFile.TotalContentLength = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.directory, "TotalContentLength"));
         return davFile;
     }
     /**
@@ -104,7 +105,14 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         if (this.fileInfo.size < startIndex) {
             throw new DavException_1.DavException("Previous piece of file was not uploaded.", undefined, DavStatus_1.DavStatus.PRECONDITION_FAILED);
         }
-        const fileStream = fs_1.createWriteStream(this.directory);
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.directory, "TotalContentLength", Number(totalFileSize));
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.directory, "SerialNumber", (this.serialNumber || 0) + 1);
+        const fd = await util_1.promisify(fs_1.open)(this.directory, 'r+');
+        await util_1.promisify(fs_1.ftruncate)(fd, 0);
+        const fileStream = fs_1.createWriteStream(this.directory, {
+            flags: 'r+',
+            fd: fd
+        });
         content.pipe(fileStream);
         content.resume();
         return true;

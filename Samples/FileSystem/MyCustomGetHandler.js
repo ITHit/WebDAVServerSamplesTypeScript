@@ -52,9 +52,6 @@ class MyCustomGetHandler {
             const Url = url_1.parse(context.Request.url);
             let pathname = (Url.pathname || `${path_1.sep}`);
             pathname = pathname.substring(1).split('/').join(`${path_1.sep}`);
-            if (context.Request.url.startsWith("/AjaxFileBrowser/")) {
-                pathname = `wwwroot${path_1.sep}${pathname}`;
-            }
             let filePath = this.htmlPath + `${path_1.sep}` + pathname;
             const existsFilePath = await util_1.promisify(fs_1.exists)(filePath);
             if (!existsFilePath) {

@@ -72,10 +72,6 @@ export class MyCustomGetHandler implements IMethodHandler {
             const Url = parse(context.Request.url);
             let pathname = (Url.pathname || `${sep}`);
             pathname = pathname.substring(1).split('/').join(`${sep}`);
-            if (context.Request.url.startsWith("/AjaxFileBrowser/")) {
-                pathname = `wwwroot${sep}${pathname}`;
-            }
-
             let filePath: string = this.htmlPath + `${sep}` + pathname;
             const existsFilePath = await promisify(exists)(filePath);
             if (!existsFilePath) {

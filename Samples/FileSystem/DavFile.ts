@@ -1,7 +1,7 @@
 import { DavHierarchyItem } from "./DavHierarchyItem";
 import { IFile } from "ithit.webdav.server/Class1/IFile";
 import { DavContext } from "./DavContext";
-import { Stats, exists, stat, open, read, createWriteStream } from "fs";
+import { Stats, exists, stat, open, read, createWriteStream, ftruncate } from "fs";
 import { IItemCollection } from "ithit.webdav.server/IItemCollection";
 import { MultistatusException } from "ithit.webdav.server/MultistatusException";
 import { sep } from "path";
@@ -10,6 +10,7 @@ import { lookup } from "mime-types";
 import { ServerResponse, IncomingMessage } from "http";
 import { DavException } from "ithit.webdav.server/DavException";
 import { DavStatus } from "ithit.webdav.server/DavStatus";
+import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
 
 /**Represents file in WebDAV repository. */
 export class DavFile extends DavHierarchyItem implements IFile {
@@ -22,7 +23,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     private readonly bufSize: number = 1048576;
 
     /**Value updated every time this file is updated. Used to form Etag. */
-    //private serialNumber: number;
+    private serialNumber: number;
 
 
     /**Gets content type. */
@@ -45,7 +46,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @remarks  This property shall return different value if content changes.
      */
     get Etag(): string {
-        return "ds4a-34234242";
+        return `${this.Modified.getTime().toString()}-${this.serialNumber || 0}`;
     }
     /**Gets or Sets snippet of file content that matches search conditions. */
     Snippet: string;
@@ -70,6 +71,9 @@ export class DavFile extends DavHierarchyItem implements IFile {
         }
 
         let davFile: DavFile = new DavFile(filePath, context, path, file);
+
+        davFile.serialNumber = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(davFile.directory, "SerialNumber"));
+        davFile.TotalContentLength = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(davFile.directory, "TotalContentLength"));
 
         return davFile;
     }
@@ -126,7 +130,14 @@ export class DavFile extends DavHierarchyItem implements IFile {
             throw new DavException("Previous piece of file was not uploaded.", undefined, DavStatus.PRECONDITION_FAILED);
         }
 
-        const fileStream = createWriteStream(this.directory);
+        await FileSystemInfoExtension.setExtendedAttribute(this.directory, "TotalContentLength", Number(totalFileSize));
+        await FileSystemInfoExtension.setExtendedAttribute(this.directory, "SerialNumber", (this.serialNumber || 0) + 1);
+        const fd = await promisify(open)(this.directory, 'r+');
+        await promisify(ftruncate)(fd, 0);
+        const fileStream = createWriteStream(this.directory, {
+            flags: 'r+',
+            fd: fd
+        });
         content.pipe(fileStream);
         content.resume();
 

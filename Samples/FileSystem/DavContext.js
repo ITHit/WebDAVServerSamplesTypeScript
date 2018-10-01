@@ -4,6 +4,7 @@ const DavFolder_1 = require("./DavFolder");
 const DavFile_1 = require("./DavFile");
 const DavContextBase_1 = require("ithit.webdav.server/DavContextBase");
 const Utility_1 = require("typescript-dotnet-commonjs/System/Text/Utility");
+const path_1 = require("path");
 /**
  * Implementation of {@link DavContext}.
  * Resolves hierarchy items by paths.
@@ -41,6 +42,7 @@ class DavContext extends DavContextBase_1.DavContextBase {
         // remove query string.
         path = Utility_1.trim(path, [' ', '/']);
         path = path.replace('?', '');
+        path = path.split('/').join(`${path_1.sep}`);
         let item;
         item = await DavFolder_1.DavFolder.GetFolder(this, path);
         if (item != null) {
