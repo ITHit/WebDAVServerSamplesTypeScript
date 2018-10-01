@@ -1,0 +1,53 @@
+{
+  "_from": "webdav.client@^5.8.4093",
+  "_id": "webdav.client@5.8.4093",
+  "_inBundle": false,
+  "_integrity": "sha512-SS8qmqtv42QOOSulXjVPwpZNxqPqxlpA3m8wotC+z2Q1rMe3d9+mOppmSuQi/fDnHB7MKpJnxTMeU/14Zu98QA==",
+  "_location": "/webdav.client",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "webdav.client@^5.8.4093",
+    "name": "webdav.client",
+    "escapedName": "webdav.client",
+    "rawSpec": "^5.8.4093",
+    "saveSpec": null,
+    "fetchSpec": "^5.8.4093"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/webdav.client/-/webdav.client-5.8.4093.tgz",
+  "_shasum": "93ffd425aad14aef1fe027a63388e07732715065",
+  "_spec": "webdav.client@^5.8.4093",
+  "_where": "L:\\projects\\ithitcorp\\WebDAVServerTypeScript\\Samples\\FileSystem\\wwwroot\\js",
+  "author": {
+    "name": "IT Hit, LTD",
+    "email": "info@ithit.com"
+  },
+  "bugs": {
+    "email": "info@ithit.com"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "WebDAV ajax library for opening documents from a web page and managing WebDAV servers.",
+  "homepage": "https://www.webdavsystem.com/ajax/",
+  "keywords": [
+    "webdav",
+    "javascript",
+    "library",
+    "ithit"
+  ],
+  "license": "SEE LICENSE IN README.md",
+  "main": "ITHitWebDAVClient.js",
+  "name": "webdav.client",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ITHit/WebDAVAjax.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "5.8.4093"
+}

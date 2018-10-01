@@ -36,7 +36,7 @@ export class FileSystemInfoExtension {
         const oParser = new DOMParser();
         const oDOM = oParser.parseFromString(xmlString.replace(/>\s+</g, "><"), "application/xml");
         const obj = xmlToJson(oDOM.documentElement);
-        const nameOfFirstChild = oDOM.documentElement.firstChild ? oDOM.documentElement.firstChild.nodeName : '';
+        const nameOfFirstChild = oDOM.documentElement && oDOM.documentElement.firstChild ? oDOM.documentElement.firstChild.nodeName : '';
         if (obj[nameOfFirstChild]) {
             return <T>obj[nameOfFirstChild];
         } else {
@@ -124,6 +124,6 @@ export class FileSystemInfoExtension {
 
         const XMLS = new XMLSerializer();
 
-        return emptyXml + XMLS.serializeToString(document.documentElement);
+        return emptyXml + XMLS.serializeToString(document);
     }
 }

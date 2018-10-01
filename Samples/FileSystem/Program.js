@@ -41,13 +41,12 @@ class Program {
         ///   - IT Hit WebDAV Server Engine for .NET
         ///   - IT Hit iCalendar and vCard Library if used in a project
         const licensePath = contentRootPath + `${path_1.sep}License.lic`;
-        fs.exists(licensePath, function (exists) {
-            let license = '';
-            if (exists) {
-                license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
-            }
-            Program.engine.License = license;
-        });
+        const existLicense = fs.existsSync(licensePath);
+        let license = '';
+        if (existLicense) {
+            license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
+        }
+        Program.engine.License = license;
         //  Set custom handler to process GET and HEAD requests to folders and display 
         //  info about how to connect to server. We are using the same custom handler 
         //  class (but different instances) here to process both GET and HEAD because 

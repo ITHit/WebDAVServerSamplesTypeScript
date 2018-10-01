@@ -27,7 +27,7 @@ class FileSystemInfoExtension {
         const oParser = new xmldom_1.DOMParser();
         const oDOM = oParser.parseFromString(xmlString.replace(/>\s+</g, "><"), "application/xml");
         const obj = xml_1.xmlToJson(oDOM.documentElement);
-        const nameOfFirstChild = oDOM.documentElement.firstChild ? oDOM.documentElement.firstChild.nodeName : '';
+        const nameOfFirstChild = oDOM.documentElement && oDOM.documentElement.firstChild ? oDOM.documentElement.firstChild.nodeName : '';
         if (obj[nameOfFirstChild]) {
             return obj[nameOfFirstChild];
         }
@@ -101,7 +101,8 @@ class FileSystemInfoExtension {
             document.appendChild(el);
         }
         const XMLS = new xmldom_1.XMLSerializer();
-        return emptyXml + XMLS.serializeToString(document.documentElement);
+        const serializedString = XMLS.serializeToString(document);
+        return emptyXml + serializedString;
     }
 }
 FileSystemInfoExtension.getXAttr = fs_extended_attributes_1.get;

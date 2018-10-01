@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>IT Hit WebDAV Server Engine</title>
     <meta charset="utf-8">
@@ -8,17 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet">
-    <link href="_webDavServerRoot_/wwwroot/css/webdav-layout.css" rel="stylesheet"/>
+    <link href="_webDavServerRoot_/wwwroot/css/webdav-layout.css" rel="stylesheet" />
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <a class="navbar-brand" href="/">
-         IT Hit WebDAV Server Engine v_webDavServerVersion_        
+            IT Hit WebDAV Server Engine v_webDavServerVersion_
         </a>
     </nav>
     <main role="main" class="container-fluid">
         <div class="row">
-           <div class="col-lg-8 col-md-12">
+            <div class="col-lg-8 col-md-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ithit-breadcrumb-container"></ol>
                 </nav>
@@ -117,12 +118,14 @@
             <div class="col-lg-4 col-md-12">
                 <p>
                     This page is displayed when user accesses any folder on your WebDAV server in a web browser.
-                You can customize this page to your needs.
+                    You can customize this page to your needs.
                 </p>
 
                 <p>
-                    Examine the MyCustomHandlerPage.html/aspx in your project to see how to <a href="https://www.webdavsystem.com/ajax/programming/" target="_blank">list folder content</a>
-                    and to use IT Hit WebDAV Ajax Library to <a href="https://www.webdavsystem.com/ajax/programming/opening_ms_office_docs" target="_blank">open documents for editing</a>.
+                    Examine the MyCustomHandlerPage.html/aspx in your project to see how to <a href="https://www.webdavsystem.com/ajax/programming/"
+                        target="_blank">list folder content</a>
+                    and to use IT Hit WebDAV Ajax Library to <a href="https://www.webdavsystem.com/ajax/programming/opening_ms_office_docs"
+                        target="_blank">open documents for editing</a>.
                 </p>
 
                 <hr />
@@ -132,28 +135,34 @@
                 <p>
                     To test your WebDAV server you can run Ajax integration tests right from this page.
                 </p>
-                <a href="javascript:void(0)" onclick="OpenTestsWindow()" class="btn btn-secondary" role="button">Run Integration Tests</a>
+                <a href="javascript:void(0)" onclick="OpenTestsWindow()" class="btn btn-secondary" role="button">Run
+                    Integration Tests</a>
 
                 <hr />
 
                 <h3>Manage Docs with Ajax File Browser</h3>
 
                 <p>
-                    Use the <a href="https://www.webdavsystem.com/ajaxfilebrowser/programming/">IT Hit Ajax File Browser</a> to browse your documents, open for editing from a web page and
-                uploading with pause/resume and auto-restore upload.
+                    Use the <a href="https://www.webdavsystem.com/ajaxfilebrowser/programming/">IT Hit Ajax File
+                        Browser</a> to browse your documents, open for editing from a web page and
+                    uploading with pause/resume and auto-restore upload.
                 </p>
-                <a href="javascript:void(0)" onclick="OpenAjaxFileBrowserWindow()" class="btn btn-secondary" role="button">Browse Using Ajax File Browser</a>
+                <a href="javascript:void(0)" onclick="OpenAjaxFileBrowserWindow()" class="btn btn-secondary" role="button">Browse
+                    Using Ajax File Browser</a>
 
                 <hr />
 
                 <h3>Connect with WebDAV Client</h3>
 
                 <p>
-                    Use a WebDAV client provided with almost any OS. Refer to <a href="https://www.webdavsystem.com/server/access">Accessing WebDAV Server</a> page for
-                detailed instructions. The button below is using <a href="https://www.webdavsystem.com/ajax/">IT Hit WebDAV Ajax Library</a> to mount WebDAV
-                folder and open the default OS file manager.
+                    Use a WebDAV client provided with almost any OS. Refer to <a href="https://www.webdavsystem.com/server/access">Accessing
+                        WebDAV Server</a> page for
+                    detailed instructions. The button below is using <a href="https://www.webdavsystem.com/ajax/">IT
+                        Hit WebDAV Ajax Library</a> to mount WebDAV
+                    folder and open the default OS file manager.
                 </p>
-                <a href="javascript:void(0)" onclick="WebDAVController && WebDAVController.OpenCurrentFolderInOsFileManager()" class="btn btn-secondary" role="button">Browse Using OS File Manager</a>
+                <a href="javascript:void(0)" onclick="WebDAVController && WebDAVController.OpenCurrentFolderInOsFileManager()"
+                    class="btn btn-secondary" role="button">Browse Using OS File Manager</a>
 
                 <hr />
 
@@ -172,12 +181,12 @@
         var webDavSettings = {
             ApplicationPath: '_webDavServerRoot_',
             ApplicationProtocolsPath: '_webDavServerRoot_/wwwroot/js/node_modules/webdav.client/Plugins/',
-			EditDocAuth: {
-			    Authentication: 'challenge',                       // Authentication to use when opening documents for editing: 'anonymous', 'challenge', 'ms-ofba', 'cookies'
+            EditDocAuth: {
+                Authentication: 'challenge',                       // Authentication to use when opening documents for editing: 'anonymous', 'challenge', 'ms-ofba', 'cookies'
                 CookieNames: null,                                 // Coma separated list of cookie names to search for.
                 SearchIn: null,                                    // Web browsers to search and copy permanent cookies from: 'current', 'none', 'all'.
                 LoginUrl: null                                     // Login URL to redirect to in case any cookies specified in CookieNames parameter are not found.
-           }
+            }
         }
 
         function OpenAjaxFileBrowserWindow() {
@@ -195,12 +204,13 @@
     To load files from your website download them here: https://www.webdavsystem.com/ajax/download,
     deploy them to your website and replace the path below in this file.
     -->
-    <script src="_webDavServerRoot_/wwwroot/js/node_modules/webdav.client/ITHitWebDAVClient.js"></script>
+    <script src="_webDavServerRoot_/wwwroot/js/webdav.client/ITHitWebDAVClient.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="_webDavServerRoot_/wwwroot/js/webdav-gridview.js"></script>
     <script src="_webDavServerRoot_/wwwroot/js/webdav-uploader.js"></script>
     <script src="_webDavServerRoot_/wwwroot/js/webdav-websocket.js"></script>
 </body>
+
 </html>
