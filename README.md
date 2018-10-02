@@ -20,6 +20,6 @@ A sample HTML page included with the sample demonstrates how to use [IT Hit WebD
 
 3. __Start the server.__ Run the following command:
 
-`node Program.js`
+`node index.js`
 
 Your server is running now. To browse folders and edit documents open a web browser and go to http://localhost:3000. You can also connect to your server with a WebDAV client.

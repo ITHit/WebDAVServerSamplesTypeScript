@@ -2,13 +2,13 @@ This sample is compiled and tested for node.js >=10.0.0 with require for modules
 
 After clone project you should execute following commands:
 
-`cd Samples/FileSystem`
+`cd FileSystem`
 
 `npm i`
 
 For start server:
 
-`node Program.js`
+`node index.js`
 
 In console will show something like that:
 
