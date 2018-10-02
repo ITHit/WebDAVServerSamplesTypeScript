@@ -65,6 +65,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         }
 
         let file: Stats = await promisify(stat)(filePath);
+
         //  This code blocks vulnerability when "%20" folder can be injected into path and file.Exists returns 'true'.
         if (!file.isFile()) {
             return null;

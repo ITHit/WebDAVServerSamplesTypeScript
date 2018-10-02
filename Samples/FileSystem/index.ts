@@ -51,9 +51,10 @@ class Program {
         Program.engine = new DavEngine();
         Program.engine.Logger = Program.logger;
         Program.engine.OutputXmlFormatting = true;
-        ///  This license lile is used to activate:
-        ///   - IT Hit WebDAV Server Engine for .NET
-        ///   - IT Hit iCalendar and vCard Library if used in a project
+
+        //  This license lile is used to activate:
+        //   - IT Hit WebDAV Server Engine for .NET
+        //   - IT Hit iCalendar and vCard Library if used in a project
         const licensePath = contentRootPath + `${sep}License.lic`;
         const existLicense = fs.existsSync(licensePath);
         let license: string = '';
@@ -62,6 +63,7 @@ class Program {
         }
 
         Program.engine.License = license;
+
         //  Set custom handler to process GET and HEAD requests to folders and display 
         //  info about how to connect to server. We are using the same custom handler 
         //  class (but different instances) here to process both GET and HEAD because 

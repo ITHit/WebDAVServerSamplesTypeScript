@@ -219,6 +219,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
     async lock(level: LockLevel | null, isDeep: boolean | null, requestedTimeOut: number | null, owner: string | null): Promise<LockResult> {
         await this.requireUnlocked(level == LockLevel.Shared);
         let token = randomBytes(16).toString('hex');
+
         //  If timeout is absent or infinit timeout requested,
         //  grant 5 minute lock.
         let timeOut = 5 * 60 * 1000;
@@ -310,6 +311,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
     private async saveLock(lockInfo: DateLockInfo): Promise<void> {
         let locks = await this.getLocks(true);
+
         // remove all expired locks
         locks = locks.filter(x => x.Expiration <= Date.now());
         const existingLock = locks.filter(x => x.LockToken <= lockInfo.LockToken)[0] || null;

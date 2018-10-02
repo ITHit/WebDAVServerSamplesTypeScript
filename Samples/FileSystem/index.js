@@ -37,9 +37,9 @@ class Program {
         Program.engine = new DavEngine_1.DavEngine();
         Program.engine.Logger = Program.logger;
         Program.engine.OutputXmlFormatting = true;
-        ///  This license lile is used to activate:
-        ///   - IT Hit WebDAV Server Engine for .NET
-        ///   - IT Hit iCalendar and vCard Library if used in a project
+        //  This license lile is used to activate:
+        //   - IT Hit WebDAV Server Engine for .NET
+        //   - IT Hit iCalendar and vCard Library if used in a project
         const licensePath = contentRootPath + `${path_1.sep}License.lic`;
         const existLicense = fs.existsSync(licensePath);
         let license = '';

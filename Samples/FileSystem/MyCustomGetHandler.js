@@ -48,7 +48,6 @@ class MyCustomGetHandler {
             //  The "/AjaxFileBrowser/" are not a WebDAV folders. They can be used to store client script files, 
             //  images, static HTML files or any other files that does not require access via WebDAV.
             //  Any request to the files in this folder will just serve them to the client. 
-            //context.EnsureBeforeResponseWasCalled();
             const Url = url_1.parse(context.Request.url);
             let pathname = (Url.pathname || `${path_1.sep}`);
             pathname = pathname.substring(1).split('/').join(`${path_1.sep}`);
@@ -91,8 +90,6 @@ class MyCustomGetHandler {
         }
         else {
             await this.OriginalHandler.processRequest(context, item);
-            //context.Response.writeHead(404, 'File does\'t exist');
-            //context.Response.end();   
         }
     }
     /**

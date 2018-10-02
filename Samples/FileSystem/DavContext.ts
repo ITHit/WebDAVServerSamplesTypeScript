@@ -78,6 +78,7 @@ export class DavContext extends DavContextBase {
         this.Logger.LogDebug(("Could not find item that corresponds to path: " + path));
 
         return null;
+
         //  no hierarchy item that corresponds to path parameter was found in the repository
     }
 

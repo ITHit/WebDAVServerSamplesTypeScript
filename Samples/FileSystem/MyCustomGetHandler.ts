@@ -68,7 +68,6 @@ export class MyCustomGetHandler implements IMethodHandler {
             //  The "/AjaxFileBrowser/" are not a WebDAV folders. They can be used to store client script files, 
             //  images, static HTML files or any other files that does not require access via WebDAV.
             //  Any request to the files in this folder will just serve them to the client. 
-            //context.EnsureBeforeResponseWasCalled();
             const Url = parse(context.Request.url);
             let pathname = (Url.pathname || `${sep}`);
             pathname = pathname.substring(1).split('/').join(`${sep}`);
@@ -84,11 +83,13 @@ export class MyCustomGetHandler implements IMethodHandler {
             }
 
             context.Response.setHeader('content-type', conType);
+
             //  Return file content in case of GET request, in case of HEAD just return headers.
             if (context.Request.method == "GET") {
                 const statFile: Stats = await promisify(stat)(filePath);
                 context.Response.setHeader('content-length', statFile.size);
                 const readStream = createReadStream(filePath);
+
                 // We replaced all the event handlers with a simple call to readStream.pipe()
                 readStream.pipe(context.Response.nativeResponce);
                 readStream.on("close", () => {
@@ -113,8 +114,6 @@ export class MyCustomGetHandler implements IMethodHandler {
         }
         else {
             await this.OriginalHandler.processRequest(context, item);
-            //context.Response.writeHead(404, 'File does\'t exist');
-            //context.Response.end();   
         }
 
     }
@@ -128,6 +127,7 @@ export class MyCustomGetHandler implements IMethodHandler {
      */
     private WriteFileContent(context: DavContextBase, content: string, filePath: string): void {
         let encoding: string = context.Engine.ContentEncoding;
+
         //  UTF-8 by default
         context.Response.setHeader('Content-Length', content.length);
 
@@ -137,6 +137,7 @@ export class MyCustomGetHandler implements IMethodHandler {
         }
 
         context.Response.setHeader('Content-Type', conType);
+
         //  Return file content in case of GET request, in case of HEAD just return headers.
         if (context.Request.method == "GET") {
             context.Response.write(content, encoding);
