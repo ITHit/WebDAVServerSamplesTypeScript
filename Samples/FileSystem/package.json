@@ -10,10 +10,6 @@
     "@types/xmldom": "^0.1.27",
     "fs-extended-attributes": "^1.0.1",
     "ithit.webdav.server": "^1.0.8",
-    "mime-types": "^2.1.20",
-    "typescript": "^3.0.1",
-    "typescript-dotnet-commonjs": "^4.11.1",
-    "xml-writer": "^1.7.0",
-    "xmldom": "^0.1.27"
+    "typescript": "^3.0.1"
   }
 }
