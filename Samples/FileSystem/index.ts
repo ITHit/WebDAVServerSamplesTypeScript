@@ -34,7 +34,7 @@ class Program {
             Program.CheckConfigErrors();
             Program.Init();
             Program.Listening = true;
-            Program.ThreadProc();
+            Program.listen();
 
         }
         catch (ex) {
@@ -73,12 +73,13 @@ class Program {
         handlerHead.OriginalHandler = Program.engine.RegisterMethodHandler("HEAD", handlerHead);
     }
 
-    public static ThreadProc() {
+    public static listen() {
         const port: number = Number(process.env.PORT) || 3000;
         var server: Http.Server = Http.createServer(this.ProcessRequest);
         server.listen(port, function () {
             const host = server.address() as any;
-            console.log('running at http://' + host.address + ':' + host.port);
+            console.log('Listening at http://' + host.address + ':' + host.port);
+            console.log('Use Ctrl+C or SIGINT to exit.');
         });
     }
 

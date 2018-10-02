@@ -101,8 +101,7 @@ class FileSystemInfoExtension {
             document.appendChild(el);
         }
         const XMLS = new xmldom_1.XMLSerializer();
-        const serializedString = XMLS.serializeToString(document);
-        return emptyXml + serializedString;
+        return emptyXml + XMLS.serializeToString(document);
     }
 }
 FileSystemInfoExtension.getXAttr = fs_extended_attributes_1.get;

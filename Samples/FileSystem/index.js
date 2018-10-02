@@ -23,7 +23,7 @@ class Program {
             Program.CheckConfigErrors();
             Program.Init();
             Program.Listening = true;
-            Program.ThreadProc();
+            Program.listen();
         }
         catch (ex) {
             console.log(ex);
@@ -57,12 +57,13 @@ class Program {
         handlerGet.OriginalHandler = Program.engine.RegisterMethodHandler("GET", handlerGet);
         handlerHead.OriginalHandler = Program.engine.RegisterMethodHandler("HEAD", handlerHead);
     }
-    static ThreadProc() {
+    static listen() {
         const port = Number(process.env.PORT) || 3000;
         var server = Http.createServer(this.ProcessRequest);
         server.listen(port, function () {
             const host = server.address();
-            console.log('running at http://' + host.address + ':' + host.port);
+            console.log('Listening at http://' + host.address + ':' + host.port);
+            console.log('Use Ctrl+C or SIGINT to exit.');
         });
     }
     static ProcessRequest(request, response) {

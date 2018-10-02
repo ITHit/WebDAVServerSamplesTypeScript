@@ -50,12 +50,10 @@ class MyCustomGetHandler {
             //  Any request to the files in this folder will just serve them to the client. 
             //context.EnsureBeforeResponseWasCalled();
             const Url = url_1.parse(context.Request.url);
-
             let pathname = (Url.pathname || `${path_1.sep}`);
             pathname = pathname.substring(1).split('/').join(`${path_1.sep}`);
             let filePath = this.htmlPath + `${path_1.sep}` + pathname;
             const existsFilePath = await util_1.promisify(fs_1.exists)(filePath);
-            console.log('filePath', filePath);
             if (!existsFilePath) {
                 throw new DavException_1.DavException(("File not found: " + filePath), undefined, DavStatus_1.DavStatus.NOT_FOUND);
             }
