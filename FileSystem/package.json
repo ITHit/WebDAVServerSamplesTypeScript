@@ -11,5 +11,12 @@
     "fs-extended-attributes": "^1.0.1",
     "ithit.webdav.server": "^1.0.8",
     "typescript": "^3.0.1"
+  },
+  "scripts": {
+    "postinstall": "cd wwwroot && cd js && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITHit/WebDAVServerSamplesTypeScript"
   }
 }
