@@ -16,8 +16,6 @@ A sample HTML page included with the sample demonstrates how to use [IT Hit WebD
 
 2. __Get dependencies.__ Navigate to the sample root folder and execute the following command:
 
-`cd FileSystem`
-
 `npm i`
 
 3. __Start the server.__ Run the following command:

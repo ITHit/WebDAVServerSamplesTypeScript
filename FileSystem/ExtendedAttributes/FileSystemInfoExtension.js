@@ -1,24 +1,48 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_extended_attributes_1 = require("fs-extended-attributes");
-const ArgumentNullException_1 = require("typescript-dotnet-commonjs/System/Exceptions/ArgumentNullException");
 const util_1 = require("util");
-const xml_1 = require("../customtypings/xml");
 const xmldom_1 = require("xmldom");
+const xml_1 = require("../customtypings/xml");
 class FileSystemInfoExtension {
     static async getExtendedAttribute(fileFullName, attribName) {
         if (!attribName) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribName");
+            throw new Error("attribName");
         }
         const attributeValue = await util_1.promisify(FileSystemInfoExtension.getXAttr)(fileFullName, attribName);
         return FileSystemInfoExtension.deserialize(attributeValue ? attributeValue.toString() : '');
     }
     static async getRawExtendedAttribute(fileFullName, attribName) {
         if (!attribName) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribName");
+            throw new Error("attribName");
         }
         const attributeValue = await util_1.promisify(FileSystemInfoExtension.getXAttr)(fileFullName, attribName);
         return attributeValue;
+    }
+    static async setExtendedAttribute(fileFullName, attribName, attribValue) {
+        if (!fileFullName) {
+            throw new Error("path");
+        }
+        if (!attribName) {
+            throw new Error("attribName");
+        }
+        if (!attribValue) {
+            throw new Error("attribValue");
+        }
+        const serializedValue = FileSystemInfoExtension.serialize(attribValue);
+        await util_1.promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, serializedValue);
+    }
+    static async setRawExtendedAttribute(fileFullName, attribName, attribValue) {
+        if (!fileFullName) {
+            throw new Error("path");
+        }
+        if (!attribName) {
+            throw new Error("attribName");
+        }
+        if (!attribValue) {
+            throw new Error("attribValue");
+        }
+        await util_1.promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, attribValue);
     }
     static deserialize(xmlString) {
         if (!xmlString) {
@@ -35,34 +59,9 @@ class FileSystemInfoExtension {
             return obj;
         }
     }
-    static async setExtendedAttribute(fileFullName, attribName, attribValue) {
-        if (!fileFullName) {
-            throw new ArgumentNullException_1.ArgumentNullException("path");
-        }
-        if (!attribName) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribName");
-        }
-        if (!attribValue) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribValue");
-        }
-        let serializedValue = FileSystemInfoExtension.serialize(attribValue);
-        await util_1.promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, serializedValue);
-    }
-    static async setRawExtendedAttribute(fileFullName, attribName, attribValue) {
-        if (!fileFullName) {
-            throw new ArgumentNullException_1.ArgumentNullException("path");
-        }
-        if (!attribName) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribName");
-        }
-        if (!attribValue) {
-            throw new ArgumentNullException_1.ArgumentNullException("attribValue");
-        }
-        await util_1.promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, attribValue);
-    }
     static serialize(data) {
         if (!data) {
-            throw new ArgumentNullException_1.ArgumentNullException("data");
+            throw new Error("data");
         }
         const type = typeof data;
         const emptyXml = `<?xml version="1.0" encoding="utf-16"?>`;
@@ -78,7 +77,7 @@ class FileSystemInfoExtension {
             arrEl.setAttributeNode(att);
             data.forEach((element) => {
                 const el = document.createElement(typeOfArr);
-                for (let prop in element) {
+                for (const prop in element) {
                     if (!element.hasOwnProperty(prop)) {
                         continue;
                     }

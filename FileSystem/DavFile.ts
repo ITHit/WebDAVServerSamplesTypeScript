@@ -1,33 +1,27 @@
-import { DavHierarchyItem } from "./DavHierarchyItem";
+import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream } from "fs";
+import { IncomingMessage, ServerResponse } from "http";
 import { IFile } from "ithit.webdav.server/Class1/IFile";
-import { DavContext } from "./DavContext";
-import { Stats, exists, stat, open, read, createWriteStream, ftruncate } from "fs";
-import { IItemCollection } from "ithit.webdav.server/IItemCollection";
-import { MultistatusException } from "ithit.webdav.server/MultistatusException";
-import { sep } from "path";
-import { promisify } from "util";
-import { lookup } from "mime-types";
-import { ServerResponse, IncomingMessage } from "http";
 import { DavException } from "ithit.webdav.server/DavException";
 import { DavStatus } from "ithit.webdav.server/DavStatus";
+import { IItemCollection } from "ithit.webdav.server/IItemCollection";
+import { MultistatusException } from "ithit.webdav.server/MultistatusException";
+import { lookup } from "mime-types";
+import { sep } from "path";
+import { promisify } from "util";
+import { DavContext } from "./DavContext";
+import { DavHierarchyItem } from "./DavHierarchyItem";
 import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
 
-/**Represents file in WebDAV repository. */
+/**
+ * Represents file in WebDAV repository.
+ */
 export class DavFile extends DavHierarchyItem implements IFile {
 
-    private fileInfo: Stats;
+
     /**
-     * Size of chunks to upload/download.
-     * (1Mb) buffer size used when reading and writing file content.
+     * Gets content type.
      */
-    private readonly bufSize: number = 1048576;
-
-    /**Value updated every time this file is updated. Used to form Etag. */
-    private serialNumber: number;
-
-
-    /**Gets content type. */
-    get ContentType(): string {
+    get contentType(): string {
         let conType = String(lookup(this.directory));
         if (!conType) {
             conType = `application/octet-stream`;
@@ -36,8 +30,10 @@ export class DavFile extends DavHierarchyItem implements IFile {
         return conType;
     }
 
-    /**Gets length of the file. */
-    get ContentLength(): number {
+    /**
+     * Gets length of the file.
+     */
+    get contentLength(): number {
         return this.fileInfo.size;
     }
 
@@ -45,11 +41,44 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * Gets entity tag - string that identifies current state of resource's content.
      * @remarks  This property shall return different value if content changes.
      */
-    get Etag(): string {
-        return `${this.Modified.getTime().toString()}-${this.serialNumber || 0}`;
+    get etag(): string {
+        return `${Math.trunc(this.fileInfo.mtimeMs).toString()}-${this.serialNumber || 0}`;
     }
-    /**Gets or Sets snippet of file content that matches search conditions. */
-    Snippet: string;
+
+    /**
+     * Gets date when last chunk was saved to this file.
+     */
+    get lastChunkSaved(): Date {
+        return this.fileInfo.ctime;
+    }
+
+    /**
+     * Gets number of bytes uploaded sofar.
+     */
+    get bytesUploaded(): number {
+        return this.contentLength;
+    }
+    /**
+     * Gets or Sets snippet of file content that matches search conditions.
+     */
+    public snippet: string;
+
+    /**
+     * Gets total length of the file being uploaded.
+     */
+    public totalContentLength: number;
+
+    private fileInfo: Stats;
+    /**
+     * Size of chunks to upload/download.
+     * (1Mb) buffer size used when reading and writing file content.
+     */
+    //private readonly bufSize: number = 1048576;
+
+    /**
+     * Value updated every time this file is updated. Used to form Etag.
+     */
+    private serialNumber: number;
 
     /**
      * Returns file that corresponds to path.
@@ -57,24 +86,26 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param path Encoded path relative to WebDAV root folder.
      * @returns  File instance or null if physical file is not found in file system.
      */
-    public static async GetFile(context: DavContext, path: string): Promise<DavFile | null> {
-        let filePath: string = context.MapPath(path) + sep + path;
+    public static async getFile(context: DavContext, path: string): Promise<DavFile | null> {
+        const filePath: string = context.mapPath(path) + sep + path;
         const existFile = await promisify(exists)(filePath);
         if (!existFile) {
             return null;
         }
 
-        let file: Stats = await promisify(stat)(filePath);
-
+        const file: Stats = await promisify(stat)(filePath);
         //  This code blocks vulnerability when "%20" folder can be injected into path and file.Exists returns 'true'.
         if (!file.isFile()) {
             return null;
         }
 
-        let davFile: DavFile = new DavFile(filePath, context, path, file);
+        const davFile: DavFile = new DavFile(filePath, context, path, file);
 
         davFile.serialNumber = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(davFile.directory, "SerialNumber"));
-        davFile.TotalContentLength = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(davFile.directory, "TotalContentLength"));
+        davFile.totalContentLength = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(
+            davFile.directory,
+            "TotalContentLength"
+        ));
 
         return davFile;
     }
@@ -96,23 +127,53 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param startIndex The zero-bazed byte offset in file content at which to begin copying bytes to the output stream.
      * @param count The number of bytes to be written to the output stream.
      */
-    async Read(output: ServerResponse, startIndex: number, count: number): Promise<void> {
-        const fd = await promisify(open)(this.directory, 'r');
-        const toRead = Math.min(count, this.bufSize);
-        const buffer = Buffer.alloc(toRead);
-        if (toRead <= 0) {
-            return;
+    public async read(output: ServerResponse, startIndex: number, count: number): Promise<void> {
+        if (this.containsDownloadParam(this.context.request.rawUrl)) {
+            this.addContentDisposition(this.name);
         }
 
-        try {
-            let bytesRead = await promisify(read)(fd, buffer, 0, toRead, startIndex);
-            while (bytesRead.bytesRead > 0) {
-                await output.write(buffer);
-                startIndex += bytesRead.bytesRead;
-                bytesRead = await promisify(read)(fd, buffer, 0, toRead, startIndex);
-            }
-        } catch (err) {
-            console.log('err', err);
+        const fd = await promisify(open)(this.directory, 'r');
+        const fileStream = createReadStream(this.directory, {
+            flags: 'r',
+            fd: fd,
+            start: startIndex,
+            end: startIndex + count
+        });
+
+
+        await new Promise((resolve, reject) => {
+            fileStream.pipe(output);
+            fileStream.on('error', (error) => reject(error));
+            output.on('finish', () => resolve());
+            output.on('end', () => resolve());
+            output.on('error', (error) => reject(error));
+        });
+    }
+
+    private encodeRFC5987ValueChars(str: string): string {
+        return encodeURIComponent(str).
+            // Note that although RFC3986 reserves "!", RFC5987 does not,
+            // so we do not need to escape it
+            replace(/['()]/g, escape). // i.e., %27 %28 %29
+            replace(/\*/g, '%2A').
+            // The following are not required for percent-encoding per RFC5987, 
+            // so we can allow for a little better readability over the wire: |`^
+            replace(/%(?:7C|60|5E)/g, unescape);
+    }
+
+    /**
+     * Adds Content-Disposition header.
+     * @param name File name to specified in Content-Disposition header.
+     */
+    private addContentDisposition(name: string): void {
+        // Content-Disposition header must be generated differently in case if IE and other web browsers.
+        if (this.context.request.userAgent.search("MSIE")) {
+            const fileName = this.encodeRFC5987ValueChars(name);
+            const attachment = `attachment filename="${fileName}"`;
+            this.context.response.addHeader("Content-Disposition", attachment);
+        }
+        else {
+            this.context.response.addHeader("Content-Disposition", "attachment");
         }
     }
 
@@ -126,7 +187,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @returns  Whether the whole stream has been written. This result is used by the engine to determine
      * if auto checkin shall be performed (if auto versioning is used).
      */
-    async write(content: IncomingMessage, contentType: string, startIndex: number, totalFileSize: number): Promise<boolean> {
+    public async write(content: IncomingMessage, contentType: string, startIndex: number, totalFileSize: number): Promise<boolean> {
         if (this.fileInfo.size < startIndex) {
             throw new DavException("Previous piece of file was not uploaded.", undefined, DavStatus.PRECONDITION_FAILED);
         }
@@ -137,7 +198,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         await promisify(ftruncate)(fd, 0);
         const fileStream = createWriteStream(this.directory, {
             flags: 'r+',
-            fd: fd
+            fd
         });
         content.pipe(fileStream);
         content.resume();
@@ -152,7 +213,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param deep Whether children items shall be copied. Ignored for files.
      * @param multistatus Information about items that failed to copy.
      */
-    CopyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void {
+    public copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void {
 
     }
 
@@ -162,14 +223,14 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param destName New name of this file.
      * @param multistatus Information about items that failed to move.
      */
-    MoveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void {
+    public moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void {
     }
 
     /**
      * Called whan this file is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
-    Delete(multistatus: MultistatusException): void {
+    public delete(multistatus: MultistatusException): void {
 
     }
 
@@ -178,46 +239,25 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @remarks  
      * Client do not plan to restore upload. Remove any temporary files / cleanup resources here.
      */
-    CancelUploadAsync(): void {
+    public cancelUploadAsync(): void {
     }
-
-    /**Gets date when last chunk was saved to this file. */
-    get LastChunkSaved(): Date {
-        return this.fileInfo.ctime;
-    }
-
-    /**Gets number of bytes uploaded sofar. */
-    get BytesUploaded(): number {
-        return this.ContentLength;
-    }
-
-    /**Gets total length of the file being uploaded. */
-    TotalContentLength: number;
 
     /**
      * Returns instance of @see IUploadProgressAsync  interface.
      * @returns  Just returns this class.
      */
-    GetUploadProgress(): void {
+    public getUploadProgress(): void {
 
     }
 
-    ContainsDownloadParam(url: string): boolean {
-        let ind: number = url.indexOf('?');
+    public containsDownloadParam(url: string): boolean {
+        const ind: number = url.indexOf('?');
         if (ind > 0 && ind < url.length - 1) {
-            let param: string[] = url.substring((ind + 1)).split('&');
+            const param: string[] = url.substring((ind + 1)).split('&');
             const g = param.filter(item => item.startsWith("download"));
             return Boolean(g.length);
         }
 
         return false;
     }
-
-    /**
-     * Adds Content-Disposition header.
-     * @param name File name to specified in Content-Disposition header.
-     */
-    /*private AddContentDisposition(name: string) {
-        
-    }*/
 }

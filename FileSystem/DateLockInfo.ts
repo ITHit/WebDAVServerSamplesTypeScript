@@ -1,11 +1,11 @@
 import { LockLevel } from "ithit.webdav.server/Class2/LockLevel";
 
 export class DateLockInfo {
-    ClientOwner: string;
-    Expiration: number;
-    LockToken: string;
-    Level: LockLevel;
-    IsDeep: boolean;
-    LockRoot: string;
-    TimeOut: number;
+    public clientOwner: string;
+    public expiration: number;
+    public lockToken: string;
+    public level: LockLevel;
+    public isDeep: boolean;
+    public lockRoot: string;
+    public timeOut: number;
 }

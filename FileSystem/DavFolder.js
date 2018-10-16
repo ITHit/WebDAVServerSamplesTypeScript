@@ -1,32 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const DavHierarchyItem_1 = require("./DavHierarchyItem");
 const fs_1 = require("fs");
-const List_1 = require("typescript-dotnet-commonjs/System/Collections/List");
 const path_1 = require("path");
 const util_1 = require("util");
-/**Folder in WebDAV repository. */
+const DavHierarchyItem_1 = require("./DavHierarchyItem");
+/**
+ * Folder in WebDAV repository.
+ */
 class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
-    /**Windows Search Provider string. */
-    //private static readonly windowsSearchProvider: string = '';
-    /**
-     * Corresponding instance of @see DirectoryInfo .
-     */
-    //private readonly dirInfo: Stats;
     /**
      * Returns folder that corresponds to path.
      * @param context WebDAV Context.
      * @param path Encoded path relative to WebDAV root folder.
      * @returns  Folder instance or null if physical folder not found in file system.
      */
-    static async GetFolder(context, path) {
-        let folderPath = context.MapPath(path) + path_1.sep + path;
+    static async getFolder(context, path) {
+        const folderPath = context.mapPath(path) + path_1.sep + path;
         const existFolder = await util_1.promisify(fs_1.exists)(folderPath);
         if (!existFolder) {
             return null;
         }
-        let folder = await util_1.promisify(fs_1.stat)(folderPath);
-        //  This code blocks vulnerability when "%20" folder can be injected into path and folder.Exists returns 'true'.
+        const folder = await util_1.promisify(fs_1.stat)(folderPath);
         if (!folder.isDirectory()) {
             return null;
         }
@@ -40,25 +34,25 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      */
     constructor(directory, context, path, stats) {
         super(directory, context, path.replace(/\/$/, "") + "/", stats);
-        //this.dirInfo = directory;
+        // this.dirInfo = directory;
     }
     /**
      * Called when children of this folder are being listed.
      * @param propNames List of properties to retrieve with the children. They will be queried by the engine later.
      * @returns  Children of this folder.
      */
-    async GetChildren(propNames) {
+    async getChildren(propNames) {
         //  Enumerates all child files and folders.
         //  You can filter children items in this implementation and 
         //  return only items that you want to be visible for this 
         //  particular user.
-        let children = new List_1.List();
+        const children = new Array();
         const listOfFiles = await util_1.promisify(fs_1.readdir)(this.directory);
         for (let i = 0; i < listOfFiles.length; i++) {
-            const file = this.Path + listOfFiles[i];
-            const child = await this.context.GetHierarchyItem(file);
-            if (child != null) {
-                children.add(child);
+            const file = this.path + listOfFiles[i];
+            const child = await this.context.getHierarchyItem(file);
+            if (child !== null) {
+                children.push(child);
             }
         }
         return children;
@@ -68,14 +62,14 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @param name Name of the new file.
      * @returns  The new file.
      */
-    CreateFile(name) {
-        return this.context.GetHierarchyItem(this.Path + name);
+    createFile(name) {
+        return this.context.getHierarchyItem(this.path + name);
     }
     /**
      * Called when a new folder is being created in this folder.
      * @param name Name of the new folder.
      */
-    CreateFolder(name) {
+    createFolder(name) {
     }
     /**
      * Called when this folder is being copied.
@@ -84,7 +78,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @param deep Whether children items shall be copied.
      * @param multistatus Information about child items that failed to copy.
      */
-    CopyTo(destFolder, destName, deep, multistatus) {
+    copyTo(destFolder, destName, deep, multistatus) {
     }
     /**
      * Called when this folder is being moved or renamed.
@@ -92,13 +86,13 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @param destName New name of this folder.
      * @param multistatus Information about child items that failed to move.
      */
-    MoveTo(destFolder, destName, multistatus) {
+    moveTo(destFolder, destName, multistatus) {
     }
     /**
      * Called whan this folder is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
-    Delete(multistatus) {
+    delete(multistatus) {
     }
     /**
      * Searches files and folders in current folder using search phrase and options.
@@ -109,7 +103,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * Engine in @see IHierarchyItemAsync.GetPropertiesAsync(IList{PropertyName}, bool)  call.
      * @returns  List of @see IHierarchyItemAsync  satisfying search request.
      */
-    Search(searchString, options, propNames) {
+    search(searchString, options, propNames) {
     }
     /**
      * Converts path on disk to encoded relative path.
@@ -119,8 +113,8 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * There is no any real solution for this, so to build path we just replace "my documents" manually.
      * @returns  Returns relative encoded path for an item.
      */
-    GetRelativePath(filePath) {
-        return this.Path;
+    getRelativePath(filePath) {
+        return this.path;
     }
 }
 exports.DavFolder = DavFolder;

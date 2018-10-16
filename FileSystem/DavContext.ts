@@ -1,12 +1,11 @@
-import { ILogger } from "ithit.webdav.server/ILogger";
-import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
-import { DavFolder } from "./DavFolder";
-import { DavFile } from "./DavFile";
 import { DavContextBase } from "ithit.webdav.server/DavContextBase";
 import { DavRequest } from "ithit.webdav.server/Extensibility/DavRequest";
 import { DavResponse } from "ithit.webdav.server/Extensibility/DavResponse";
-import { trim } from "typescript-dotnet-commonjs/System/Text/Utility";
+import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
+import { ILogger } from "ithit.webdav.server/ILogger";
 import { sep } from "path";
+import { DavFile } from "./DavFile";
+import { DavFolder } from "./DavFolder";
 
 /**
  * Implementation of {@link DavContext}.
@@ -14,44 +13,58 @@ import { sep } from "path";
  */
 export class DavContext extends DavContextBase {
 
-    /**Path to the folder which become available via WebDAV. */
-    RepositoryPath: string;
+    /**
+     * Path to the folder which become available via WebDAV.
+     */
+    public repositoryPath: string;
 
-    /**Gets WebDAV Logger instance. */
-    Logger: ILogger;
+    /**
+     * Gets WebDAV Logger instance.
+     */
+    public logger: ILogger;
 
     /**
      * Gets user name.
      * @remarks  In case of windows authentication returns user name without domain part.
      */
-    public get UserName(): string {
-        const i: number = this.Identity.Name.IndexOf("\\");
-        return i > 0 ? this.Identity.Name.Substring(i + 1, this.Identity.Name.Length - i - 1) : this.Identity.Name;
+    public get userName(): string {
+        const i: number = this.identity.Name.IndexOf("\\");
+        return i > 0 ? this.identity.Name.Substring(i + 1, this.identity.Name.Length - i - 1) : this.identity.Name;
     }
 
     /**
      * Gets currently authenticated user.
-
      * 
      * Currently logged in identity.
      */
-    Identity: any;
+    public identity: any;
 
     /**
      * Initializes a new instance of the DavContext class.
-     * @param listenerContext @see HttpListenerContext  instance.
      * @param prefixes Http listener prefixes.
      * @param repositoryPath Local path to repository.
-     * @param logger @see ILogger  instance.
      */
     constructor(listenerContext: DavRequest, prefixes: DavResponse, principal: any, repositoryPath: string, logger: ILogger) {
         super(listenerContext, prefixes);
-        this.Logger = logger;
-        this.RepositoryPath = repositoryPath;
-        if (principal != null) {
-            this.Identity = principal;
+        this.logger = logger;
+        this.repositoryPath = repositoryPath;
+        if (principal !== null) {
+            this.identity = principal;
         }
 
+    }
+
+    public trim(source: string, chars?: string | string[], ignoreCase?: boolean): string {
+        if (chars === '') {
+            return source;
+        }
+        if (chars) {
+            const escaped = ((chars) instanceof (Array) ? chars.join() : chars).replace(/[-[\]\/{}()*+?.\\^$|]/g, "\\$&");
+            return source.replace(new RegExp(`^[${escaped}]+|[${escaped}]+$`, 'g' + (ignoreCase
+                ? 'i'
+                : '')), '');
+        }
+        return source.replace(/^\s+|\s+$/g, '');
     }
 
     /**
@@ -59,26 +72,25 @@ export class DavContext extends DavContextBase {
      * @param path Item relative path including query string.
      * @returns  Instance of corresponding {@link IHierarchyItem} or null if item is not found.
      */
-    async GetHierarchyItem(path: string): Promise<IHierarchyItem | null> {
+    public async getHierarchyItem(path: string): Promise<IHierarchyItem | null> {
         // remove query string.
-        path = trim(path, [' ', '/']);
+        path = this.trim(path, [' ', '/']);
         path = path.replace('?', '');
         path = path.split('/').join(`${sep}`);
         let item: IHierarchyItem;
-        item = <IHierarchyItem>await DavFolder.GetFolder(this, path);
-        if (item != null) {
+        item = await DavFolder.getFolder(this, path) as IHierarchyItem;
+        if (item !== null) {
             return item;
         }
 
-        item = <IHierarchyItem>await DavFile.GetFile(this, path);
-        if (item != null) {
+        item = await DavFile.getFile(this, path) as IHierarchyItem;
+        if (item !== null) {
             return item;
         }
 
-        this.Logger.LogDebug(("Could not find item that corresponds to path: " + path));
+        this.logger.logDebug(("Could not find item that corresponds to path: " + path));
 
         return null;
-
         //  no hierarchy item that corresponds to path parameter was found in the repository
     }
 
@@ -87,8 +99,8 @@ export class DavContext extends DavContextBase {
      * @param relativePath Path relative to WebDAV root folder.
      * @returns  Corresponding path in file system.
      */
-    MapPath(relativePath: string): string {
+    public mapPath(relativePath: string): string {
 
-        return this.RepositoryPath;
+        return this.repositoryPath;
     }
 }

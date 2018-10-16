@@ -1,8 +1,7 @@
 import { get as getXAttr, set as setXAttr } from "fs-extended-attributes";
-import { ArgumentNullException } from "typescript-dotnet-commonjs/System/Exceptions/ArgumentNullException";
 import { promisify } from "util";
+import { DOMParser, XMLSerializer } from "xmldom";
 import { xmlToJson } from "../customtypings/xml";
-import { XMLSerializer, DOMParser } from "xmldom";
 
 export class FileSystemInfoExtension {
     private static getXAttr = getXAttr;
@@ -10,7 +9,7 @@ export class FileSystemInfoExtension {
 
     public static async getExtendedAttribute<T>(fileFullName: string, attribName: string): Promise<T> {
         if (!attribName) {
-            throw new ArgumentNullException("attribName");
+            throw new Error("attribName");
         }
 
         const attributeValue: Buffer | null = await promisify(FileSystemInfoExtension.getXAttr)(fileFullName, attribName);
@@ -20,7 +19,7 @@ export class FileSystemInfoExtension {
 
     public static async getRawExtendedAttribute(fileFullName: string, attribName: string): Promise<Buffer> {
         if (!attribName) {
-            throw new ArgumentNullException("attribName");
+            throw new Error("attribName");
         }
 
         const attributeValue: Buffer | null = await promisify(FileSystemInfoExtension.getXAttr)(fileFullName, attribName);
@@ -28,9 +27,43 @@ export class FileSystemInfoExtension {
         return attributeValue;
     }
 
+    public static async setExtendedAttribute(fileFullName: string, attribName: string, attribValue: any): Promise<void> {
+        if (!fileFullName) {
+            throw new Error("path");
+        }
+
+        if (!attribName) {
+            throw new Error("attribName");
+        }
+
+        if (!attribValue) {
+            throw new Error("attribValue");
+        }
+
+        const serializedValue: string = FileSystemInfoExtension.serialize(attribValue);
+
+        await promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, serializedValue);
+    }
+
+    public static async setRawExtendedAttribute(fileFullName: string, attribName: string, attribValue: any): Promise<void> {
+        if (!fileFullName) {
+            throw new Error("path");
+        }
+
+        if (!attribName) {
+            throw new Error("attribName");
+        }
+
+        if (!attribValue) {
+            throw new Error("attribValue");
+        }
+
+        await promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, attribValue);
+    }
+
     private static deserialize<T>(xmlString: string): T {
         if (!xmlString) {
-            return <T>{};
+            return {} as T;
         }
 
         const oParser = new DOMParser();
@@ -38,49 +71,15 @@ export class FileSystemInfoExtension {
         const obj = xmlToJson(oDOM.documentElement);
         const nameOfFirstChild = oDOM.documentElement && oDOM.documentElement.firstChild ? oDOM.documentElement.firstChild.nodeName : '';
         if (obj[nameOfFirstChild]) {
-            return <T>obj[nameOfFirstChild];
+            return obj[nameOfFirstChild] as T;
         } else {
-            return <T>obj;
+            return obj as T;
         }
-    }
-
-    public static async setExtendedAttribute(fileFullName: string, attribName: string, attribValue: any): Promise<void> {
-        if (!fileFullName) {
-            throw new ArgumentNullException("path");
-        }
-
-        if (!attribName) {
-            throw new ArgumentNullException("attribName");
-        }
-
-        if (!attribValue) {
-            throw new ArgumentNullException("attribValue");
-        }
-
-        let serializedValue: string = FileSystemInfoExtension.serialize(attribValue);
-
-        await promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, serializedValue);
-    }
-
-    public static async setRawExtendedAttribute(fileFullName: string, attribName: string, attribValue: any): Promise<void> {
-        if (!fileFullName) {
-            throw new ArgumentNullException("path");
-        }
-
-        if (!attribName) {
-            throw new ArgumentNullException("attribName");
-        }
-
-        if (!attribValue) {
-            throw new ArgumentNullException("attribValue");
-        }
-
-        await promisify(FileSystemInfoExtension.setXAttr)(fileFullName, attribName, attribValue);
     }
 
     private static serialize(data: any): string {
         if (!data) {
-            throw new ArgumentNullException("data");
+            throw new Error("data");
         }
 
         const type = typeof data;
@@ -97,7 +96,7 @@ export class FileSystemInfoExtension {
             arrEl.setAttributeNode(att);
             data.forEach((element) => {
                 const el = document.createElement(typeOfArr);
-                for (let prop in element) {
+                for (const prop in element) {
                     if (!element.hasOwnProperty(prop)) {
                         continue;
                     }

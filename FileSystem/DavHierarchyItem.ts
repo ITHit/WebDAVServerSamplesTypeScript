@@ -1,73 +1,83 @@
-import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
+import { randomBytes } from "crypto";
+import { Stats } from "fs";
 import { ILock } from "ithit.webdav.server/Class2/ILock";
 import { LockedException } from "ithit.webdav.server/Class2/LockedException";
-import { Stats } from "fs";
-import { basename } from "path";
-import { DavContext } from "./DavContext";
-import { PropertyValue } from "ithit.webdav.server/PropertyValue";
-import { IItemCollection } from "ithit.webdav.server/IItemCollection";
-import { RefreshLockResult } from "ithit.webdav.server/Class2/RefreshLockResult";
-import { MultistatusException } from "ithit.webdav.server/MultistatusException";
-import { IList } from "typescript-dotnet-commonjs/System/Collections/IList";
-import { PropertyName } from "ithit.webdav.server/PropertyName";
-import { IEnumerable } from "typescript-dotnet-commonjs/System/Collections/Enumeration/IEnumerable";
-import { List } from "typescript-dotnet-commonjs/System/Collections/List";
-import { LockLevel } from "ithit.webdav.server/Class2/LockLevel";
 import { LockInfo } from "ithit.webdav.server/Class2/LockInfo";
+import { LockLevel } from "ithit.webdav.server/Class2/LockLevel";
+import { LockResult } from "ithit.webdav.server/Class2/LockResult";
+import { RefreshLockResult } from "ithit.webdav.server/Class2/RefreshLockResult";
 import { DavException } from "ithit.webdav.server/DavException";
 import { DavStatus } from "ithit.webdav.server/DavStatus";
+import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
+import { IItemCollection } from "ithit.webdav.server/IItemCollection";
+import { MultistatusException } from "ithit.webdav.server/MultistatusException";
+import { PropertyName } from "ithit.webdav.server/PropertyName";
+import { PropertyValue } from "ithit.webdav.server/PropertyValue";
+import { basename } from "path";
 import { DateLockInfo } from "./DateLockInfo";
+import { DavContext } from "./DavContext";
 import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
-import { LockResult } from "ithit.webdav.server/Class2/LockResult";
-import { randomBytes } from "crypto";
 
-/**Base class for WebDAV items (folders, files, etc). */
+/**
+ * Base class for WebDAV items (folders, files, etc).
+ */
 export class DavHierarchyItem implements IHierarchyItem, ILock {
-    /**Property name to return text anound search phrase. */
-    //private snippetProperty: string = "snippet";
-
-    /**Name of properties attribute. */
-    //private propertiesAttributeName: string = "Properties";
 
     /**
-     * Corresponding file or folder in the file system.
+     * Gets name of the item.
      */
-    readonly fileSystemInfo: Stats;
-
-    /**Name of locks attribute. */
-    private locksAttributeName: string = "Locks";
-
-    /**Gets name of the item. */
-    public get Name(): string {
+    public get name(): string {
         return basename(this.directory);
     }
 
-    /**Gets date when the item was created in UTC. */
-    get Created(): Date {
+    /**
+     * Gets date when the item was created in UTC.
+     */
+    get created(): Date {
         return this.fileSystemInfo.birthtime;
     }
 
-    /**Gets date when the item was last modified in UTC. */
-    get Modified(): Date {
+    /**
+     * Gets date when the item was last modified in UTC.
+     */
+    get modified(): Date {
         return this.fileSystemInfo.mtime;
     }
 
-    /**Gets path of the item where each part between slashes is encoded. */
-    Path: string;
-
-    /**Gets full path for this file/folder in the file system. */
-    get FullPath(): string {
+    /**
+     * Gets full path for this file/folder in the file system.
+     */
+    get fullPath(): string {
         return __dirname;
 
     }
 
-    /**WebDAV Context. */
-    context: DavContext;
+    /**
+     * Corresponding file or folder in the file system.
+     */
+    public readonly fileSystemInfo: Stats;
 
-    /**User defined property values. */
-    propertyValues: PropertyValue[];
-    directory: string;
-    private locks: Array<DateLockInfo> | null = null;
+    /**
+     * Gets path of the item where each part between slashes is encoded.
+     */
+    public path: string;
+
+    /**
+     * WebDAV Context.
+     */
+    public context: DavContext;
+
+    /**
+     * User defined property values
+     */
+    public propertyValues: PropertyValue[];
+    public directory: string;
+
+    /**
+     * Name of locks attribute.
+     */
+    private locksAttributeName = "Locks";
+    private locks: DateLockInfo[] | null = null;
 
     /**
      * Initializes a new instance of this class.
@@ -76,7 +86,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     protected constructor(directory: string, context: DavContext, path: string, stats: Stats) {
         this.context = context;
-        this.Path = path;
+        this.path = path;
         this.directory = directory;
         this.fileSystemInfo = stats;
     }
@@ -90,8 +100,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * information about the error into @paramref multistatus  using 
      * @see MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException) .
      */
-    CopyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void { };
-
+    public copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void { }
     /**
      * Moves this item to the destination folder under a new name.
      * @param destFolder Destination folder.
@@ -100,66 +109,38 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * information about the error into @paramref multistatus  using 
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
-    MoveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void { };
-
+    public moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void { }
     /**
      * Deletes this item.
      * @param multistatus If some items fail to delete but operation in whole shall be continued, add
      * information about the error into @paramref multistatus  using
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
-    Delete(multistatus: MultistatusException): void { };
-
+    public delete(multistatus: MultistatusException): void { }
     /**
      * Retrieves user defined property values.
      * @param names Names of dead properties which values to retrieve.
      * @param allprop Whether all properties shall be retrieved.
      * @returns Property values.
      */
-    GetProperties(props: IList<PropertyName>, allprop: boolean): IEnumerable<PropertyValue> {
-        let propertyValues: List<PropertyValue> = this.GetPropertyValues();
-        //const snippet: PropertyName = props.toArray().filter(item => item.Name == this.snippetProperty)[0] || null;
-        /*if (snippet.Name == this.snippetProperty) {
-            propertyValues.insert(propertyValues.count, new PropertyValue(snippet, (<DavFile>(this)).Snippet));
-        }*/
-
+    public getProperties(props: PropertyName[], allprop: boolean): PropertyValue[] {
+        let propertyValues = this.getPropertyValues();
         if (!allprop) {
-            propertyValues = new List<PropertyValue>(propertyValues.toArray().filter(item => item.QualifiedName));
+            propertyValues = propertyValues.filter(item => item.qualifiedName);
         }
 
-        const g = new List<PropertyValue>(propertyValues);
-
-        return g;
+        return propertyValues;
     }
 
     /**
      * Retrieves names of all user defined properties.
      * @returns  Property names.
      */
-    GetPropertyNames(): IEnumerable<PropertyName> {
-        const propertyValues: IList<PropertyValue> = this.GetPropertyValues();
-        const g = new List<PropertyName>(propertyValues.toArray().map(item => item.QualifiedName));
+    public getPropertyNames(): PropertyName[] {
+        const propertyValues = this.getPropertyValues();
+        const g = propertyValues.map(item => item.qualifiedName);
 
         return g;
-    }
-
-    /**
-     * Retrieves list of user defined propeties for this item.
-     * @returns  List of user defined properties.
-     */
-    private GetPropertyValues(): List<PropertyValue> {
-        if (this.propertyValues == null) {
-            //const f = statSync(__dirname);
-            //const pn = new PropertyName(this.propertiesAttributeName);
-            //const pv = new PropertyValue(pn, f[this.propertiesAttributeName]);
-            const g = new List<PropertyValue>();
-            //g.add(pv);
-            this.propertyValues = g.toArray();
-        }
-
-        const h = new List<PropertyValue>(this.propertyValues);
-
-        return h;
     }
 
     /**
@@ -168,39 +149,38 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param delProps Properties to be deleted.
      * @param multistatus Information about properties that failed to create, update or delate.
      */
-    UpdateProperties(setProps: IList<PropertyValue>, delProps: IList<PropertyName>, multistatus: MultistatusException): void { }
+    public updateProperties(setProps: PropertyValue[], delProps: PropertyName[], multistatus: MultistatusException): void { }
 
     /**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
      */
-    GetFileAttributes(value: any): void { }
+    public getFileAttributes(value: any): void { }
 
     /**
      * Sets Windows file attributes (readonly, hidden etc.) on this item.
      * @param value File attributes.
      */
-    SetFileAttributes(value: any): void { };
-
+    public setFileAttributes(value: any): void { }
     /**
      * Retrieves non expired locks for this item.
      * @returns  Enumerable with information about locks.
      */
-    async getActiveLocks(): Promise<LockInfo[]> {
+    public async getActiveLocks(): Promise<LockInfo[]> {
         const locks = await this.getLocks();
-        if (locks == null) {
+        if (locks === null) {
             return new Array<LockInfo>();
         }
 
         const lockInfoList = locks.map(l => new LockInfo(
-            l.Level,
-            l.IsDeep,
-            l.LockToken,
-            l.Expiration == (new Date(8640000000000000).getTime()) ?
+            l.level,
+            l.isDeep,
+            l.lockToken,
+            l.expiration === (new Date(8640000000000000).getTime()) ?
                 (new Date(8640000000000000).getTime()) :
-                Math.ceil(l.Expiration - Date.now()),
-            l.ClientOwner,
-            l.LockRoot
+                Math.ceil(l.expiration - Date.now()),
+            l.clientOwner,
+            l.lockRoot
         ));
 
         return lockInfoList;
@@ -216,10 +196,14 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * @returns  
      * Instance of @see LockResult  with information about the lock.
      */
-    async lock(level: LockLevel | null, isDeep: boolean | null, requestedTimeOut: number | null, owner: string | null): Promise<LockResult> {
-        await this.requireUnlocked(level == LockLevel.Shared);
-        let token = randomBytes(16).toString('hex');
-
+    public async lock(
+        level: LockLevel | null,
+        isDeep: boolean | null,
+        requestedTimeOut: number | null,
+        owner: string | null
+    ): Promise<LockResult> {
+        await this.requireUnlocked(level === LockLevel.shared);
+        const token = randomBytes(16).toString('hex');
         //  If timeout is absent or infinit timeout requested,
         //  grant 5 minute lock.
         let timeOut = 5 * 60 * 1000;
@@ -227,55 +211,28 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
             timeOut = requestedTimeOut;
         }
 
-        let lockInfo = new DateLockInfo();
-        lockInfo.Expiration = Date.now() + timeOut;
-        lockInfo.IsDeep = false;
-        lockInfo.Level = level !== null ? level : LockLevel.Shared;
-        lockInfo.LockRoot = this.Path;
-        lockInfo.LockToken = token,
-            lockInfo.ClientOwner = owner || '',
-            lockInfo.TimeOut = timeOut;
+        const lockInfo = new DateLockInfo();
+        lockInfo.expiration = Date.now() + timeOut;
+        lockInfo.isDeep = false;
+        lockInfo.level = level !== null ? level : LockLevel.shared;
+        lockInfo.lockRoot = this.path;
+        lockInfo.lockToken = token;
+        lockInfo.clientOwner = owner || '';
+        lockInfo.timeOut = timeOut;
 
         this.saveLock(lockInfo);
 
-        return new LockResult(lockInfo.LockToken, lockInfo.TimeOut);
+        return new LockResult(lockInfo.lockToken, lockInfo.timeOut);
     }
 
     public async requireUnlocked(skipShared: boolean): Promise<void> {
-        let locks = await this.getLocks();
+        const locks = await this.getLocks();
         if (locks !== null && locks.length) {
-            if ((skipShared && locks.filter(l => l.Level == LockLevel.Exclusive).length)
+            if ((skipShared && locks.filter(l => l.level === LockLevel.exclusive).length)
                 || (!skipShared && locks.length)) {
                 throw new LockedException();
             }
         }
-    }
-
-    private async getLocks(getAllWithExpired: boolean = false): Promise<Array<DateLockInfo>> {
-        if (this.locks == null) {
-            this.locks = await FileSystemInfoExtension.getExtendedAttribute<Array<DateLockInfo>>(this.directory, this.locksAttributeName);
-            if (this.locks !== null) {
-                if (!Array.isArray(this.locks)) {
-                    this.locks = [this.locks];
-                }
-                this.locks.forEach(l => {
-                    l.LockRoot = this.Path.split('\\').join(`/`);
-                    l.IsDeep = l.IsDeep as any === "true" ? true : false;
-                });
-            }
-        }
-
-        if (this.locks == null) {
-            return new Array<DateLockInfo>();
-        }
-
-        if (getAllWithExpired) {
-            return this.locks;
-        }
-        else {
-            return this.locks.filter(x => x.Expiration > Date.now());
-        }
-
     }
 
     /**
@@ -286,42 +243,99 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * @returns  
      * Instance of @see LockResult  with information about the lock.
      */
-    async refreshLock(token: string, requestedTimeOut: number | null): Promise<RefreshLockResult> {
+    public async refreshLock(token: string, requestedTimeOut: number | null): Promise<RefreshLockResult> {
         if (!token) {
             throw new DavException("Lock can not be found.", undefined, DavStatus.BAD_REQUEST);
         }
 
         const locks: DateLockInfo[] = await this.getLocks(true);
-        const lockInfo = locks.filter(x => x.LockToken == token)[0] || null;
-        if (lockInfo == null || lockInfo.Expiration <= Date.now()) {
+        const lockInfo = locks.filter(x => x.lockToken === token)[0] || null;
+        if (lockInfo === null || lockInfo.expiration <= Date.now()) {
             throw new DavException("Lock can not be found.", undefined, DavStatus.CONFLICT);
         } else {
-            lockInfo.TimeOut = 5 * 60 * 1000;//5 minutes to milliseconds
+            lockInfo.timeOut = 5 * 60 * 1000;// 5 minutes to milliseconds
             const timeSpanMaxValue = new Date(8640000000000000).getTime();
             if (requestedTimeOut && requestedTimeOut < timeSpanMaxValue) {
-                lockInfo.TimeOut = requestedTimeOut;
+                lockInfo.timeOut = requestedTimeOut;
             }
 
-            lockInfo.Expiration = Date.now() + lockInfo.TimeOut;
+            lockInfo.expiration = Date.now() + lockInfo.timeOut;
             await this.saveLock(lockInfo);
         }
 
-        return new RefreshLockResult(lockInfo.Level, lockInfo.IsDeep, lockInfo.TimeOut, lockInfo.ClientOwner);
+        return new RefreshLockResult(lockInfo.level, lockInfo.isDeep, lockInfo.timeOut, lockInfo.clientOwner);
+    }
+
+    /**
+     * Removes lock with the specified token from this item.
+     * @param lockToken Lock with this token should be removed from the item.
+     */
+    public async unlock(lockToken: string): Promise<void> {
+        const locks = await this.getLocks(true);
+        const lockInfo = locks.filter(x => x.lockToken === lockToken)[0] || null;
+        await this.removeExpiredLocks(lockToken);
+
+        if (lockInfo === null || lockInfo.expiration <= Date.now()) {
+            throw new DavException("The lock could not be found.", undefined, DavStatus.CONFLICT);
+        }
+    }
+
+    /**
+     * Check that if the item is locked then client has submitted correct lock token.
+     */
+    public requireHasToken(skipShared: boolean = false): void { }
+
+    /**
+     * Retrieves list of user defined propeties for this item.
+     * @returns  List of user defined properties.
+     */
+    private getPropertyValues(): PropertyValue[] {
+        if (this.propertyValues === null) {
+            this.propertyValues = new Array<PropertyValue>();
+        }
+
+        return this.propertyValues;
+    }
+
+    private async getLocks(getAllWithExpired: boolean = false): Promise<DateLockInfo[]> {
+        if (this.locks === null) {
+            this.locks = await FileSystemInfoExtension.getExtendedAttribute<DateLockInfo[]>(this.directory, this.locksAttributeName);
+            if (this.locks !== null) {
+                if (!Array.isArray(this.locks)) {
+                    this.locks = [this.locks];
+                }
+                this.locks.forEach(l => {
+                    l.lockRoot = this.path.split('\\').join(`/`);
+                    l.isDeep = l.isDeep as any === "true" ? true : false;
+                });
+            }
+        }
+
+        if (this.locks === null) {
+            return new Array<DateLockInfo>();
+        }
+
+        if (getAllWithExpired) {
+            return this.locks;
+        }
+        else {
+            return this.locks.filter(x => x.expiration > Date.now());
+        }
+
     }
 
     private async saveLock(lockInfo: DateLockInfo): Promise<void> {
         let locks = await this.getLocks(true);
-
         // remove all expired locks
-        locks = locks.filter(x => x.Expiration <= Date.now());
-        const existingLock = locks.filter(x => x.LockToken <= lockInfo.LockToken)[0] || null;
+        locks = locks.filter(x => x.expiration <= Date.now());
+        const existingLock = locks.filter(x => x.lockToken <= lockInfo.lockToken)[0] || null;
         if (existingLock) {
-            existingLock.TimeOut = lockInfo.TimeOut;
-            existingLock.Level = lockInfo.Level;
-            existingLock.IsDeep = lockInfo.IsDeep;
-            existingLock.LockRoot = lockInfo.LockRoot;
-            existingLock.Expiration = lockInfo.Expiration;
-            existingLock.ClientOwner = lockInfo.ClientOwner;
+            existingLock.timeOut = lockInfo.timeOut;
+            existingLock.level = lockInfo.level;
+            existingLock.isDeep = lockInfo.isDeep;
+            existingLock.lockRoot = lockInfo.lockRoot;
+            existingLock.expiration = lockInfo.expiration;
+            existingLock.clientOwner = lockInfo.clientOwner;
         } else {
             locks.push(lockInfo);
         }
@@ -329,39 +343,16 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
         await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.locksAttributeName, locks);
     }
 
-    /**
-     * Removes lock with the specified token from this item.
-     * @param lockToken Lock with this token should be removed from the item.
-     */
-    async unlock(lockToken: string): Promise<void> {
-        const locks = await this.getLocks(true);
-        const lockInfo = locks.filter(x => x.LockToken == lockToken)[0] || null;
-        await this.removeExpiredLocks(lockToken);
-
-        if (lockInfo == null || lockInfo.Expiration <= Date.now()) {
-            throw new DavException("The lock could not be found.", undefined, DavStatus.CONFLICT);
-        }
-    }
-
     private async removeExpiredLocks(unlockedToken: string | null = null): Promise<void> {
         let locks = await this.getLocks(true);
-        locks = locks.filter(x => x.Expiration >= Date.now());
-        //remove from token
+        locks = locks.filter(x => x.expiration >= Date.now());
+        // remove from token
         if (unlockedToken) {
-            locks = locks.filter(x => x.LockToken != unlockedToken);
+            locks = locks.filter(x => x.lockToken !== unlockedToken);
         }
 
         await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.locksAttributeName, locks);
     }
-
-    /**Check that if the item is locked then client has submitted correct lock token. */
-    RequireHasToken(skipShared: boolean = false): void { }
-
-    /**
-     * Ensure that there are no active locks on the item.
-     * @param skipShared Whether shared locks shall be checked.
-     */
-    RequireUnlocked(skipShared: boolean): void { }
 
 
 }
