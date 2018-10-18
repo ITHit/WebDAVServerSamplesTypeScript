@@ -9,7 +9,7 @@
     "@types/node": "^10.7.0",
     "@types/xmldom": "^0.1.27",
     "fs-extended-attributes": "^1.0.1",
-    "ithit.webdav.server": "^1.0.13",
+    "ithit.webdav.server": "^1.0.6",
     "typescript": "^3.0.1"
   },
   "scripts": {
