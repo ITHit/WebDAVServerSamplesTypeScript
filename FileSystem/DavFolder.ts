@@ -1,13 +1,16 @@
-import { exists, readdir, stat, Stats } from "fs";
+import { exists, readdir, stat, Stats, mkdir, rmdir, open, close } from "fs";
 import { IFolder } from "ithit.webdav.server/Class1/IFolder";
 import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
 import { IItemCollection } from "ithit.webdav.server/IItemCollection";
 import { MultistatusException } from "ithit.webdav.server/MultistatusException";
 import { PropertyName } from "ithit.webdav.server/PropertyName";
-import { sep } from "path";
+import { sep, join } from "path";
 import { promisify } from "util";
 import { DavContext } from "./DavContext";
 import { DavHierarchyItem } from "./DavHierarchyItem";
+import { DavException } from "ithit.webdav.server/DavException";
+import { DavStatus } from "ithit.webdav.server/DavStatus";
+import { EncodeUtil } from "ithit.webdav.server/EncodeUtil";
 
 /**
  * Folder in WebDAV repository.
@@ -43,11 +46,10 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @param path Encoded path relative to WebDAV root folder.
      */
     protected constructor(directory: string, context: DavContext, path: string, stats: Stats) {
-        super(directory, context, path.replace(/\/$/, "") + "/", stats);
-
-        // this.dirInfo = directory;
+        super(directory, context, path.replace(/\/$/, "") + sep, stats);
     }
 
+	//$<IItemCollection.GetChildren
     /**
      * Called when children of this folder are being listed.
      * @param propNames List of properties to retrieve with the children. They will be queried by the engine later.
@@ -70,22 +72,43 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
 
         return children;
     }
+	//$>
 
+	//$<IFolder.CreateFile
     /**
      * Called when a new file is being created in this folder.
      * @param name Name of the new file.
      * @returns  The new file.
      */
-    public createFile(name: string): any {
+    public async createFile(name: string): Promise<IHierarchyItem|null> {
+        let normalizedDir = this.directory;
+        if(normalizedDir.charAt(normalizedDir.length - 1) === sep) {
+            normalizedDir = normalizedDir.slice(0, -1);
+        }
+
+        const fd = await promisify(open)(`${normalizedDir}${sep}${name}`, 'w');
+        await promisify(close)(fd);
+        
         return this.context.getHierarchyItem(this.path + name);
     }
+	//$>
 
+	//$<IFolder.CreateFolder
     /**
      * Called when a new folder is being created in this folder.
      * @param name Name of the new folder.
      */
-    public createFolder(name: string): void {
+    public async createFolder(name: string): Promise<void> {
+        this.requireHasToken();
+        const path = `${this.directory}${sep}${name}`.split(sep);
+        for (let i = 1; i <= path.length; i++) {
+            const segment = path.slice(0, i).join(sep);
+            if(!await promisify(exists)(segment)) {
+                await promisify(mkdir)(segment);
+            }
+        }
     }
+	//$>
 
     /**
      * Called when this folder is being copied.
@@ -94,8 +117,51 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @param deep Whether children items shall be copied.
      * @param multistatus Information about child items that failed to copy.
      */
-    public copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void {
+    public async copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): Promise<void> {
+        const targetFolder = destFolder as DavFolder;
+        if (targetFolder === null) {
+            throw new DavException("Target folder doesn't exist", undefined, DavStatus.CONFLICT);
+        }
 
+        if (this.isRecursive(targetFolder)) {
+            throw new DavException("Cannot copy to subfolder", undefined, DavStatus.FORBIDDEN);
+        }
+        
+        const newDirLocalPath = join(targetFolder.directory, destName);
+        const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
+        try{
+            if(!await promisify(exists)(newDirLocalPath)) {
+                await targetFolder.createFolder(destName);
+            }
+        } catch(err) {
+            // Continue, but report error to client for the target item.
+            multistatus.addInnerException(targetPath, undefined, err);
+        }
+
+        const createdFolder = await this.context.getHierarchyItem(targetPath);
+        const children = await this.getChildren([new PropertyName()]);
+        for(let i = 0; i < children.length; i++) {
+            const item = children[i];
+            if (!deep && item instanceof DavFolder) {
+                continue;
+            }
+
+            try {
+                await item.copyTo(createdFolder as IItemCollection, item.name, deep, multistatus);
+            } catch (err) {
+                // If a child item failed to copy we continue but report error to client.
+                multistatus.addInnerException(item.path, undefined, err);
+            }
+        }
+    }
+
+    /**
+     * Determines whether destFolder is inside this folder.
+     * @param destFolder Folder to check.
+     * @returns Returns true if destFolder is inside thid folder.
+     */
+    private isRecursive(destFolder: DavFolder): boolean {
+        return destFolder.directory.startsWith(this.directory);
     }
 
     /**
@@ -111,10 +177,28 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * Called whan this folder is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
-    public delete(multistatus: MultistatusException): void {
+    public async delete(multistatus: MultistatusException): Promise<void> {
+        await this.requireHasToken();
+        let allChildrenDeleted = true;
+        const childs = await this.getChildren([new PropertyName()]);
+        for(let i = 0; i < childs.length; i++) {
+            const child = childs[0];
+            try {
+                await child.delete(multistatus);
+            } catch (err) {
+                //continue the operation if a child failed to delete. Tell client about it by adding to multistatus.
+                multistatus.addInnerException(child.path, err);
+                allChildrenDeleted = false;
+            }
+        }
+
+        if (allChildrenDeleted) {
+            await promisify(rmdir)(this.directory);
+        }
     }
 
-    /**
+	//$<ISearch.Search    
+	/**
      * Searches files and folders in current folder using search phrase and options.
      * @param searchString A phrase to search.
      * @param options Search options.
@@ -125,6 +209,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      */
     public search(searchString: string, options: any, propNames: PropertyName[]): void {
     }
+	//$>
+
     /**
      * Converts path on disk to encoded relative path.
      * @param filePath Path returned by Windows Search.

@@ -3,15 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const DavException_1 = require("ithit.webdav.server/DavException");
 const DavStatus_1 = require("ithit.webdav.server/DavStatus");
+const EncodeUtil_1 = require("ithit.webdav.server/EncodeUtil");
 const mime_types_1 = require("mime-types");
 const path_1 = require("path");
 const util_1 = require("util");
 const DavHierarchyItem_1 = require("./DavHierarchyItem");
 const FileSystemInfoExtension_1 = require("./ExtendedAttributes/FileSystemInfoExtension");
+const constants_1 = require("constants");
 /**
  * Represents file in WebDAV repository.
  */
 class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
+    //$<IContent.ContentType
     /**
      * Gets content type.
      */
@@ -22,12 +25,16 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         }
         return conType;
     }
+    //$>
+    //$<IContent.ContentLength
     /**
      * Gets length of the file.
      */
     get contentLength() {
         return this.fileInfo.size;
     }
+    //$>
+    //$<IContent.Etag
     /**
      * Gets entity tag - string that identifies current state of resource's content.
      * @remarks  This property shall return different value if content changes.
@@ -35,12 +42,16 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     get etag() {
         return `${Math.trunc(this.fileInfo.mtimeMs).toString()}-${this.serialNumber || 0}`;
     }
+    //$>
+    //$<IResumableUpload.LastChunkSaved
     /**
      * Gets date when last chunk was saved to this file.
      */
     get lastChunkSaved() {
         return this.fileInfo.ctime;
     }
+    //$>
+    //$<IResumableUpload.BytesUploaded
     /**
      * Gets number of bytes uploaded sofar.
      */
@@ -79,6 +90,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         super(file, context, path, stats);
         this.fileInfo = stats;
     }
+    //$<IContent.Read
     /**
      * Called when a client is downloading a file. Copies file contents to ouput stream.
      * @param output Stream to copy contents to.
@@ -104,6 +116,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             output.on('error', (error) => reject(error));
         });
     }
+    //$>
     encodeRFC5987ValueChars(str) {
         return encodeURIComponent(str).
             // Note that although RFC3986 reserves "!", RFC5987 does not,
@@ -129,6 +142,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             this.context.response.addHeader("Content-Disposition", "attachment");
         }
     }
+    //$<IContent.Write
     /**
      * Called when a file or its part is being uploaded.
      * @param content Stream to read the content of the file from.
@@ -155,6 +169,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         content.resume();
         return true;
     }
+    //$>
+    //$<IHierarchyItem.CopyTo
     /**
      * Called when this file is being copied.
      * @param destFolder Destination folder.
@@ -162,8 +178,42 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @param deep Whether children items shall be copied. Ignored for files.
      * @param multistatus Information about items that failed to copy.
      */
-    copyTo(destFolder, destName, deep, multistatus) {
+    async copyTo(destFolder, destName, deep, multistatus) {
+        const targetFolder = destFolder;
+        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.directory)) {
+            throw new DavException_1.DavException("Target directory doesn't exist", undefined, DavStatus_1.DavStatus.CONFLICT);
+        }
+        const newFilePath = path_1.join(targetFolder.directory, destName);
+        const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
+        //  If an item with the same name exists - remove it.
+        try {
+            const item = await this.context.getHierarchyItem(targetPath);
+            if (item != null) {
+                await item.delete(multistatus);
+            }
+        }
+        catch (ex) {
+            //  Report error with other item to client.
+            multistatus.addInnerException(targetPath, undefined, ex);
+            return;
+        }
+        //  Copy the file togather with all extended attributes (custom props and locks).
+        try {
+            await util_1.promisify(fs_1.copyFile)(this.directory, newFilePath, constants_1.COPYFILE_EXCL);
+        }
+        catch (err) {
+            /*if(err.errno && err.errno === EACCES) {
+                const ex = new NeedPrivilegesException("Not enough privileges");
+                const parentPath: string = System.IO.Path.GetDirectoryName(Path);
+                ex.AddRequiredPrivilege(parentPath, Privilege.Bind);
+
+                throw ex;
+            }*/
+            throw err;
+        }
     }
+    //$>
+    //$<IHierarchyItem.MoveTo
     /**
      * Called when this file is being moved or renamed.
      * @param destFolder Destination folder.
@@ -172,12 +222,17 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      */
     moveTo(destFolder, destName, multistatus) {
     }
+    //$>
+    //$<IHierarchyItem.Delete
     /**
      * Called whan this file is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
     delete(multistatus) {
+        return util_1.promisify(fs_1.unlink)(this.directory);
     }
+    //$>
+    //$<IResumableUpload.CancelUpload	
     /**
      * Called when client cancels upload in Ajax client.
      * @remarks
@@ -185,6 +240,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      */
     cancelUploadAsync() {
     }
+    //$>
     /**
      * Returns instance of @see IUploadProgressAsync  interface.
      * @returns  Just returns this class.

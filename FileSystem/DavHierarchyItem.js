@@ -75,13 +75,6 @@ class DavHierarchyItem {
      */
     moveTo(destFolder, destName, multistatus) { }
     /**
-     * Deletes this item.
-     * @param multistatus If some items fail to delete but operation in whole shall be continued, add
-     * information about the error into @paramref multistatus  using
-     * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
-     */
-    delete(multistatus) { }
-    /**
      * Retrieves user defined property values.
      * @param names Names of dead properties which values to retrieve.
      * @param allprop Whether all properties shall be retrieved.
@@ -216,7 +209,9 @@ class DavHierarchyItem {
     /**
      * Check that if the item is locked then client has submitted correct lock token.
      */
-    requireHasToken(skipShared = false) { }
+    requireHasToken(skipShared = false) {
+        return Promise.resolve();
+    }
     /**
      * Retrieves list of user defined propeties for this item.
      * @returns  List of user defined properties.

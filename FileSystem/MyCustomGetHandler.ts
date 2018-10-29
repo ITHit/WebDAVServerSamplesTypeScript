@@ -11,6 +11,7 @@ import { sep } from "path";
 import { parse } from "url";
 import { promisify } from "util";
 
+//$<IMethodHandler
 /**This handler processes GET and HEAD requests to folders returning custom HTML page. */
 export class MyCustomGetHandler implements IMethodHandler {
 
@@ -156,3 +157,4 @@ export class MyCustomGetHandler implements IMethodHandler {
 
     }
 }
+//$>

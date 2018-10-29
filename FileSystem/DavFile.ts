@@ -1,16 +1,19 @@
-import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream } from "fs";
+import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream, copyFile, unlink } from "fs";
 import { IncomingMessage, ServerResponse } from "http";
 import { IFile } from "ithit.webdav.server/Class1/IFile";
 import { DavException } from "ithit.webdav.server/DavException";
 import { DavStatus } from "ithit.webdav.server/DavStatus";
 import { IItemCollection } from "ithit.webdav.server/IItemCollection";
 import { MultistatusException } from "ithit.webdav.server/MultistatusException";
+import { EncodeUtil } from "ithit.webdav.server/EncodeUtil";
 import { lookup } from "mime-types";
-import { sep } from "path";
+import { sep, join } from "path";
 import { promisify } from "util";
 import { DavContext } from "./DavContext";
 import { DavHierarchyItem } from "./DavHierarchyItem";
 import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
+import { DavFolder } from "./DavFolder";
+import { COPYFILE_EXCL } from "constants";
 
 /**
  * Represents file in WebDAV repository.
@@ -18,6 +21,7 @@ import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExte
 export class DavFile extends DavHierarchyItem implements IFile {
 
 
+	//$<IContent.ContentType
     /**
      * Gets content type.
      */
@@ -29,14 +33,18 @@ export class DavFile extends DavHierarchyItem implements IFile {
 
         return conType;
     }
+	//$>
 
+	//$<IContent.ContentLength
     /**
      * Gets length of the file.
      */
     get contentLength(): number {
         return this.fileInfo.size;
     }
+	//$>
 
+	//$<IContent.Etag
     /**
      * Gets entity tag - string that identifies current state of resource's content.
      * @remarks  This property shall return different value if content changes.
@@ -44,20 +52,26 @@ export class DavFile extends DavHierarchyItem implements IFile {
     get etag(): string {
         return `${Math.trunc(this.fileInfo.mtimeMs).toString()}-${this.serialNumber || 0}`;
     }
+	//$>
 
+	//$<IResumableUpload.LastChunkSaved
     /**
      * Gets date when last chunk was saved to this file.
      */
     get lastChunkSaved(): Date {
         return this.fileInfo.ctime;
     }
+	//$>
 
+	//$<IResumableUpload.BytesUploaded
     /**
      * Gets number of bytes uploaded sofar.
      */
     get bytesUploaded(): number {
         return this.contentLength;
     }
+	//$>
+
     /**
      * Gets or Sets snippet of file content that matches search conditions.
      */
@@ -121,6 +135,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         this.fileInfo = stats;
     }
 
+	//$<IContent.Read
     /**
      * Called when a client is downloading a file. Copies file contents to ouput stream.
      * @param output Stream to copy contents to.
@@ -149,6 +164,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
             output.on('error', (error) => reject(error));
         });
     }
+	//$>
 
     private encodeRFC5987ValueChars(str: string): string {
         return encodeURIComponent(str).
@@ -177,6 +193,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         }
     }
 
+	//$<IContent.Write
     /**
      * Called when a file or its part is being uploaded.
      * @param content Stream to read the content of the file from.
@@ -205,7 +222,9 @@ export class DavFile extends DavHierarchyItem implements IFile {
 
         return true;
     }
+	//$>
 
+	//$<IHierarchyItem.CopyTo
     /**
      * Called when this file is being copied.
      * @param destFolder Destination folder.
@@ -213,10 +232,47 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param deep Whether children items shall be copied. Ignored for files.
      * @param multistatus Information about items that failed to copy.
      */
-    public copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void {
+    public async copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): Promise<void> {
+        const targetFolder = destFolder as DavFolder;
+        if (targetFolder == null || !await promisify(exists)(targetFolder.directory)) {
+            throw new DavException("Target directory doesn't exist", undefined, DavStatus.CONFLICT);
+        }
+        
+        const newFilePath = join(targetFolder.directory, destName);
+        const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
+        //  If an item with the same name exists - remove it.
+        try {
+            const item = await this.context.getHierarchyItem(targetPath);
+            if (item != null) {
+                await item.delete(multistatus);
+            }
+            
+        }
+        catch (ex) {
+            //  Report error with other item to client.
+            multistatus.addInnerException(targetPath, undefined, ex);
 
+            return;
+        }
+        
+        //  Copy the file togather with all extended attributes (custom props and locks).
+        try {
+            await promisify(copyFile)(this.directory, newFilePath, COPYFILE_EXCL);            
+        } catch (err) {
+            /*if(err.errno && err.errno === EACCES) {
+                const ex = new NeedPrivilegesException("Not enough privileges");
+                const parentPath: string = System.IO.Path.GetDirectoryName(Path);
+                ex.AddRequiredPrivilege(parentPath, Privilege.Bind);
+
+                throw ex;
+            }*/
+
+            throw err;
+        }
     }
+	//$>
 
+	//$<IHierarchyItem.MoveTo
     /**
      * Called when this file is being moved or renamed.
      * @param destFolder Destination folder.
@@ -225,22 +281,27 @@ export class DavFile extends DavHierarchyItem implements IFile {
      */
     public moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void {
     }
+	//$>
 
+	//$<IHierarchyItem.Delete
     /**
      * Called whan this file is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
-    public delete(multistatus: MultistatusException): void {
-
+    public delete(multistatus: MultistatusException): Promise<void> {
+        return promisify(unlink)(this.directory);
     }
+	//$>
 
-    /**
+	//$<IResumableUpload.CancelUpload	
+	/**
      * Called when client cancels upload in Ajax client.
      * @remarks  
      * Client do not plan to restore upload. Remove any temporary files / cleanup resources here.
      */
     public cancelUploadAsync(): void {
     }
+	//$>
 
     /**
      * Returns instance of @see IUploadProgressAsync  interface.

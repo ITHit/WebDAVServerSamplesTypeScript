@@ -1,4 +1,4 @@
-
+﻿﻿
 .navbar-header h1 {
     height: auto;
     padding: 15px;
@@ -356,3 +356,17 @@ button.btn.btn-transparent {
 .alert-danger {
     margin-top: 15px;
 }
+
+p.error-message {
+    margin: 0;
+}
+
+.btn-info {
+    padding: 0px 5px !important;
+    line-height: 1.2;
+    margin-top: -3px;
+}
+
+    .btn-info .fas {
+        vertical-align: initial;
+    }

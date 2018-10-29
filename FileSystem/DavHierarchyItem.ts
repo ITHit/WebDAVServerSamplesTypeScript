@@ -21,28 +21,34 @@ import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExte
 /**
  * Base class for WebDAV items (folders, files, etc).
  */
-export class DavHierarchyItem implements IHierarchyItem, ILock {
+export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
 
+	//$<IHierarchyItem.Name
     /**
      * Gets name of the item.
      */
     public get name(): string {
         return basename(this.directory);
     }
+	//$>
 
+	//$<IHierarchyItem.Created
     /**
      * Gets date when the item was created in UTC.
      */
     get created(): Date {
         return this.fileSystemInfo.birthtime;
     }
+	//$>
 
-    /**
+	//$<IHierarchyItem.Modified
+	/**
      * Gets date when the item was last modified in UTC.
      */
     get modified(): Date {
         return this.fileSystemInfo.mtime;
     }
+	//$>
 
     /**
      * Gets full path for this file/folder in the file system.
@@ -57,10 +63,12 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     public readonly fileSystemInfo: Stats;
 
-    /**
+	//$<IHierarchyItem.Path    
+	/**
      * Gets path of the item where each part between slashes is encoded.
      */
     public path: string;
+	//$>
 
     /**
      * WebDAV Context.
@@ -116,7 +124,9 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * information about the error into @paramref multistatus  using
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
-    public delete(multistatus: MultistatusException): void { }
+    public abstract delete(multistatus: MultistatusException): Promise<void>;
+	
+	//$<IHierarchyItem.GetProperties
     /**
      * Retrieves user defined property values.
      * @param names Names of dead properties which values to retrieve.
@@ -131,7 +141,9 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
         return propertyValues;
     }
+	//$>
 
+	//$<IHierarchyItem.GetPropertyNames
     /**
      * Retrieves names of all user defined properties.
      * @returns  Property names.
@@ -142,7 +154,9 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
         return g;
     }
+	//$>
 
+	//$<IHierarchyItem.UpdateProperties
     /**
      * Saves property values to extended attribute.
      * @param setProps Properties to be set.
@@ -150,18 +164,25 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param multistatus Information about properties that failed to create, update or delate.
      */
     public updateProperties(setProps: PropertyValue[], delProps: PropertyName[], multistatus: MultistatusException): void { }
+	//$>
 
-    /**
+	//$<IMsItem.GetFileAttributes    
+	/**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
      */
     public getFileAttributes(value: any): void { }
+	//$>
 
+	//$<IMsItem.SetFileAttributes
     /**
      * Sets Windows file attributes (readonly, hidden etc.) on this item.
      * @param value File attributes.
      */
     public setFileAttributes(value: any): void { }
+	//$>
+	
+	//$<ILock.GetActiveLocks
     /**
      * Retrieves non expired locks for this item.
      * @returns  Enumerable with information about locks.
@@ -185,8 +206,10 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
         return lockInfoList;
     }
+	//$>
 
-    /**
+    //$<ILock.Lock
+	/**
      * Locks this item.
      * @param level Whether lock is share or exclusive.
      * @param isDeep Whether lock is deep.
@@ -224,6 +247,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
         return new LockResult(lockInfo.lockToken, lockInfo.timeOut);
     }
+	//$>
 
     public async requireUnlocked(skipShared: boolean): Promise<void> {
         const locks = await this.getLocks();
@@ -235,6 +259,7 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
         }
     }
 
+	//$<ILock.RefreshLock
     /**
      * Updates lock timeout information on this item.
      * @param token Lock token.
@@ -265,8 +290,10 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
 
         return new RefreshLockResult(lockInfo.level, lockInfo.isDeep, lockInfo.timeOut, lockInfo.clientOwner);
     }
+	//$>
 
-    /**
+	//$<ILock.Unlock    
+	/**
      * Removes lock with the specified token from this item.
      * @param lockToken Lock with this token should be removed from the item.
      */
@@ -279,11 +306,14 @@ export class DavHierarchyItem implements IHierarchyItem, ILock {
             throw new DavException("The lock could not be found.", undefined, DavStatus.CONFLICT);
         }
     }
+	//$>
 
     /**
      * Check that if the item is locked then client has submitted correct lock token.
      */
-    public requireHasToken(skipShared: boolean = false): void { }
+    public requireHasToken(skipShared: boolean = false): Promise<void> {
+        return Promise.resolve();
+    }
 
     /**
      * Retrieves list of user defined propeties for this item.
