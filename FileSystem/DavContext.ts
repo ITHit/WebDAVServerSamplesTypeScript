@@ -67,7 +67,7 @@ export class DavContext extends DavContextBase {
         return source.replace(/^\s+|\s+$/g, '');
     }
 
-	//$<DavContextBase.GetHierarchyItem
+    //$<DavContextBase.GetHierarchyItem
     /**
      * Creates {@link IHierarchyItem}  instance by path.
      * @param path Item relative path including query string.

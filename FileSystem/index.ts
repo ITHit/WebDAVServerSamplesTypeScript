@@ -74,7 +74,7 @@ class Program {
         handlerHead.originalHandler = Program.engine.registerMethodHandler("HEAD", handlerHead);
     }
 
-	//$<Listener.DavContextBase
+    //$<Listener.DavContextBase
     public static listen() {
         const port: number = Number(process.env.PORT) || 3000;
         const server: Http.Server = Http.createServer(this.processRequest);

@@ -23,7 +23,7 @@ import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExte
  */
 export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
 
-	//$<IHierarchyItem.Name
+    //$<IHierarchyItem.Name
     /**
      * Gets name of the item.
      */
@@ -32,7 +32,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-	//$<IHierarchyItem.Created
+    //$<IHierarchyItem.Created
     /**
      * Gets date when the item was created in UTC.
      */
@@ -41,7 +41,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-	//$<IHierarchyItem.Modified
+    //$<IHierarchyItem.Modified
 	/**
      * Gets date when the item was last modified in UTC.
      */
@@ -63,7 +63,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     public readonly fileSystemInfo: Stats;
 
-	//$<IHierarchyItem.Path    
+    //$<IHierarchyItem.Path    
 	/**
      * Gets path of the item where each part between slashes is encoded.
      */
@@ -126,7 +126,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     public abstract delete(multistatus: MultistatusException): Promise<void>;
 	
-	//$<IHierarchyItem.GetProperties
+    //$<IHierarchyItem.GetProperties
     /**
      * Retrieves user defined property values.
      * @param names Names of dead properties which values to retrieve.
@@ -143,7 +143,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-	//$<IHierarchyItem.GetPropertyNames
+    //$<IHierarchyItem.GetPropertyNames
     /**
      * Retrieves names of all user defined properties.
      * @returns  Property names.
@@ -156,7 +156,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-	//$<IHierarchyItem.UpdateProperties
+    //$<IHierarchyItem.UpdateProperties
     /**
      * Saves property values to extended attribute.
      * @param setProps Properties to be set.
@@ -166,7 +166,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     public updateProperties(setProps: PropertyValue[], delProps: PropertyName[], multistatus: MultistatusException): void { }
 	//$>
 
-	//$<IMsItem.GetFileAttributes    
+    //$<IMsItem.GetFileAttributes    
 	/**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
@@ -174,7 +174,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     public getFileAttributes(value: any): void { }
 	//$>
 
-	//$<IMsItem.SetFileAttributes
+    //$<IMsItem.SetFileAttributes
     /**
      * Sets Windows file attributes (readonly, hidden etc.) on this item.
      * @param value File attributes.
@@ -182,7 +182,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     public setFileAttributes(value: any): void { }
 	//$>
 	
-	//$<ILock.GetActiveLocks
+    //$<ILock.GetActiveLocks
     /**
      * Retrieves non expired locks for this item.
      * @returns  Enumerable with information about locks.
@@ -259,7 +259,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
         }
     }
 
-	//$<ILock.RefreshLock
+    //$<ILock.RefreshLock
     /**
      * Updates lock timeout information on this item.
      * @param token Lock token.
@@ -292,7 +292,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-	//$<ILock.Unlock    
+    //$<ILock.Unlock    
 	/**
      * Removes lock with the specified token from this item.
      * @param lockToken Lock with this token should be removed from the item.

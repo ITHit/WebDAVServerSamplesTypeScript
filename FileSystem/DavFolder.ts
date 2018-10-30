@@ -49,7 +49,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         super(directory, context, path.replace(/\/$/, "") + sep, stats);
     }
 
-	//$<IItemCollection.GetChildren
+    //$<IItemCollection.GetChildren
     /**
      * Called when children of this folder are being listed.
      * @param propNames List of properties to retrieve with the children. They will be queried by the engine later.
@@ -74,7 +74,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
     }
 	//$>
 
-	//$<IFolder.CreateFile
+    //$<IFolder.CreateFile
     /**
      * Called when a new file is being created in this folder.
      * @param name Name of the new file.
@@ -93,7 +93,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
     }
 	//$>
 
-	//$<IFolder.CreateFolder
+    //$<IFolder.CreateFolder
     /**
      * Called when a new folder is being created in this folder.
      * @param name Name of the new folder.
@@ -197,7 +197,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         }
     }
 
-	//$<ISearch.Search    
+    //$<ISearch.Search    
 	/**
      * Searches files and folders in current folder using search phrase and options.
      * @param searchString A phrase to search.

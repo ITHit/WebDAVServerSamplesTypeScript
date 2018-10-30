@@ -21,7 +21,7 @@ import { COPYFILE_EXCL } from "constants";
 export class DavFile extends DavHierarchyItem implements IFile {
 
 
-	//$<IContent.ContentType
+    //$<IContent.ContentType
     /**
      * Gets content type.
      */
@@ -35,7 +35,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IContent.ContentLength
+    //$<IContent.ContentLength
     /**
      * Gets length of the file.
      */
@@ -44,7 +44,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IContent.Etag
+    //$<IContent.Etag
     /**
      * Gets entity tag - string that identifies current state of resource's content.
      * @remarks  This property shall return different value if content changes.
@@ -54,7 +54,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IResumableUpload.LastChunkSaved
+    //$<IResumableUpload.LastChunkSaved
     /**
      * Gets date when last chunk was saved to this file.
      */
@@ -63,7 +63,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IResumableUpload.BytesUploaded
+    //$<IResumableUpload.BytesUploaded
     /**
      * Gets number of bytes uploaded sofar.
      */
@@ -135,7 +135,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         this.fileInfo = stats;
     }
 
-	//$<IContent.Read
+    //$<IContent.Read
     /**
      * Called when a client is downloading a file. Copies file contents to ouput stream.
      * @param output Stream to copy contents to.
@@ -193,7 +193,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         }
     }
 
-	//$<IContent.Write
+    //$<IContent.Write
     /**
      * Called when a file or its part is being uploaded.
      * @param content Stream to read the content of the file from.
@@ -224,7 +224,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IHierarchyItem.CopyTo
+    //$<IHierarchyItem.CopyTo
     /**
      * Called when this file is being copied.
      * @param destFolder Destination folder.
@@ -272,7 +272,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IHierarchyItem.MoveTo
+    //$<IHierarchyItem.MoveTo
     /**
      * Called when this file is being moved or renamed.
      * @param destFolder Destination folder.
@@ -283,7 +283,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IHierarchyItem.Delete
+    //$<IHierarchyItem.Delete
     /**
      * Called whan this file is being deleted.
      * @param multistatus Information about items that failed to delete.
@@ -293,7 +293,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
     }
 	//$>
 
-	//$<IResumableUpload.CancelUpload	
+    //$<IResumableUpload.CancelUpload	
 	/**
      * Called when client cancels upload in Ajax client.
      * @remarks  
