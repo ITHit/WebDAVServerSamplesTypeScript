@@ -83,11 +83,14 @@ export class MyCustomGetHandler implements IMethodHandler {
                 context.response.setHeader('content-length', statFile.size);
                 const readStream = createReadStream(filePath);
                 // We replaced all the event handlers with a simple call to readStream.pipe()
-                readStream.pipe(context.response.nativeResponce);
-                readStream.on("close", () => {
-                    readStream.destroy();
-                    context.response.end();
-                })
+                await new Promise((resolve, reject) => {
+                    readStream.pipe(context.response.nativeResponce);
+                    readStream.on('error', (error) => reject(error));
+                    readStream.on("close", () => readStream.destroy());
+                    context.response.nativeResponce.on('finish', () => resolve());
+                    context.response.nativeResponce.on('end', () => resolve());
+                    context.response.nativeResponce.on('error', (error) => reject(error));
+                });
             }
         } else if (item !== null && this.instanceOfIItemCollection(item)) {
             //  In case of GET requests to WebDAV folders we serve a web page to display 
@@ -99,9 +102,9 @@ export class MyCustomGetHandler implements IMethodHandler {
             let html: string = (await promisify(readFile)(this.htmlPath + htmlName)).toString();
             const Url = parse(context.request.url);
             const appPath: string = (Url.path || '').replace(/\/$/, "");
-
+            const packageJson = require('./package.json');
             html = html.replace(/_webDavServerRoot_/g, appPath);
-            html = html.replace(/_webDavServerVersion_/g, '1.0');
+            html = html.replace(/_webDavServerVersion_/g, packageJson.version);
             this.writeFileContent(context, html, this.htmlPath + htmlName);
         }
         else {
@@ -152,9 +155,7 @@ export class MyCustomGetHandler implements IMethodHandler {
         //  Return file content in case of GET request, in case of HEAD just return headers.
         if (context.request.method === "GET") {
             context.response.write(content, encoding);
-            context.response.end();
         }
-
     }
 }
 //$>

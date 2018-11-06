@@ -58,6 +58,7 @@ class Program {
         handlerGet.originalHandler = Program.engine.registerMethodHandler("GET", handlerGet);
         handlerHead.originalHandler = Program.engine.registerMethodHandler("HEAD", handlerHead);
     }
+    //$<Listener.DavContextBase
     static listen() {
         const port = Number(process.env.PORT) || 3000;
         const server = Http.createServer(this.processRequest);
@@ -74,6 +75,7 @@ class Program {
         const ntfsDavContext = new DavContext_1.DavContext(req, res, null, Program.repositoryPath, Program.engine.logger);
         Program.engine.run(ntfsDavContext);
     }
+    //$>
     /**Checks configuration errors. */
     static checkConfigErrors() {
         const repPath = Program.repositoryPath;

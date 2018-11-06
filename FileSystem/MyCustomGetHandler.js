@@ -7,6 +7,7 @@ const mime_types_1 = require("mime-types");
 const path_1 = require("path");
 const url_1 = require("url");
 const util_1 = require("util");
+//$<IMethodHandler
 /**This handler processes GET and HEAD requests to folders returning custom HTML page. */
 class MyCustomGetHandler {
     /**
@@ -62,10 +63,13 @@ class MyCustomGetHandler {
                 context.response.setHeader('content-length', statFile.size);
                 const readStream = fs_1.createReadStream(filePath);
                 // We replaced all the event handlers with a simple call to readStream.pipe()
-                readStream.pipe(context.response.nativeResponce);
-                readStream.on("close", () => {
-                    readStream.destroy();
-                    context.response.end();
+                await new Promise((resolve, reject) => {
+                    readStream.pipe(context.response.nativeResponce);
+                    readStream.on('error', (error) => reject(error));
+                    readStream.on("close", () => readStream.destroy());
+                    context.response.nativeResponce.on('finish', () => resolve());
+                    context.response.nativeResponce.on('end', () => resolve());
+                    context.response.nativeResponce.on('error', (error) => reject(error));
                 });
             }
         }
@@ -79,8 +83,9 @@ class MyCustomGetHandler {
             let html = (await util_1.promisify(fs_1.readFile)(this.htmlPath + htmlName)).toString();
             const Url = url_1.parse(context.request.url);
             const appPath = (Url.path || '').replace(/\/$/, "");
+            const packageJson = require('./package.json');
             html = html.replace(/_webDavServerRoot_/g, appPath);
-            html = html.replace(/_webDavServerVersion_/g, '1.0');
+            html = html.replace(/_webDavServerVersion_/g, packageJson.version);
             this.writeFileContent(context, html, this.htmlPath + htmlName);
         }
         else {
@@ -124,8 +129,8 @@ class MyCustomGetHandler {
         //  Return file content in case of GET request, in case of HEAD just return headers.
         if (context.request.method === "GET") {
             context.response.write(content, encoding);
-            context.response.end();
         }
     }
 }
 exports.MyCustomGetHandler = MyCustomGetHandler;
+//$>

@@ -65,9 +65,11 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  File instance or null if physical file is not found in file system.
      */
     static async getFile(context, path) {
-        const filePath = context.mapPath(path) + path_1.sep + path;
-        const existFile = await util_1.promisify(fs_1.exists)(filePath);
-        if (!existFile) {
+        const filePath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.mapPath(path) + path_1.sep + path);
+        try {
+            await util_1.promisify(fs_1.access)(filePath, constants_1.F_OK);
+        }
+        catch (err) {
             return null;
         }
         const file = await util_1.promisify(fs_1.stat)(filePath);
@@ -199,7 +201,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         }
         //  Copy the file togather with all extended attributes (custom props and locks).
         try {
-            await util_1.promisify(fs_1.copyFile)(this.directory, newFilePath, constants_1.COPYFILE_EXCL);
+            await util_1.promisify(fs_1.copyFile)(this.directory, newFilePath);
         }
         catch (err) {
             /*if(err.errno && err.errno === EACCES) {
@@ -220,7 +222,28 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @param destName New name of this file.
      * @param multistatus Information about items that failed to move.
      */
-    moveTo(destFolder, destName, multistatus) {
+    async moveTo(destFolder, destName, multistatus) {
+        await this.requireHasToken();
+        const targetFolder = destFolder;
+        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.directory)) {
+            throw new DavException_1.DavException("Target directory doesn't exist", undefined, DavStatus_1.DavStatus.CONFLICT);
+        }
+        const newDirPath = path_1.join(targetFolder.directory, destName);
+        const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
+        // If an item with the same name exists in target directory - remove it.
+        try {
+            const item = await this.context.getHierarchyItem(targetPath);
+            if (item != null) {
+                await item.delete(multistatus);
+            }
+        }
+        catch (err) {
+            // Report exception to client and continue with other items by returning from recursion.
+            multistatus.addInnerException(targetPath, undefined, err);
+            return;
+        }
+        // Move the file.
+        await util_1.promisify(fs_1.rename)(this.directory, newDirPath);
     }
     //$>
     //$<IHierarchyItem.Delete

@@ -1,4 +1,4 @@
-import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream, copyFile, unlink } from "fs";
+import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream, copyFile, unlink, rename, access } from "fs";
 import { IncomingMessage, ServerResponse } from "http";
 import { IFile } from "ithit.webdav.server/Class1/IFile";
 import { DavException } from "ithit.webdav.server/DavException";
@@ -13,7 +13,7 @@ import { DavContext } from "./DavContext";
 import { DavHierarchyItem } from "./DavHierarchyItem";
 import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
 import { DavFolder } from "./DavFolder";
-import { COPYFILE_EXCL } from "constants";
+import { F_OK } from "constants";
 
 /**
  * Represents file in WebDAV repository.
@@ -101,9 +101,10 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @returns  File instance or null if physical file is not found in file system.
      */
     public static async getFile(context: DavContext, path: string): Promise<DavFile | null> {
-        const filePath: string = context.mapPath(path) + sep + path;
-        const existFile = await promisify(exists)(filePath);
-        if (!existFile) {
+        const filePath = EncodeUtil.decodeUrlPart(context.mapPath(path) + sep + path);
+        try {
+            await promisify(access)(filePath, F_OK);
+        } catch(err) {
             return null;
         }
 
@@ -257,7 +258,7 @@ export class DavFile extends DavHierarchyItem implements IFile {
         
         //  Copy the file togather with all extended attributes (custom props and locks).
         try {
-            await promisify(copyFile)(this.directory, newFilePath, COPYFILE_EXCL);            
+            await promisify(copyFile)(this.directory, newFilePath);            
         } catch (err) {
             /*if(err.errno && err.errno === EACCES) {
                 const ex = new NeedPrivilegesException("Not enough privileges");
@@ -279,7 +280,32 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @param destName New name of this file.
      * @param multistatus Information about items that failed to move.
      */
-    public moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void {
+    public async moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): Promise<void> {
+        await this.requireHasToken();
+        const targetFolder = destFolder as DavFolder;
+         if (targetFolder == null || !await promisify(exists)(targetFolder.directory)) {
+            throw new DavException("Target directory doesn't exist", undefined, DavStatus.CONFLICT);
+        }
+
+        const newDirPath = join(targetFolder.directory, destName);
+        const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
+
+        // If an item with the same name exists in target directory - remove it.
+        try {
+            const item = await this.context.getHierarchyItem(targetPath);
+            if (item != null) {
+                await item.delete(multistatus);
+            }
+            
+        } catch (err) {
+            // Report exception to client and continue with other items by returning from recursion.
+            multistatus.addInnerException(targetPath, undefined, err);
+
+            return;
+        }
+
+        // Move the file.
+        await promisify(rename)(this.directory, newDirPath);
     }
 	//$>
 

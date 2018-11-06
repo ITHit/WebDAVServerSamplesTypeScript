@@ -42,6 +42,7 @@ class DavContext extends DavContextBase_1.DavContextBase {
         }
         return source.replace(/^\s+|\s+$/g, '');
     }
+    //$<DavContextBase.GetHierarchyItem
     /**
      * Creates {@link IHierarchyItem}  instance by path.
      * @param path Item relative path including query string.
@@ -65,6 +66,7 @@ class DavContext extends DavContextBase_1.DavContextBase {
         return null;
         //  no hierarchy item that corresponds to path parameter was found in the repository
     }
+    //$>
     /**
      * Returns the physical file path that corresponds to the specified virtual path on the Web server.
      * @param relativePath Path relative to WebDAV root folder.

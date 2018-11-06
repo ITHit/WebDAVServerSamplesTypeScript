@@ -8,6 +8,7 @@ const DavHierarchyItem_1 = require("./DavHierarchyItem");
 const DavException_1 = require("ithit.webdav.server/DavException");
 const DavStatus_1 = require("ithit.webdav.server/DavStatus");
 const EncodeUtil_1 = require("ithit.webdav.server/EncodeUtil");
+const constants_1 = require("constants");
 /**
  * Folder in WebDAV repository.
  */
@@ -19,9 +20,11 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  Folder instance or null if physical folder not found in file system.
      */
     static async getFolder(context, path) {
-        const folderPath = context.mapPath(path) + path_1.sep + path;
-        const existFolder = await util_1.promisify(fs_1.exists)(folderPath);
-        if (!existFolder) {
+        const folderPath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.mapPath(path) + path_1.sep + path);
+        try {
+            await util_1.promisify(fs_1.access)(folderPath, constants_1.F_OK);
+        }
+        catch (err) {
             return null;
         }
         const folder = await util_1.promisify(fs_1.stat)(folderPath);
@@ -150,7 +153,47 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @param destName New name of this folder.
      * @param multistatus Information about child items that failed to move.
      */
-    moveTo(destFolder, destName, multistatus) {
+    async moveTo(destFolder, destName, multistatus) {
+        await this.requireHasToken();
+        const targetFolder = destFolder;
+        if (targetFolder == null) {
+            throw new DavException_1.DavException("Target folder doesn't exist", undefined, DavStatus_1.DavStatus.CONFLICT);
+        }
+        if (this.isRecursive(targetFolder)) {
+            throw new DavException_1.DavException("Cannot move folder to its subtree.", undefined, DavStatus_1.DavStatus.FORBIDDEN);
+        }
+        const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
+        try {
+            // Remove item with the same name at destination if it exists.
+            const item = await this.context.getHierarchyItem(targetPath);
+            if (item !== null) {
+                await item.delete(multistatus);
+            }
+            await targetFolder.createFolder(destName);
+        }
+        catch (err) {
+            // Continue the operation but report error with destination path to client.
+            multistatus.addInnerException(targetPath, undefined, err);
+            return;
+        }
+        // Move child items.
+        let movedSuccessfully = true;
+        const createdFolder = await this.context.getHierarchyItem(targetPath);
+        const children = await this.getChildren([new PropertyName_1.PropertyName()]);
+        for (let i = 0; i < children.length; i++) {
+            const item = children[i];
+            try {
+                await item.moveTo(createdFolder, item.name, multistatus);
+            }
+            catch (err) {
+                // If a child item failed to copy we continue but report error to client.
+                multistatus.addInnerException(item.path, undefined, err);
+                movedSuccessfully = false;
+            }
+        }
+        if (movedSuccessfully) {
+            await this.delete(multistatus);
+        }
     }
     /**
      * Called whan this folder is being deleted.
@@ -186,6 +229,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  List of @see IHierarchyItemAsync  satisfying search request.
      */
     search(searchString, options, propNames) {
+        // Not implemented currently.
     }
     //$>
     /**

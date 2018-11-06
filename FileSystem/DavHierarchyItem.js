@@ -31,24 +31,30 @@ class DavHierarchyItem {
         this.directory = directory;
         this.fileSystemInfo = stats;
     }
+    //$<IHierarchyItem.Name
     /**
      * Gets name of the item.
      */
     get name() {
         return path_1.basename(this.directory);
     }
+    //$>
+    //$<IHierarchyItem.Created
     /**
      * Gets date when the item was created in UTC.
      */
     get created() {
         return this.fileSystemInfo.birthtime;
     }
+    //$>
+    //$<IHierarchyItem.Modified
     /**
      * Gets date when the item was last modified in UTC.
      */
     get modified() {
         return this.fileSystemInfo.mtime;
     }
+    //$>
     /**
      * Gets full path for this file/folder in the file system.
      */
@@ -74,6 +80,7 @@ class DavHierarchyItem {
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
     moveTo(destFolder, destName, multistatus) { }
+    //$<IHierarchyItem.GetProperties
     /**
      * Retrieves user defined property values.
      * @param names Names of dead properties which values to retrieve.
@@ -87,6 +94,8 @@ class DavHierarchyItem {
         }
         return propertyValues;
     }
+    //$>
+    //$<IHierarchyItem.GetPropertyNames
     /**
      * Retrieves names of all user defined properties.
      * @returns  Property names.
@@ -96,6 +105,8 @@ class DavHierarchyItem {
         const g = propertyValues.map(item => item.qualifiedName);
         return g;
     }
+    //$>
+    //$<IHierarchyItem.UpdateProperties
     /**
      * Saves property values to extended attribute.
      * @param setProps Properties to be set.
@@ -103,16 +114,22 @@ class DavHierarchyItem {
      * @param multistatus Information about properties that failed to create, update or delate.
      */
     updateProperties(setProps, delProps, multistatus) { }
+    //$>
+    //$<IMsItem.GetFileAttributes    
     /**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
      */
     getFileAttributes(value) { }
+    //$>
+    //$<IMsItem.SetFileAttributes
     /**
      * Sets Windows file attributes (readonly, hidden etc.) on this item.
      * @param value File attributes.
      */
     setFileAttributes(value) { }
+    //$>
+    //$<ILock.GetActiveLocks
     /**
      * Retrieves non expired locks for this item.
      * @returns  Enumerable with information about locks.
@@ -127,6 +144,8 @@ class DavHierarchyItem {
             Math.ceil(l.expiration - Date.now()), l.clientOwner, l.lockRoot));
         return lockInfoList;
     }
+    //$>
+    //$<ILock.Lock
     /**
      * Locks this item.
      * @param level Whether lock is share or exclusive.
@@ -157,6 +176,7 @@ class DavHierarchyItem {
         this.saveLock(lockInfo);
         return new LockResult_1.LockResult(lockInfo.lockToken, lockInfo.timeOut);
     }
+    //$>
     async requireUnlocked(skipShared) {
         const locks = await this.getLocks();
         if (locks !== null && locks.length) {
@@ -166,6 +186,7 @@ class DavHierarchyItem {
             }
         }
     }
+    //$<ILock.RefreshLock
     /**
      * Updates lock timeout information on this item.
      * @param token Lock token.
@@ -194,6 +215,8 @@ class DavHierarchyItem {
         }
         return new RefreshLockResult_1.RefreshLockResult(lockInfo.level, lockInfo.isDeep, lockInfo.timeOut, lockInfo.clientOwner);
     }
+    //$>
+    //$<ILock.Unlock    
     /**
      * Removes lock with the specified token from this item.
      * @param lockToken Lock with this token should be removed from the item.
@@ -206,6 +229,7 @@ class DavHierarchyItem {
             throw new DavException_1.DavException("The lock could not be found.", undefined, DavStatus_1.DavStatus.CONFLICT);
         }
     }
+    //$>
     /**
      * Check that if the item is locked then client has submitted correct lock token.
      */
