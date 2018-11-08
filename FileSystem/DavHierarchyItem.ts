@@ -17,6 +17,8 @@ import { basename } from "path";
 import { DateLockInfo } from "./DateLockInfo";
 import { DavContext } from "./DavContext";
 import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
+import { promisify } from "util";
+import { exec } from "child_process";
 
 /**
  * Base class for WebDAV items (folders, files, etc).
@@ -62,6 +64,11 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * Corresponding file or folder in the file system.
      */
     public readonly fileSystemInfo: Stats;
+
+    /**
+     * Name of properties attribute.
+     */
+    private readonly propertiesAttributeName = "Properties";
 
     //$<IHierarchyItem.Path    
 	/**
@@ -133,10 +140,11 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param allprop Whether all properties shall be retrieved.
      * @returns Property values.
      */
-    public getProperties(props: PropertyName[], allprop: boolean): PropertyValue[] {
-        let propertyValues = this.getPropertyValues();
+    public async getProperties(props: PropertyName[], allprop: boolean): Promise<PropertyValue[]> {
+        let propertyValues = await this.getPropertyValues();
         if (!allprop) {
-            propertyValues = propertyValues.filter(item => item.qualifiedName);
+            propertyValues = propertyValues.filter(item => props.findIndex(p => p.name === item.qualifiedName.name) > -1);
+            
         }
 
         return propertyValues;
@@ -148,8 +156,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * Retrieves names of all user defined properties.
      * @returns  Property names.
      */
-    public getPropertyNames(): PropertyName[] {
-        const propertyValues = this.getPropertyValues();
+    public async getPropertyNames(): Promise<PropertyName[]> {
+        const propertyValues = await this.getPropertyValues();
         const g = propertyValues.map(item => item.qualifiedName);
 
         return g;
@@ -163,7 +171,59 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param delProps Properties to be deleted.
      * @param multistatus Information about properties that failed to create, update or delate.
      */
-    public updateProperties(setProps: PropertyValue[], delProps: PropertyName[], multistatus: MultistatusException): void { }
+    public async updateProperties(setProps: PropertyValue[], delProps: PropertyName[], multistatus: MultistatusException): Promise<void> {
+        await this.requireHasToken();
+        let propertyValues = await this.getPropertyValues();
+        for(const propToSet of setProps) {
+            // Microsoft Mini-redirector may update file creation date, modification date and access time passing properties:
+            // <Win32CreationTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:15:34 GMT</Win32CreationTime>
+            // <Win32LastModifiedTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastModifiedTime>
+            // <Win32LastAccessTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastAccessTime>
+            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise 
+            // Windows Explorer will display creation and modification date from this props and it will differ from the values 
+            // in the Created and Modified fields in your storage 
+            if (propToSet.qualifiedName.namespace == "urn:schemas-microsoft-com:") {
+                const creationTimeUtc = new Date();
+                creationTimeUtc.setTime(Date.parse(propToSet.value));
+                switch (propToSet.qualifiedName.name) {
+                    case "Win32CreationTime": {
+                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.directory}).creationtime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
+                        if(stderr) {
+                            throw stderr;
+                        }
+
+                        break;
+                    }
+
+                    case "Win32LastModifiedTime": {
+                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.directory}).lastwritetime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
+                        if(stderr) {
+                            throw stderr;
+                        }
+
+                        break;
+                    }
+
+                    default:
+                        this.context.logger.logDebug(`Unspecified case: 
+                        DavHierarchyItem.UpdateProperties ${propToSet.qualifiedName.name} from ${propToSet.qualifiedName.namespace} namesapce`);
+
+                        break;
+                    }
+                } else {
+                    const existingProp = propertyValues.filter(p => p.qualifiedName.name === propToSet.qualifiedName.name)[0] || null;
+                    if (existingProp != null) {
+                        existingProp.value = propToSet.value;
+                    } else {
+                        propertyValues.push(propToSet);
+                    }
+                }
+            }
+
+            propertyValues = propertyValues.filter(prop => !(delProps.length && delProps.findIndex(delProp => delProp.name === prop.qualifiedName.name) > -1));
+
+            await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.propertiesAttributeName, propertyValues);
+     }
 	//$>
 
     //$<IMsItem.GetFileAttributes    
@@ -311,7 +371,16 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     /**
      * Check that if the item is locked then client has submitted correct lock token.
      */
-    public requireHasToken(skipShared: boolean = false): Promise<void> {
+    public async requireHasToken(skipShared: boolean = false): Promise<void> {
+        const locks = await this.getLocks();
+        if (locks !== null && locks.length) {
+            const clientLockTokens = this.context.request.clientLockTokens;
+            const resultFiltering = locks.filter(l => !(clientLockTokens.length && clientLockTokens.findIndex(clientLockToken => clientLockToken === l.lockToken) > -1));
+            if (resultFiltering.length) {
+                throw new LockedException();
+            }
+        }
+        
         return Promise.resolve();
     }
 
@@ -319,9 +388,11 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * Retrieves list of user defined propeties for this item.
      * @returns  List of user defined properties.
      */
-    private getPropertyValues(): PropertyValue[] {
-        if (this.propertyValues === null) {
+    private async getPropertyValues(): Promise<PropertyValue[]> {
+        if (this.propertyValues === null || this.propertyValues === undefined) {
             this.propertyValues = new Array<PropertyValue>();
+            this.propertyValues = await FileSystemInfoExtension.getExtendedAttribute<PropertyValue[]>(this.directory, this.propertiesAttributeName);
+            this.propertyValues = Array.isArray(this.propertyValues)? this.propertyValues.filter(item => Object.keys(item).length && item.constructor === Object): [];
         }
 
         return this.propertyValues;
@@ -357,8 +428,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     private async saveLock(lockInfo: DateLockInfo): Promise<void> {
         let locks = await this.getLocks(true);
         // remove all expired locks
-        locks = locks.filter(x => x.expiration <= Date.now());
-        const existingLock = locks.filter(x => x.lockToken <= lockInfo.lockToken)[0] || null;
+        locks = locks.filter(x => Date.now() <= x.expiration );
+        const existingLock = locks.filter(x => x.lockToken === lockInfo.lockToken)[0] || null;
         if (existingLock) {
             existingLock.timeOut = lockInfo.timeOut;
             existingLock.level = lockInfo.level;

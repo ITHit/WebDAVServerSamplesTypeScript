@@ -244,6 +244,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         }
         // Move the file.
         await util_1.promisify(fs_1.rename)(this.directory, newDirPath);
+        // Locks should not be copied, delete them.
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(newDirPath, "Locks", {});
     }
     //$>
     //$<IHierarchyItem.Delete
@@ -261,14 +263,18 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @remarks
      * Client do not plan to restore upload. Remove any temporary files / cleanup resources here.
      */
-    cancelUploadAsync() {
+    cancelUpload() {
+        return this.delete(null);
     }
     //$>
     /**
      * Returns instance of @see IUploadProgressAsync  interface.
-     * @returns  Just returns this class.
+     * @returns Just returns this class.
      */
     getUploadProgress() {
+        const arr = new Array();
+        arr.push(this);
+        return arr;
     }
     containsDownloadParam(url) {
         const ind = url.indexOf('?');

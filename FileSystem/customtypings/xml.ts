@@ -39,3 +39,26 @@ export function xmlToJson(xml: any): any {
 
     return obj;
 };
+
+export function objectToXml(obj: any): any {
+    var xml = '';
+
+    for (var prop in obj) {
+        if (!obj.hasOwnProperty(prop)) {
+            continue;
+        }
+
+        if (obj[prop] == undefined)
+            continue;
+
+        xml += "<" + prop + ">";
+        if (typeof obj[prop] == "object")
+            xml += objectToXml(new Object(obj[prop]));
+        else
+            xml += obj[prop];
+
+        xml += "</" + prop + ">";
+    }
+
+    return xml;
+};

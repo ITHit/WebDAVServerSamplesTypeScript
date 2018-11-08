@@ -11,6 +11,8 @@ const DavStatus_1 = require("ithit.webdav.server/DavStatus");
 const path_1 = require("path");
 const DateLockInfo_1 = require("./DateLockInfo");
 const FileSystemInfoExtension_1 = require("./ExtendedAttributes/FileSystemInfoExtension");
+const util_1 = require("util");
+const child_process_1 = require("child_process");
 /**
  * Base class for WebDAV items (folders, files, etc).
  */
@@ -21,6 +23,10 @@ class DavHierarchyItem {
      * @param path Encoded path relative to WebDAV root folder.
      */
     constructor(directory, context, path, stats) {
+        /**
+         * Name of properties attribute.
+         */
+        this.propertiesAttributeName = "Properties";
         /**
          * Name of locks attribute.
          */
@@ -87,10 +93,10 @@ class DavHierarchyItem {
      * @param allprop Whether all properties shall be retrieved.
      * @returns Property values.
      */
-    getProperties(props, allprop) {
-        let propertyValues = this.getPropertyValues();
+    async getProperties(props, allprop) {
+        let propertyValues = await this.getPropertyValues();
         if (!allprop) {
-            propertyValues = propertyValues.filter(item => item.qualifiedName);
+            propertyValues = propertyValues.filter(item => props.findIndex(p => p.name === item.qualifiedName.name) > -1);
         }
         return propertyValues;
     }
@@ -100,8 +106,8 @@ class DavHierarchyItem {
      * Retrieves names of all user defined properties.
      * @returns  Property names.
      */
-    getPropertyNames() {
-        const propertyValues = this.getPropertyValues();
+    async getPropertyNames() {
+        const propertyValues = await this.getPropertyValues();
         const g = propertyValues.map(item => item.qualifiedName);
         return g;
     }
@@ -113,7 +119,54 @@ class DavHierarchyItem {
      * @param delProps Properties to be deleted.
      * @param multistatus Information about properties that failed to create, update or delate.
      */
-    updateProperties(setProps, delProps, multistatus) { }
+    async updateProperties(setProps, delProps, multistatus) {
+        await this.requireHasToken();
+        let propertyValues = await this.getPropertyValues();
+        for (const propToSet of setProps) {
+            // Microsoft Mini-redirector may update file creation date, modification date and access time passing properties:
+            // <Win32CreationTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:15:34 GMT</Win32CreationTime>
+            // <Win32LastModifiedTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastModifiedTime>
+            // <Win32LastAccessTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastAccessTime>
+            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise 
+            // Windows Explorer will display creation and modification date from this props and it will differ from the values 
+            // in the Created and Modified fields in your storage 
+            if (propToSet.qualifiedName.namespace == "urn:schemas-microsoft-com:") {
+                const creationTimeUtc = new Date();
+                creationTimeUtc.setTime(Date.parse(propToSet.value));
+                switch (propToSet.qualifiedName.name) {
+                    case "Win32CreationTime": {
+                        const { stderr } = await util_1.promisify(child_process_1.exec)(`powershell $(Get-Item ${this.directory}).creationtime=$(Get-Date "${creationTimeUtc.toISOString()}")`);
+                        if (stderr) {
+                            throw stderr;
+                        }
+                        break;
+                    }
+                    case "Win32LastModifiedTime": {
+                        const { stderr } = await util_1.promisify(child_process_1.exec)(`powershell $(Get-Item ${this.directory}).lastwritetime=$(Get-Date "${creationTimeUtc.toISOString()}")`);
+                        if (stderr) {
+                            throw stderr;
+                        }
+                        break;
+                    }
+                    default:
+                        this.context.logger.logDebug(`Unspecified case: 
+                        DavHierarchyItem.UpdateProperties ${propToSet.qualifiedName.name} from ${propToSet.qualifiedName.namespace} namesapce`);
+                        break;
+                }
+            }
+            else {
+                const existingProp = propertyValues.filter(p => p.qualifiedName.name === propToSet.qualifiedName.name)[0] || null;
+                if (existingProp != null) {
+                    existingProp.value = propToSet.value;
+                }
+                else {
+                    propertyValues.push(propToSet);
+                }
+            }
+        }
+        propertyValues = propertyValues.filter(prop => !(delProps.length && delProps.findIndex(delProp => delProp.name === prop.qualifiedName.name) > -1));
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.directory, this.propertiesAttributeName, propertyValues);
+    }
     //$>
     //$<IMsItem.GetFileAttributes    
     /**
@@ -233,16 +286,26 @@ class DavHierarchyItem {
     /**
      * Check that if the item is locked then client has submitted correct lock token.
      */
-    requireHasToken(skipShared = false) {
+    async requireHasToken(skipShared = false) {
+        const locks = await this.getLocks();
+        if (locks !== null && locks.length) {
+            const clientLockTokens = this.context.request.clientLockTokens;
+            const resultFiltering = locks.filter(l => !(clientLockTokens.length && clientLockTokens.findIndex(clientLockToken => clientLockToken === l.lockToken) > -1));
+            if (resultFiltering.length) {
+                throw new LockedException_1.LockedException();
+            }
+        }
         return Promise.resolve();
     }
     /**
      * Retrieves list of user defined propeties for this item.
      * @returns  List of user defined properties.
      */
-    getPropertyValues() {
-        if (this.propertyValues === null) {
+    async getPropertyValues() {
+        if (this.propertyValues === null || this.propertyValues === undefined) {
             this.propertyValues = new Array();
+            this.propertyValues = await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(this.directory, this.propertiesAttributeName);
+            this.propertyValues = Array.isArray(this.propertyValues) ? this.propertyValues.filter(item => Object.keys(item).length && item.constructor === Object) : [];
         }
         return this.propertyValues;
     }
@@ -272,8 +335,8 @@ class DavHierarchyItem {
     async saveLock(lockInfo) {
         let locks = await this.getLocks(true);
         // remove all expired locks
-        locks = locks.filter(x => x.expiration <= Date.now());
-        const existingLock = locks.filter(x => x.lockToken <= lockInfo.lockToken)[0] || null;
+        locks = locks.filter(x => Date.now() <= x.expiration);
+        const existingLock = locks.filter(x => x.lockToken === lockInfo.lockToken)[0] || null;
         if (existingLock) {
             existingLock.timeOut = lockInfo.timeOut;
             existingLock.level = lockInfo.level;

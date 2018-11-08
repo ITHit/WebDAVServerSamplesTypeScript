@@ -6,6 +6,8 @@ import { DavStatus } from "ithit.webdav.server/DavStatus";
 import { IItemCollection } from "ithit.webdav.server/IItemCollection";
 import { MultistatusException } from "ithit.webdav.server/MultistatusException";
 import { EncodeUtil } from "ithit.webdav.server/EncodeUtil";
+import { IResumableUpload } from "ithit.webdav.server/ResumableUpload/IResumableUpload";
+import { IUploadProgress } from "ithit.webdav.server/ResumableUpload/IUploadProgress";
 import { lookup } from "mime-types";
 import { sep, join } from "path";
 import { promisify } from "util";
@@ -18,7 +20,7 @@ import { F_OK } from "constants";
 /**
  * Represents file in WebDAV repository.
  */
-export class DavFile extends DavHierarchyItem implements IFile {
+export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload, IUploadProgress {
 
 
     //$<IContent.ContentType
@@ -306,6 +308,9 @@ export class DavFile extends DavHierarchyItem implements IFile {
 
         // Move the file.
         await promisify(rename)(this.directory, newDirPath);
+
+        // Locks should not be copied, delete them.
+        await FileSystemInfoExtension.setExtendedAttribute(newDirPath, "Locks", {});
     }
 	//$>
 
@@ -325,16 +330,20 @@ export class DavFile extends DavHierarchyItem implements IFile {
      * @remarks  
      * Client do not plan to restore upload. Remove any temporary files / cleanup resources here.
      */
-    public cancelUploadAsync(): void {
+    public cancelUpload(): Promise<void> {
+        return this.delete(null as any as MultistatusException);
     }
 	//$>
 
     /**
      * Returns instance of @see IUploadProgressAsync  interface.
-     * @returns  Just returns this class.
+     * @returns Just returns this class.
      */
-    public getUploadProgress(): void {
+    public getUploadProgress(): IResumableUpload[] {
+        const arr = new Array<IResumableUpload>();
+        arr.push(this);
 
+        return arr;
     }
 
     public containsDownloadParam(url: string): boolean {

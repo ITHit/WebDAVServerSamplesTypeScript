@@ -42,3 +42,22 @@ function xmlToJson(xml) {
 }
 exports.xmlToJson = xmlToJson;
 ;
+function objectToXml(obj) {
+    var xml = '';
+    for (var prop in obj) {
+        if (!obj.hasOwnProperty(prop)) {
+            continue;
+        }
+        if (obj[prop] == undefined)
+            continue;
+        xml += "<" + prop + ">";
+        if (typeof obj[prop] == "object")
+            xml += objectToXml(new Object(obj[prop]));
+        else
+            xml += obj[prop];
+        xml += "</" + prop + ">";
+    }
+    return xml;
+}
+exports.objectToXml = objectToXml;
+;

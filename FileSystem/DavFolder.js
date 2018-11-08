@@ -58,11 +58,13 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         for (let i = 0; i < listOfFiles.length; i++) {
             const file = this.path + listOfFiles[i];
             const child = await this.context.getHierarchyItem(file);
-            if (child !== null) {
+            if (child !== null && child !== undefined) {
                 children.push(child);
             }
         }
-        return children;
+        const folders = children.filter(i => i.fileSystemInfo.isDirectory());
+        const files = children.filter(i => !i.fileSystemInfo.isDirectory());
+        return folders.sort((a, b) => a.name > b.name ? 1 : -1).concat(files.sort((a, b) => a.name > b.name ? 1 : -1));
     }
     //$>
     //$<IFolder.CreateFile

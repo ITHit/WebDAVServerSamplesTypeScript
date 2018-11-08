@@ -62,17 +62,20 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         //  You can filter children items in this implementation and 
         //  return only items that you want to be visible for this 
         //  particular user.
-        const children = new Array<IHierarchyItem>();
+        const children = new Array<DavHierarchyItem>();
         const listOfFiles = await promisify(readdir)(this.directory);
         for (let i = 0; i < listOfFiles.length; i++) {
             const file = this.path + listOfFiles[i];
-            const child: IHierarchyItem | null = await this.context.getHierarchyItem(file);
-            if (child !== null) {
-                children.push(child);
+            const child = await this.context.getHierarchyItem(file);
+            if (child !== null && child !== undefined) {
+                children.push((child as any as DavHierarchyItem));
             }
         }
 
-        return children;
+        const folders = children.filter( i => i.fileSystemInfo.isDirectory());
+        const files = children.filter( i => !i.fileSystemInfo.isDirectory());
+
+        return folders.sort((a, b) => a.name > b.name ? 1 : -1).concat(files.sort((a, b) => a.name > b.name ? 1 : -1));
     }
 	//$>
 
