@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet">
-    <link href="_webDavServerRoot_/wwwroot/css/webdav-layout.css" rel="stylesheet"/>
+    <link href="/wwwroot/css/webdav-layout.css" rel="stylesheet"/>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -174,8 +174,8 @@
     </main>
     <script>
         var webDavSettings = {
-            ApplicationPath: '_webDavServerRoot_',
-            ApplicationProtocolsPath: '_webDavServerRoot_/wwwroot/js/node_modules/webdav.client/Plugins/',
+            ApplicationPath: '/',
+            ApplicationProtocolsPath: '/wwwroot/js/node_modules/webdav.client/Plugins/',
 			EditDocAuth: {
 			    Authentication: 'anonymous',                       // Authentication to use when opening documents for editing: 'anonymous', 'challenge', 'ms-ofba', 'cookies'
                 CookieNames: null,                                 // Coma separated list of cookie names to search for.
@@ -185,13 +185,13 @@
         }
 
         function OpenAjaxFileBrowserWindow() {
-            window.open("_webDavServerRoot_/wwwroot/AjaxFileBrowser/AjaxFileBrowser.html", "", "menubar=1,location=1,status=1,scrollbars=1,resizable=1,width=900,height=600");
+            window.open("/wwwroot/AjaxFileBrowser/AjaxFileBrowser.html", "", "menubar=1,location=1,status=1,scrollbars=1,resizable=1,width=900,height=600");
         }
 
         function OpenTestsWindow() {
             var width = Math.round(screen.width * 0.5);
             var height = Math.round(screen.height * 0.8);
-            window.open("_webDavServerRoot_/wwwroot/AjaxFileBrowser/AjaxIntegrationTests.html", "", "menubar=1,location=1,status=1,scrollbars=1,resizable=1,width=" + width + ",height=" + height);
+            window.open("/wwwroot/AjaxFileBrowser/AjaxIntegrationTests.html", "", "menubar=1,location=1,status=1,scrollbars=1,resizable=1,width=" + width + ",height=" + height);
         }
     </script>
     <!--
@@ -199,13 +199,13 @@
     To load files from your website download them here: https://www.webdavsystem.com/ajax/download,
     deploy them to your website and replace the path below in this file.
     -->
-    <script src="_webDavServerRoot_/wwwroot/js/node_modules/webdav.client/ITHitWebDAVClient.js"></script>
+    <script src="/wwwroot/js/node_modules/webdav.client/ITHitWebDAVClient.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="_webDavServerRoot_/wwwroot/js/webdav-gridview.js"></script>
-    <script src="_webDavServerRoot_/wwwroot/js/webdav-uploader.js"></script>
-    <script src="_webDavServerRoot_/wwwroot/js/webdav-websocket.js"></script>
+    <script src="/wwwroot/js/webdav-gridview.js"></script>
+    <script src="/wwwroot/js/webdav-uploader.js"></script>
+    <script src="/wwwroot/js/webdav-websocket.js"></script>
 </body>
 </html>

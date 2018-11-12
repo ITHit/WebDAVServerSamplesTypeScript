@@ -81,10 +81,7 @@ class MyCustomGetHandler {
             // context.EnsureBeforeResponseWasCalledAsync();
             const htmlName = `${path_1.sep}MyCustomHandlerPage.html`;
             let html = (await util_1.promisify(fs_1.readFile)(this.htmlPath + htmlName)).toString();
-            const Url = url_1.parse(context.request.url);
-            const appPath = (Url.path || '').replace(/\/$/, "");
             const packageJson = require('./package.json');
-            html = html.replace(/_webDavServerRoot_/g, appPath);
             html = html.replace(/_webDavServerVersion_/g, packageJson.version);
             this.writeFileContent(context, html, this.htmlPath + htmlName);
         }

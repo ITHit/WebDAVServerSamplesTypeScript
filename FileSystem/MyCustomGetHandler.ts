@@ -100,10 +100,7 @@ export class MyCustomGetHandler implements IMethodHandler {
             // context.EnsureBeforeResponseWasCalledAsync();
             const htmlName = `${sep}MyCustomHandlerPage.html`;
             let html: string = (await promisify(readFile)(this.htmlPath + htmlName)).toString();
-            const Url = parse(context.request.url);
-            const appPath: string = (Url.path || '').replace(/\/$/, "");
             const packageJson = require('./package.json');
-            html = html.replace(/_webDavServerRoot_/g, appPath);
             html = html.replace(/_webDavServerVersion_/g, packageJson.version);
             this.writeFileContent(context, html, this.htmlPath + htmlName);
         }
