@@ -6,9 +6,10 @@ import { ILogger } from "ithit.webdav.server/ILogger";
 import { sep } from "path";
 import { DavFile } from "./DavFile";
 import { DavFolder } from "./DavFolder";
+import { WebSocketsService } from "./WebSocketsService";
 
 /**
- * Implementation of {@link DavContext}.
+ * Implementation of {@link DavContextBase}.
  * Resolves hierarchy items by paths.
  */
 export class DavContext extends DavContextBase {
@@ -17,6 +18,8 @@ export class DavContext extends DavContextBase {
      * Path to the folder which become available via WebDAV.
      */
     public repositoryPath: string;
+
+    public socketService: WebSocketsService;
 
     /**
      * Gets WebDAV Logger instance.
@@ -44,17 +47,26 @@ export class DavContext extends DavContextBase {
      * @param prefixes Http listener prefixes.
      * @param repositoryPath Local path to repository.
      */
-    constructor(listenerContext: DavRequest, prefixes: DavResponse, principal: any, repositoryPath: string, logger: ILogger) {
+    constructor(listenerContext: DavRequest, prefixes: DavResponse, principal: any, repositoryPath: string, logger: ILogger, socketService: WebSocketsService) {
         super(listenerContext, prefixes);
         this.logger = logger;
         this.repositoryPath = repositoryPath;
+        this.socketService = socketService;
         if (principal !== null) {
             this.identity = principal;
         }
 
     }
 
-    public trim(source: string, chars?: string | string[], ignoreCase?: boolean): string {
+    /**
+     * Can trim any character or set of characters from the ends of a string.
+     * Uses a Regex escapement to replace them with empty.
+     * @param source
+     * @param chars A string or array of characters desired to be trimmed.
+     * @param ignoreCase
+     * @returns {string}
+     */
+    private trim(source: string, chars?: string | string[], ignoreCase?: boolean): string {
         if (chars === '') {
             return source;
         }
@@ -95,14 +107,4 @@ export class DavContext extends DavContextBase {
         //  no hierarchy item that corresponds to path parameter was found in the repository
     }
 	//$>
-
-    /**
-     * Returns the physical file path that corresponds to the specified virtual path on the Web server.
-     * @param relativePath Path relative to WebDAV root folder.
-     * @returns  Corresponding path in file system.
-     */
-    public mapPath(relativePath: string): string {
-
-        return this.repositoryPath;
-    }
 }

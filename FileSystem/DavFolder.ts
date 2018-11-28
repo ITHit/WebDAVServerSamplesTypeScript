@@ -4,7 +4,7 @@ import { IHierarchyItem } from "ithit.webdav.server/IHierarchyItem";
 import { IItemCollection } from "ithit.webdav.server/IItemCollection";
 import { MultistatusException } from "ithit.webdav.server/MultistatusException";
 import { PropertyName } from "ithit.webdav.server/PropertyName";
-import { sep, join } from "path";
+import { sep, join, normalize } from "path";
 import { promisify } from "util";
 import { DavContext } from "./DavContext";
 import { DavHierarchyItem } from "./DavHierarchyItem";
@@ -24,7 +24,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @returns  Folder instance or null if physical folder not found in file system.
      */
     public static async getFolder(context: DavContext, path: string): Promise<DavFolder | null> {
-        const folderPath: string = EncodeUtil.decodeUrlPart(context.mapPath(path) + sep + path);
+        const folderPath: string = EncodeUtil.decodeUrlPart(context.repositoryPath + sep + path);
         try {
             await promisify(access)(folderPath, F_OK);
         } catch(err) {
@@ -32,7 +32,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         }
 
         const folder: Stats = await promisify(stat)(folderPath);
-        if (!folder.isDirectory()) {
+        if (!folder.isDirectory()) {    
             return null;
         }
 
@@ -48,7 +48,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @param path Encoded path relative to WebDAV root folder.
      */
     protected constructor(directory: string, context: DavContext, path: string, stats: Stats) {
-        super(directory, context, path.replace(/\/$/, "") + sep, stats);
+        super(directory, context, normalize(path.replace(/\/$/, "") + sep), stats);
     }
 
     //$<IItemCollection.GetChildren
@@ -63,7 +63,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         //  return only items that you want to be visible for this 
         //  particular user.
         const children = new Array<DavHierarchyItem>();
-        const listOfFiles = await promisify(readdir)(this.directory);
+        const listOfFiles = await promisify(readdir)(this.fullPath);
         for (let i = 0; i < listOfFiles.length; i++) {
             const file = this.path + listOfFiles[i];
             const child = await this.context.getHierarchyItem(file);
@@ -86,13 +86,14 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @returns  The new file.
      */
     public async createFile(name: string): Promise<IHierarchyItem|null> {
-        let normalizedDir = this.directory;
+        let normalizedDir = this.fullPath;
         if(normalizedDir.charAt(normalizedDir.length - 1) === sep) {
             normalizedDir = normalizedDir.slice(0, -1);
         }
 
         const fd = await promisify(open)(`${normalizedDir}${sep}${name}`, 'w');
         await promisify(close)(fd);
+        this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
         
         return this.context.getHierarchyItem(this.path + name);
     }
@@ -105,11 +106,12 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      */
     public async createFolder(name: string): Promise<void> {
         this.requireHasToken();
-        const path = `${this.directory}${sep}${name}`.split(sep);
+        const path = `${this.fullPath}${sep}${name}`.split(sep);
         for (let i = 1; i <= path.length; i++) {
             const segment = path.slice(0, i).join(sep);
             if(!await promisify(exists)(segment)) {
                 await promisify(mkdir)(segment);
+                this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
             }
         }
     }
@@ -132,7 +134,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
             throw new DavException("Cannot copy to subfolder", undefined, DavStatus.FORBIDDEN);
         }
         
-        const newDirLocalPath = join(targetFolder.directory, destName);
+        const newDirLocalPath = join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
         try{
             if(!await promisify(exists)(newDirLocalPath)) {
@@ -158,6 +160,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
                 multistatus.addInnerException(item.path, undefined, err);
             }
         }
+
+        this.context.socketService.notifyRefresh(targetFolder.path);
     }
 
     /**
@@ -166,7 +170,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      * @returns Returns true if destFolder is inside thid folder.
      */
     private isRecursive(destFolder: DavFolder): boolean {
-        return destFolder.directory.startsWith(this.directory);
+        return destFolder.fullPath.startsWith(this.fullPath);
     }
 
     /**
@@ -220,6 +224,9 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         if (movedSuccessfully) {
             await this.delete(multistatus);
         }
+
+        this.context.socketService.notifyDelete(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
+        this.context.socketService.notifyRefresh(this.getParentPath(targetPath));
     }
 
     /**
@@ -242,7 +249,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         }
 
         if (allChildrenDeleted) {
-            await promisify(rmdir)(this.directory);
+            await promisify(rmdir)(this.fullPath);
+            this.context.socketService.notifyDelete(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
         }
     }
 

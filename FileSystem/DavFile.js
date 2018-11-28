@@ -19,7 +19,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * Gets content type.
      */
     get contentType() {
-        let conType = String(mime_types_1.lookup(this.directory));
+        let conType = String(mime_types_1.lookup(this.fullPath));
         if (!conType) {
             conType = `application/octet-stream`;
         }
@@ -65,7 +65,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  File instance or null if physical file is not found in file system.
      */
     static async getFile(context, path) {
-        const filePath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.mapPath(path) + path_1.sep + path);
+        const filePath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.repositoryPath + path_1.sep + path);
         try {
             await util_1.promisify(fs_1.access)(filePath, constants_1.F_OK);
         }
@@ -78,8 +78,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             return null;
         }
         const davFile = new DavFile(filePath, context, path, file);
-        davFile.serialNumber = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.directory, "SerialNumber"));
-        davFile.totalContentLength = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.directory, "TotalContentLength"));
+        davFile.serialNumber = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.fullPath, "SerialNumber"));
+        davFile.totalContentLength = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.fullPath, "TotalContentLength"));
         return davFile;
     }
     /**
@@ -103,8 +103,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         if (this.containsDownloadParam(this.context.request.rawUrl)) {
             this.addContentDisposition(this.name);
         }
-        const fd = await util_1.promisify(fs_1.open)(this.directory, 'r');
-        const fileStream = fs_1.createReadStream(this.directory, {
+        const fd = await util_1.promisify(fs_1.open)(this.fullPath, 'r');
+        const fileStream = fs_1.createReadStream(this.fullPath, {
             flags: 'r',
             fd: fd,
             start: startIndex,
@@ -159,16 +159,26 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         if (this.fileInfo.size < startIndex) {
             throw new DavException_1.DavException("Previous piece of file was not uploaded.", undefined, DavStatus_1.DavStatus.PRECONDITION_FAILED);
         }
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.directory, "TotalContentLength", Number(totalFileSize));
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.directory, "SerialNumber", (this.serialNumber || 0) + 1);
-        const fd = await util_1.promisify(fs_1.open)(this.directory, 'r+');
-        await util_1.promisify(fs_1.ftruncate)(fd, 0);
-        const fileStream = fs_1.createWriteStream(this.directory, {
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "TotalContentLength", Number(totalFileSize));
+        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "SerialNumber", (this.serialNumber || 0) + 1);
+        const fd = await util_1.promisify(fs_1.open)(this.fullPath, 'r+');
+        if (startIndex == 0 && this.fileInfo.size > 0) {
+            await util_1.promisify(fs_1.ftruncate)(fd, 0);
+        }
+        const fileStream = fs_1.createWriteStream(this.fullPath, {
             flags: 'r+',
-            fd
+            fd,
+            start: startIndex
         });
-        content.pipe(fileStream);
-        content.resume();
+        await new Promise((resolve, reject) => {
+            fileStream.on('error', (error) => reject(error));
+            content.on('close', () => fileStream.end());
+            content.on('finish', () => resolve());
+            content.on('end', () => resolve());
+            content.on('error', (error) => reject(error));
+            content.pipe(fileStream);
+            content.resume();
+        });
         return true;
     }
     //$>
@@ -182,10 +192,10 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      */
     async copyTo(destFolder, destName, deep, multistatus) {
         const targetFolder = destFolder;
-        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.directory)) {
+        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.fullPath)) {
             throw new DavException_1.DavException("Target directory doesn't exist", undefined, DavStatus_1.DavStatus.CONFLICT);
         }
-        const newFilePath = path_1.join(targetFolder.directory, destName);
+        const newFilePath = path_1.join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
         //  If an item with the same name exists - remove it.
         try {
@@ -201,7 +211,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         }
         //  Copy the file togather with all extended attributes (custom props and locks).
         try {
-            await util_1.promisify(fs_1.copyFile)(this.directory, newFilePath);
+            await util_1.promisify(fs_1.copyFile)(this.fullPath, newFilePath);
+            this.context.socketService.notifyRefresh(targetFolder.path.replace(/\\/g, '/').replace(/\/$/, ""));
         }
         catch (err) {
             /*if(err.errno && err.errno === EACCES) {
@@ -225,10 +236,10 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     async moveTo(destFolder, destName, multistatus) {
         await this.requireHasToken();
         const targetFolder = destFolder;
-        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.directory)) {
+        if (targetFolder == null || !await util_1.promisify(fs_1.exists)(targetFolder.fullPath)) {
             throw new DavException_1.DavException("Target directory doesn't exist", undefined, DavStatus_1.DavStatus.CONFLICT);
         }
-        const newDirPath = path_1.join(targetFolder.directory, destName);
+        const newDirPath = path_1.join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
         // If an item with the same name exists in target directory - remove it.
         try {
@@ -243,9 +254,11 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             return;
         }
         // Move the file.
-        await util_1.promisify(fs_1.rename)(this.directory, newDirPath);
+        await util_1.promisify(fs_1.rename)(this.fullPath, newDirPath);
         // Locks should not be copied, delete them.
         await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(newDirPath, "Locks", {});
+        this.context.socketService.notifyRefresh(targetFolder.path.replace(/\\/g, '/').replace(/\/$/, ""));
+        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
     //$>
     //$<IHierarchyItem.Delete
@@ -253,8 +266,10 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
      * Called whan this file is being deleted.
      * @param multistatus Information about items that failed to delete.
      */
-    delete(multistatus) {
-        return util_1.promisify(fs_1.unlink)(this.directory);
+    async delete(multistatus) {
+        await util_1.promisify(fs_1.unlink)(this.fullPath);
+        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
+        return;
     }
     //$>
     //$<IResumableUpload.CancelUpload	

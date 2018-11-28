@@ -30,7 +30,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * Gets name of the item.
      */
     public get name(): string {
-        return basename(this.directory);
+        return basename(this.fullPath);
     }
 	//$>
 
@@ -51,14 +51,6 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
         return this.fileSystemInfo.mtime;
     }
 	//$>
-
-    /**
-     * Gets full path for this file/folder in the file system.
-     */
-    get fullPath(): string {
-        return __dirname;
-
-    }
 
     /**
      * Corresponding file or folder in the file system.
@@ -86,7 +78,11 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * User defined property values
      */
     public propertyValues: PropertyValue[];
-    public directory: string;
+
+    /**
+     * Gets full path for this file/folder in the file system.
+     */
+    public readonly fullPath: string;
 
     /**
      * Name of locks attribute.
@@ -96,13 +92,14 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
 
     /**
      * Initializes a new instance of this class.
+     * @param fullPath Corresponding file or folder in the file system.
      * @param context WebDAV Context.
      * @param path Encoded path relative to WebDAV root folder.
      */
-    protected constructor(directory: string, context: DavContext, path: string, stats: Stats) {
+    protected constructor(fullPath: string, context: DavContext, path: string, stats: Stats) {
         this.context = context;
         this.path = path;
-        this.directory = directory;
+        this.fullPath = fullPath;
         this.fileSystemInfo = stats;
     }
 
@@ -187,7 +184,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
                 creationTimeUtc.setTime(Date.parse(propToSet.value));
                 switch (propToSet.qualifiedName.name) {
                     case "Win32CreationTime": {
-                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.directory}).creationtime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
+                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.fullPath}).creationtime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
                         if(stderr) {
                             throw stderr;
                         }
@@ -196,7 +193,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
                     }
 
                     case "Win32LastModifiedTime": {
-                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.directory}).lastwritetime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
+                        const { stderr } = await promisify(exec)(`powershell $(Get-Item ${this.fullPath}).lastwritetime=$(Get-Date "${creationTimeUtc.toISOString()}")`)
                         if(stderr) {
                             throw stderr;
                         }
@@ -221,8 +218,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             }
 
             propertyValues = propertyValues.filter(prop => !(delProps.length && delProps.findIndex(delProp => delProp.name === prop.qualifiedName.name) > -1));
-
-            await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.propertiesAttributeName, propertyValues);
+            await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.propertiesAttributeName, propertyValues);
+            this.context.socketService.notifyRefresh(this.getParentPath(this.path));
      }
 	//$>
 
@@ -249,16 +246,13 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     public async getActiveLocks(): Promise<LockInfo[]> {
         const locks = await this.getLocks();
-        if (locks === null) {
-            return new Array<LockInfo>();
-        }
-
+        const timeSpanMaxValue = new Date(8640000000000000).getTime();
         const lockInfoList = locks.map(l => new LockInfo(
             l.level,
             l.isDeep,
             l.lockToken,
-            l.expiration === (new Date(8640000000000000).getTime()) ?
-                (new Date(8640000000000000).getTime()) :
+            l.expiration === (timeSpanMaxValue) ?
+                (timeSpanMaxValue) :
                 Math.ceil(l.expiration - Date.now()),
             l.clientOwner,
             l.lockRoot
@@ -280,10 +274,10 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * Instance of @see LockResult  with information about the lock.
      */
     public async lock(
-        level: LockLevel | null,
-        isDeep: boolean | null,
+        level: LockLevel,
+        isDeep: boolean,
         requestedTimeOut: number | null,
-        owner: string | null
+        owner: string
     ): Promise<LockResult> {
         await this.requireUnlocked(level === LockLevel.shared);
         const token = randomBytes(16).toString('hex');
@@ -304,11 +298,15 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
         lockInfo.timeOut = timeOut;
 
         this.saveLock(lockInfo);
-
+        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
         return new LockResult(lockInfo.lockToken, lockInfo.timeOut);
     }
 	//$>
 
+    /**
+     * Ensure that there are no active locks on the item.
+     * @param skipShared Whether shared locks shall be checked.
+     */
     public async requireUnlocked(skipShared: boolean): Promise<void> {
         const locks = await this.getLocks();
         if (locks !== null && locks.length) {
@@ -348,6 +346,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             await this.saveLock(lockInfo);
         }
 
+        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
+
         return new RefreshLockResult(lockInfo.level, lockInfo.isDeep, lockInfo.timeOut, lockInfo.clientOwner);
     }
 	//$>
@@ -365,6 +365,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
         if (lockInfo === null || lockInfo.expiration <= Date.now()) {
             throw new DavException("The lock could not be found.", undefined, DavStatus.CONFLICT);
         }
+
+        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
 	//$>
 
@@ -391,16 +393,21 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     private async getPropertyValues(): Promise<PropertyValue[]> {
         if (this.propertyValues === null || this.propertyValues === undefined) {
             this.propertyValues = new Array<PropertyValue>();
-            this.propertyValues = await FileSystemInfoExtension.getExtendedAttribute<PropertyValue[]>(this.directory, this.propertiesAttributeName);
+            this.propertyValues = await FileSystemInfoExtension.getExtendedAttribute<PropertyValue[]>(this.fullPath, this.propertiesAttributeName);
             this.propertyValues = Array.isArray(this.propertyValues)? this.propertyValues.filter(item => Object.keys(item).length && item.constructor === Object): [];
         }
 
         return this.propertyValues;
     }
 
+    /**
+     * Retrieves non-expired locks acquired on this item.
+     * @param getAllWithExpired Indicate needed return expired locks
+     * @returns List of locks with their expiration dates.
+     */
     private async getLocks(getAllWithExpired: boolean = false): Promise<DateLockInfo[]> {
         if (this.locks === null) {
-            this.locks = await FileSystemInfoExtension.getExtendedAttribute<DateLockInfo[]>(this.directory, this.locksAttributeName);
+            this.locks = await FileSystemInfoExtension.getExtendedAttribute<DateLockInfo[]>(this.fullPath, this.locksAttributeName);
             if (this.locks !== null) {
                 if (!Array.isArray(this.locks)) {
                     this.locks = [this.locks];
@@ -425,6 +432,10 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
 
     }
 
+    /**
+     * Saves lock acquired on this file/folder.
+     * @param lockInfo 
+     */
     private async saveLock(lockInfo: DateLockInfo): Promise<void> {
         let locks = await this.getLocks(true);
         // remove all expired locks
@@ -441,9 +452,13 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             locks.push(lockInfo);
         }
 
-        await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.locksAttributeName, locks);
+        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
     }
-
+    
+    /**
+     * Remove expired Locks.
+     * @param unlockedToken 
+     */
     private async removeExpiredLocks(unlockedToken: string | null = null): Promise<void> {
         let locks = await this.getLocks(true);
         locks = locks.filter(x => x.expiration >= Date.now());
@@ -452,7 +467,20 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             locks = locks.filter(x => x.lockToken !== unlockedToken);
         }
 
-        await FileSystemInfoExtension.setExtendedAttribute(this.directory, this.locksAttributeName, locks);
+        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
+    }
+
+    /**
+     * Gets element's parent path.
+     * @param path Element's path.
+     * @returns Path to parent element.
+     */
+    protected getParentPath(path: string): string {
+        const parentPath = path.replace(/\\/g, '/').replace(/\/$/, "");
+        const parentPathSplited = parentPath.split('/');
+        parentPathSplited.pop();
+
+        return parentPathSplited.join('/');
     }
 
 

@@ -5,11 +5,11 @@ import { DavEngine } from "ithit.webdav.server/DavEngine";
 import { DavRequest } from "ithit.webdav.server/Extensibility/DavRequest";
 import { DavResponse } from "ithit.webdav.server/Extensibility/DavResponse";
 import { DefaultLoggerImpl } from "ithit.webdav.server/Logger/DefaultLoggerImpl";
-import { sep } from "path";
+import { sep, isAbsolute, resolve } from "path";
 import { DavContext } from "./DavContext";
-// const DavContext = require("./DavContext").DavContext;
-
 import { MyCustomGetHandler } from "./MyCustomGetHandler";
+import { WebSocketsService } from './WebSocketsService';
+import { Server as WebSocketServer } from 'ws';
 const protocol = 'http';
 
 /**WebDAV engine host. */
@@ -18,13 +18,15 @@ class Program {
 
     private static engine: DavEngine;
 
-    private static readonly repositoryPath: string = __dirname + `${sep}Storage`;
+    private static socketService: WebSocketsService;
+
+    private static repositoryPath = `${__dirname}${sep}App_Data${sep}Storage`;
 
     /**Whether requests/responses shall be logged. */
-    private static readonly debugLoggingEnabled: boolean = true;
+    private static readonly debugLoggingEnabled = true;
 
     /**Logger instance. */
-    private static readonly logger: DefaultLoggerImpl = new DefaultLoggerImpl();
+    private static readonly logger = new DefaultLoggerImpl();
 
     /**
      * Entry point.
@@ -46,21 +48,26 @@ class Program {
 
     public static init() {
         const contentRootPath: string = __dirname;
-        const logPath: string = contentRootPath + `${sep}App_Data${sep}WebDav${sep}Logs`;
-        Program.logger.logFile = logPath + "WebDAVlog.txt";
         Program.logger.isDebugEnabled = Program.debugLoggingEnabled;
         Program.engine = new DavEngine();
         Program.engine.logger = Program.logger;
         Program.engine.outputXmlFormatting = true;
+        const packageJson = require('./package.json');
+        if (packageJson.config.repositoryPath && packageJson.config.repositoryPath !== '') {
+            if(isAbsolute(packageJson.config.repositoryPath)){
+                Program.repositoryPath = packageJson.config.repositoryPath;
+            } else {
+                Program.repositoryPath = resolve(packageJson.config.repositoryPath);
+            }
+        }
 
         ///  This license lile is used to activate:
-        ///   - IT Hit WebDAV Server Engine for .NET
-        ///   - IT Hit iCalendar and vCard Library if used in a project
+        ///   - IT Hit WebDAV Server Engine for Node.js
         const licensePath = contentRootPath + `${sep}License.lic`;
         fs.exists(licensePath, function (exists) {
             let license = '';
             if (exists) {
-                license = readFileSync(contentRootPath + `${sep}License.lic`).toString();
+                license = readFileSync(`${contentRootPath}${sep}License.lic`).toString();
             }
             Program.engine.license = license;
         });
@@ -80,6 +87,8 @@ class Program {
     public static listen() {
         const port: number = Number(process.env.PORT) || 3000;
         const server: Http.Server = Http.createServer(this.processRequest);
+        const wss = new WebSocketServer({ server} );
+        Program.socketService = new WebSocketsService(wss);
         server.listen(port, function () {
             const host = server.address() as any;
             console.log('running at http://' + host.address + ':' + host.port);
@@ -91,8 +100,8 @@ class Program {
         Object.assign(req, request);
         req.protocol = protocol;
         const res = new DavResponse(response);
-        const ntfsDavContext = new DavContext(req, res, null, Program.repositoryPath, Program.engine.logger);
-        Program.engine.run(ntfsDavContext);
+        const context = new DavContext(req, res, null, Program.repositoryPath, Program.engine.logger, Program.socketService);
+        Program.engine.run(context);
     }
 	//$>
 

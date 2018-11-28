@@ -20,7 +20,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  Folder instance or null if physical folder not found in file system.
      */
     static async getFolder(context, path) {
-        const folderPath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.mapPath(path) + path_1.sep + path);
+        const folderPath = EncodeUtil_1.EncodeUtil.decodeUrlPart(context.repositoryPath + path_1.sep + path);
         try {
             await util_1.promisify(fs_1.access)(folderPath, constants_1.F_OK);
         }
@@ -40,7 +40,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @param path Encoded path relative to WebDAV root folder.
      */
     constructor(directory, context, path, stats) {
-        super(directory, context, path.replace(/\/$/, "") + path_1.sep, stats);
+        super(directory, context, path_1.normalize(path.replace(/\/$/, "") + path_1.sep), stats);
     }
     //$<IItemCollection.GetChildren
     /**
@@ -54,7 +54,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         //  return only items that you want to be visible for this 
         //  particular user.
         const children = new Array();
-        const listOfFiles = await util_1.promisify(fs_1.readdir)(this.directory);
+        const listOfFiles = await util_1.promisify(fs_1.readdir)(this.fullPath);
         for (let i = 0; i < listOfFiles.length; i++) {
             const file = this.path + listOfFiles[i];
             const child = await this.context.getHierarchyItem(file);
@@ -74,12 +74,13 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns  The new file.
      */
     async createFile(name) {
-        let normalizedDir = this.directory;
+        let normalizedDir = this.fullPath;
         if (normalizedDir.charAt(normalizedDir.length - 1) === path_1.sep) {
             normalizedDir = normalizedDir.slice(0, -1);
         }
         const fd = await util_1.promisify(fs_1.open)(`${normalizedDir}${path_1.sep}${name}`, 'w');
         await util_1.promisify(fs_1.close)(fd);
+        this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
         return this.context.getHierarchyItem(this.path + name);
     }
     //$>
@@ -90,11 +91,12 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      */
     async createFolder(name) {
         this.requireHasToken();
-        const path = `${this.directory}${path_1.sep}${name}`.split(path_1.sep);
+        const path = `${this.fullPath}${path_1.sep}${name}`.split(path_1.sep);
         for (let i = 1; i <= path.length; i++) {
             const segment = path.slice(0, i).join(path_1.sep);
             if (!await util_1.promisify(fs_1.exists)(segment)) {
                 await util_1.promisify(fs_1.mkdir)(segment);
+                this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
             }
         }
     }
@@ -114,7 +116,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         if (this.isRecursive(targetFolder)) {
             throw new DavException_1.DavException("Cannot copy to subfolder", undefined, DavStatus_1.DavStatus.FORBIDDEN);
         }
-        const newDirLocalPath = path_1.join(targetFolder.directory, destName);
+        const newDirLocalPath = path_1.join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil_1.EncodeUtil.encodeUrlPart(destName));
         try {
             if (!await util_1.promisify(fs_1.exists)(newDirLocalPath)) {
@@ -140,6 +142,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
                 multistatus.addInnerException(item.path, undefined, err);
             }
         }
+        this.context.socketService.notifyRefresh(targetFolder.path);
     }
     /**
      * Determines whether destFolder is inside this folder.
@@ -147,7 +150,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      * @returns Returns true if destFolder is inside thid folder.
      */
     isRecursive(destFolder) {
-        return destFolder.directory.startsWith(this.directory);
+        return destFolder.fullPath.startsWith(this.fullPath);
     }
     /**
      * Called when this folder is being moved or renamed.
@@ -196,6 +199,8 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         if (movedSuccessfully) {
             await this.delete(multistatus);
         }
+        this.context.socketService.notifyDelete(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
+        this.context.socketService.notifyRefresh(this.getParentPath(targetPath));
     }
     /**
      * Called whan this folder is being deleted.
@@ -217,7 +222,8 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
             }
         }
         if (allChildrenDeleted) {
-            await util_1.promisify(fs_1.rmdir)(this.directory);
+            await util_1.promisify(fs_1.rmdir)(this.fullPath);
+            this.context.socketService.notifyDelete(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
         }
     }
     //$<ISearch.Search    

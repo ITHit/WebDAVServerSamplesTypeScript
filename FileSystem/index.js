@@ -9,8 +9,9 @@ const DavResponse_1 = require("ithit.webdav.server/Extensibility/DavResponse");
 const DefaultLoggerImpl_1 = require("ithit.webdav.server/Logger/DefaultLoggerImpl");
 const path_1 = require("path");
 const DavContext_1 = require("./DavContext");
-// const DavContext = require("./DavContext").DavContext;
 const MyCustomGetHandler_1 = require("./MyCustomGetHandler");
+const WebSocketsService_1 = require("./WebSocketsService");
+const ws_1 = require("ws");
 const protocol = 'http';
 /**WebDAV engine host. */
 class Program {
@@ -31,20 +32,26 @@ class Program {
     }
     static init() {
         const contentRootPath = __dirname;
-        const logPath = contentRootPath + `${path_1.sep}App_Data${path_1.sep}WebDav${path_1.sep}Logs`;
-        Program.logger.logFile = logPath + "WebDAVlog.txt";
         Program.logger.isDebugEnabled = Program.debugLoggingEnabled;
         Program.engine = new DavEngine_1.DavEngine();
         Program.engine.logger = Program.logger;
         Program.engine.outputXmlFormatting = true;
+        const packageJson = require('./package.json');
+        if (packageJson.config.repositoryPath && packageJson.config.repositoryPath !== '') {
+            if (path_1.isAbsolute(packageJson.config.repositoryPath)) {
+                Program.repositoryPath = packageJson.config.repositoryPath;
+            }
+            else {
+                Program.repositoryPath = path_1.resolve(packageJson.config.repositoryPath);
+            }
+        }
         ///  This license lile is used to activate:
-        ///   - IT Hit WebDAV Server Engine for .NET
-        ///   - IT Hit iCalendar and vCard Library if used in a project
+        ///   - IT Hit WebDAV Server Engine for Node.js
         const licensePath = contentRootPath + `${path_1.sep}License.lic`;
         fs.exists(licensePath, function (exists) {
             let license = '';
             if (exists) {
-                license = fs_1.readFileSync(contentRootPath + `${path_1.sep}License.lic`).toString();
+                license = fs_1.readFileSync(`${contentRootPath}${path_1.sep}License.lic`).toString();
             }
             Program.engine.license = license;
         });
@@ -62,6 +69,8 @@ class Program {
     static listen() {
         const port = Number(process.env.PORT) || 3000;
         const server = Http.createServer(this.processRequest);
+        const wss = new ws_1.Server({ server });
+        Program.socketService = new WebSocketsService_1.WebSocketsService(wss);
         server.listen(port, function () {
             const host = server.address();
             console.log('running at http://' + host.address + ':' + host.port);
@@ -72,8 +81,8 @@ class Program {
         Object.assign(req, request);
         req.protocol = protocol;
         const res = new DavResponse_1.DavResponse(response);
-        const ntfsDavContext = new DavContext_1.DavContext(req, res, null, Program.repositoryPath, Program.engine.logger);
-        Program.engine.run(ntfsDavContext);
+        const context = new DavContext_1.DavContext(req, res, null, Program.repositoryPath, Program.engine.logger, Program.socketService);
+        Program.engine.run(context);
     }
     //$>
     /**Checks configuration errors. */
@@ -88,7 +97,7 @@ class Program {
         }
     }
 }
-Program.repositoryPath = __dirname + `${path_1.sep}Storage`;
+Program.repositoryPath = `${__dirname}${path_1.sep}App_Data${path_1.sep}Storage`;
 /**Whether requests/responses shall be logged. */
 Program.debugLoggingEnabled = true;
 /**Logger instance. */
