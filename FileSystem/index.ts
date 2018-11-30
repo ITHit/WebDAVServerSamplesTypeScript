@@ -51,7 +51,6 @@ class Program {
         Program.logger.isDebugEnabled = Program.debugLoggingEnabled;
         Program.engine = new DavEngine();
         Program.engine.logger = Program.logger;
-        Program.engine.outputXmlFormatting = true;
         const packageJson = require('./package.json');
         if (packageJson.config.repositoryPath && packageJson.config.repositoryPath !== '') {
             if(isAbsolute(packageJson.config.repositoryPath)){
