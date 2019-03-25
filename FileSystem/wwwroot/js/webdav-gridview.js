@@ -1,4 +1,4 @@
-﻿﻿﻿
+﻿
 (function () {
     var Formatters = {
 
@@ -407,7 +407,7 @@
                 var className = 'ascending'
                 if ($(this).hasClass('ascending')) {
                     className = 'descending';
-                }            
+                }
 
                 oWebDAV.Sort($(this).data('sort-column'), className == 'ascending');
             })
@@ -448,7 +448,10 @@
         },
 
         _OnPopState: function (oEvent) {
-            if (!oWebDAV.GetHashValue('search')) {
+            if (oWebDAV.GetHashValue('search')) {
+                oSearchForm.LoadFromHash();
+            }
+            else {
                 var sUrl = oEvent.state && oEvent.state.Url || window.location.href.split("#")[0];
                 oWebDAV.NavigateFolder(sUrl);
             }
@@ -570,6 +573,11 @@
                 sPath = this.CurrentFolder.Href;
             }
 
+            //set upload url for uploader control
+            if (typeof WebDAVUploaderGridView !== 'undefined') {
+                WebDAVUploaderGridView.SetUploadUrl(sPath);
+            }
+
             if (sortColumn) {
                 this.CurrentSortColumn = sortColumn;
                 this.CurrentSortAscending = sortAscending;
@@ -681,13 +689,28 @@
                 this.SnippetPropertyName
             ];
 
-            this.CurrentFolder.GetSearchPageByQueryAsync(searchQuery, (currentPageNumber - 1) * pageSize, pageSize, function (oResult) {
-                /** @type {ITHit.WebDAV.Client.AsyncResult} oResult */
+            function _getSearchPageByQuery() {
+                oWebDAV.CurrentFolder.GetSearchPageByQueryAsync(searchQuery, (currentPageNumber - 1) * pageSize, pageSize, function (oResult) {
+                    /** @type {ITHit.WebDAV.Client.AsyncResult} oResult */
 
-                /** @type {ITHit.WebDAV.Client.HierarchyItem[]} aItems */
+                    /** @type {ITHit.WebDAV.Client.HierarchyItem[]} aItems */
 
-                fCallback && fCallback(oResult);
-            });
+                    fCallback && fCallback(oResult);
+                });
+            }
+
+            if (window.location.href.split("#")[0] != this.CurrentFolder.Href) {
+                this.WebDavSession.OpenFolderAsync(window.location.href.split("#")[0], [], function (oResponse) {
+                    oWebDAV.CurrentFolder = oResponse.Result;
+                    oBreadcrumbs.SetHierarchyItem(oWebDAV.CurrentFolder);
+                    _getSearchPageByQuery();
+                });
+            }
+            else {
+                _getSearchPageByQuery();
+            }
+
+
         },
 
         Sort: function (columnName, sortAscending) {
@@ -776,6 +799,7 @@
          * Sets values to hash       
          */
         SetHashValues: function (arrayValues) {
+            var hashValue = '';
             var params = [];
             var hashConfig = this._parseUrlHash();
 
@@ -787,7 +811,11 @@
                 params.push(key + '=' + hashConfig[key]);
             }
 
-            location.hash = params.length > 0 ? ('#' + params.join('&')) : '';
+            hashValue = params.length > 0 ? ('#' + params.join('&')) : '';
+
+            if (hashValue != location.hash) {
+                location.hash = hashValue;
+            }
 
             if (location.href[location.href.length - 1] == '#') {
                 oHistoryApi.PushState();
@@ -802,11 +830,18 @@
         },
 
         /**
+         * Returns url of app installer
+         */
+        GetInstallerFileUrl: function () {
+            return webDavSettings.ApplicationProtocolsPath + ITHit.WebDAV.Client.DocManager.GetInstallFileName();
+        },
+
+        /**
          * Adds name and value to array
          * @return {Array}
          */
         _addParameterToArray: function (name, value, arrayParams) {
-            var nameExist = false;        
+            var nameExist = false;
 
             for (var key in arrayParams) {
                 if (arrayParams.hasOwnProperty(key)) {
@@ -851,6 +886,8 @@
          * @private
          */
         _ProtocolInstallMessage: function () {
+            var installerFilePath = this.GetInstallerFileUrl();
+
             if (ITHit.WebDAV.Client.DocManager.IsDavProtocolSupported()) {
                 oConfirmModal.Confirm('This action requires a protocol installation. <br/><br/>' +
                     'Make sure a web browser extension is enabled after protocol installation.<br/>' +
@@ -860,9 +897,9 @@
                     'Select OK to download the protocol installer.', function () {
                         // IT Hit WebDAV Ajax Library protocol installers path.
                         // Used to open non-MS Office documents or if MS Office is
-                        // not installed as well as to open OS File Manager.      
+                        // not installed as well as to open OS File Manager.     
 
-                        var installerFilePath = webDavSettings.ApplicationProtocolsPath + ITHit.WebDAV.Client.DocManager.GetInstallFileName();
+
                         window.open(installerFilePath);
                     }, { size: 'lg' });
             }
@@ -888,7 +925,7 @@
         oWebDAV.NavigateFolder(window.location.href.split("#")[0]);
     }
 
-        // Set Ajax lib version
+    // Set Ajax lib version
     if (ITHit.WebDAV.Client.DocManager.IsDavProtocolSupported()) {
         var $installerLink = $('<a></a>')
             .attr('href', webDavSettings.ApplicationProtocolsPath + ITHit.WebDAV.Client.DocManager.GetInstallFileName())
@@ -897,8 +934,6 @@
     } else {
         $('.ithit-version-value').text('v' + ITHit.WebDAV.Client.WebDavSession.Version + ' (Protocol v' + ITHit.WebDAV.Client.WebDavSession.ProtocolVersion + ')');
     }
-
-
     $('.ithit-current-folder-value').text(oWebDAV.GetMountUrl());
 
 })();

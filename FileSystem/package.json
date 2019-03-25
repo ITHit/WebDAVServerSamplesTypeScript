@@ -1,6 +1,6 @@
 {
     "name":  "ithit.webdav.server.filesystem",
-    "version":  "1.1.195",
+    "version":  "1.1.196",
     "description":  "A cross-platform WebDAV Node.js server that runs on Windows, Mac OS X and Linux. This example is a fully-functional WebDAV server that can be used to open, edit and save Microsoft Office documents directly to server, without download/upload steps.",
     "author":  "IT Hit, Ltd",
     "license":  "IT Hit LTD.",
