@@ -1,4 +1,4 @@
-import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream, copyFile, unlink, rename, access } from "fs";
+import { createWriteStream, exists, ftruncate, open, stat, Stats, createReadStream, copyFile, rename, unlink, access } from "fs";
 import { IncomingMessage, ServerResponse } from "http";
 import { IFile } from "ithit.webdav.server/Class1/IFile";
 import { DavException } from "ithit.webdav.server/DavException";
@@ -13,9 +13,9 @@ import { sep, join } from "path";
 import { promisify } from "util";
 import { DavContext } from "./DavContext";
 import { DavHierarchyItem } from "./DavHierarchyItem";
-import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
 import { DavFolder } from "./DavFolder";
 import { F_OK } from "constants";
+import { ExtendedAttributesExtension } from "./ExtendedAttributes/ExtendedAttributesExtension";
 
 /**
  * Represents file in WebDAV repository.
@@ -118,11 +118,13 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
 
         const davFile: DavFile = new DavFile(filePath, context, path, file);
 
-        davFile.serialNumber = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(davFile.fullPath, "SerialNumber"));
-        davFile.totalContentLength = Number(await FileSystemInfoExtension.getExtendedAttribute<number>(
-            davFile.fullPath,
-            "TotalContentLength"
-        ));
+        if (await ExtendedAttributesExtension.hasExtendedAttribute(davFile.fullPath, "SerialNumber")) {
+            davFile.serialNumber = Number(await ExtendedAttributesExtension.getExtendedAttribute<number>(davFile.fullPath, "SerialNumber"));
+        }
+
+        if (await ExtendedAttributesExtension.hasExtendedAttribute(davFile.fullPath, "TotalContentLength")) {
+            davFile.totalContentLength = Number(await ExtendedAttributesExtension.getExtendedAttribute<number>(davFile.fullPath, "TotalContentLength"));
+        }
 
         return davFile;
     }
@@ -167,7 +169,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             output.on('error', (error) => reject(error));
         });
     }
-	//$>
+    //$>
 
     private encodeRFC5987ValueChars(str: string): string {
         return encodeURIComponent(str).
@@ -175,7 +177,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             // so we do not need to escape it
             replace(/['()]/g, escape). // i.e., %27 %28 %29
             replace(/\*/g, '%2A').
-            // The following are not required for percent-encoding per RFC5987, 
+            // The following are not required for percent-encoding per RFC5987,
             // so we can allow for a little better readability over the wire: |`^
             replace(/%(?:7C|60|5E)/g, unescape);
     }
@@ -212,8 +214,8 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             throw new DavException("Previous piece of file was not uploaded.", undefined, DavStatus.PRECONDITION_FAILED);
         }
 
-        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "TotalContentLength", Number(totalFileSize));
-        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "SerialNumber", (this.serialNumber || 0) + 1);
+        await ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, "TotalContentLength", Number(totalFileSize));
+        await ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, "SerialNumber", (this.serialNumber || 0) + 1);
         const fd = await promisify(open)(this.fullPath, 'r+');
         if (startIndex == 0 && this.fileInfo.size > 0) {
             await promisify(ftruncate)(fd, 0);
@@ -252,7 +254,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
         if (targetFolder == null || !await promisify(exists)(targetFolder.fullPath)) {
             throw new DavException("Target directory doesn't exist", undefined, DavStatus.CONFLICT);
         }
-        
+
         const newFilePath = join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
         //  If an item with the same name exists - remove it.
@@ -261,7 +263,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             if (item != null) {
                 await item.delete(multistatus);
             }
-            
+
         }
         catch (ex) {
             //  Report error with other item to client.
@@ -269,7 +271,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
 
             return;
         }
-        
+
         //  Copy the file togather with all extended attributes (custom props and locks).
         try {
             await promisify(copyFile)(this.fullPath, newFilePath);
@@ -286,7 +288,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             throw err;
         }
     }
-	//$>
+    //$>
 
     //$<IHierarchyItem.MoveTo
     /**
@@ -298,7 +300,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
     public async moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): Promise<void> {
         await this.requireHasToken();
         const targetFolder = destFolder as DavFolder;
-         if (targetFolder == null || !await promisify(exists)(targetFolder.fullPath)) {
+        if (targetFolder == null || !await promisify(exists)(targetFolder.fullPath)) {
             throw new DavException("Target directory doesn't exist", undefined, DavStatus.CONFLICT);
         }
 
@@ -311,7 +313,7 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
             if (item != null) {
                 await item.delete(multistatus);
             }
-            
+
         } catch (err) {
             // Report exception to client and continue with other items by returning from recursion.
             multistatus.addInnerException(targetPath, undefined, err);
@@ -323,12 +325,12 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
         await promisify(rename)(this.fullPath, newDirPath);
 
         // Locks should not be copied, delete them.
-        await FileSystemInfoExtension.setExtendedAttribute(newDirPath, "Locks", {});
+        await ExtendedAttributesExtension.setExtendedAttribute(newDirPath, "Locks", {});
 
         this.context.socketService.notifyRefresh(targetFolder.path.replace(/\\/g, '/').replace(/\/$/, ""));
         this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
-	//$>
+    //$>
 
     //$<IHierarchyItem.Delete
     /**
@@ -336,23 +338,22 @@ export class DavFile extends DavHierarchyItem implements IFile, IResumableUpload
      * @param multistatus Information about items that failed to delete.
      */
     public async delete(multistatus: MultistatusException): Promise<void> {
-        await promisify(unlink)(this.fullPath);
-        this.context.socketService.notifyRefresh(this.getParentPath(this.path));
-
-        return;
+      await promisify(unlink)(this.fullPath);
+      this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
-	//$>
 
-    //$<IResumableUpload.CancelUpload	
+    //$>
+
+    //$<IResumableUpload.CancelUpload
 	/**
      * Called when client cancels upload in Ajax client.
-     * @remarks  
+     * @remarks
      * Client do not plan to restore upload. Remove any temporary files / cleanup resources here.
      */
-    public cancelUpload(): Promise<void> {
+    public cancelUpload(): Promise<void> {/*  */
         return this.delete(null as any as MultistatusException);
     }
-	//$>
+    //$>
 
     /**
      * Returns instance of @see IUploadProgressAsync  interface.

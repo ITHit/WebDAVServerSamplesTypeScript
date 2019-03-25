@@ -16,9 +16,9 @@ import { PropertyValue } from "ithit.webdav.server/PropertyValue";
 import { basename } from "path";
 import { DateLockInfo } from "./DateLockInfo";
 import { DavContext } from "./DavContext";
-import { FileSystemInfoExtension } from "./ExtendedAttributes/FileSystemInfoExtension";
 import { promisify } from "util";
 import { exec } from "child_process";
+import { ExtendedAttributesExtension } from "./ExtendedAttributes/ExtendedAttributesExtension";
 
 /**
  * Base class for WebDAV items (folders, files, etc).
@@ -62,7 +62,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     private readonly propertiesAttributeName = "Properties";
 
-    //$<IHierarchyItem.Path    
+    //$<IHierarchyItem.Path
 	/**
      * Gets path of the item where each part between slashes is encoded.
      */
@@ -109,7 +109,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param destName Name of the destination item.
      * @param deep Indicates whether to copy entire subtree.
      * @param multistatus If some items fail to copy but operation in whole shall be continued, add
-     * information about the error into @paramref multistatus  using 
+     * information about the error into @paramref multistatus  using
      * @see MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException) .
      */
     public copyTo(destFolder: IItemCollection, destName: string, deep: boolean, multistatus: MultistatusException): void { }
@@ -118,7 +118,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param destFolder Destination folder.
      * @param destName Name of the destination item.
      * @param multistatus If some items fail to copy but operation in whole shall be continued, add
-     * information about the error into @paramref multistatus  using 
+     * information about the error into @paramref multistatus  using
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
     public moveTo(destFolder: IItemCollection, destName: string, multistatus: MultistatusException): void { }
@@ -129,7 +129,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * {@link MultistatusException.AddInnerException(string,ITHit.WebDAV.Server.DavException)}.
      */
     public abstract delete(multistatus: MultistatusException): Promise<void>;
-	
+
     //$<IHierarchyItem.GetProperties
     /**
      * Retrieves user defined property values.
@@ -141,7 +141,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
         let propertyValues = await this.getPropertyValues();
         if (!allprop) {
             propertyValues = propertyValues.filter(item => props.findIndex(p => p.name === item.qualifiedName.name) > -1);
-            
+
         }
 
         return propertyValues;
@@ -176,9 +176,9 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             // <Win32CreationTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:15:34 GMT</Win32CreationTime>
             // <Win32LastModifiedTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastModifiedTime>
             // <Win32LastAccessTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastAccessTime>
-            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise 
-            // Windows Explorer will display creation and modification date from this props and it will differ from the values 
-            // in the Created and Modified fields in your storage 
+            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise
+            // Windows Explorer will display creation and modification date from this props and it will differ from the values
+            // in the Created and Modified fields in your storage
             if (propToSet.qualifiedName.namespace == "urn:schemas-microsoft-com:") {
                 const creationTimeUtc = new Date();
                 creationTimeUtc.setTime(Date.parse(propToSet.value));
@@ -218,12 +218,12 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             }
 
             propertyValues = propertyValues.filter(prop => !(delProps.length && delProps.findIndex(delProp => delProp.name === prop.qualifiedName.name) > -1));
-            await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.propertiesAttributeName, propertyValues);
+            await ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.propertiesAttributeName, propertyValues);
             this.context.socketService.notifyRefresh(this.getParentPath(this.path));
      }
 	//$>
 
-    //$<IMsItem.GetFileAttributes    
+    //$<IMsItem.GetFileAttributes
 	/**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
@@ -238,7 +238,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     public setFileAttributes(value: any): void { }
 	//$>
-	
+
     //$<ILock.GetActiveLocks
     /**
      * Retrieves non expired locks for this item.
@@ -269,8 +269,8 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param isDeep Whether lock is deep.
      * @param requestedTimeOut Lock timeout which was requested by client.
      * Server may ignore this parameter and set any timeout.
-     * @param owner Owner of the lock as specified by client. 
-     * @returns  
+     * @param owner Owner of the lock as specified by client.
+     * @returns
      * Instance of @see LockResult  with information about the lock.
      */
     public async lock(
@@ -323,7 +323,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      * @param token Lock token.
      * @param requestedTimeOut Lock timeout which was requested by client.
      * Server may ignore this parameter and set any timeout.
-     * @returns  
+     * @returns
      * Instance of @see LockResult  with information about the lock.
      */
     public async refreshLock(token: string, requestedTimeOut: number | null): Promise<RefreshLockResult> {
@@ -352,7 +352,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     }
 	//$>
 
-    //$<ILock.Unlock    
+    //$<ILock.Unlock
 	/**
      * Removes lock with the specified token from this item.
      * @param lockToken Lock with this token should be removed from the item.
@@ -382,7 +382,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
                 throw new LockedException();
             }
         }
-        
+
         return Promise.resolve();
     }
 
@@ -393,7 +393,9 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
     private async getPropertyValues(): Promise<PropertyValue[]> {
         if (this.propertyValues === null || this.propertyValues === undefined) {
             this.propertyValues = new Array<PropertyValue>();
-            this.propertyValues = await FileSystemInfoExtension.getExtendedAttribute<PropertyValue[]>(this.fullPath, this.propertiesAttributeName);
+            if (await ExtendedAttributesExtension.hasExtendedAttribute(this.fullPath, this.propertiesAttributeName)) {
+                this.propertyValues = await ExtendedAttributesExtension.getExtendedAttribute<PropertyValue[]>(this.fullPath, this.propertiesAttributeName);
+            }
             this.propertyValues = Array.isArray(this.propertyValues)? this.propertyValues.filter(item => Object.keys(item).length && item.constructor === Object): [];
         }
 
@@ -407,7 +409,9 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
      */
     private async getLocks(getAllWithExpired: boolean = false): Promise<DateLockInfo[]> {
         if (this.locks === null) {
-            this.locks = await FileSystemInfoExtension.getExtendedAttribute<DateLockInfo[]>(this.fullPath, this.locksAttributeName);
+            if (await ExtendedAttributesExtension.hasExtendedAttribute(this.fullPath, this.locksAttributeName)) {
+                this.locks = await ExtendedAttributesExtension.getExtendedAttribute<DateLockInfo[]>(this.fullPath, this.locksAttributeName);
+            }
             if (this.locks !== null) {
                 if (!Array.isArray(this.locks)) {
                     this.locks = [this.locks];
@@ -434,7 +438,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
 
     /**
      * Saves lock acquired on this file/folder.
-     * @param lockInfo 
+     * @param lockInfo
      */
     private async saveLock(lockInfo: DateLockInfo): Promise<void> {
         let locks = await this.getLocks(true);
@@ -452,12 +456,12 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             locks.push(lockInfo);
         }
 
-        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
+        await ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
     }
-    
+
     /**
      * Remove expired Locks.
-     * @param unlockedToken 
+     * @param unlockedToken
      */
     private async removeExpiredLocks(unlockedToken: string | null = null): Promise<void> {
         let locks = await this.getLocks(true);
@@ -467,7 +471,7 @@ export abstract class DavHierarchyItem implements IHierarchyItem, ILock {
             locks = locks.filter(x => x.lockToken !== unlockedToken);
         }
 
-        await FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
+        await ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
     }
 
     /**

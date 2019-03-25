@@ -50,8 +50,8 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
      */
     async getChildren(propNames) {
         //  Enumerates all child files and folders.
-        //  You can filter children items in this implementation and 
-        //  return only items that you want to be visible for this 
+        //  You can filter children items in this implementation and
+        //  return only items that you want to be visible for this
         //  particular user.
         const children = new Array();
         const listOfFiles = await util_1.promisify(fs_1.readdir)(this.fullPath);
@@ -94,7 +94,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         const path = `${this.fullPath}${path_1.sep}${name}`.split(path_1.sep);
         for (let i = 1; i <= path.length; i++) {
             const segment = path.slice(0, i).join(path_1.sep);
-            if (!await util_1.promisify(fs_1.exists)(segment)) {
+            if (segment && !await util_1.promisify(fs_1.exists)(segment)) {
                 await util_1.promisify(fs_1.mkdir)(segment);
                 this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
             }
@@ -211,7 +211,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
         let allChildrenDeleted = true;
         const childs = await this.getChildren([new PropertyName_1.PropertyName()]);
         for (let i = 0; i < childs.length; i++) {
-            const child = childs[0];
+            const child = childs[i];
             try {
                 await child.delete(multistatus);
             }
@@ -226,7 +226,7 @@ class DavFolder extends DavHierarchyItem_1.DavHierarchyItem {
             this.context.socketService.notifyDelete(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
         }
     }
-    //$<ISearch.Search    
+    //$<ISearch.Search
     /**
      * Searches files and folders in current folder using search phrase and options.
      * @param searchString A phrase to search.

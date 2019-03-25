@@ -8,8 +8,8 @@ const mime_types_1 = require("mime-types");
 const path_1 = require("path");
 const util_1 = require("util");
 const DavHierarchyItem_1 = require("./DavHierarchyItem");
-const FileSystemInfoExtension_1 = require("./ExtendedAttributes/FileSystemInfoExtension");
 const constants_1 = require("constants");
+const ExtendedAttributesExtension_1 = require("./ExtendedAttributes/ExtendedAttributesExtension");
 /**
  * Represents file in WebDAV repository.
  */
@@ -78,8 +78,12 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             return null;
         }
         const davFile = new DavFile(filePath, context, path, file);
-        davFile.serialNumber = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.fullPath, "SerialNumber"));
-        davFile.totalContentLength = Number(await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(davFile.fullPath, "TotalContentLength"));
+        if (await ExtendedAttributesExtension_1.ExtendedAttributesExtension.hasExtendedAttribute(davFile.fullPath, "SerialNumber")) {
+            davFile.serialNumber = Number(await ExtendedAttributesExtension_1.ExtendedAttributesExtension.getExtendedAttribute(davFile.fullPath, "SerialNumber"));
+        }
+        if (await ExtendedAttributesExtension_1.ExtendedAttributesExtension.hasExtendedAttribute(davFile.fullPath, "TotalContentLength")) {
+            davFile.totalContentLength = Number(await ExtendedAttributesExtension_1.ExtendedAttributesExtension.getExtendedAttribute(davFile.fullPath, "TotalContentLength"));
+        }
         return davFile;
     }
     /**
@@ -125,7 +129,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
             // so we do not need to escape it
             replace(/['()]/g, escape). // i.e., %27 %28 %29
             replace(/\*/g, '%2A').
-            // The following are not required for percent-encoding per RFC5987, 
+            // The following are not required for percent-encoding per RFC5987,
             // so we can allow for a little better readability over the wire: |`^
             replace(/%(?:7C|60|5E)/g, unescape);
     }
@@ -159,8 +163,8 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         if (this.fileInfo.size < startIndex) {
             throw new DavException_1.DavException("Previous piece of file was not uploaded.", undefined, DavStatus_1.DavStatus.PRECONDITION_FAILED);
         }
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "TotalContentLength", Number(totalFileSize));
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, "SerialNumber", (this.serialNumber || 0) + 1);
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, "TotalContentLength", Number(totalFileSize));
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, "SerialNumber", (this.serialNumber || 0) + 1);
         const fd = await util_1.promisify(fs_1.open)(this.fullPath, 'r+');
         if (startIndex == 0 && this.fileInfo.size > 0) {
             await util_1.promisify(fs_1.ftruncate)(fd, 0);
@@ -256,7 +260,7 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
         // Move the file.
         await util_1.promisify(fs_1.rename)(this.fullPath, newDirPath);
         // Locks should not be copied, delete them.
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(newDirPath, "Locks", {});
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(newDirPath, "Locks", {});
         this.context.socketService.notifyRefresh(targetFolder.path.replace(/\\/g, '/').replace(/\/$/, ""));
         this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
@@ -269,10 +273,9 @@ class DavFile extends DavHierarchyItem_1.DavHierarchyItem {
     async delete(multistatus) {
         await util_1.promisify(fs_1.unlink)(this.fullPath);
         this.context.socketService.notifyRefresh(this.getParentPath(this.path));
-        return;
     }
     //$>
-    //$<IResumableUpload.CancelUpload	
+    //$<IResumableUpload.CancelUpload
     /**
      * Called when client cancels upload in Ajax client.
      * @remarks

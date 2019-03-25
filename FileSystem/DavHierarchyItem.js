@@ -10,9 +10,9 @@ const DavException_1 = require("ithit.webdav.server/DavException");
 const DavStatus_1 = require("ithit.webdav.server/DavStatus");
 const path_1 = require("path");
 const DateLockInfo_1 = require("./DateLockInfo");
-const FileSystemInfoExtension_1 = require("./ExtendedAttributes/FileSystemInfoExtension");
 const util_1 = require("util");
 const child_process_1 = require("child_process");
+const ExtendedAttributesExtension_1 = require("./ExtendedAttributes/ExtendedAttributesExtension");
 /**
  * Base class for WebDAV items (folders, files, etc).
  */
@@ -121,9 +121,9 @@ class DavHierarchyItem {
             // <Win32CreationTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:15:34 GMT</Win32CreationTime>
             // <Win32LastModifiedTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastModifiedTime>
             // <Win32LastAccessTime xmlns="urn:schemas-microsoft-com:">Thu, 28 Mar 2013 20:36:24 GMT</Win32LastAccessTime>
-            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise 
-            // Windows Explorer will display creation and modification date from this props and it will differ from the values 
-            // in the Created and Modified fields in your storage 
+            // In this case update creation and modified date in your storage or do not save this properties at all, otherwise
+            // Windows Explorer will display creation and modification date from this props and it will differ from the values
+            // in the Created and Modified fields in your storage
             if (propToSet.qualifiedName.namespace == "urn:schemas-microsoft-com:") {
                 const creationTimeUtc = new Date();
                 creationTimeUtc.setTime(Date.parse(propToSet.value));
@@ -159,11 +159,11 @@ class DavHierarchyItem {
             }
         }
         propertyValues = propertyValues.filter(prop => !(delProps.length && delProps.findIndex(delProp => delProp.name === prop.qualifiedName.name) > -1));
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.propertiesAttributeName, propertyValues);
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.propertiesAttributeName, propertyValues);
         this.context.socketService.notifyRefresh(this.getParentPath(this.path));
     }
     //$>
-    //$<IMsItem.GetFileAttributes    
+    //$<IMsItem.GetFileAttributes
     /**
      * Returns Windows file attributes (readonly, hidden etc.) for this file/folder.
      * @returns  Windows file attributes.
@@ -268,7 +268,7 @@ class DavHierarchyItem {
         return new RefreshLockResult_1.RefreshLockResult(lockInfo.level, lockInfo.isDeep, lockInfo.timeOut, lockInfo.clientOwner);
     }
     //$>
-    //$<ILock.Unlock    
+    //$<ILock.Unlock
     /**
      * Removes lock with the specified token from this item.
      * @param lockToken Lock with this token should be removed from the item.
@@ -304,7 +304,9 @@ class DavHierarchyItem {
     async getPropertyValues() {
         if (this.propertyValues === null || this.propertyValues === undefined) {
             this.propertyValues = new Array();
-            this.propertyValues = await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(this.fullPath, this.propertiesAttributeName);
+            if (await ExtendedAttributesExtension_1.ExtendedAttributesExtension.hasExtendedAttribute(this.fullPath, this.propertiesAttributeName)) {
+                this.propertyValues = await ExtendedAttributesExtension_1.ExtendedAttributesExtension.getExtendedAttribute(this.fullPath, this.propertiesAttributeName);
+            }
             this.propertyValues = Array.isArray(this.propertyValues) ? this.propertyValues.filter(item => Object.keys(item).length && item.constructor === Object) : [];
         }
         return this.propertyValues;
@@ -316,7 +318,9 @@ class DavHierarchyItem {
      */
     async getLocks(getAllWithExpired = false) {
         if (this.locks === null) {
-            this.locks = await FileSystemInfoExtension_1.FileSystemInfoExtension.getExtendedAttribute(this.fullPath, this.locksAttributeName);
+            if (await ExtendedAttributesExtension_1.ExtendedAttributesExtension.hasExtendedAttribute(this.fullPath, this.locksAttributeName)) {
+                this.locks = await ExtendedAttributesExtension_1.ExtendedAttributesExtension.getExtendedAttribute(this.fullPath, this.locksAttributeName);
+            }
             if (this.locks !== null) {
                 if (!Array.isArray(this.locks)) {
                     this.locks = [this.locks];
@@ -357,7 +361,7 @@ class DavHierarchyItem {
         else {
             locks.push(lockInfo);
         }
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
     }
     /**
      * Remove expired Locks.
@@ -370,7 +374,7 @@ class DavHierarchyItem {
         if (unlockedToken) {
             locks = locks.filter(x => x.lockToken !== unlockedToken);
         }
-        await FileSystemInfoExtension_1.FileSystemInfoExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
+        await ExtendedAttributesExtension_1.ExtendedAttributesExtension.setExtendedAttribute(this.fullPath, this.locksAttributeName, locks);
     }
     /**
      * Gets element's parent path.

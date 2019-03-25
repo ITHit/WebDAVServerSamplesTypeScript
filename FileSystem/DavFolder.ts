@@ -32,7 +32,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         }
 
         const folder: Stats = await promisify(stat)(folderPath);
-        if (!folder.isDirectory()) {    
+        if (!folder.isDirectory()) {
             return null;
         }
 
@@ -59,8 +59,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
      */
     public async getChildren(propNames: PropertyName[]): Promise<IHierarchyItem[]> {
         //  Enumerates all child files and folders.
-        //  You can filter children items in this implementation and 
-        //  return only items that you want to be visible for this 
+        //  You can filter children items in this implementation and
+        //  return only items that you want to be visible for this
         //  particular user.
         const children = new Array<DavHierarchyItem>();
         const listOfFiles = await promisify(readdir)(this.fullPath);
@@ -94,7 +94,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         const fd = await promisify(open)(`${normalizedDir}${sep}${name}`, 'w');
         await promisify(close)(fd);
         this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
-        
+
         return this.context.getHierarchyItem(this.path + name);
     }
 	//$>
@@ -109,7 +109,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         const path = `${this.fullPath}${sep}${name}`.split(sep);
         for (let i = 1; i <= path.length; i++) {
             const segment = path.slice(0, i).join(sep);
-            if(!await promisify(exists)(segment)) {
+            if(segment && !await promisify(exists)(segment)) {
                 await promisify(mkdir)(segment);
                 this.context.socketService.notifyRefresh(this.path.replace(/\\/g, '/').replace(/\/$/, ""));
             }
@@ -133,7 +133,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         if (this.isRecursive(targetFolder)) {
             throw new DavException("Cannot copy to subfolder", undefined, DavStatus.FORBIDDEN);
         }
-        
+
         const newDirLocalPath = join(targetFolder.fullPath, destName);
         const targetPath = (targetFolder.path + EncodeUtil.encodeUrlPart(destName));
         try{
@@ -238,7 +238,7 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         let allChildrenDeleted = true;
         const childs = await this.getChildren([new PropertyName()]);
         for(let i = 0; i < childs.length; i++) {
-            const child = childs[0];
+            const child = childs[i];
             try {
                 await child.delete(multistatus);
             } catch (err) {
@@ -254,13 +254,13 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         }
     }
 
-    //$<ISearch.Search    
+    //$<ISearch.Search
 	/**
      * Searches files and folders in current folder using search phrase and options.
      * @param searchString A phrase to search.
      * @param options Search options.
-     * @param propNames 
-     * List of properties to retrieve with each item returned by this method. They will be requested by the 
+     * @param propNames
+     * List of properties to retrieve with each item returned by this method. They will be requested by the
      * Engine in @see IHierarchyItemAsync.GetPropertiesAsync(IList{PropertyName}, bool)  call.
      * @returns  List of @see IHierarchyItemAsync  satisfying search request.
      */
@@ -272,8 +272,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
     /**
      * Converts path on disk to encoded relative path.
      * @param filePath Path returned by Windows Search.
-     * @remarks  
-     * The Search.CollatorDSO provider returns "documents" as "my documents". 
+     * @remarks
+     * The Search.CollatorDSO provider returns "documents" as "my documents".
      * There is no any real solution for this, so to build path we just replace "my documents" manually.
      * @returns  Returns relative encoded path for an item.
      */
