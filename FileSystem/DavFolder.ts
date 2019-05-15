@@ -65,7 +65,8 @@ export class DavFolder extends DavHierarchyItem implements IFolder {
         const children = new Array<DavHierarchyItem>();
         const listOfFiles = await promisify(readdir)(this.fullPath);
         for (let i = 0; i < listOfFiles.length; i++) {
-            const file = this.path + listOfFiles[i];
+            const fileName = EncodeUtil.encodeUrlPart(listOfFiles[i]);
+            const file = this.path + fileName;
             const child = await this.context.getHierarchyItem(file);
             if (child !== null && child !== undefined) {
                 children.push((child as any as DavHierarchyItem));

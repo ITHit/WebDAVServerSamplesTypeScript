@@ -773,7 +773,7 @@
             // Web Folders on Windows XP require port, even if it is a default port 80 or 443.
             var port = window.location.port || (window.location.protocol == 'http:' ? 80 : 443);
 
-            return window.location.protocol + '//' + window.location.hostname + ':' + port + webDavSettings.ApplicationPath + '/';
+            return window.location.protocol + '//' + window.location.hostname + ':' + port + webDavSettings.ApplicationPath;
         },
 
         /**
