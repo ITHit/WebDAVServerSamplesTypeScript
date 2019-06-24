@@ -1,7 +1,6 @@
 import { ExtendedAttribute } from "./ExtendedAttribute";
-import { readFile, writeFile, unlink } from "fs";
+import { readFile, writeFile, unlink, statSync, utimesSync } from "fs";
 import { promisify } from "util";
-
 
 export class DefaultExtendedAttribute implements ExtendedAttribute {
 
@@ -11,7 +10,13 @@ export class DefaultExtendedAttribute implements ExtendedAttribute {
     async setExtendedAttribute(path: string, attribName: string, attribValue: string): Promise<void> {
         if (!path) throw new Error("path")
         if (!attribName) throw new Error("attribName");
+        
+        const stat = statSync(path);
+        
         await promisify(writeFile)(`${path}:${attribName}`, attribValue);
+        
+        //Preserve last modification date.
+        utimesSync(path, stat.atime, stat.mtime);
     }
 
     /**
